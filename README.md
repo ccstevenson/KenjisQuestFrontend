@@ -1,10 +1,9 @@
-=======================
-Kenji's Quest Backend
+Kenji's Quest Frontend
 =======================
 
-=======================
-Setup
-=======================
+
+## Setup ##
+
 Download folder and run
 
 >  npm install
