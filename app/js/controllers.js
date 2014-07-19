@@ -36,6 +36,10 @@ angular.module('myApp.controllers', [])
 
             $scope.dealDamage = function(damage, character) {
                 character.health -= damage;
+
+                // The attack was completed. Deselect the two characters involved in the attack.
+                $scope.activePlayer = null;
+                $scope.activeEnemy = null;
             };
 
             //        $scope.user = "Guest " + Math.round(Math.random() * 101);

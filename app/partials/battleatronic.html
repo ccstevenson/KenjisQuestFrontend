@@ -7,7 +7,20 @@
     </div>
 
     <div class="col-md-4">
-        <calculator player="activePlayer" enemy="activeEnemy" callback="dealDamage(damage, character)"></calculator>
+
+        <div ng-show="!activePlayer">
+            Select a player to attack with.
+        </div>
+
+        <div ng-show="!activeEnemy">
+            Select an enemy to attack.
+        </div>
+
+        <calculator player="activePlayer"
+                    enemy="activeEnemy"
+                    callback="dealDamage(damage, character)"
+                    ng-show="activePlayer && activeEnemy">
+        </calculator>
     </div>
 
     <div class="col-md-4">
@@ -18,8 +31,8 @@
 </div>
 
 <!--<form ng-submit="addMessage();">-->
-    <!--<input type="text" ng-model="message"/>-->
-    <!--<input type="submit" value="Send Message"/>-->
+<!--<input type="text" ng-model="message"/>-->
+<!--<input type="submit" value="Send Message"/>-->
 <!--</form>-->
 
 <!--<input type="text" ng-model="game.text"/>-->

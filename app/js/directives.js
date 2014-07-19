@@ -33,7 +33,11 @@ angular.module('myApp.directives', [])
             controller: function($scope) {
                 $scope.attack = function() {
                     $scope.callback({'damage': 5, 'character': $scope.enemy});
-                }
+                };
+
+                $scope.keystroke = function() {
+                    // Handle keystrokes and manipulate the number that the user sees.
+                };
             }
         }
     });
