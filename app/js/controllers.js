@@ -30,8 +30,8 @@ angular.module('myApp.controllers', [])
                 $scope.activePlayer = player; // Perhaps have the computer automatically set active based on actions taken.
             };
 
-            $scope.selectedEnemy = function (enemy) {
-                $scope.activeEnemy = enemy;
+            $scope.selectedEnemy = function (target) {
+                $scope.activeTarget = target;
             };
 
             $scope.dealDamage = function(damage, character) {
@@ -39,7 +39,16 @@ angular.module('myApp.controllers', [])
 
                 // The attack was completed. Deselect the two characters involved in the attack.
                 $scope.activePlayer = null;
-                $scope.activeEnemy = null;
+                $scope.activeTarget = null;
+            };
+
+            $scope.makeSelection = function(character) {
+                if ($scope.activePlayer == null) {
+                    $scope.activePlayer = character;
+                }
+                else {
+                    $scope.activeTarget = character;
+                }
             };
 
             //        $scope.user = "Guest " + Math.round(Math.random() * 101);

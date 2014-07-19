@@ -1,67 +1,77 @@
-Attacking {{enemy.name}} with {{player.name}}
+<p class="text-center">Attacking {{enemy.name}} with {{player.name}}</p>
 
 <table>
     <tr>
-        <td>
-            <input ng-model="attackValue" type="text" disabled="disabled"/>
+        <td class="col-md-4">
+            <input ng-model="attackData.attackValue" type="text" disabled="disabled"/>
         </td>
-        <td>
-            <button class="btn" ng-click="keystroke('backspace')">Backspace</button>
+        <td class="col-md-4">
+            <button class="btn" ng-click="clear()">Clear</button>
         </td>
-        <td>
-            <button class="btn" ng-class="{btn-danger: heal}" ng-click="!heal">Heal</button>
+        <td class="col-md-4">
+            <button class="btn" ng-class="{'btn-success': attackData.heal}" ng-click="heal()">Heal</button>
+        </td>
+    </tr>
+    <tr class="top-buffer">
+        <td class="col-md-4">
+            <button class="btn" ng-click="attackData.attackValue = attackData.attackValue * 1.25;">+25%</button>
+        </td>
+        <td class="col-md-4">
+            <button class="btn" ng-click="attackData.attackValue = attackData.attackValue * 1.4;">+40%</button>
+        </td>
+        <td class="col-md-4">
+            <button class="btn" ng-click="attackData.attackValue = attackData.attackValue * 1.5;">+50%</button>
         </td>
     </tr>
     <tr>
-        <td>
-            <button class="btn" ng-click="keystroke(.25)">+25%</button>
+        <td class="col-md-4">
+            <button class="btn" ng-click="attackData.attackValue = attackData.attackValue * 10 + 7;">7</button>
         </td>
-        <td>
-            <button class="btn" ng-click="keystroke(.4)">+40%</button>
+        <td class="col-md-4">
+            <button class="btn" ng-click="attackData.attackValue = attackData.attackValue * 10 + 8;">8</button>
         </td>
-        <td>
-            <button class="btn" ng-click="keystroke(.5)">+50%</button>
+        <td class="col-md-4">
+            <button class="btn" ng-click="attackData.attackValue = attackData.attackValue * 10 + 9;">9</button>
         </td>
     </tr>
     <tr>
-        <td>
-            <button class="btn" ng-click="attackValue += '7'">7</button>
+        <td class="col-md-4">
+            <button class="btn" ng-click="attackData.attackValue = attackData.attackValue * 10 + 4;">4</button>
         </td>
-        <td>
-            <button class="btn" ng-click="keystroke('8')">8</button>
+        <td class="col-md-4">
+            <button class="btn" ng-click="attackData.attackValue = attackData.attackValue * 10 + 5;">5</button>
         </td>
-        <td>
-            <button class="btn" ng-click="keystroke('8')">8</button>
+        <td class="col-md-4">
+            <button class="btn" ng-click="attackData.attackValue = attackData.attackValue * 10 + 6;">6</button>
         </td>
-    </tr><tr>
-        <td>
-            <button class="btn" ng-click="keystroke('4')">4</button>
+    </tr>
+    <tr>
+        <td class="col-md-4">
+            <button class="btn" ng-click="attackData.attackValue = attackData.attackValue * 10 + 1;">1</button>
         </td>
-        <td>
-            <button class="btn" ng-click="keystroke('5')">5</button>
+        <td class="col-md-4">
+            <button class="btn" ng-click="attackData.attackValue = attackData.attackValue * 10 + 2;">2</button>
         </td>
-        <td>
-            <button class="btn" ng-click="keystroke('6')">6</button>
+        <td class="col-md-4">
+            <button class="btn" ng-click="attackData.attackValue = attackData.attackValue * 10 + 3;">3</button>
         </td>
-    </tr><tr>
-        <td>
-            <button class="btn" ng-click="keystroke('1')">1</button>
+    </tr>
+    <tr>
+        <td class="col-md-4">
+            <button class="btn" ng-click="attackData.attackValue = attackData.attackValue * 10 + 0;">0</button>
         </td>
-        <td>
-            <button class="btn" ng-click="keystroke('2')">2</button>
+        <td class="col-md-4">
+            <button class="btn" ng-click="crit()" ng-class="{'btn-success': attackData.crit}">Crit</button>
         </td>
-        <td>
-            <button class="btn" ng-click="keystroke('3')">3</button>
-        </td>
-    </tr><tr>
-        <td>
-            <button class="btn" ng-click="keystroke('0')">0</button>
-        </td>
-        <td>
-            <button class="btn" ng-click="keystroke('Crit')">Crit</button>
-        </td>
-        <td>
+        <td class="col-md-4">
             <button class="btn" ng-click="attack()">Attack</button>
         </td>
+    </tr>
+    <tr>
+        <td class="col-md-4"></td>
+        <td class="col-md-4">
+            <button class="btn" ng-click="cancel()">Cancel</button>
+        </td>
+        <td class="col-md-4"></td>
     </tr>
 </table>
