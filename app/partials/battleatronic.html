@@ -2,17 +2,17 @@
     <div class="col-md-4" ng-click="">
         <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
         <ul ng-repeat="player in game.players">
-            <character-card character="player" ng-click="test('Stuff!')"></character-card>
+            <character-card character="player" ng-click="selectedPlayer(player)"></character-card>
         </ul>
     </div>
 
     <div class="col-md-4">
-        <calculator></calculator>
+        <calculator player="activePlayer" enemy="activeEnemy" callback="dealDamage(damage, character)"></calculator>
     </div>
 
     <div class="col-md-4">
         <ul ng-repeat="enemy in game.enemies">
-            <character-card character="enemy"></character-card>
+            <character-card character="enemy" ng-click="selectedEnemy(enemy)"></character-card>
         </ul>
     </div>
 </div>

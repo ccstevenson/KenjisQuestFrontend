@@ -1,11 +1,13 @@
-Attacking with {{character.name}}:
+Attacking {{enemy.name}} with {{player.name}}
 
 <table>
     <tr>
         <td>
-            <input ng-model=""/>
+            <input ng-model="attackValue" type="text" disabled="disabled"/>
         </td>
-        <td></td>
+        <td>
+            <button ng-click="keystroke('backspace')">Backspace</button>
+        </td>
         <td>
             <button>Heal</button>
         </td>
@@ -23,7 +25,7 @@ Attacking with {{character.name}}:
     </tr>
     <tr>
         <td>
-            <button>7</button>
+            <button ng-click="keystroke('7')">7</button>
         </td>
         <td>
             <button>8</button>
@@ -59,7 +61,7 @@ Attacking with {{character.name}}:
             <button>Crit</button>
         </td>
         <td>
-            <button>Attack</button>
+            <button ng-click="attack()">Attack</button>
         </td>
     </tr>
 </table>

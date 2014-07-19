@@ -26,8 +26,16 @@ angular.module('myApp.controllers', [])
 
             GameService.$bind($scope, "game");
 
-            $scope.test = function () {
-                console.log("test");
+            $scope.selectedPlayer = function (player) {
+                $scope.activePlayer = player; // Perhaps have the computer automatically set active based on actions taken.
+            };
+
+            $scope.selectedEnemy = function (enemy) {
+                $scope.activeEnemy = enemy;
+            };
+
+            $scope.dealDamage = function(damage, character) {
+                character.health -= damage;
             };
 
             //        $scope.user = "Guest " + Math.round(Math.random() * 101);

@@ -25,8 +25,20 @@ angular.module('myApp.directives', [])
         return {
             restrict: 'E',
             scope: {
-                character: '=character'
+                player: '=player',
+                enemy: '=enemy',
+                callback: '&callback'
+
+
             },
-            templateUrl: 'partials/calculator.html'
+            templateUrl: 'partials/calculator.html',
+            link: function(scope, element, attrs) {
+                scope.callback({'damage': 5, 'character': scope.enemy});
+            },
+            controller: function($scope) {
+                $scope.attack = function() {
+                    $scope.callback({'damage': 5, 'character': $scope.enemy});
+                }
+            }
         }
     });
