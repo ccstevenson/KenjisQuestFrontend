@@ -1,19 +1,13 @@
 <div class="row">
     <div class="col-md-6" ng-click="">
         <ul ng-repeat="character in game.characters">
-            <character-card></character-card>
+            <character-card character="character"></character-card>
         </ul>
     </div>
 
     <div class="col-md-6">
         <ul ng-repeat="enemy in game.enemies">
-            <li>{{enemy.name}}:
-                <ul>
-                    <li><img src={{enemy.sprite}}></li>
-                    <li>Health: {{enemy.health}}</li>
-                    <li>Class: {{enemy.class}}</li>
-                </ul>
-            </li>
+            <character-card character="enemy"></character-card>
         </ul>
     </div>
 </div>

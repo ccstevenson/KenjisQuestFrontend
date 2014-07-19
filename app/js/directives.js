@@ -14,6 +14,9 @@ angular.module('myApp.directives', [])
     .directive('characterCard', function () {
         return {
             restrict: 'E',
+            scope: {
+                character: '=character'
+            },
             templateUrl: 'partials/character-card.html'
         }
     });
