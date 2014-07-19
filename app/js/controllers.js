@@ -16,21 +16,25 @@ angular.module('myApp.controllers', [])
 
     }])
 
-    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'CharacterConstants', 'EnemyConstants',
-        function ($scope, GameService, CharacterConstants, EnemyConstants) {
+    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'PlayerConstants', 'EnemyConstants',
+        function ($scope, GameService, PlayerConstants, EnemyConstants) {
 
-        $scope.game = {};
+            $scope.game = {};
 
-        $scope.game.characters = CharacterConstants;
-        $scope.game.enemies = EnemyConstants;
+            $scope.game.players = PlayerConstants;
+            $scope.game.enemies = EnemyConstants;
 
-        GameService.$bind($scope, "game");
+            GameService.$bind($scope, "game");
 
-//        $scope.user = "Guest " + Math.round(Math.random() * 101);
+            $scope.test = function () {
+                console.log("test");
+            };
+
+            //        $scope.user = "Guest " + Math.round(Math.random() * 101);
 //        $scope.game = GameService;
 ////        $scope.$add({game: null});
 
-        // This code works.
+            // This code works.
 //        $scope.user = "Guest " + Math.round(Math.random() * 101);
 
 //        $scope.addMessage = function () {
@@ -38,4 +42,4 @@ angular.module('myApp.controllers', [])
 //            $scope.message = "";
 //        };
 
-    }]);
+        }]);
