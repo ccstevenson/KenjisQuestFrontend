@@ -1,16 +1,16 @@
 <div class="row">
-    <div class="col-md-5" ng-click="">
-        <button popover-template="partials/popover.html" popover-placement="right">fghj</button>
+    <div class="col-md-4" ng-click="">
+        <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
         <ul ng-repeat="player in game.players">
             <character-card character="player" ng-click="test('Stuff!')"></character-card>
         </ul>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-md-4">
         <calculator></calculator>
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-4">
         <ul ng-repeat="enemy in game.enemies">
             <character-card character="enemy"></character-card>
         </ul>
