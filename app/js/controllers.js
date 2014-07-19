@@ -26,28 +26,33 @@ angular.module('myApp.controllers', [])
 
             GameService.$bind($scope, "game");
 
+            $scope.selections = {
+                activeActor: null,
+                activeTarget: null
+            }
+
             $scope.selectedPlayer = function (player) {
-                $scope.activePlayer = player; // Perhaps have the computer automatically set active based on actions taken.
+                $scope.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
             };
 
             $scope.selectedEnemy = function (target) {
-                $scope.activeTarget = target;
+                $scope.selections.activeTarget = target;
             };
 
             $scope.dealDamage = function(damage, character) {
                 character.health -= damage;
 
                 // The attack was completed. Deselect the two characters involved in the attack.
-                $scope.activePlayer = null;
-                $scope.activeTarget = null;
+                $scope.selections.activeActor = null;
+                $scope.selections.activeTarget = null;
             };
 
             $scope.makeSelection = function(character) {
-                if ($scope.activePlayer == null) {
-                    $scope.activePlayer = character;
+                if ($scope.selections.activeActor == null) {
+                    $scope.selections.activeActor = character;
                 }
                 else {
-                    $scope.activeTarget = character;
+                    $scope.selections.activeTarget = character;
                 }
             };
 

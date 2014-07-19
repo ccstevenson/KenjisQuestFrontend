@@ -15,9 +15,18 @@ angular.module('myApp.directives', [])
         return {
             restrict: 'E',
             scope: {
-                character: '=character'
+                character: '=character',
+                selections: '=selections'
             },
-            templateUrl: 'partials/character-card.html'
+            templateUrl: 'partials/character-card.html',
+            controller: function ($scope) {
+                $scope.isSelected = function() {
+                    if ($scope.character == selections.activeActor || $scope.character == selections.activeTarget) {
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
     })
 
@@ -36,7 +45,8 @@ angular.module('myApp.directives', [])
                     $scope.attackData = {
                         'attackValue': 0,
                         'heal': false,
-                        'crit': false
+                        'crit': false,
+                        'action': 'Attack'
                     };
                 };
 
@@ -46,6 +56,7 @@ angular.module('myApp.directives', [])
                     }
 
                     $scope.callback({'damage': parseInt($scope.attackData.attackValue), 'character': $scope.enemy});
+                    init();
                 };
 
                 $scope.crit = function () {
@@ -61,6 +72,13 @@ angular.module('myApp.directives', [])
 
                 $scope.heal = function () {
                     $scope.attackData.heal = !$scope.attackData.heal;
+
+                    if ($scope.attackData.heal) {
+                        $scope.attackData.action = 'Perform heal';
+                    }
+                    else {
+                        $scope.attackData.action = 'Attack';
+                    }
                 };
 
                 $scope.keystroke = function (keypressValue) {
