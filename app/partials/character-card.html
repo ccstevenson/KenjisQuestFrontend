@@ -1,4 +1,5 @@
-<li ng-class="selected: isSelected()">{{character.name}}:
+<li ng-class="{'selectedActor': selections.activeActor == character, 'selectedTarget': selections.activeTarget == character}">
+    {{character.name}}:
     <ul>
         <li><img src={{character.sprite}}></li>
         <li>Health: {{character.health}}</li>

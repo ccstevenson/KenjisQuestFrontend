@@ -1,10 +1,12 @@
 <div class="container-fluid">
-    <div class="col-md-4">
-        <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
-        <ul ng-repeat="player in game.players">
-            <character-card character="player" selections="selections"
-                            ng-click="makeSelection(player)"></character-card>
-        </ul>
+    <div class="nav col-md-4">
+        <div class="pull-left">
+            <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
+            <ul ng-repeat="player in game.players">
+                <character-card character="player" selections="selections"
+                                ng-click="makeSelection(player)"></character-card>
+            </ul>
+        </div>
     </div>
 
     <div class="col-md-4">

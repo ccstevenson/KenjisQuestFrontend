@@ -37,6 +37,10 @@ tr > td {
     padding-bottom: 5px;
 }
 
-.selected {
+.selectedActor {
     border: 3px solid seagreen;
+}
+
+.selectedTarget {
+    border: 3px solid red;
 }
