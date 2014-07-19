@@ -6,62 +6,62 @@ Attacking {{enemy.name}} with {{player.name}}
             <input ng-model="attackValue" type="text" disabled="disabled"/>
         </td>
         <td>
-            <button ng-click="keystroke('backspace')">Backspace</button>
+            <button class="btn" ng-click="keystroke('backspace')">Backspace</button>
         </td>
         <td>
-            <button>Heal</button>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <button>+25%</button>
-        </td>
-        <td>
-            <button>+40%</button>
-        </td>
-        <td>
-            <button>+50%</button>
+            <button class="btn" ng-class="{btn-danger: heal}" ng-click="!heal">Heal</button>
         </td>
     </tr>
     <tr>
         <td>
-            <button ng-click="keystroke('7')">7</button>
+            <button class="btn" ng-click="keystroke(.25)">+25%</button>
         </td>
         <td>
-            <button>8</button>
+            <button class="btn" ng-click="keystroke(.4)">+40%</button>
         </td>
         <td>
-            <button>9</button>
+            <button class="btn" ng-click="keystroke(.5)">+50%</button>
         </td>
-    </tr><tr>
+    </tr>
+    <tr>
         <td>
-            <button>4</button>
-        </td>
-        <td>
-            <button>5</button>
+            <button class="btn" ng-click="attackValue += '7'">7</button>
         </td>
         <td>
-            <button>6</button>
-        </td>
-    </tr><tr>
-        <td>
-            <button>1</button>
+            <button class="btn" ng-click="keystroke('8')">8</button>
         </td>
         <td>
-            <button>2</button>
-        </td>
-        <td>
-            <button>3</button>
+            <button class="btn" ng-click="keystroke('8')">8</button>
         </td>
     </tr><tr>
         <td>
-            <button>0</button>
+            <button class="btn" ng-click="keystroke('4')">4</button>
         </td>
         <td>
-            <button>Crit</button>
+            <button class="btn" ng-click="keystroke('5')">5</button>
         </td>
         <td>
-            <button ng-click="attack()">Attack</button>
+            <button class="btn" ng-click="keystroke('6')">6</button>
+        </td>
+    </tr><tr>
+        <td>
+            <button class="btn" ng-click="keystroke('1')">1</button>
+        </td>
+        <td>
+            <button class="btn" ng-click="keystroke('2')">2</button>
+        </td>
+        <td>
+            <button class="btn" ng-click="keystroke('3')">3</button>
+        </td>
+    </tr><tr>
+        <td>
+            <button class="btn" ng-click="keystroke('0')">0</button>
+        </td>
+        <td>
+            <button class="btn" ng-click="keystroke('Crit')">Crit</button>
+        </td>
+        <td>
+            <button class="btn" ng-click="attack()">Attack</button>
         </td>
     </tr>
 </table>

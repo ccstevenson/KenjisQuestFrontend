@@ -31,12 +31,15 @@ angular.module('myApp.directives', [])
             },
             templateUrl: 'partials/calculator.html',
             controller: function($scope) {
+                $scope.attackValue = '';
+                $scope.heal = false;
+
                 $scope.attack = function() {
-                    $scope.callback({'damage': 5, 'character': $scope.enemy});
+                    $scope.callback({'damage': parseInt($scope.attackValue), 'character': $scope.enemy});
                 };
 
-                $scope.keystroke = function() {
-                    // Handle keystrokes and manipulate the number that the user sees.
+                $scope.keystroke = function(keypressValue) {
+                    $scope.attackValue += keypressValue;
                 };
             }
         }
