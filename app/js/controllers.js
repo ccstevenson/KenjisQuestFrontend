@@ -14,14 +14,13 @@ angular.module('myApp.controllers', [])
         };
 
     }])
-    .controller('BattleatronicCtrl', ['$scope', 'GameService', function ($scope, GameService) {
+    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'CharacterConstants', function ($scope, GameService, CharacterConstants) {
+
         $scope.game = {};
 
-        $scope.game.characters = {'Andrew': 'tank', 'Chris': 'priest'};
+        $scope.game.characters = CharacterConstants;
 
         GameService.$bind($scope, "game");
-
-
 
 //        $scope.user = "Guest " + Math.round(Math.random() * 101);
 //        $scope.game = GameService;
