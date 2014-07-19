@@ -19,4 +19,14 @@ angular.module('myApp.directives', [])
             },
             templateUrl: 'partials/character-card.html'
         }
+    })
+
+    .directive('calculator', function () {
+        return {
+            restrict: 'E',
+            scope: {
+                character: '=character'
+            },
+            templateUrl: 'partials/calculator.html'
+        }
     });
