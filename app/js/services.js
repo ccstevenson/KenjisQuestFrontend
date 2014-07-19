@@ -21,34 +21,74 @@ angular.module('myApp.services', [])
         var characterOne = {
             name: 'Christopher',
             class: 'Cleric',
-            sprite: 'img/zelda.png'
+            sprite: 'img/zelda.png',
+            health: 25
         };
 
         var characterTwo = {
             name: 'Linsey',
             class: 'Warrior',
-            sprite: 'img/zelda.png'
+            sprite: 'img/zelda.png',
+            health: 20
         };
 
         var characterThree = {
             name: 'Bob',
             class: 'Warlock',
-            sprite: 'img/zelda.png'
+            sprite: 'img/zelda.png',
+            health: 10
         };
 
         var characterFour = {
             name: 'Samwise',
             class: 'Hobbit',
-            sprite: 'img/zelda.png'
+            sprite: 'img/zelda.png',
+            health: 16
         };
 
         var characterFive = {
             name: 'Samus',
             class: 'Power Suit',
-            sprite: 'img/zelda.png'
+            sprite: 'img/zelda.png',
+            health: 22
         };
 
         var characters = [characterOne, characterTwo, characterThree, characterFour, characterFive];
 
         return characters;
+    })
+
+    .factory("EnemyConstants", function () {
+
+        var enemyOne = {
+            name: 'Rat',
+            class: 'Warrior',
+            sprite: 'img/zelda.png',
+            health: 25
+        };
+
+        var enemyTwo = {
+            name: 'Rat',
+            class: 'Warrior',
+            sprite: 'img/zelda.png',
+            health: 25
+        };
+
+        var enemyThree = {
+            name: 'Rat',
+            class: 'Warrior',
+            sprite: 'img/zelda.png',
+            health: 25
+        };
+
+        var enemyFour = {
+            name: 'Rat',
+            class: 'Warrior',
+            sprite: 'img/zelda.png',
+            health: 25
+        };
+
+        var enemies = [enemyOne, enemyTwo, enemyThree, enemyFour];
+
+        return enemies;
     });

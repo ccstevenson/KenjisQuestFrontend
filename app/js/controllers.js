@@ -3,9 +3,10 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-    .controller('MyCtrl1', ['$scope', function ($scope) {
+    .controller('SoundboardCtrl', ['$scope', function ($scope) {
 
     }])
+
     .controller('CharacterCreationController', ['$scope', function ($scope) {
 
         $scope.addCharacter = function () {
@@ -14,11 +15,14 @@ angular.module('myApp.controllers', [])
         };
 
     }])
-    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'CharacterConstants', function ($scope, GameService, CharacterConstants) {
+
+    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'CharacterConstants', 'EnemyConstants',
+        function ($scope, GameService, CharacterConstants, EnemyConstants) {
 
         $scope.game = {};
 
         $scope.game.characters = CharacterConstants;
+        $scope.game.enemies = EnemyConstants;
 
         GameService.$bind($scope, "game");
 
