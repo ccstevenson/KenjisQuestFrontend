@@ -36,7 +36,19 @@ angular.module('myApp.services', [])
             sprite: 'img/zelda.png'
         };
 
-        var characters = [characterOne, characterTwo, characterThree];
+        var characterFour = {
+            name: 'Samwise',
+            class: 'Hobbit',
+            sprite: 'img/zelda.png'
+        };
+
+        var characterFive = {
+            name: 'Samus',
+            class: 'Power Suit',
+            sprite: 'img/zelda.png'
+        };
+
+        var characters = [characterOne, characterTwo, characterThree, characterFour, characterFive];
 
         return characters;
     });

@@ -1,5 +1,10 @@
-    <ul ng-repeat="character in characters">
-      <li>{{character.name}}: {{character.class}}</li>
+    <ul ng-repeat="character in game.characters">
+      <li>{{character.name}}:
+          <ul>
+              <li><img src={{character.sprite}}></li>
+              <li>Class: {{character.class}}</li>
+          </ul>
+      </li>
     </ul>
 
 
