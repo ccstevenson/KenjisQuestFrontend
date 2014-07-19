@@ -46,7 +46,7 @@ angular.module('myApp.directives', [])
                         'attackValue': 0,
                         'heal': false,
                         'crit': false,
-                        'action': 'Attack'
+                        'action': 'Attacking'
                     };
                 };
 
@@ -74,10 +74,10 @@ angular.module('myApp.directives', [])
                     $scope.attackData.heal = !$scope.attackData.heal;
 
                     if ($scope.attackData.heal) {
-                        $scope.attackData.action = 'Perform heal';
+                        $scope.attackData.action = 'Healing';
                     }
                     else {
-                        $scope.attackData.action = 'Attack';
+                        $scope.attackData.action = 'Attacking';
                     }
                 };
 
@@ -92,6 +92,13 @@ angular.module('myApp.directives', [])
 
                 $scope.clear = function () {
                     init();
+                };
+
+                $scope.buttonText = function() {
+                  if ($scope.attackData.action == 'Attacking') {
+                      return "Attack";
+                  }
+                  else return "Perform heal";
                 };
 
                 init();

@@ -1,4 +1,4 @@
-<p class="text-center">Attacking {{enemy.name}} with {{player.name}}</p>
+<p class="text-center">{{attackData.action}} {{enemy.name}} with {{player.name}}</p>
 
 <table>
     <tr>
@@ -64,7 +64,7 @@
             <button class="btn" ng-click="crit()" ng-class="{'btn-success': attackData.crit}">Crit</button>
         </td>
         <td class="col-md-4">
-            <button class="btn" ng-class="{'btn-primary': attackData.attackValue}" ng-click="attack()">{{attackData.action}}</button>
+            <button class="btn" ng-class="{'btn-primary': attackData.attackValue}" ng-click="attack()">{{buttonText()}}</button>
         </td>
     </tr>
     <tr>
