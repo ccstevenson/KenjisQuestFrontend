@@ -29,7 +29,7 @@ angular.module('myApp.controllers', [])
             $scope.selections = {
                 activeActor: null,
                 activeTarget: null
-            }
+            };
 
             $scope.selectedPlayer = function (player) {
                 $scope.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.

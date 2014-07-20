@@ -23,35 +23,40 @@ angular.module('myApp.services', [])
             name: 'Christopher',
             class: 'Warrior',
             sprite: 'img/char1_small.png',
-            health: 25
+            health: 25,
+            maxHealth: 30
         };
 
         var playerTwo = {
             name: 'Linsey',
             class: 'Warlock',
             sprite: 'img/char2_small.png',
-            health: 20
+            health: 20,
+            maxHealth: 30
         };
 
         var playerThree = {
             name: 'Bob',
             class: 'Rogue',
             sprite: 'img/char3_small.png',
-            health: 10
+            health: 10,
+            maxHealth: 30
         };
 
         var playerFour = {
             name: 'Samwise',
-            class: 'Rogue',
+            class: 'Beastmaster',
             sprite: 'img/char4_small.png',
-            health: 16
+            health: 16,
+            maxHealth: 30
         };
 
         var playerFive = {
             name: 'Samus',
             class: 'Mage',
             sprite: 'img/char5_small.png',
-            health: 22
+            health: 22,
+            maxHealth: 30
         };
 
         var players = [playerOne, playerTwo, playerThree, playerFour, playerFive];
@@ -65,28 +70,32 @@ angular.module('myApp.services', [])
             name: 'Rat',
             class: 'Warrior',
             sprite: 'img/rat_small.jpg',
-            health: 25
+            health: 25,
+            maxHealth: 30
         };
 
         var enemyTwo = {
             name: 'Rat',
             class: 'Warrior',
             sprite: 'img/rat_small.jpg',
-            health: 25
+            health: 25,
+            maxHealth: 30
         };
 
         var enemyThree = {
             name: 'Ghost',
             class: 'Warrior',
             sprite: 'img/ghost_small.jpg',
-            health: 25
+            health: 25,
+            maxHealth: 30
         };
 
         var enemyFour = {
             name: 'Wasp',
             class: 'Warrior',
             sprite: 'img/wasp_small.jpg',
-            health: 25
+            health: 25,
+            maxHealth: 30
         };
 
         var enemies = [enemyOne, enemyTwo, enemyThree, enemyFour];
