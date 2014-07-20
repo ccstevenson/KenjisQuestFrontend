@@ -20,17 +20,12 @@ angular.module('myApp.controllers', [])
         function ($scope, GameService, PlayerConstants, EnemyConstants) {
             GameService.$bind($scope, "game");
 
-            $scope.selections = {
-                activeActor: null,
-                activeTarget: null
-            };
-
             $scope.selectedPlayer = function (player) {
-                $scope.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
+                $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
             };
 
             $scope.selectedEnemy = function (target) {
-                $scope.selections.activeTarget = target;
+                $scope.game.selections.activeTarget = target;
             };
 
             $scope.dealDamage = function (damage, character) {
@@ -41,21 +36,28 @@ angular.module('myApp.controllers', [])
                 }
 
                 // The attack was completed. Deselect the two characters involved in the attack.
-                $scope.selections.activeActor = null;
-                $scope.selections.activeTarget = null;
+                $scope.game.selections.activeActor = null;
+                $scope.game.selections.activeTarget = null;
             };
 
             $scope.makeSelection = function (character) {
-                if ($scope.selections.activeActor == null) {
-                    $scope.selections.activeActor = character;
+                if (!$scope.game.selections || !$scope.game.selections.activeActor) {
+                    $scope.game.selections = {
+                        activeActor: character
+                    };
                 }
                 else {
-                    $scope.selections.activeTarget = character;
+                    $scope.game.selections.activeTarget = character;
                 }
             };
 
             $scope.resetGame = function () {
                 $scope.game = {};
+
+                $scope.game.selections = {
+                    activeActor: null,
+                    activeTarget: null
+                };
 
                 $scope.game.players = angular.copy(PlayerConstants);
                 $scope.game.enemies = angular.copy(EnemyConstants);

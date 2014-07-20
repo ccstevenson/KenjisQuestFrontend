@@ -3,32 +3,32 @@
         <div class="pull-left">
             <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
             <ul ng-repeat="player in game.players">
-                <character-card character="player" selections="selections"
+                <character-card character="player" selections="game.selections"
                                 ng-click="makeSelection(player)"></character-card>
             </ul>
         </div>
     </div>
 
     <div class="col-md-4">
-        <div class="text-center VT323FontLarge" ng-show="!selections.activeActor">
+        <div class="text-center VT323FontLarge" ng-show="!game.selections.activeActor">
             Select a character to attack with.
         </div>
 
-        <div class="text-center VT323FontLarge" ng-show="selections.activeActor && !selections.activeTarget">
+        <div class="text-center VT323FontLarge" ng-show="game.selections.activeActor && !game.selections.activeTarget">
             Select a target to attack or heal.
         </div>
 
-        <calculator player="selections.activeActor"
-                    enemy="selections.activeTarget"
+        <calculator player="game.selections.activeActor"
+                    enemy="game.selections.activeTarget"
                     callback="dealDamage(damage, character)"
-                    ng-show="selections.activeActor && selections.activeTarget">
+                    ng-show="game.selections.activeActor && game.selections.activeTarget">
         </calculator>
     </div>
 
     <div class="nav col-md-4">
         <div class="pull-right">
             <ul ng-repeat="enemy in game.enemies">
-                <character-card character="enemy" selections="selections"
+                <character-card character="enemy" selections="game.selections"
                                 ng-click="makeSelection(enemy)"></character-card>
             </ul>
         </div>
