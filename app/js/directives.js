@@ -98,7 +98,7 @@ angular.module('myApp.directives', [])
                   if ($scope.attackData.action == 'Attacking') {
                       return "Attack";
                   }
-                  else return "Perform heal";
+                  else return "Cast heal";
                 };
 
                 init();

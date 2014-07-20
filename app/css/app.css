@@ -68,6 +68,11 @@ tr > td {
     font-size: 140%;
 }
 
+.smallText {
+    font-family: 'VT323';
+    font-size: 20px;
+}
+
 .negativeTopMargin10 {
     margin-top: -10px;
 }

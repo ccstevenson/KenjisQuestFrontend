@@ -18,12 +18,6 @@ angular.module('myApp.controllers', [])
 
     .controller('BattleatronicCtrl', ['$scope', 'GameService', 'PlayerConstants', 'EnemyConstants',
         function ($scope, GameService, PlayerConstants, EnemyConstants) {
-
-            $scope.game = {};
-
-            $scope.game.players = PlayerConstants;
-            $scope.game.enemies = EnemyConstants;
-
             GameService.$bind($scope, "game");
 
             $scope.selections = {
@@ -39,7 +33,7 @@ angular.module('myApp.controllers', [])
                 $scope.selections.activeTarget = target;
             };
 
-            $scope.dealDamage = function(damage, character) {
+            $scope.dealDamage = function (damage, character) {
                 character.health -= damage;
 
                 if (character.health < 0) { // Negative health disallowed.
@@ -51,7 +45,7 @@ angular.module('myApp.controllers', [])
                 $scope.selections.activeTarget = null;
             };
 
-            $scope.makeSelection = function(character) {
+            $scope.makeSelection = function (character) {
                 if ($scope.selections.activeActor == null) {
                     $scope.selections.activeActor = character;
                 }
@@ -60,9 +54,12 @@ angular.module('myApp.controllers', [])
                 }
             };
 
-            $scope.resetGame = function() {
+            $scope.resetGame = function () {
+                $scope.game = {};
 
-            }
+                $scope.game.players = angular.copy(PlayerConstants);
+                $scope.game.enemies = angular.copy(EnemyConstants);
+            };
 
             //        $scope.user = "Guest " + Math.round(Math.random() * 101);
 //        $scope.game = GameService;

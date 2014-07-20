@@ -64,7 +64,7 @@
             <button class="wideButton" ng-click="crit()" ng-class="{'btn-success': attackData.crit}">Crit</button>
         </td>
         <td class="col-md-4">
-            <button class="wideButton" ng-class="{'btn-primary': attackData.attackValue}" ng-click="attack()">{{buttonText()}}</button>
+            <button class="wideButton smallText" ng-class="{'btn-primary': attackData.attackValue, 'smallText': attackData.action == 'Healing'}" ng-click="attack()">{{buttonText()}}</button>
         </td>
     </tr>
     <tr>
