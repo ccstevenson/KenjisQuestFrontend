@@ -84,7 +84,7 @@ angular.module('myApp.services', [])
 
         var enemyThree = {
             name: 'Ghost',
-            class: 'Warrior',
+            class: 'Mage',
             sprite: 'img/ghost_small.jpg',
             health: 25,
             maxHealth: 30
@@ -92,7 +92,7 @@ angular.module('myApp.services', [])
 
         var enemyFour = {
             name: 'Wasp',
-            class: 'Warrior',
+            class: 'Rogue',
             sprite: 'img/wasp_small.jpg',
             health: 25,
             maxHealth: 30
