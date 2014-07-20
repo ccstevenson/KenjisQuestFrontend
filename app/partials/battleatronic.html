@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="nav col-md-4">
-        <div class="pull-left">
+        <div class="pull-left foreground">
             <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
             <ul ng-repeat="player in game.players">
                 <character-card character="player" selections="game.selections"
@@ -10,11 +10,11 @@
     </div>
 
     <div class="col-md-4">
-        <div class="text-center VT323FontLarge" ng-show="!game.selections.activeActor">
+        <div class="text-center VT323FontLarge foreground" ng-show="!game.selections.activeActor">
             Select a character to attack with.
         </div>
 
-        <div class="text-center VT323FontLarge" ng-show="game.selections.activeActor && !game.selections.activeTarget">
+        <div class="text-center VT323FontLarge foreground" ng-show="game.selections.activeActor && !game.selections.activeTarget">
             Select a target to attack or heal.
         </div>
 
@@ -26,7 +26,7 @@
     </div>
 
     <div class="nav col-md-4">
-        <div class="pull-right">
+        <div class="pull-right foreground">
             <ul ng-repeat="enemy in game.enemies">
                 <character-card character="enemy" selections="game.selections"
                                 ng-click="makeSelection(enemy)"></character-card>

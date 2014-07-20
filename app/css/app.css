@@ -85,5 +85,21 @@ tr > td {
     width: 100%;
 }
 
+.background {
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0, url(../img/cave.jpg) no-repeat 0 0;
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.7)), color-stop(100%, rgba(255, 255, 255, 0.7))), url(../img/cave.jpg) no-repeat 0 0;
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
+    background-attachment:fixed;
+}
 
+.foreground {
+    background-color: white;
+    box-shadow: 10px 10px 5px #888888;
+    border-radius: 25px;
+    border:2px solid;
+}
 
