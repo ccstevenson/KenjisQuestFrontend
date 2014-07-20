@@ -1,9 +1,11 @@
-<li ng-class="{'selectedActor': selections.activeActor == character, 'selectedTarget': selections.activeTarget == character}">
-    {{character.name}}:
-    <ul>
-        <li><img src={{character.sprite}}></li>
-        <li ng-if="character.health > 0">Health: {{character.health}}</li>
-        <li class="deadText" ng-if="character.health <= 0">Dead!</li>
-        <li>Class: {{character.class}}</li>
-    </ul>
+<li class="bulletlessList" ng-class="{'selectedActor': selections.activeActor == character, 'selectedTarget': selections.activeTarget == character, 'notSelected': selections.activeActor != character && selections.activeTarget != character}">
+    <div class="characterDetails">
+        {{character.name}}:
+        <ul class="bulletlessList">
+            <li><img src={{character.sprite}}></li>
+            <li ng-if="character.health > 0">Health: {{character.health}}</li>
+            <li class="deadText" ng-if="character.health <= 0">Dead!</li>
+            <li>Class: {{character.class}}</li>
+        </ul>
+        <div>
 </li>

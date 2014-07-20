@@ -45,9 +45,23 @@ tr > td {
     border: 3px solid red;
 }
 
+.notSelected {
+    border: 3px solid darkgray;
+}
+
 .deadText {
     color: red;
     font-weight: bold;
 }
+
+.characterDetails {
+    padding: 10px;
+}
+
+.bulletlessList {
+    list-style-type: none;
+}
+
+
 
 
