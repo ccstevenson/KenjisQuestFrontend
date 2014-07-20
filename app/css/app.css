@@ -62,6 +62,10 @@ tr > td {
     list-style-type: none;
 }
 
+.VT323Font {
+    font-family: 'VT323';
+    font-size: 150%;
+}
 
 
 
