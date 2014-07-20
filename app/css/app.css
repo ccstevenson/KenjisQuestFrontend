@@ -29,20 +29,16 @@
     padding: 0;
 }
 
-button {
-    width: 100%;
-}
-
 tr > td {
     padding-bottom: 5px;
 }
 
 .selectedActor {
-    border: 3px solid seagreen;
+    border: 6px solid seagreen;
 }
 
 .selectedTarget {
-    border: 3px solid red;
+    border: 6px solid red;
 }
 
 .notSelected {
@@ -78,6 +74,10 @@ tr > td {
 
 .negativeTopMargin20 {
     margin-top: -20px;
+}
+
+.wideButton {
+    width: 100%;
 }
 
 

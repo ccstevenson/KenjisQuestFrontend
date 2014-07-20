@@ -60,6 +60,10 @@ angular.module('myApp.controllers', [])
                 }
             };
 
+            $scope.resetGame = function() {
+
+            }
+
             //        $scope.user = "Guest " + Math.round(Math.random() * 101);
 //        $scope.game = GameService;
 ////        $scope.$add({game: null});
