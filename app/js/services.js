@@ -20,6 +20,7 @@ angular.module('myApp.services', [])
     .factory("PlayerConstants", function () {
 
         var playerOne = {
+            id: 1,
             name: 'Christopher',
             class: 'Warrior',
             sprite: 'img/char1_small.png',
@@ -28,6 +29,7 @@ angular.module('myApp.services', [])
         };
 
         var playerTwo = {
+            id: 2,
             name: 'Linsey',
             class: 'Warlock',
             sprite: 'img/char2_small.png',
@@ -36,6 +38,7 @@ angular.module('myApp.services', [])
         };
 
         var playerThree = {
+            id: 3,
             name: 'Bob',
             class: 'Rogue',
             sprite: 'img/char3_small.png',
@@ -44,6 +47,7 @@ angular.module('myApp.services', [])
         };
 
         var playerFour = {
+            id: 4,
             name: 'Samwise',
             class: 'Beastmaster',
             sprite: 'img/char4_small.png',
@@ -52,6 +56,7 @@ angular.module('myApp.services', [])
         };
 
         var playerFive = {
+            id: 5,
             name: 'Samus',
             class: 'Mage',
             sprite: 'img/char5_small.png',
@@ -67,6 +72,7 @@ angular.module('myApp.services', [])
     .factory("EnemyConstants", function () {
 
         var enemyOne = {
+            id: 6,
             name: 'Rat',
             class: 'Warrior',
             sprite: 'img/rat_small.jpg',
@@ -75,6 +81,7 @@ angular.module('myApp.services', [])
         };
 
         var enemyTwo = {
+            id: 7,
             name: 'Rat',
             class: 'Warrior',
             sprite: 'img/rat_small.jpg',
@@ -83,6 +90,7 @@ angular.module('myApp.services', [])
         };
 
         var enemyThree = {
+            id: 8,
             name: 'Ghost',
             class: 'Mage',
             sprite: 'img/ghost_small.jpg',
@@ -91,6 +99,7 @@ angular.module('myApp.services', [])
         };
 
         var enemyFour = {
+            id: 9,
             name: 'Wasp',
             class: 'Rogue',
             sprite: 'img/wasp_small.jpg',

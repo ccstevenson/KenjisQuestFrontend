@@ -1,5 +1,5 @@
 <li class="bulletlessList"
-    ng-class="{'selectedActor': selections.activeActor == character, 'selectedTarget': selections.activeTarget == character, 'notSelected': selections.activeActor != character && selections.activeTarget != character}">
+    ng-class="{'selectedActor': selections.activeActor.id == character.id, 'selectedTarget': selections.activeTarget.id == character.id, 'notSelected': selections.activeActor.id != character.id && selections.activeTarget.id != character.id}">
     <div class="characterDetails text-center">
         <p>{{character.name}}</p>
         <div>
