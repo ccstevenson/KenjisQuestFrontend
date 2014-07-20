@@ -67,6 +67,11 @@ tr > td {
     font-size: 150%;
 }
 
+.VT323FontLarge {
+    font-family: 'VT323';
+    font-size: 140%;
+}
+
 .negativeTopMargin10 {
     margin-top: -10px;
 }
