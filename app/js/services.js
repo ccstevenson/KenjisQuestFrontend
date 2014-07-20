@@ -64,28 +64,28 @@ angular.module('myApp.services', [])
         var enemyOne = {
             name: 'Rat',
             class: 'Warrior',
-            sprite: 'img/zelda.png',
+            sprite: 'img/rat_small.jpg',
             health: 25
         };
 
         var enemyTwo = {
             name: 'Rat',
             class: 'Warrior',
-            sprite: 'img/zelda.png',
+            sprite: 'img/rat_small.jpg',
             health: 25
         };
 
         var enemyThree = {
-            name: 'Rat',
+            name: 'Ghost',
             class: 'Warrior',
-            sprite: 'img/zelda.png',
+            sprite: 'img/ghost_small.jpg',
             health: 25
         };
 
         var enemyFour = {
-            name: 'Rat',
+            name: 'Wasp',
             class: 'Warrior',
-            sprite: 'img/zelda.png',
+            sprite: 'img/wasp_small.jpg',
             health: 25
         };
 
