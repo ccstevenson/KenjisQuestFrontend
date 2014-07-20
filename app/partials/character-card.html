@@ -2,7 +2,8 @@
     {{character.name}}:
     <ul>
         <li><img src={{character.sprite}}></li>
-        <li>Health: {{character.health}}</li>
+        <li ng-if="character.health > 0">Health: {{character.health}}</li>
+        <li class="deadText" ng-if="character.health <= 0">Dead!</li>
         <li>Class: {{character.class}}</li>
     </ul>
 </li>

@@ -45,4 +45,9 @@ tr > td {
     border: 3px solid red;
 }
 
+.deadText {
+    color: red;
+    font-weight: bold;
+}
+
 
