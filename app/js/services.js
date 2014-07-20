@@ -47,7 +47,7 @@ angular.module('myApp.services', [])
             name: 'Samwise',
             class: 'Beastmaster',
             sprite: 'img/char4_small.png',
-            health: 16,
+            health: 0,
             maxHealth: 30
         };
 
