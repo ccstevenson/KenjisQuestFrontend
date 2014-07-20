@@ -103,3 +103,10 @@ tr > td {
     border:2px solid;
 }
 
+.adjust-left {
+    margin-right: 35px;
+}
+
+.spacing-top {
+    margin-top: 10px;
+}
