@@ -21,35 +21,35 @@ angular.module('myApp.services', [])
 
         var playerOne = {
             name: 'Christopher',
-            class: 'Cleric',
+            class: 'Warrior',
             sprite: 'img/char1_small.png',
             health: 25
         };
 
         var playerTwo = {
             name: 'Linsey',
-            class: 'Warrior',
+            class: 'Warlock',
             sprite: 'img/char2_small.png',
             health: 20
         };
 
         var playerThree = {
             name: 'Bob',
-            class: 'Warlock',
+            class: 'Rogue',
             sprite: 'img/char3_small.png',
             health: 10
         };
 
         var playerFour = {
             name: 'Samwise',
-            class: 'Hobbit',
+            class: 'Rogue',
             sprite: 'img/char4_small.png',
             health: 16
         };
 
         var playerFive = {
             name: 'Samus',
-            class: 'Power Suit',
+            class: 'Mage',
             sprite: 'img/char5_small.png',
             health: 22
         };
