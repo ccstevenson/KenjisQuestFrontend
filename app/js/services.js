@@ -70,7 +70,7 @@ angular.module('myApp.services', [])
             name: 'Rat',
             class: 'Warrior',
             sprite: 'img/rat_small.jpg',
-            health: 8,
+            health: 25,
             maxHealth: 30
         };
 
@@ -78,7 +78,7 @@ angular.module('myApp.services', [])
             name: 'Rat',
             class: 'Warrior',
             sprite: 'img/rat_small.jpg',
-            health: 25,
+            health: 8,
             maxHealth: 30
         };
 
