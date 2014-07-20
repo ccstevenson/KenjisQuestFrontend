@@ -42,6 +42,10 @@ angular.module('myApp.controllers', [])
             $scope.dealDamage = function(damage, character) {
                 character.health -= damage;
 
+                if (character.health < 0) { // Negative health disallowed.
+                    character.health = 0;
+                }
+
                 // The attack was completed. Deselect the two characters involved in the attack.
                 $scope.selections.activeActor = null;
                 $scope.selections.activeTarget = null;
