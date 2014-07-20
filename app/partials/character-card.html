@@ -1,16 +1,15 @@
 <li class="bulletlessList VT323FontLarge"
     ng-class="{'selectedActor': selections.activeActor == character, 'selectedTarget': selections.activeTarget == character, 'notSelected': selections.activeActor != character && selections.activeTarget != character}">
-    <div class="characterDetails">
-        {{character.name}}:
-        <ul class="bulletlessList">
-            <li><img src={{character.sprite}}></li>
-            <li ng-if="character.health > 0">Health: {{character.health}}</li>
-            <li class="deadText" ng-if="character.health <= 0">Dead!</li>
-            <!--<progressbar max="character.maxHealth" value="character.health" type="danger"><span-->
-                    <!--style="color:black; white-space:nowrap;">{{character.health}} / {{character.maxHealth}}</span>-->
-            <!--</progressbar>-->
-            <progressbar value="55"></progressbar>
-            <li>Class: {{character.class}}</li>
-        </ul>
+    <div class="characterDetails text-center">
+        <p>{{character.name}}</p>
+        <div>
+            <p><img src={{character.sprite}}></p>
+            <p ng-if="character.health > 0">Health: {{character.health}} / {{ character.maxHealth }}</p>
+            <p class="deadText" ng-if="character.health <= 0">Dead!</p>
+            <progressbar class="negativeTopMargin10" ng-class="{'progress-striped active': character.health/character.maxHealth < .3}" max="character.maxHealth" value="character.health" type="danger">
+                <!--<span style="color:black; white-space:nowrap;">{{character.health}} / {{character.maxHealth}}</span>-->
+            </progressbar>
+            <p class="negativeTopMargin20">Class: {{character.class}}</p>
+        </div>
     </div>
 </li>

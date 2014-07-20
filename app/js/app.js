@@ -9,6 +9,7 @@ angular.module('myApp', [
     'myApp.directives',
     'myApp.controllers',
     'firebase',
+    'ui.bootstrap'
 ]).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/battleatronic', {templateUrl: 'partials/battleatronic.html', controller: 'BattleatronicCtrl'});
