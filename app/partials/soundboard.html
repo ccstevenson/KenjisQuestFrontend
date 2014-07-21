@@ -1,20 +1,43 @@
-<div id="ytplayer"></div>
-
-<script>
-  // Load the IFrame Player API code asynchronously.
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/player_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  // Replace the 'ytplayer' element with an <iframe> and
-  // YouTube player after the API code downloads.
-  var player;
-  function onYouTubePlayerAPIReady() {
-    player = new YT.Player('ytplayer', {
-      height: '390',
-      width: '640',
-      videoId: 'M7lc1UVf-VE'
-    });
-  }
-</script>
+<div data-ng-app="JukeTubeApp">
+<header>
+      <h1>Juke<strong>Tube</strong></h1>
+      <form id="search" data-ng-submit="search()">
+        <input id="query" name="q" type="text" placeholder="Search for a YouTube video" data-ng-model="query">
+        <input id="submit" type="image" src="search.png" alt="Search">
+      </form>
+      <nav>
+        <a id="play">{{ youtube.state }}</a>
+        <a id="pause">Pause</a>
+      </nav>
+    </header>
+    <div id="results">
+      <div class="video" data-ng-repeat="video in results" data-ng-click="queue(video.id, video.title)">
+        <img class="video-image" data-ng-src="{{ video.thumbnail }}">
+        <p class="video-title">{{ video.title }}</p>
+        <p class="video-author">{{ video.author }}</p>
+        <p class="video-description">{{ video.description }}</p>
+      </div>
+    </div>
+    <div id="player">
+      <div id="placeholder"></div>
+    </div>
+    <div id="playlist">
+      <p id="current">{{ youtube.videoTitle }}</p>
+      <ol id="upcoming" data-ng-show="playlist">
+        <li data-ng-repeat="video in upcoming">
+          <p class="item-delete" data-ng-click="delete('upcoming', video.id)">delete</p>
+          <p class="item-title" data-ng-click="launch(video.id, video.title)">{{video.title}}</p>
+        </li>
+      </ol>
+      <ol id="history" data-ng-hide="playlist">
+        <li data-ng-repeat="video in history">
+          <p class="item-delete" data-ng-click="delete('history', video.id)">delete</p>
+          <p class="item-title" data-ng-click="queue(video.id, video.title)">{{video.title}}</p>
+        </li>
+      </ol>
+      <p id="tabs">
+        <a ng-class="{on:playlist}" data-ng-click="tabulate(true)">Upcoming</a>
+        <a ng-class="{on:!playlist}" data-ng-click="tabulate(false)">History</a>
+      </p>
+    </div>
+    </div>
