@@ -25,6 +25,20 @@ angular.module('myApp.directives', [])
                         return true;
                     }
                     return false;
+                };
+
+                $scope.healthBarType = function() { // Determines which color health bar to display
+                    var health = $scope.character.health/$scope.character.maxHealth;
+
+                    if (health >= .7) {
+                        return "success";
+                    }
+                    else if (health < .7 && health > .3) {
+                        return "warning";
+                    }
+                    else {
+                        return "danger";
+                    }
                 }
             }
         }
