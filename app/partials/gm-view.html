@@ -1,9 +1,17 @@
 <div class="container">
     <div class="col-lg-2">
-         <tabset id="gameSelect" vertical="true" type="pills">
-            <tab heading="{{ game.name }}" ng-repeat="game in games"></tab>
+         <tabset vertical="true" type="pills">
+            <tab ng-click="selectGame(game)" heading="{{ game.name }}" ng-repeat="game in games"></tab>
         </tabset>
     </div>
-    <div class="col-lg-5"></div>
-    <div class="col-lg-5"></div>
+    <div class="col-lg-5">
+        <tabset vertical="true" type="pills">
+            <tab ng-click="selectChapter(chapter)" heading="{{ chapter.name }}" ng-repeat="chapter in game.chapters"></tab>
+        </tabset>
+    </div>
+    <div class="col-lg-5">
+        <tabset vertical="true" type="pills">
+            <tab ng-click="selectScenario(scenario)" heading="{{ scenario.name }}" ng-repeat="scenario in chapter.scenario"></tab>
+        </tabset>
+    </div>
 </div>

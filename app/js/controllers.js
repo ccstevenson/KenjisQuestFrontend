@@ -17,9 +17,24 @@ angular.module('myApp.controllers', [])
     }])
 
     .controller('GmViewCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
+        $scope.game = {};
+        $scope.chapter = {};
+        $scope.scenario = {};
+
         Restangular.all('games').getList().then(function (games) {
             $scope.games = games;
         });
+
+        $scope.selectGame = function (game) {
+            $scope.game = game;
+            $scope.chapter = {};
+        };
+        $scope.selectChapter = function (chapter) {
+            $scope.chapter = chapter
+        };
+        $scope.selectScenario = function (scenario) {
+            $scope.scenario = scenario
+        };
     }])
 
     .controller('BattleatronicCtrl', ['$scope', 'GameService', 'PlayerConstants', 'EnemyConstants',
