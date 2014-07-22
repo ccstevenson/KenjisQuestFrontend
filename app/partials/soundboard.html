@@ -1,6 +1,6 @@
 <div data-ng-app="JukeTubeApp">
-<header>
-      <h1>Juke<strong>Tube</strong></h1>
+  <div data-ng-controller="VideosController">
+    <header>
       <form id="search" data-ng-submit="search()">
         <input id="query" name="q" type="text" placeholder="Search for a YouTube video" data-ng-model="query">
         <input id="submit" type="image" src="search.png" alt="Search">
@@ -40,4 +40,12 @@
         <a ng-class="{on:!playlist}" data-ng-click="tabulate(false)">History</a>
       </p>
     </div>
-    </div>
+<!--     <footer>
+      <em>Concept &amp; Design: <a href="http://jgthms.com">J. Thomas</a></em>
+      Built with <a href="http://angularjs.org/">AngularJS</a>. Source code available on <a href="https://github.com/jgthms/juketube">GitHub</a>.
+    </footer> -->
+    <script src="angular.min.js"></script>
+    <script src="angular-local-storage.js"></script>
+    <script src="app.js"></script>
+  </div>
+</div>
