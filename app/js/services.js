@@ -106,8 +106,16 @@ angular.module('myApp.services', [])
             health: 25,
             maxHealth: 30
         };
+        var enemyFive = {
+            id: 10,
+            name: 'Wasp',
+            class: 'Rogue',
+            sprite: 'img/wasp_small.jpg',
+            health: 25,
+            maxHealth: 30
+        };
 
-        var enemies = [enemyOne, enemyTwo, enemyThree, enemyFour];
+        var enemies = [enemyOne, enemyTwo, enemyThree, enemyFour, enemyFive];
 
         return enemies;
     });

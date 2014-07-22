@@ -1,50 +1,48 @@
 <!-- Enemies -->
 <div class="nav col-xs-6">
-    <div class="row pull-left">
-        <div class="spacing-top col-xs-4" ng-repeat="enemy in game.enemies">
-            <character-card character="enemy"
-                            selections="game.selections"
-                            ng-click="makeSelection(enemy)">
+    <div class="col-xs-4 row pull-left" ng-repeat="enemy in game.enemies">
+        <character-card character="enemy"
+                        selections="game.selections"
+                        ng-click="makeSelection(enemy)">
 
-            </character-card>
-        </div>
+        </character-card>
     </div>
 </div>
 <!---end enemies--->
 
-<!-- no-man's-land -->
-<div class="col-xs-2">
-
-</div>
-<!-- end no-man's-land -->
+<!--no-man's-land-->
+<div class="col-xs-2"></div>
+<!--end no-man's-land-->
 
 <!-- characters -->
-<div class="nav col-xs-2">
-    <div class="pull-right">
-        <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
-        <div class="spacing-top" ng-repeat="player in game.players">
-            <character-card character="player" selections="game.selections"
-                            ng-click="makeSelection(player)"></character-card>
-        </div>
+<div class="nav col-xs-4">
+    <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
+    <div class="col-xs-6 row pull-right" ng-repeat="player in game.players">
+        <character-card character="player" selections="game.selections"
+                        ng-click="makeSelection(player)"></character-card>
     </div>
+
+    <!-- debug/reset -->
+    <div class="xs-col-12">
+    <button class="pull-right border-main" ng-click="resetGame()">Reset Game
+        (Debug)
+    </button>
+        </div>
+    <!-- end reset -->
+
 </div>
 <!-- end characters -->
 
 <!-- info column -->
-<div class="col-xs-2 info-panel info-border">
+<!--<div class="col-xs-2 info-panel info-border">-->
 
-    <!-- debug/reset -->
-    <button style="margin-top: 800px" class="pull-right btn-main" ng-click="resetGame()">Reset Game
-        (Debug)
-    </button>
-    <!-- end reset -->
 
-</div>
+<!--</div>-->
 <!-- end info column -->
 
 
-<!-- battle instructions -->
-<!--<div class="col-md-4">-->
+<!--battle instructions-->
+<!--<div class="col-md-5">-->
 <!--<div class="text-center VT323FontLarge foreground" ng-show="!game.selections.activeActor">-->
 <!--Select a character to attack with.-->
 <!--</div>-->
@@ -60,7 +58,7 @@
 <!--ng-show="game.selections.activeActor && game.selections.activeTarget">-->
 <!--</calculator>-->
 <!--</div>-->
-<!-- end instructions -->
+<!--end instructions-->
 
 
 <!--<form ng-submit="addMessage();">-->

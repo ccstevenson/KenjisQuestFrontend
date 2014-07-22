@@ -1,14 +1,17 @@
-<li class="bulletlessList"
-    ng-class="{'selectedActor': selections.activeActor.id == character.id,
-               'selectedTarget': selections.activeTarget.id == character.id,
-               'notSelected': selections.activeActor.id != character.id && selections.activeTarget.id != character.id}">
+
     <div class="characterDetails text-center">
 
         <div>
-            <p><img src={{character.sprite}}></p>
+            <div class="jumbotron character-size"
+                    ng-style="{'background-image': 'url(' + character.sprite + ')'}"
+                    ng-class="{'selectedActor': selections.activeActor.id == character.id,
+               'selectedTarget': selections.activeTarget.id == character.id,
+               'notSelected': selections.activeActor.id != character.id && selections.activeTarget.id != character.id}">
+                <span class="well deadText" ng-if="character.health <= 0">Dead!</span>
+            </div>
             <!--<p ng-if="character.health > 0">Health: {{character.health}} / {{ character.maxHealth }}</p>-->
-            <p class="deadText" ng-if="character.health <= 0">Dead!</p>
-            <progressbar class="negativeTopMargin10"
+
+            <progressbar style="width: 150px;"
                          max="character.maxHealth"
                          value="character.health"
                          type="{{ healthBarType() }}">
@@ -18,4 +21,3 @@
             <!--<p class="negativeTopMargin20">Class: {{character.class}}</p>-->
         </div>
     </div>
-</li>
