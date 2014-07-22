@@ -82,7 +82,8 @@ tr > td {
 }
 
 .wideButton {
-    width: 100%;
+    width: 80%;
+    height: 50px
 }
 
 .background {
@@ -103,10 +104,37 @@ tr > td {
     border:2px solid;
 }
 
+
 .adjust-left {
     margin-right: 35px;
 }
 
 .spacing-top {
     margin-top: 10px;
+}
+
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background-color: rgba(0,0,0,.8);
+}
+
+.calc-foreground {
+    background-color: white;
+    box-shadow: 10px 10px 5px #888888;
+    border-radius: 25px;
+    border: 2px solid;
+    width: 650px;
+    height: 450px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -325px;
+    margin-top: -225px;
+    z-index: 6;
+    padding: 20px;
 }
