@@ -3,7 +3,6 @@
 .menu {
     list-style: none;
     border-bottom: 0.1em solid black;
-    margin-bottom: 2em;
     padding: 0 0 0.5em;
 }
 
@@ -39,10 +38,6 @@ tr > td {
 
 .selectedTarget {
     border: 6px solid red;
-}
-
-.notSelected {
-    border: 3px solid darkgray;
 }
 
 .deadText {
@@ -109,4 +104,21 @@ tr > td {
 
 .spacing-top {
     margin-top: 10px;
+}
+
+.info-border {
+    border: 8px ridge #c0c0c0;
+    border-radius: 10px;
+}
+
+.info-panel {
+    background-color: #0000FF;
+    height: 100%;
+}
+
+.btn-main {
+    border: 8px ridge #c0c0c0;
+    margin: 10px;
+    background: #ffffff;
+    border-radius: 10px;
 }

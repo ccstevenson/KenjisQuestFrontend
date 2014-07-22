@@ -1,51 +1,67 @@
-<div class="container">
-    <div class="nav col-md-4">
-        <div class="pull-left foreground">
-            <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
-            <ul class="text-center bulletlessList adjust-left">
-                <li class="spacing-top" ng-repeat="player in game.players">
-                    <character-card character="player" selections="game.selections"
-                                    ng-click="makeSelection(player)"></character-card>
-                </li>
-            </ul>
+<!-- Enemies -->
+<div class="nav col-xs-6">
+    <div class="row pull-left">
+        <div class="spacing-top col-xs-4" ng-repeat="enemy in game.enemies">
+            <character-card character="enemy"
+                            selections="game.selections"
+                            ng-click="makeSelection(enemy)">
+
+            </character-card>
         </div>
     </div>
+</div>
+<!---end enemies--->
 
-    <div class="col-md-4">
-        <div class="text-center VT323FontLarge foreground" ng-show="!game.selections.activeActor">
-            Select a character to attack with.
-        </div>
+<!-- no-man's-land -->
+<div class="col-xs-2">
 
-        <div class="text-center VT323FontLarge foreground"
-             ng-show="game.selections.activeActor && !game.selections.activeTarget">
-            Select a target to attack or heal.
-        </div>
+</div>
+<!-- end no-man's-land -->
 
-        <calculator player="game.selections.activeActor"
-                    enemy="game.selections.activeTarget"
-                    callback="dealDamage(damage, character)"
-                    ng-show="game.selections.activeActor && game.selections.activeTarget">
-        </calculator>
-    </div>
-
-    <div class="nav col-md-4">
-        <div class="pull-right foreground">
-            <ul class="text-center bulletlessList adjust-left">
-                <li class="spacing-top" ng-repeat="enemy in game.enemies">
-                    <character-card character="enemy"
-                                    selections="game.selections"
-                                    ng-click="makeSelection(enemy)">
-
-                                    </character-card>
-                </li>
-            </ul>
+<!-- characters -->
+<div class="nav col-xs-2">
+    <div class="pull-right">
+        <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
+        <div class="spacing-top" ng-repeat="player in game.players">
+            <character-card character="player" selections="game.selections"
+                            ng-click="makeSelection(player)"></character-card>
         </div>
     </div>
+</div>
+<!-- end characters -->
 
-    <button style="margin-top: 100px; margin-right: 17px;" class="pull-right" ng-click="resetGame()">Reset Game
+<!-- info column -->
+<div class="col-xs-2 info-panel info-border">
+
+    <!-- debug/reset -->
+    <button style="margin-top: 800px" class="pull-right btn-main" ng-click="resetGame()">Reset Game
         (Debug)
     </button>
+    <!-- end reset -->
+
 </div>
+<!-- end info column -->
+
+
+<!-- battle instructions -->
+<!--<div class="col-md-4">-->
+<!--<div class="text-center VT323FontLarge foreground" ng-show="!game.selections.activeActor">-->
+<!--Select a character to attack with.-->
+<!--</div>-->
+
+<!--<div class="text-center VT323FontLarge foreground"-->
+<!--ng-show="game.selections.activeActor && !game.selections.activeTarget">-->
+<!--Select a target to attack or heal.-->
+<!--</div>-->
+
+<!--<calculator player="game.selections.activeActor"-->
+<!--enemy="game.selections.activeTarget"-->
+<!--callback="dealDamage(damage, character)"-->
+<!--ng-show="game.selections.activeActor && game.selections.activeTarget">-->
+<!--</calculator>-->
+<!--</div>-->
+<!-- end instructions -->
+
 
 <!--<form ng-submit="addMessage();">-->
 <!--<input type="text" ng-model="message"/>-->
