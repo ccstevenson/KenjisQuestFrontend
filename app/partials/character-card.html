@@ -1,15 +1,16 @@
 <li class="bulletlessList"
     ng-class="{'selectedActor': selections.activeActor.id == character.id, 'selectedTarget': selections.activeTarget.id == character.id, 'notSelected': selections.activeActor.id != character.id && selections.activeTarget.id != character.id}">
     <div class="characterDetails text-center">
-        <p>{{character.name}}</p>
+
         <div>
             <p><img src={{character.sprite}}></p>
-            <p ng-if="character.health > 0">Health: {{character.health}} / {{ character.maxHealth }}</p>
+            <!--<p ng-if="character.health > 0">Health: {{character.health}} / {{ character.maxHealth }}</p>-->
             <p class="deadText" ng-if="character.health <= 0">Dead!</p>
             <progressbar class="negativeTopMargin10" ng-class="{'progress-striped active': character.health/character.maxHealth < .3}" max="character.maxHealth" value="character.health" type="danger">
                 <!--<span style="color:black; white-space:nowrap;">{{character.health}} / {{character.maxHealth}}</span>-->
             </progressbar>
-            <p class="negativeTopMargin20">Class: {{character.class}}</p>
+             <p>{{character.name}}</p>
+            <!--<p class="negativeTopMargin20">Class: {{character.class}}</p>-->
         </div>
     </div>
 </li>
