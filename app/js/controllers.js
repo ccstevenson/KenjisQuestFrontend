@@ -16,6 +16,12 @@ angular.module('myApp.controllers', [])
 
     }])
 
+    .controller('GmViewCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
+        Restangular.all('games').getList().then(function (games) {
+            $scope.games = games;
+        });
+    }])
+
     .controller('BattleatronicCtrl', ['$scope', 'GameService', 'PlayerConstants', 'EnemyConstants',
         function ($scope, GameService, PlayerConstants, EnemyConstants) {
             GameService.$bind($scope, "game");
