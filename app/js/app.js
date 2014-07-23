@@ -10,12 +10,18 @@ angular.module('myApp', [
     'myApp.controllers',
     'firebase',
     'ui.bootstrap',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'restangular'
 ]).
-    config(['$routeProvider', function ($routeProvider) {
+    config(['$routeProvider', 'RestangularProvider', function ($routeProvider, RestangularProvider) {
         $routeProvider.when('/battleatronic', {templateUrl: 'partials/battleatronic.html', controller: 'BattleatronicCtrl'});
         $routeProvider.when('/soundboard', {templateUrl: 'partials/soundboard.html', controller: 'VideosController'});
+        $routeProvider.when('/gm-view', {templateUrl: 'partials/gm-view.html', controller: 'GmViewCtrl'});
+        $routeProvider.when('/scenario', {templateUrl: 'partials/scenario.html', controller: 'ScenarioCtrl'});
         $routeProvider.otherwise({redirectTo: '/battleatronic'});
+
+        RestangularProvider.setBaseUrl('http://127.0.0.1:8001');
+    }]);
     }]);
 
 

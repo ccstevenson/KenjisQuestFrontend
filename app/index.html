@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Kenji's Quest</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
     <link rel="stylesheet" href="css/app.css"/>
@@ -21,16 +21,30 @@
     <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body class="background">
-<ul class="menu text-center VT323Font" style="background-color: white;">
+
+<ul class="menu text-center VT323Font" style="background-color: white;" ng-controller="RoleCtrl">
+
     <li><a href="#/battleatronic">Battleatronic</a></li>
     <li><a href="#/soundboard">Soundboard</a></li>
+    <li ng-show="role == 'Game Master'"><a href="#/gm-view">GM View</a></li>
+    <li>
+        <span class="dropdown" on-toggle="toggled(open)">
+            <a href class="dropdown-toggle">Select Role</a>
+            <ul class="dropdown-menu">
+                <li ng-repeat="role in roles">
+                    <a ng-click="selectRole(role)" href>{{ role }}</a>
+                </li>
+            </ul>
+        </span>
+    </li>
+    <li>Current Role: {{ role }}</li>
 </ul>
-
 
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
+
 <div class="VT323Font" ng-view></div>
 
 
@@ -53,5 +67,8 @@
 <script src="js/directives.js"></script>
 <script src="//cdn.firebase.com/js/client/1.0.6/firebase.js"></script>
 <script src="//cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
+<script src="bower_components/lodash/dist/lodash.min.js"></script>
+<script src="bower_components/restangular/dist/restangular.min.js"></script>
+
 </body>
 </html>
