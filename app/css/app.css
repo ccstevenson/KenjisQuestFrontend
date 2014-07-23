@@ -82,8 +82,9 @@ tr > td {
 }
 
 .wideButton {
-    width: 80%;
-    height: 50px
+    width: 99%;
+    height: 50px;
+    border-radius: 5px
 }
 
 .background {
@@ -113,6 +114,11 @@ tr > td {
     margin-top: 10px;
 }
 
+
+#launchBtn {
+    margin-top: 10px;
+}
+
 .modal-background {
     position: fixed;
     top: 0;
@@ -128,7 +134,7 @@ tr > td {
     box-shadow: 10px 10px 5px #888888;
     border-radius: 25px;
     border: 2px solid;
-    width: 650px;
+    width: 400px;
     height: 450px;
     position: fixed;
     top: 50%;
@@ -137,4 +143,3 @@ tr > td {
     margin-top: -225px;
     z-index: 6;
     padding: 20px;
-}

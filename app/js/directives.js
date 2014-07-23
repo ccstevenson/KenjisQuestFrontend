@@ -112,7 +112,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                   if ($scope.attackData.action == 'Attacking') {
                       return "Attack";
                   }
-                  else return "Cast heal";
+                  else return "Heal";
                 };
 
                 init();
