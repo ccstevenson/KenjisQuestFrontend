@@ -129,7 +129,7 @@ angular.module('myApp.services', [])
 
       var results = [];
       var upcoming = localStorageService.get('upcoming');
-      var history = localStorageService.get('history');
+      // var history = localStorageService.get('history');
 
       // if (!upcoming) {
       //   // $log.info(upcoming);
@@ -146,13 +146,13 @@ angular.module('myApp.services', [])
       //   upcoming = localStorageService.get('upcoming');
       // }
 
-      if (!history) {
-        // $log.info(history);
-        localStorageService.add('history', [
-          {id: 'XKa7Ywiv734', title: '[OFFICIAL HD] Daft Punk - Give Life Back To Music (feat. Nile Rodgers)'}
-        ]);
-        history = localStorageService.get('history');
-      }
+      // if (!history) {
+      //   // $log.info(history);
+      //   localStorageService.add('history', [
+      //     {id: 'XKa7Ywiv734', title: '[OFFICIAL HD] Daft Punk - Give Life Back To Music (feat. Nile Rodgers)'}
+      //   ]);
+      //   history = localStorageService.get('history');
+      // }
 
       $window.onYouTubeIframeAPIReady = function () {
         $log.info('Youtube API is ready');
@@ -177,8 +177,8 @@ angular.module('myApp.services', [])
         } else if (event.data == YT.PlayerState.ENDED) {
           youtube.state = 'ended';
           service.launchPlayer(upcoming[0].id, upcoming[0].title);
-          service.archiveVideo(upcoming[0].id, upcoming[0].title);
-          service.deleteVideo('upcoming', upcoming[0].id);
+          // service.archiveVideo(upcoming[0].id, upcoming[0].title);
+          // service.deleteVideo('upcoming', upcoming[0].id);
         }
         $rootScope.$apply();
       }
@@ -196,7 +196,7 @@ angular.module('myApp.services', [])
           playerVars: {
             rel: 0,
             showinfo: 0,
-            loop: 1,
+            loop: 0,
             autoplay: 1
           },
           events: {
@@ -247,27 +247,27 @@ angular.module('myApp.services', [])
         return upcoming;
       };
 
-      this.archiveVideo = function (id, title) {
-        var saved = localStorageService.get('history');
-        saved.unshift({
-          id: id,
-          title: title
-        });
-        localStorageService.add('history', saved);
-        history = localStorageService.get('history');
-        return history;
-      };
+      // this.archiveVideo = function (id, title) {
+      //   var saved = localStorageService.get('history');
+      //   saved.unshift({
+      //     id: id,
+      //     title: title
+      //   });
+      //   localStorageService.add('history', saved);
+      //   history = localStorageService.get('history');
+      //   return history;
+      // };
 
-      this.deleteVideo = function (list, id) {
-        var videos = localStorageService.get(list);
-        for (var i = videos.length - 1; i >= 0; i--) {
-          if (videos[i].id === id) {
-            videos.splice(i, 1);
-            break;
-          }
-        }
-        localStorageService.add(list, videos);
-      };
+      // this.deleteVideo = function (list, id) {
+      //   var videos = localStorageService.get(list);
+      //   for (var i = videos.length - 1; i >= 0; i--) {
+      //     if (videos[i].id === id) {
+      //       videos.splice(i, 1);
+      //       break;
+      //     }
+      //   }
+      //   localStorageService.add(list, videos);
+      // };
 
       this.getYoutube = function () {
         return youtube;
@@ -282,9 +282,9 @@ angular.module('myApp.services', [])
         return upcoming;
       };
 
-      this.getHistory = function () {
-        history = localStorageService.get('history');
-        return history;
-      };
+      // this.getHistory = function () {
+      //   history = localStorageService.get('history');
+      //   return history;
+      // };
 
 }]);
