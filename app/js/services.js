@@ -153,180 +153,188 @@ angular.module('myApp.services', [])
         return encounterService;
     })
 
-  .service('VideosService', ['$window', '$rootScope', '$log', 'localStorageService', function ($window, $rootScope, $log, localStorageService) {
+    .factory("roleService", function () {
+        var roleService = {
+            role: 'Player'
+        };
+        return roleService;
+    })
 
-      var service = this;
+    .service('VideosService', ['$window', '$rootScope', '$log', 'localStorageService', function ($window, $rootScope, $log, localStorageService) {
 
-      var youtube = {
-        ready: false,
-        player: null,
-        playerId: null,
-        videoId: null,
-        videoTitle: null,
-        playerHeight: '480',
-        playerWidth: '640',
-        state: 'stopped'
-      };
+        var service = this;
 
-      var results = [];
-      var upcoming = localStorageService.get('upcoming');
-      // var history = localStorageService.get('history');
+        var youtube = {
+            ready: false,
+            player: null,
+            playerId: null,
+            videoId: null,
+            videoTitle: null,
+            playerHeight: '480',
+            playerWidth: '640',
+            state: 'stopped'
+        };
 
-      if (!upcoming) {
-        // $log.info(upcoming);
-        localStorageService.add('upcoming', [
-          {id: 'kvpyz6MUa1w', title: '"Final Fantasy VI OST - Victory Fanfare"'}
-          // {id: 'kRJuY6ZDLPo', title: 'La Roux - In for the Kill (Twelves Remix)'},
-          // {id: '45YSGFctLws', title: 'Shout Out Louds - Illusions'},
-          // {id: 'ktoaj1IpTbw', title: 'CHVRCHES - Gun'},
-          // {id: 'FgAJWQCC7L0', title: 'Stardust Music Sounds Better With You (High Quality)'},
-          // {id: '8Zh0tY2NfLs', title: 'N.E.R.D. ft. Nelly Furtado - Hot N\' Fun (Boys Noize Remix) HQ'},
-          // {id: 'zwJPcRtbzDk', title: 'Daft Punk - Human After All (SebastiAn Remix)'},
-          // {id: 'sEwM6ERq0gc', title: 'HAIM - Forever (Official Music Video)'},
-          // {id: 'fTK4XTvZWmk', title: 'Housse De Racket ☁☀☁ Apocalypso'}
-        ]);
-        upcoming = localStorageService.get('upcoming');
-      }
+        var results = [];
+        var upcoming = localStorageService.get('upcoming');
+        // var history = localStorageService.get('history');
 
-      // if (!history) {
-      //   // $log.info(history);
-      //   localStorageService.add('history', [
-      //     {id: 'XKa7Ywiv734', title: '[OFFICIAL HD] Daft Punk - Give Life Back To Music (feat. Nile Rodgers)'}
-      //   ]);
-      //   history = localStorageService.get('history');
-      // // }
-
-      $window.onYouTubeIframeAPIReady = function () {
-        $log.info('Youtube API is ready');
-        youtube.ready = true;
-        service.bindPlayer('placeholder');
-        service.loadPlayer();
-        $rootScope.$apply();
-      };
-
-      function onYoutubeReady (event) {
-        $log.info('YouTube Player is ready');
-        youtube.player.cueVideoById(history[0].id);
-        youtube.videoId = history[0].id;
-        youtube.videoTitle = history[0].title;
-      }
-
-      function onYoutubeStateChange (event) {
-        if (event.data == YT.PlayerState.PLAYING) {
-          youtube.state = 'playing';
-        } else if (event.data == YT.PlayerState.PAUSED) {
-          youtube.state = 'paused';
-        } else if (event.data == YT.PlayerState.ENDED) {
-          youtube.state = 'ended';
-          service.launchPlayer(upcoming[0].id, upcoming[0].title);
-          // service.archiveVideo(upcoming[0].id, upcoming[0].title);
-          // service.deleteVideo('upcoming', upcoming[0].id);
+        if (!upcoming) {
+            // $log.info(upcoming);
+            localStorageService.add('upcoming', [
+                {id: 'kvpyz6MUa1w', title: '"Final Fantasy VI OST - Victory Fanfare"'}
+                // {id: 'kRJuY6ZDLPo', title: 'La Roux - In for the Kill (Twelves Remix)'},
+                // {id: '45YSGFctLws', title: 'Shout Out Louds - Illusions'},
+                // {id: 'ktoaj1IpTbw', title: 'CHVRCHES - Gun'},
+                // {id: 'FgAJWQCC7L0', title: 'Stardust Music Sounds Better With You (High Quality)'},
+                // {id: '8Zh0tY2NfLs', title: 'N.E.R.D. ft. Nelly Furtado - Hot N\' Fun (Boys Noize Remix) HQ'},
+                // {id: 'zwJPcRtbzDk', title: 'Daft Punk - Human After All (SebastiAn Remix)'},
+                // {id: 'sEwM6ERq0gc', title: 'HAIM - Forever (Official Music Video)'},
+                // {id: 'fTK4XTvZWmk', title: 'Housse De Racket ☁☀☁ Apocalypso'}
+            ]);
+            upcoming = localStorageService.get('upcoming');
         }
-        $rootScope.$apply();
-      }
 
-      this.bindPlayer = function (elementId) {
-        $log.info('Binding to ' + elementId);
-        youtube.playerId = elementId;
-      };
+        // if (!history) {
+        //   // $log.info(history);
+        //   localStorageService.add('history', [
+        //     {id: 'XKa7Ywiv734', title: '[OFFICIAL HD] Daft Punk - Give Life Back To Music (feat. Nile Rodgers)'}
+        //   ]);
+        //   history = localStorageService.get('history');
+        // // }
 
-      this.createPlayer = function () {
-        $log.info('Creating a new Youtube player for DOM id ' + youtube.playerId + ' and video ' + youtube.videoId);
-        return new YT.Player(youtube.playerId, {
-          height: youtube.playerHeight,
-          width: youtube.playerWidth,
-          playerVars: {
-            rel: 0,
-            showinfo: 0,
-            loop: 0,
-            autoplay: 1
-          },
-          events: {
-            'onReady': onYoutubeReady,
-            'onStateChange': onYoutubeStateChange
-          }
-        });
-      };
+        $window.onYouTubeIframeAPIReady = function () {
+            $log.info('Youtube API is ready');
+            youtube.ready = true;
+            service.bindPlayer('placeholder');
+            service.loadPlayer();
+            $rootScope.$apply();
+        };
 
-      this.loadPlayer = function () {
-        if (youtube.ready && youtube.playerId) {
-          if (youtube.player) {
-            youtube.player.destroy();
-          }
-          youtube.player = service.createPlayer();
+        function onYoutubeReady(event) {
+            $log.info('YouTube Player is ready');
+            youtube.player.cueVideoById(history[0].id);
+            youtube.videoId = history[0].id;
+            youtube.videoTitle = history[0].title;
         }
-      };
 
-      this.launchPlayer = function (id, title) {
-        youtube.player.loadVideoById(id);
-        youtube.videoId = id;
-        youtube.videoTitle = title;
-        return youtube;
-      }
-
-      this.listResults = function (data) {
-        results.length = 0;
-        for (var i = data.items.length - 1; i >= 0; i--) {
-          results.push({
-            id: data.items[i].id.videoId,
-            title: data.items[i].snippet.title,
-            description: data.items[i].snippet.description,
-            thumbnail: data.items[i].snippet.thumbnails.default.url,
-            author: data.items[i].snippet.channelTitle
-          });
+        function onYoutubeStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                youtube.state = 'playing';
+            } else if (event.data == YT.PlayerState.PAUSED) {
+                youtube.state = 'paused';
+            } else if (event.data == YT.PlayerState.ENDED) {
+                youtube.state = 'ended';
+                service.launchPlayer(upcoming[0].id, upcoming[0].title);
+                // service.archiveVideo(upcoming[0].id, upcoming[0].title);
+                // service.deleteVideo('upcoming', upcoming[0].id);
+            }
+            $rootScope.$apply();
         }
-        return results;
-      }
 
-      this.queueVideo = function (id, title) {
-        var saved = localStorageService.get('upcoming');
-        saved.push({
-            id: id,
-            title: title
-        });
-        localStorageService.add('upcoming', saved);
-        upcoming = localStorageService.get('upcoming');
-        return upcoming;
-      };
+        this.bindPlayer = function (elementId) {
+            $log.info('Binding to ' + elementId);
+            youtube.playerId = elementId;
+        };
 
-      // this.archiveVideo = function (id, title) {
-      //   var saved = localStorageService.get('history');
-      //   saved.unshift({
-      //     id: id,
-      //     title: title
-      //   });
-      //   localStorageService.add('history', saved);
-      //   history = localStorageService.get('history');
-      //   return history;
-      // };
+        this.createPlayer = function () {
+            $log.info('Creating a new Youtube player for DOM id ' + youtube.playerId + ' and video ' + youtube.videoId);
+            return new YT.Player(youtube.playerId, {
+                height: youtube.playerHeight,
+                width: youtube.playerWidth,
+                playerVars: {
+                    rel: 0,
+                    showinfo: 0,
+                    loop: 0,
+                    autoplay: 1
+                },
+                events: {
+                    'onReady': onYoutubeReady,
+                    'onStateChange': onYoutubeStateChange
+                }
+            });
+        };
 
-      // this.deleteVideo = function (list, id) {
-      //   var videos = localStorageService.get(list);
-      //   for (var i = videos.length - 1; i >= 0; i--) {
-      //     if (videos[i].id === id) {
-      //       videos.splice(i, 1);
-      //       break;
-      //     }
-      //   }
-      //   localStorageService.add(list, videos);
-      // };
+        this.loadPlayer = function () {
+            if (youtube.ready && youtube.playerId) {
+                if (youtube.player) {
+                    youtube.player.destroy();
+                }
+                youtube.player = service.createPlayer();
+            }
+        };
 
-      this.getYoutube = function () {
-        return youtube;
-      };
+        this.launchPlayer = function (id, title) {
+            youtube.player.loadVideoById(id);
+            youtube.videoId = id;
+            youtube.videoTitle = title;
+            return youtube;
+        }
 
-      this.getResults = function () {
-        return results;
-      };
+        this.listResults = function (data) {
+            results.length = 0;
+            for (var i = data.items.length - 1; i >= 0; i--) {
+                results.push({
+                    id: data.items[i].id.videoId,
+                    title: data.items[i].snippet.title,
+                    description: data.items[i].snippet.description,
+                    thumbnail: data.items[i].snippet.thumbnails.default.url,
+                    author: data.items[i].snippet.channelTitle
+                });
+            }
+            return results;
+        }
 
-      this.getUpcoming = function () {
-        upcoming = localStorageService.get('upcoming');
-        return upcoming;
-      };
+        this.queueVideo = function (id, title) {
+            var saved = localStorageService.get('upcoming');
+            saved.push({
+                id: id,
+                title: title
+            });
+            localStorageService.add('upcoming', saved);
+            upcoming = localStorageService.get('upcoming');
+            return upcoming;
+        };
 
-      // this.getHistory = function () {
-      //   history = localStorageService.get('history');
-      //   return history;
-      // };
+        // this.archiveVideo = function (id, title) {
+        //   var saved = localStorageService.get('history');
+        //   saved.unshift({
+        //     id: id,
+        //     title: title
+        //   });
+        //   localStorageService.add('history', saved);
+        //   history = localStorageService.get('history');
+        //   return history;
+        // };
 
-}]);
+        // this.deleteVideo = function (list, id) {
+        //   var videos = localStorageService.get(list);
+        //   for (var i = videos.length - 1; i >= 0; i--) {
+        //     if (videos[i].id === id) {
+        //       videos.splice(i, 1);
+        //       break;
+        //     }
+        //   }
+        //   localStorageService.add(list, videos);
+        // };
+
+        this.getYoutube = function () {
+            return youtube;
+        };
+
+        this.getResults = function () {
+            return results;
+        };
+
+        this.getUpcoming = function () {
+            upcoming = localStorageService.get('upcoming');
+            return upcoming;
+        };
+
+        // this.getHistory = function () {
+        //   history = localStorageService.get('history');
+        //   return history;
+        // };
+
+    }]);
+
