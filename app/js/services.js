@@ -25,7 +25,11 @@ angular.module('myApp.services', [])
             class: 'Warrior',
             sprite: 'img/char1_small.png',
             health: 25,
-            maxHealth: 30
+            maxHealth: 30,
+            weapon:'bow',
+            skill:'jump',
+            race:'anona',
+            nationality:'anonaky'
         };
 
         var playerTwo = {
@@ -34,7 +38,11 @@ angular.module('myApp.services', [])
             class: 'Warlock',
             sprite: 'img/char2_small.png',
             health: 20,
-            maxHealth: 30
+            maxHealth: 30,
+            weapon:'gun',
+            skill:'hide',
+            race:'aky',
+            nationality:'anonaky'
         };
 
         var playerThree = {
@@ -43,7 +51,11 @@ angular.module('myApp.services', [])
             class: 'Rogue',
             sprite: 'img/char3_small.png',
             health: 10,
-            maxHealth: 30
+            maxHealth: 30,
+            weapon:'laser',
+            skill:'agile',
+            race:'vernian',
+            nationality:'okapunku'
         };
 
         var playerFour = {
@@ -61,7 +73,11 @@ angular.module('myApp.services', [])
             class: 'Mage',
             sprite: 'img/char5_small.png',
             health: 22,
-            maxHealth: 30
+            maxHealth: 30,
+            weapon:'rock',
+            skill:'programmer',
+            race:'human',
+            nationality:'mexican'
         };
 
         var players = [playerOne, playerTwo, playerThree, playerFour, playerFive];

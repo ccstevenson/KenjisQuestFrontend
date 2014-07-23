@@ -64,6 +64,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     };
                 };
 
+
                 $scope.attack = function () {
                     if ($scope.attackData.heal) {
                         $scope.attackData.attackValue *= -1;
@@ -118,4 +119,24 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                 init();
             }
         }
-    });
+    })
+
+ .directive('characterCardDetail', function () {
+        return {
+            restrict: 'E',
+            scope: {
+                character: '=character'
+
+            },
+            templateUrl: 'partials/charac-card-detail.html',
+            controller: function ($scope) {
+                $scope.isSelected = function () {
+                    if ($scope.character == selections.activeActor || $scope.character == selections.activeTarget) {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+    }
+})
+

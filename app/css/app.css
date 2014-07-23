@@ -168,3 +168,8 @@ tr > td {
     background: no-repeat center center;
     background-size: 100% 100%;
 }
+
+.health-bar-text {
+    color:black;
+    white-space:nowrap;
+}
