@@ -90,6 +90,18 @@ angular.module('myApp.controllers', [])
             };
 
             $scope.dealDamage = function (damage, character) {
+
+                if (damage > 0) {
+                    $.playSound('sounds/attack');
+                }
+                else if (damage == 0) {
+                    $.playSound ('sounds/miss');
+                }
+                else {
+                    $.playSound ('sounds/heal');
+                }
+
+
                 character.health -= damage;
 
                 if (character.health < 0) { // Negative health disallowed.
