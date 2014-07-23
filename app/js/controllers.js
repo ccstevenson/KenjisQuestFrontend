@@ -5,6 +5,7 @@
 angular.module('myApp.controllers', [])
     .controller('SoundboardCtrl', ['$scope', function ($scope) {
 
+
     }])
 
     .controller('CharacterCreationController', ['$scope', function ($scope) {
@@ -135,4 +136,65 @@ angular.module('myApp.controllers', [])
 //            $scope.message = "";
 //        };
 
-        }]);
+        }])
+
+    .controller('VideosController', function ($scope, $http, $log, VideosService) {
+
+        init();
+
+        function init() {
+          $scope.youtube = VideosService.getYoutube();
+          $scope.results = VideosService.getResults();
+          $scope.upcoming = VideosService.getUpcoming();
+          // $scope.history = VideosService.getHistory();
+          $scope.playlist = true;
+        }
+
+        $scope.launch = function (id, title) {
+          VideosService.launchPlayer(id, title);
+          VideosService.archiveVideo(id, title);
+          VideosService.deleteVideo('upcoming', id);
+          $scope.upcoming = VideosService.getUpcoming();
+          $scope.history = VideosService.getHistory();
+          $log.info('Launched id:' + id + ' and title:' + title);
+        };
+
+        $scope.queue = function (id, title) {
+          VideosService.queueVideo(id, title);
+          $scope.upcoming = VideosService.getUpcoming();
+          // VideosService.deleteVideo('history', id);
+          // $scope.history = VideosService.getHistory();
+          $log.info('Queued id:' + id + ' and title:' + title);
+        };
+
+        $scope.delete = function (list, id) {
+          VideosService.deleteVideo(list, id);
+          $scope.upcoming = VideosService.getUpcoming();
+          // $scope.history = VideosService.getHistory();
+        };
+
+        $scope.search = function () {
+          $http.get('https://www.googleapis.com/youtube/v3/search', {
+            params: {
+              key: 'AIzaSyAFjhfNevE7qWPwW7J4uEYZ1nbNMgh3lYY', // jgthms
+              type: 'video',
+              maxResults: '8',
+              part: 'id,snippet',
+              fields: 'items/id,items/snippet/title,items/snippet/description,items/snippet/thumbnails/default,items/snippet/channelTitle',
+              q: this.query
+            }
+          })
+          .success( function (data) {
+            VideosService.listResults(data);
+            $log.info(data);
+          })
+          // .error( function () {snippetsnippet
+          //   $log.info('Search error');
+          // });
+        }
+
+        $scope.tabulate = function (state) {
+          $scope.playlist = state;
+        }
+
+});
