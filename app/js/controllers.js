@@ -86,7 +86,7 @@ angular.module('myApp.controllers', [])
           $scope.youtube = VideosService.getYoutube();
           $scope.results = VideosService.getResults();
           $scope.upcoming = VideosService.getUpcoming();
-          $scope.history = VideosService.getHistory();
+          // $scope.history = VideosService.getHistory();
           $scope.playlist = true;
         }
 
@@ -95,22 +95,22 @@ angular.module('myApp.controllers', [])
           VideosService.archiveVideo(id, title);
           // VideosService.deleteVideo('upcoming', id);
           $scope.upcoming = VideosService.getUpcoming();
-          $scope.history = VideosService.getHistory();
+          // $scope.history = VideosService.getHistory();
           $log.info('Launched id:' + id + ' and title:' + title);
         };
 
         $scope.queue = function (id, title) {
           VideosService.queueVideo(id, title);
           $scope.upcoming = VideosService.getUpcoming();
-          VideosService.deleteVideo('history', id);
-          $scope.history = VideosService.getHistory();
+          // VideosService.deleteVideo('history', id);
+          // $scope.history = VideosService.getHistory();
           $log.info('Queued id:' + id + ' and title:' + title);
         };
 
         $scope.delete = function (list, id) {
           VideosService.deleteVideo(list, id);
           $scope.upcoming = VideosService.getUpcoming();
-          $scope.history = VideosService.getHistory();
+          // $scope.history = VideosService.getHistory();
         };
 
         $scope.search = function () {

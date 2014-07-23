@@ -129,7 +129,7 @@ angular.module('myApp.services', [])
 
       var results = [];
       var upcoming = localStorageService.get('upcoming');
-      var history = localStorageService.get('history');
+      // var history = localStorageService.get('history');
 
       // if (!upcoming) {
       //   // $log.info(upcoming);
@@ -146,13 +146,13 @@ angular.module('myApp.services', [])
       //   upcoming = localStorageService.get('upcoming');
       // }
 
-      if (!history) {
-        // $log.info(history);
-        localStorageService.add('history', [
-          {id: 'XKa7Ywiv734', title: '[OFFICIAL HD] Daft Punk - Give Life Back To Music (feat. Nile Rodgers)'}
-        ]);
-        history = localStorageService.get('history');
-      }
+      // if (!history) {
+      //   // $log.info(history);
+      //   localStorageService.add('history', [
+      //     {id: 'XKa7Ywiv734', title: '[OFFICIAL HD] Daft Punk - Give Life Back To Music (feat. Nile Rodgers)'}
+      //   ]);
+      //   history = localStorageService.get('history');
+      // }
 
       $window.onYouTubeIframeAPIReady = function () {
         $log.info('Youtube API is ready');
@@ -164,9 +164,9 @@ angular.module('myApp.services', [])
 
       function onYoutubeReady (event) {
         $log.info('YouTube Player is ready');
-        youtube.player.cueVideoById(history[0].id);
-        youtube.videoId = history[0].id;
-        youtube.videoTitle = history[0].title;
+        youtube.player.cueVideoById(upcoming.id);
+        youtube.videoId = upcoming.id;
+        youtube.videoTitle = upcoming.title;
       }
 
       function onYoutubeStateChange (event) {
@@ -248,16 +248,16 @@ angular.module('myApp.services', [])
         // return upcoming;
       };
 
-      this.archiveVideo = function (id, title) {
-        var saved = localStorageService.get('history');
-        saved.unshift({
-          id: id,
-          title: title
-        });
-        localStorageService.add('history', saved);
-        history = localStorageService.get('history');
-        return history;
-      };
+      // this.archiveVideo = function (id, title) {
+      //   var saved = localStorageService.get('history');
+      //   saved.unshift({
+      //     id: id,
+      //     title: title
+      //   });
+      //   localStorageService.add('history', saved);
+      //   history = localStorageService.get('history');
+      //   return history;
+      // };
 
       this.deleteVideo = function (list, id) {
         var videos = localStorageService.get(list);
@@ -283,9 +283,9 @@ angular.module('myApp.services', [])
         return upcoming;
       };
 
-      this.getHistory = function () {
-        history = localStorageService.get('history');
-        return history;
-      };
+      // this.getHistory = function () {
+      //   history = localStorageService.get('history');
+      //   return history;
+      // };
 
 }]);
