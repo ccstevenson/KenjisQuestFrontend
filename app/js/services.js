@@ -131,20 +131,11 @@ angular.module('myApp.services', [])
       var upcoming = localStorageService.get('upcoming');
       // var history = localStorageService.get('history');
 
-      // if (!upcoming) {
-      //   // $log.info(upcoming);
-      //   localStorageService.add('upcoming', [
-      //     {id: 'kRJuY6ZDLPo', title: 'La Roux - In for the Kill (Twelves Remix)'},
-      //     {id: '45YSGFctLws', title: 'Shout Out Louds - Illusions'},
-      //     {id: 'ktoaj1IpTbw', title: 'CHVRCHES - Gun'},
-      //     {id: 'FgAJWQCC7L0', title: 'Stardust Music Sounds Better With You (High Quality)'},
-      //     {id: '8Zh0tY2NfLs', title: 'N.E.R.D. ft. Nelly Furtado - Hot N\' Fun (Boys Noize Remix) HQ'},
-      //     {id: 'zwJPcRtbzDk', title: 'Daft Punk - Human After All (SebastiAn Remix)'},
-      //     {id: 'sEwM6ERq0gc', title: 'HAIM - Forever (Official Music Video)'},
-      //     {id: 'fTK4XTvZWmk', title: 'Housse De Racket ☁☀☁ Apocalypso'}
-      //   ]);
-      //   upcoming = localStorageService.get('upcoming');
-      // }
+      if (!upcoming) {
+        // $log.info(upcoming);
+        localStorageService.add('upcoming', []);
+        upcoming = localStorageService.get('upcoming');
+      }
 
       // if (!history) {
       //   // $log.info(history);
@@ -164,9 +155,9 @@ angular.module('myApp.services', [])
 
       function onYoutubeReady (event) {
         $log.info('YouTube Player is ready');
-        youtube.player.cueVideoById(upcoming.id);
-        youtube.videoId = upcoming.id;
-        youtube.videoTitle = upcoming.title;
+        youtube.player.cueVideoById(upcoming[0].id);
+        youtube.videoId = upcoming[0].id;
+        youtube.videoTitle = upcoming[0].title;
       }
 
       function onYoutubeStateChange (event) {
@@ -176,7 +167,7 @@ angular.module('myApp.services', [])
           youtube.state = 'paused';
         } else if (event.data == YT.PlayerState.ENDED) {
           youtube.state = 'ended';
-          service.launchPlayer(upcoming.id, upcoming.title);
+          service.launchPlayer(upcoming[0].id, upcoming[0].title);
           // service.archiveVideo(upcoming[0].id, upcoming[0].title);
           // service.deleteVideo('upcoming', upcoming[0].id);
         }
@@ -237,19 +228,19 @@ angular.module('myApp.services', [])
       }
 
       this.queueVideo = function (id, title) {
-        // var saved = localStorageService.get('upcoming');
-        // saved.push({
-        //     id: id,
-        //     title: title
-        // });
-        localStorageService.add('upcoming', {'id': id, 'title': title});
+        var saved = localStorageService.get('upcoming');
+        saved.push({
+            id: id,
+            title: title
+        });
+        localStorageService.add('upcoming', saved);
         upcoming = localStorageService.get('upcoming');
-        service.launchPlayer(upcoming.id, upcoming.title);
-        // return upcoming;
+        // service.launchPlayer(upcoming.id, upcoming.title);
+        return upcoming;
       };
 
       // this.archiveVideo = function (id, title) {
-      //   var saved = localStorageService.get('history');
+      //   var saved = localStorageService.get('history@LeeSands2Guest ');
       //   saved.unshift({
       //     id: id,
       //     title: title
@@ -258,6 +249,11 @@ angular.module('myApp.services', [])
       //   history = localStorageService.get('history');
       //   return history;
       // };
+
+
+      this.changeGameState = function (gameState) {
+        localstorageService.add('gameState', gameState)
+      }
 
       this.deleteVideo = function (list, id) {
         var videos = localStorageService.get(list);

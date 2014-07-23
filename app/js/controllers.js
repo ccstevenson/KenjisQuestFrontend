@@ -113,6 +113,12 @@ angular.module('myApp.controllers', [])
           // $scope.history = VideosService.getHistory();
         };
 
+
+        $scope.changeState = function (gameState) {
+          $scope.gameState = VideosService.changeGameState(gameState);
+        };
+
+
         $scope.search = function () {
           $http.get('https://www.googleapis.com/youtube/v3/search', {
             params: {
