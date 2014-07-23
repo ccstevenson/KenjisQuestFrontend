@@ -1,30 +1,112 @@
 /* app css stylesheet */
 
 .menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+    list-style: none;
+    border-bottom: 0.1em solid black;
+    margin-bottom: 2em;
+    padding: 0 0 0.5em;
 }
 
 .menu:before {
-  content: "[";
+    content: "[";
 }
 
 .menu:after {
-  content: "]";
+    content: "]";
 }
 
 .menu > li {
-  display: inline;
+    display: inline;
 }
 
 .menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
+    content: "|";
+    padding-right: 0.3em;
 }
 
 .menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
+    content: "";
+    padding: 0;
+}
+
+tr > td {
+    padding-bottom: 5px;
+}
+
+.selectedActor {
+    border: 6px solid seagreen;
+}
+
+.selectedTarget {
+    border: 6px solid red;
+}
+
+.notSelected {
+    border: 3px solid darkgray;
+}
+
+.deadText {
+    color: red;
+    font-weight: bold;
+}
+
+.characterDetails {
+    padding: 10px;
+}
+
+.bulletlessList {
+    list-style-type: none;
+}
+
+.VT323Font {
+    font-family: 'VT323';
+    font-size: 150%;
+}
+
+.VT323FontLarge {
+    font-family: 'VT323';
+    font-size: 140%;
+}
+
+.smallText {
+    font-family: 'VT323';
+    font-size: 20px;
+}
+
+.negativeTopMargin10 {
+    margin-top: -10px;
+}
+
+.negativeTopMargin20 {
+    margin-top: -20px;
+}
+
+.wideButton {
+    width: 100%;
+}
+
+.background {
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0, url(../img/cave.jpg) no-repeat 0 0;
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.7)), color-stop(100%, rgba(255, 255, 255, 0.7))), url(../img/cave.jpg) no-repeat 0 0;
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
+    background-attachment:fixed;
+}
+
+.foreground {
+    background-color: white;
+    box-shadow: 10px 10px 5px #888888;
+    border-radius: 25px;
+    border:2px solid;
+}
+
+.adjust-left {
+    margin-right: 35px;
+}
+
+.spacing-top {
+    margin-top: 10px;
 }

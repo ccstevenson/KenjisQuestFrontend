@@ -3,16 +3,16 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('myApp', [
-  'ngRoute',
-  'myApp.filters',
-  'myApp.services',
-  'myApp.directives',
-  'myApp.controllers',
-  'restangular'
+    'ngRoute',
+    'myApp.filters',
+    'myApp.services',
+    'myApp.directives',
+    'myApp.controllers',
+    'firebase',
+    'ui.bootstrap'
 ]).
-config(['$routeProvider','RestangularProvider', function($routeProvider, RestangularProvider) {
-  $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-  $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-  $routeProvider.otherwise({redirectTo: '/view1'});
-  RestangularProvider.setBaseURL('http://localhost:8001');
-}]);
+    config(['$routeProvider', function ($routeProvider) {
+        $routeProvider.when('/battleatronic', {templateUrl: 'partials/battleatronic.html', controller: 'BattleatronicCtrl'});
+        $routeProvider.when('/soundboard', {templateUrl: 'partials/soundboard.html', controller: 'SoundboardCtrl'});
+        $routeProvider.otherwise({redirectTo: '/battleatronic'});
+    }]);
