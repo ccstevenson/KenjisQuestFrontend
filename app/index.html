@@ -21,10 +21,20 @@
     <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body class="background">
-<ul class="menu text-center VT323Font" style="background-color: white;">
+<ul class="menu text-center VT323Font" style="background-color: white;" ng-controller="RoleSelectCtrl">
     <li><a href="#/battleatronic">Battleatronic</a></li>
     <li><a href="#/soundboard">Soundboard</a></li>
-    <li><a href="#/gm-view">GM View</a></li>
+    <li ng-show="role == 'Game Master'"><a href="#/gm-view">GM View</a></li>
+    <li>
+     <span class="dropdown" on-toggle="toggled(open)">
+      <a href class="dropdown-toggle">Select Role</a>
+      <ul class="dropdown-menu">
+          <li ng-repeat="role in roles">
+              <a ng-click="selectRole(role)" href>{{ role }}</a>
+          </li>
+      </ul>
+    </span>
+    </li>
 </ul>
 
 

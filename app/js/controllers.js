@@ -39,6 +39,19 @@ angular.module('myApp.controllers', [])
             scenarioService.scenario = scenario;
             window.location = '#/scenario';
         };
+
+    }])
+
+    .controller('RoleSelectCtrl', ['$scope', function ($scope) {
+        $scope.role = "";
+        $scope.roles = {
+            Role1: "Game Master",
+            Role2: "Player"
+        };
+
+        $scope.selectRole = function (role) {
+            $scope.role = role;
+        };
     }])
 
     .controller('ScenarioCtrl', ['$scope', 'scenarioService', 'encounterService', function ($scope, scenarioService, encounterService) {
