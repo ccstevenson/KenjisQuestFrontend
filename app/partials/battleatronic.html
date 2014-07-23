@@ -1,7 +1,7 @@
 <!-- Enemies -->
 <div class="nav col-xs-6">
-    <div class="col-xs-4 row pull-left" ng-repeat="enemy in game.enemies">
-        <character-card character="enemy"
+    <div class="col-xs-4" ng-repeat="enemy in game.enemies">
+        <character-card class="pull-left adjust-right"  character="enemy"
                         selections="game.selections"
                         ng-click="makeSelection(enemy)">
 
@@ -17,21 +17,23 @@
 <!-- characters -->
 <div class="nav col-xs-4">
     <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
-    <div class="col-xs-6 row pull-right" ng-repeat="player in game.players">
-        <character-card character="player" selections="game.selections"
+    <div class="col-xs-6 row" ng-repeat="player in game.players">
+        <character-card class="pull-right" character="player" selections="game.selections"
                         ng-click="makeSelection(player)"></character-card>
     </div>
 
-    <!-- debug/reset -->
-    <div class="xs-col-12">
-    <button class="pull-right border-main" ng-click="resetGame()">Reset Game
-        (Debug)
-    </button>
-        </div>
-    <!-- end reset -->
+
 
 </div>
 <!-- end characters -->
+
+            <!-- debug/reset -->
+    <div class="xs-col-12">
+        <button class="pull-right adjust-left border-main" ng-click="resetGame()">Reset Game
+            (Debug)
+        </button>
+    </div>
+    <!-- end reset -->
 
 <!-- info column -->
 <!--<div class="col-xs-2 info-panel info-border">-->

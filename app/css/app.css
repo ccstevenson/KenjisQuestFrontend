@@ -45,6 +45,7 @@ tr > td {
 .deadText {
     color: red;
     font-weight: bold;
+    margin-top: 75px;
 }
 
 .characterDetails {
@@ -102,16 +103,15 @@ tr > td {
 }
 
 .adjust-left {
-    margin-left: 35px;
+    margin-right: 150px;
+}
+
+.adjust-right {
+    margin-left: 150px;
 }
 
 .spacing-top {
     margin-top: 10px;
-}
-
-.info-border {
-    border: 8px ridge #c0c0c0;
-    border-radius: 10px;
 }
 
 .info-panel {
@@ -128,5 +128,5 @@ tr > td {
     height: 150px;
     width: 150px;
     background: no-repeat center center;
-    background-size: auto 100%;
+    background-size: 100% 100%;
 }
