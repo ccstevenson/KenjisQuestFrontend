@@ -51,6 +51,7 @@ tr > td {
 .deadText {
     color: red;
     font-weight: bold;
+    height: 100%;
 }
 
 .characterDetails {
