@@ -155,20 +155,21 @@ angular.module('myApp.services', [])
       var upcoming = localStorageService.get('upcoming');
       // var history = localStorageService.get('history');
 
-      // if (!upcoming) {
-      //   // $log.info(upcoming);
-      //   localStorageService.add('upcoming', [
-      //     {id: 'kRJuY6ZDLPo', title: 'La Roux - In for the Kill (Twelves Remix)'},
-      //     {id: '45YSGFctLws', title: 'Shout Out Louds - Illusions'},
-      //     {id: 'ktoaj1IpTbw', title: 'CHVRCHES - Gun'},
-      //     {id: 'FgAJWQCC7L0', title: 'Stardust Music Sounds Better With You (High Quality)'},
-      //     {id: '8Zh0tY2NfLs', title: 'N.E.R.D. ft. Nelly Furtado - Hot N\' Fun (Boys Noize Remix) HQ'},
-      //     {id: 'zwJPcRtbzDk', title: 'Daft Punk - Human After All (SebastiAn Remix)'},
-      //     {id: 'sEwM6ERq0gc', title: 'HAIM - Forever (Official Music Video)'},
-      //     {id: 'fTK4XTvZWmk', title: 'Housse De Racket ☁☀☁ Apocalypso'}
-      //   ]);
-      //   upcoming = localStorageService.get('upcoming');
-      // }
+      if (!upcoming) {
+        // $log.info(upcoming);
+        localStorageService.add('upcoming', [
+          {id: 'kvpyz6MUa1w', title: '"Final Fantasy VI OST - Victory Fanfare"'}
+          // {id: 'kRJuY6ZDLPo', title: 'La Roux - In for the Kill (Twelves Remix)'},
+          // {id: '45YSGFctLws', title: 'Shout Out Louds - Illusions'},
+          // {id: 'ktoaj1IpTbw', title: 'CHVRCHES - Gun'},
+          // {id: 'FgAJWQCC7L0', title: 'Stardust Music Sounds Better With You (High Quality)'},
+          // {id: '8Zh0tY2NfLs', title: 'N.E.R.D. ft. Nelly Furtado - Hot N\' Fun (Boys Noize Remix) HQ'},
+          // {id: 'zwJPcRtbzDk', title: 'Daft Punk - Human After All (SebastiAn Remix)'},
+          // {id: 'sEwM6ERq0gc', title: 'HAIM - Forever (Official Music Video)'},
+          // {id: 'fTK4XTvZWmk', title: 'Housse De Racket ☁☀☁ Apocalypso'}
+        ]);
+        upcoming = localStorageService.get('upcoming');
+      }
 
       // if (!history) {
       //   // $log.info(history);
@@ -176,7 +177,7 @@ angular.module('myApp.services', [])
       //     {id: 'XKa7Ywiv734', title: '[OFFICIAL HD] Daft Punk - Give Life Back To Music (feat. Nile Rodgers)'}
       //   ]);
       //   history = localStorageService.get('history');
-      // }
+      // // }
 
       $window.onYouTubeIframeAPIReady = function () {
         $log.info('Youtube API is ready');
