@@ -75,7 +75,7 @@ angular.module('myApp.services', [])
             id: 6,
             name: 'Rat',
             class: 'Warrior',
-            sprite: 'img/rat_small.jpg',
+            sprite: 'img/rat_small.png',
             health: 25,
             maxHealth: 30
         };
@@ -84,7 +84,7 @@ angular.module('myApp.services', [])
             id: 7,
             name: 'Rat',
             class: 'Warrior',
-            sprite: 'img/rat_small.jpg',
+            sprite: 'img/rat_small.png',
             health: 8,
             maxHealth: 30
         };
@@ -93,7 +93,7 @@ angular.module('myApp.services', [])
             id: 8,
             name: 'Ghost',
             class: 'Mage',
-            sprite: 'img/ghost_small.jpg',
+            sprite: 'img/ghost_small.png',
             health: 25,
             maxHealth: 30
         };
@@ -102,7 +102,7 @@ angular.module('myApp.services', [])
             id: 9,
             name: 'Wasp',
             class: 'Rogue',
-            sprite: 'img/wasp_small.jpg',
+            sprite: 'img/wasp_small.png',
             health: 25,
             maxHealth: 30
         };
