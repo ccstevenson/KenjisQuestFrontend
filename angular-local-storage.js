@@ -328,4 +328,3 @@ angularLocalStorage.provider('localStorageService', function(){
     };
   }]
 });
-

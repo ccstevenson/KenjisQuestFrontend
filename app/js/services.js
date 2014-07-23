@@ -176,9 +176,9 @@ angular.module('myApp.services', [])
           youtube.state = 'paused';
         } else if (event.data == YT.PlayerState.ENDED) {
           youtube.state = 'ended';
-          service.launchPlayer(upcoming[0].id, upcoming[0].title);
-          service.archiveVideo(upcoming[0].id, upcoming[0].title);
-          service.deleteVideo('upcoming', upcoming[0].id);
+          service.launchPlayer(upcoming.id, upcoming.title);
+          // service.archiveVideo(upcoming[0].id, upcoming[0].title);
+          // service.deleteVideo('upcoming', upcoming[0].id);
         }
         $rootScope.$apply();
       }
@@ -196,7 +196,7 @@ angular.module('myApp.services', [])
           playerVars: {
             rel: 0,
             showinfo: 0,
-            loop: 1,
+            // loop: 1,
             autoplay: 1
           },
           events: {
@@ -237,14 +237,15 @@ angular.module('myApp.services', [])
       }
 
       this.queueVideo = function (id, title) {
-        var saved = localStorageService.get('upcoming');
-        saved.push({
-            id: id,
-            title: title
-        });
-        localStorageService.add('upcoming', saved);
+        // var saved = localStorageService.get('upcoming');
+        // saved.push({
+        //     id: id,
+        //     title: title
+        // });
+        localStorageService.add('upcoming', {'id': id, 'title': title});
         upcoming = localStorageService.get('upcoming');
-        return upcoming;
+        service.launchPlayer(upcoming.id, upcoming.title);
+        // return upcoming;
       };
 
       this.archiveVideo = function (id, title) {
