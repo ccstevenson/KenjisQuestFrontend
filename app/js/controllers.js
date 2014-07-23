@@ -16,24 +16,39 @@ angular.module('myApp.controllers', [])
 
     }])
 
-    .controller('GmViewCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
+    .controller('GmViewCtrl', ['$scope', 'Restangular', 'scenarioService', function ($scope, Restangular, scenarioService) {
         $scope.game = {};
         $scope.chapter = {};
         $scope.scenario = {};
-
         Restangular.all('games').getList().then(function (games) {
             $scope.games = games;
         });
-
         $scope.selectGame = function (game) {
             $scope.game = game;
             $scope.chapter = {};
         };
         $scope.selectChapter = function (chapter) {
-            $scope.chapter = chapter
+            $scope.chapter = chapter;
+            $scope.scenario = {};
         };
         $scope.selectScenario = function (scenario) {
-            $scope.scenario = scenario
+            scenarioService.scenario = scenario;
+            window.location = '#/scenario';
+        };
+    }])
+
+    .controller('ScenarioCtrl', ['$scope', 'scenarioService', function ($scope, scenarioService) {
+        $scope.scenario = scenarioService.scenario;
+        $scope.encounters = $scope.scenario.encounters;
+        $scope.items = {};
+        $scope.characters = {};
+        $scope.selectEncounter = function (encounter) {
+            $scope.encounter = encounter;
+            $scope.items = encounter.items;
+            $scope.characters = encounter.characters;
+        };
+        $scope.launchEncounter = function (encounter) {
+
         };
     }])
 

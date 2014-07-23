@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="col-lg-4">
+        <label>Encounters</label>
+        <tabset vertical="true" type="pills">
+            <tab ng-click="selectEncounter(encounter)" heading="{{ encounter.name }}" ng-repeat="encounter in encounters">
+                <button class="btn btn-warning btn-lg">Launch Encounter</button>
+            </tab>
+        </tabset>
+    </div>
+    <div class="col-lg-4">
+        <label>Items</label>
+        <p ng-repeat="item in items">{{ item.name }}</p>
+    </div>
+    <div class="col-lg-4">
+        <label>Characters</label>
+        <p ng-repeat="character in characters">{{ character.name }}</p>
+    </div>
+</div>

@@ -110,4 +110,11 @@ angular.module('myApp.services', [])
         var enemies = [enemyOne, enemyTwo, enemyThree, enemyFour];
 
         return enemies;
+    })
+
+    .factory("scenarioService", function () {
+        var scenarioService = {
+            scenario: ''
+        };
+        return scenarioService;
     });
