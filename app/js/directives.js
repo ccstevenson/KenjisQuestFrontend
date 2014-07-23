@@ -3,7 +3,7 @@
 /* Directives */
 
 
-angular.module('myApp.directives', [])
+angular.module('myApp.directives', ['ui.bootstrap'])
 
     .directive('appVersion', ['version', function (version) {
         return function (scope, elm, attrs) {
@@ -112,7 +112,7 @@ angular.module('myApp.directives', [])
                   if ($scope.attackData.action == 'Attacking') {
                       return "Attack";
                   }
-                  else return "Cast heal";
+                  else return "Heal";
                 };
 
                 init();
