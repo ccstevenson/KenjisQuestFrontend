@@ -22,7 +22,7 @@ angular.module('myApp', [
 
         RestangularProvider.setBaseUrl('http://127.0.0.1:8001');
     }]);
-    }]);
+
 
 
 angular.module('myApp').run(function () {
