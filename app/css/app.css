@@ -51,6 +51,7 @@ tr > td {
 .deadText {
     color: red;
     font-weight: bold;
+    height: 100%;
 }
 
 .characterDetails {
@@ -167,4 +168,9 @@ tr > td {
     width: 150px;
     background: no-repeat center center;
     background-size: 100% 100%;
+}
+
+.health-bar-text {
+    color:black;
+    white-space:nowrap;
 }

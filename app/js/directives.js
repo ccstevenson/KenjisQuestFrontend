@@ -40,6 +40,14 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                         return "danger";
                     }
                 }
+
+                $scope.setCharacterDetail = function($event,character){
+
+                    $event.stopPropagation();
+
+                    $scope.$parent.$parent.characterDetail = character;
+
+                }
             }
         }
     })
@@ -63,6 +71,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                         'action': 'Attacking'
                     };
                 };
+
 
                 $scope.attack = function () {
                     if ($scope.attackData.heal) {
@@ -119,4 +128,26 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                 init();
             }
         }
-    });
+    })
+
+ .directive('characterCardDetail', function () {
+        return {
+            restrict: 'E',
+            scope: {
+                character: '=character'
+            },
+            templateUrl: 'partials/charac-card-detail.html',
+            controller: function ($scope) {
+
+                $scope.cancel= function(){
+                    $scope.character=null
+                    $scope.$parent.$parent.characterDetail=null
+
+
+
+                }
+
+            }
+    }
+})
+
