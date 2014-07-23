@@ -1,72 +1,74 @@
-<!-- Enemies -->
-<div class="nav col-xs-6">
-    <div class="col-xs-4" ng-repeat="enemy in game.enemies">
-        <character-card class="pull-left adjust-right"  character="enemy"
-                        selections="game.selections"
-                        ng-click="makeSelection(enemy)">
+<div class="container">
 
-        </character-card>
+    <!-- Enemies -->
+    <div class="nav col-md-6 col-xs-6">
+        <div class="col-md-4 col-xs-12" ng-repeat="enemy in game.enemies">
+            <character-card style="float:left; position:relative" character="enemy"
+                            selections="game.selections"
+                            ng-click="makeSelection(enemy)">
+
+            </character-card>
+        </div>
     </div>
-</div>
-<!---end enemies--->
+    <!---end enemies--->
 
-<!--no-man's-land-->
-<div class="col-xs-2"></div>
-<!--end no-man's-land-->
+    <!--no-man's-land-->
+    <div class="col-md-2 hidden-xs"></div>
+    <!--end no-man's-land-->
 
-<!-- characters -->
-<div class="nav col-xs-4">
-    <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
-    <div class="col-xs-6 row" ng-repeat="player in game.players">
-        <character-card class="pull-right" character="player" selections="game.selections"
-                        ng-click="makeSelection(player)"></character-card>
+    <!-- characters -->
+    <div class="nav col-md-4 col-xs-6">
+        <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
+        <div class="col-md-6 col-xs-12" ng-repeat="player in game.players">
+            <character-card style="float:right; position:relative" character="player" selections="game.selections"
+                            ng-click="makeSelection(player)"></character-card>
+        </div>
+
+
     </div>
+    <!-- end characters -->
 
-
-
-</div>
-<!-- end characters -->
-
-            <!-- debug/reset -->
-    <div class="xs-col-12">
-        <button class="pull-right adjust-left border-main" ng-click="resetGame()">Reset Game
+    <!-- debug/reset -->
+    <div class="col-xs-12">
+        <button class="pull-right border-main" ng-click="resetGame()">Reset Game
             (Debug)
         </button>
     </div>
     <!-- end reset -->
 
-<!-- info column -->
-<!--<div class="col-xs-2 info-panel info-border">-->
+    <!-- info column -->
+    <!--<div class="col-md-2 info-panel info-border">-->
 
 
-<!--</div>-->
-<!-- end info column -->
+    <!--</div>-->
+    <!-- end info column -->
 
 
-<!--battle instructions-->
-<!--<div class="col-md-5">-->
-<!--<div class="text-center VT323FontLarge foreground" ng-show="!game.selections.activeActor">-->
-<!--Select a character to attack with.-->
-<!--</div>-->
+    <!--<form ng-submit="addMessage();">-->
+    <!--<input type="text" ng-model="message"/>-->
+    <!--<input type="submit" value="Send Message"/>-->
+    <!--</form>-->
 
-<!--<div class="text-center VT323FontLarge foreground"-->
-<!--ng-show="game.selections.activeActor && !game.selections.activeTarget">-->
-<!--Select a target to attack or heal.-->
-<!--</div>-->
+    <!--<input type="text" ng-model="game.text"/>-->
+    <!--<h1>You said: {{text}}</h1>-->
 
-<!--<calculator player="game.selections.activeActor"-->
-<!--enemy="game.selections.activeTarget"-->
-<!--callback="dealDamage(damage, character)"-->
-<!--ng-show="game.selections.activeActor && game.selections.activeTarget">-->
-<!--</calculator>-->
-<!--</div>-->
-<!--end instructions-->
+    <!--battle instructions-->
+    <div class="footer col-xs-12" style="margin: auto; clear: both">
+        <div class="text-center VT323FontLarge foreground" ng-show="!game.selections.activeActor">
+            Select a character to attack with.
+        </div>
 
+        <div class="text-center VT323FontLarge foreground"
+             ng-show="game.selections.activeActor && !game.selections.activeTarget">
+            Select a target to attack or heal.
+        </div>
 
-<!--<form ng-submit="addMessage();">-->
-<!--<input type="text" ng-model="message"/>-->
-<!--<input type="submit" value="Send Message"/>-->
-<!--</form>-->
+        <!--<calculator player="game.selections.activeActor"-->
+        <!--enemy="game.selections.activeTarget"-->
+        <!--callback="dealDamage(damage, character)"-->
+        <!--ng-show="game.selections.activeActor && game.selections.activeTarget">-->
+        <!--</calculator>-->
+    </div>
+    <!--end instructions-->
 
-<!--<input type="text" ng-model="game.text"/>-->
-<!--<h1>You said: {{text}}</h1>-->
+</div>

@@ -32,24 +32,29 @@ tr > td {
     padding-bottom: 5px;
 }
 
+.container {
+    width: 95%;
+    max-width: 1680px;
+    margin: auto;
+}
+
 .selectedActor {
-    border: 8px ridge seagreen;
-    border-radius: 10px;
+    border: 0.5em ridge seagreen;
+    border-radius: 0.5em;
 }
 
 .selectedTarget {
-    border: 8px ridge red;
-    border-radius: 10px;
+    border: 0.5em ridge red;
+    border-radius: 0.5em;
 }
 
 .deadText {
     color: red;
     font-weight: bold;
-    margin-top: 75px;
 }
 
 .characterDetails {
-    padding: 10px;
+    padding: 0.25em;
 }
 
 .bulletlessList {
@@ -68,7 +73,7 @@ tr > td {
 
 .smallText {
     font-family: 'VT323';
-    font-size: 20px;
+    font-size: .75em;
 }
 
 .negativeTopMargin10 {
@@ -103,15 +108,15 @@ tr > td {
 }
 
 .adjust-left {
-    margin-right: 150px;
+    margin-right: 1.5em;
 }
 
 .adjust-right {
-    margin-left: 150px;
+    margin-left: 1.5em;
 }
 
 .spacing-top {
-    margin-top: 10px;
+    margin-top: 0.5em;
 }
 
 .info-panel {
@@ -120,11 +125,11 @@ tr > td {
 }
 
 .border-main {
-    border: 8px ridge #c0c0c0;
-    border-radius: 10px;
+    border: 0.5em ridge #c0c0c0;
+    border-radius: 0.5em;
 }
 
-.character-size {
+.avatar-size-sm {
     height: 150px;
     width: 150px;
     background: no-repeat center center;
