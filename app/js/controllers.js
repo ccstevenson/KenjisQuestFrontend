@@ -42,8 +42,8 @@ angular.module('myApp.controllers', [])
 
     }])
 
-    .controller('RoleSelectCtrl', ['$scope', function ($scope) {
-        $scope.role = "";
+    .controller('RoleCtrl', ['$scope', function ($scope) {
+        $scope.role = "Player";
         $scope.roles = {
             Role1: "Game Master",
             Role2: "Player"
@@ -51,6 +51,9 @@ angular.module('myApp.controllers', [])
 
         $scope.selectRole = function (role) {
             $scope.role = role;
+            if (role == "Player"){
+                window.location = '#/battleatronic';
+            }
         };
     }])
 
