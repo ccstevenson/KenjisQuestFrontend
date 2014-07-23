@@ -154,7 +154,6 @@ angular.module('myApp.controllers', [])
 
     .controller('VideosController', function ($scope, $http, $log, VideosService) {
 
-        init();
 
         function init() {
           $scope.youtube = VideosService.getYoutube();
@@ -163,6 +162,8 @@ angular.module('myApp.controllers', [])
           // $scope.history = VideosService.getHistory();
           $scope.playlist = true;
         }
+
+        init();
 
         $scope.launch = function (id, title) {
           VideosService.launchPlayer(id, title);
