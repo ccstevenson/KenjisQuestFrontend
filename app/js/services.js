@@ -126,4 +126,11 @@ angular.module('myApp.services', [])
             players: ''
         };
         return encounterService;
+    })
+
+    .factory("roleService", function () {
+        var roleService = {
+            role: 'Player'
+        };
+        return roleService;
     });

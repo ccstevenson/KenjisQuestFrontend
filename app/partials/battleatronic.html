@@ -24,7 +24,7 @@
         <calculator player="game.selections.activeActor"
                     enemy="game.selections.activeTarget"
                     callback="dealDamage(damage, character)"
-                    ng-show="game.selections.activeActor && game.selections.activeTarget">
+                    ng-show="game.selections.activeActor && game.selections.activeTarget && Role.role!='Game Master'">
         </calculator>
     </div>
 
