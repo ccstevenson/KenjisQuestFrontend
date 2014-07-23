@@ -28,7 +28,7 @@
 
     <li><a href="#/battleatronic">Battleatronic</a></li>
     <li><a href="#/soundboard">Soundboard</a></li>
-    <li ng-show="role == 'Game Master'"><a href="#/gm-view">GM View</a></li>
+    <li ng-show="Role.role == 'Game Master'"><a href="#/gm-view">GM View</a></li>
     <li>
         <span class="dropdown" on-toggle="toggled(open)">
             <a href class="dropdown-toggle">Select Role</a>
@@ -39,7 +39,7 @@
             </ul>
         </span>
     </li>
-    <li>Current Role: {{ role }}</li>
+    <li>Current Role: {{ Role.role }}</li>
 </ul>
 
 <!--[if lt IE 7]>

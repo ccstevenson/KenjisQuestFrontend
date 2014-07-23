@@ -43,15 +43,17 @@ angular.module('myApp.controllers', [])
 
     }])
 
-    .controller('RoleCtrl', ['$scope', function ($scope) {
-        $scope.role = "Player";
+    .controller('RoleCtrl', ['$scope', 'roleService', function ($scope, roleService) {
+        $scope.Role = roleService;
         $scope.roles = {
             Role1: "Game Master",
-            Role2: "Player"
+            Role2: "Player",
+            Role3: "Beast Master"
         };
 
         $scope.selectRole = function (role) {
-            $scope.role = role;
+            roleService.role = role;
+            console.log($scope.Role);
             if (role == "Player"){
                 window.location = '#/battleatronic';
             }
@@ -77,10 +79,10 @@ angular.module('myApp.controllers', [])
         };
     }])
 
-    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'PlayerConstants', 'EnemyConstants',
-        function ($scope, GameService, PlayerConstants, EnemyConstants) {
+    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'PlayerConstants', 'EnemyConstants', 'roleService',
+        function ($scope, GameService, PlayerConstants, EnemyConstants, roleService) {
             GameService.$bind($scope, "game");
-
+            $scope.Role = roleService;
             $scope.selectedPlayer = function (player) {
                 $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
             };
