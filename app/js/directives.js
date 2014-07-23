@@ -40,6 +40,14 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                         return "danger";
                     }
                 }
+
+                $scope.setCharacterDetail = function($event,character){
+
+                    $event.stopPropagation();
+
+                    $scope.$parent.$parent.characterDetail = character;
+
+                }
             }
         }
     })
@@ -126,16 +134,18 @@ angular.module('myApp.directives', ['ui.bootstrap'])
             restrict: 'E',
             scope: {
                 character: '=character'
-
             },
             templateUrl: 'partials/charac-card-detail.html',
             controller: function ($scope) {
-                $scope.isSelected = function () {
-                    if ($scope.character == selections.activeActor || $scope.character == selections.activeTarget) {
-                        return true;
-                    }
-                    return false;
+
+                $scope.cancel= function(){
+                    $scope.character=null
+                    $scope.$parent.$parent.characterDetail=null
+
+
+
                 }
+
             }
     }
 })

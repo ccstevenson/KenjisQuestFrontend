@@ -126,7 +126,7 @@ angular.module('myApp.services', [])
             id: 10,
             name: 'Wasp',
             class: 'Rogue',
-            sprite: 'img/wasp_small.jpg',
+            sprite: 'img/wasp_small.png',
             health: 25,
             maxHealth: 30
         };

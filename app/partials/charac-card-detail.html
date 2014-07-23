@@ -1,23 +1,29 @@
-<li class="bulletlessList"
-    ng-class="{'selectedActor': selections.activeActor.id == character.id}">
-    <div class="characterDetails text-center">
+<div ng-click="cancel()" class="modal-background">
+</div>
 
-         <div>
-            <p><img src={{character.sprite}}></p>
+<div class = "calc-foreground">
+    <li class="bulletlessList"
+        ng-class="{'selectedActor': selections.activeActor.id == character.id}">
+        <div class="characterDetails text-center">
 
-
-
-             <p>{{character.name}}</p>
-             <p>{{character.class}}</p>
-             <p>{{character.weapon}}</p>
-             <p>{{character.skill}}</p>
-             <p>{{character.race}}</p>
-             <p>{{character.nationality}}</p>
-
-        </div>
+            <div>
+                <p><img src="{{ character.sprite }}"></p>
 
 
+                <p>{{ character.name }}</p>
 
+                <p>{{ character.class }}</p>
 
+                <p>{{ character.weapon }}</p>
 
-        </li>
+                <p>{{ character.skill }}</p>
+
+                <p>{{ character.race }}</p>
+
+                <p>{{ character.nationality }}</p>
+
+            </div>
+
+    </li>
+
+</div>
