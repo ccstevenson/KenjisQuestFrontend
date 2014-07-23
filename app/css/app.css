@@ -146,7 +146,7 @@ tr > td {
     position: fixed;
     top: 50%;
     left: 50%;
-    margin-left: -325px;
+    margin-left: -200px;
     margin-top: -225px;
     z-index: 6;
     padding: 20px;
