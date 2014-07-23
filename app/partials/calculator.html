@@ -1,6 +1,9 @@
-<div class="foreground">
+<div ng-click="cancel()" class="modal-background">
+</div>
 
-    <p class="text-center VT323FontLarge">{{attackData.action}} {{enemy.name}} with {{player.name}}</p>
+<div class="calc-foreground">
+
+    <p class="text-center VT323FontLarge">{{ attackData.action }} {{ enemy.name }} with {{ player.name }}</p>
 
     <table>
         <tr>
@@ -11,7 +14,8 @@
                 <button class="wideButton" ng-click="clear()">Clear</button>
             </td>
             <td class="col-md-4">
-                <button class="wideButton" ng-class="{'btn-success': attackData.heal}" ng-click="heal()">Heal</button>
+                <button class="wideButton" ng-class="{'btn-success': attackData.heal}" ng-click="heal()">Heal
+                </button>
             </td>
         </tr>
         <tr class="top-buffer">
@@ -76,12 +80,13 @@
                 </button>
             </td>
             <td class="col-md-4">
-                <button class="wideButton" ng-click="crit()" ng-class="{'btn-success': attackData.crit}">Crit</button>
+                <button class="wideButton" ng-click="crit()" ng-class="{'btn-success': attackData.crit}">Crit
+                </button>
             </td>
             <td class="col-md-4">
                 <button class="wideButton smallText"
                         ng-class="{'btn-primary': attackData.attackValue, 'smallText': attackData.action == 'Healing'}"
-                        ng-click="attack()">{{buttonText()}}
+                        ng-click="attack()">{{ buttonText()}}
                 </button>
             </td>
         </tr>
@@ -93,5 +98,4 @@
             <td class="col-md-4"></td>
         </tr>
     </table>
-
 </div>
