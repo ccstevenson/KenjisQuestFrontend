@@ -117,4 +117,13 @@ angular.module('myApp.services', [])
             scenario: ''
         };
         return scenarioService;
+    })
+
+    .factory("encounterService", function () {
+        var encounterService = {
+            characters: '',
+            items: '',
+            players: ''
+        };
+        return encounterService;
     });

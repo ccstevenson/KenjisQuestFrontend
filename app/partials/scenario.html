@@ -3,7 +3,7 @@
         <label>Encounters</label>
         <tabset vertical="true" type="pills">
             <tab ng-click="selectEncounter(encounter)" heading="{{ encounter.name }}" ng-repeat="encounter in encounters">
-                <button class="btn btn-warning btn-lg">Launch Encounter</button>
+                <button id="launchBtn" class="btn btn-warning btn-lg" ng-click="launchEncounter(encounter)">Launch Encounter</button>
             </tab>
         </tabset>
     </div>

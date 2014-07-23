@@ -20,35 +20,43 @@ angular.module('myApp.controllers', [])
         $scope.game = {};
         $scope.chapter = {};
         $scope.scenario = {};
+
         Restangular.all('games').getList().then(function (games) {
             $scope.games = games;
         });
+
         $scope.selectGame = function (game) {
             $scope.game = game;
             $scope.chapter = {};
         };
+
         $scope.selectChapter = function (chapter) {
             $scope.chapter = chapter;
             $scope.scenario = {};
         };
+
         $scope.selectScenario = function (scenario) {
             scenarioService.scenario = scenario;
             window.location = '#/scenario';
         };
     }])
 
-    .controller('ScenarioCtrl', ['$scope', 'scenarioService', function ($scope, scenarioService) {
+    .controller('ScenarioCtrl', ['$scope', 'scenarioService', 'encounterService', function ($scope, scenarioService, encounterService) {
         $scope.scenario = scenarioService.scenario;
         $scope.encounters = $scope.scenario.encounters;
         $scope.items = {};
         $scope.characters = {};
+
         $scope.selectEncounter = function (encounter) {
             $scope.encounter = encounter;
             $scope.items = encounter.items;
             $scope.characters = encounter.characters;
         };
-        $scope.launchEncounter = function (encounter) {
 
+        $scope.launchEncounter = function (encounter) {
+            encounterService.characters = encounter.characters;
+            encounterService.items = encounter.items;
+            window.location = '#/battleatronic';
         };
     }])
 
