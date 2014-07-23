@@ -3,7 +3,6 @@
 .menu {
     list-style: none;
     border-bottom: 0.1em solid black;
-    margin-bottom: 2em;
     padding: 0 0 0.5em;
 }
 
@@ -33,16 +32,20 @@ tr > td {
     padding-bottom: 5px;
 }
 
+.container {
+    width: 95%;
+    max-width: 1680px;
+    margin: auto;
+}
+
 .selectedActor {
-    border: 6px solid seagreen;
+    border: 0.5em ridge seagreen;
+    border-radius: 0.5em;
 }
 
 .selectedTarget {
-    border: 6px solid red;
-}
-
-.notSelected {
-    border: 3px solid darkgray;
+    border: 0.5em ridge red;
+    border-radius: 0.5em;
 }
 
 .deadText {
@@ -51,7 +54,7 @@ tr > td {
 }
 
 .characterDetails {
-    padding: 10px;
+    padding: 0.25em;
 }
 
 .bulletlessList {
@@ -70,7 +73,7 @@ tr > td {
 
 .smallText {
     font-family: 'VT323';
-    font-size: 20px;
+    font-size: .75em;
 }
 
 .negativeTopMargin10 {
@@ -88,14 +91,15 @@ tr > td {
 }
 
 .background {
-    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0, url(../img/cave.jpg) no-repeat 0 0;
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0, url(../img/cave.jpg) no-repeat center center;
     background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.7)), color-stop(100%, rgba(255, 255, 255, 0.7))), url(../img/cave.jpg) no-repeat 0 0;
-    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
-    background: -o-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
-    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.7)), color-stop(100%, rgba(255, 255, 255, 0.7))), url(../img/cave.jpg)no-repeat center center;
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat center center;
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat center center;
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat center center;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat center center;
     background-attachment:fixed;
+    background-size: 100% 100%;
 }
 
 .foreground {
@@ -107,13 +111,16 @@ tr > td {
 
 
 .adjust-left {
-    margin-right: 35px;
+    margin-right: 1.5em;
+}
+
+.adjust-right {
+    margin-left: 1.5em;
 }
 
 .spacing-top {
-    margin-top: 10px;
+    margin-top: 0.5em;
 }
-
 
 #launchBtn {
     margin-top: 10px;
@@ -143,4 +150,21 @@ tr > td {
     margin-top: -225px;
     z-index: 6;
     padding: 20px;
+}
+
+.info-panel {
+    background-color: #0000FF;
+    height: 100%;
+}
+
+.border-main {
+    border: 0.5em ridge #c0c0c0;
+    border-radius: 0.5em;
+}
+
+.avatar-size-sm {
+    height: 150px;
+    width: 150px;
+    background: no-repeat center center;
+    background-size: 100% 100%;
 }
