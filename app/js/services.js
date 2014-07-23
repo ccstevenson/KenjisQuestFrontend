@@ -213,9 +213,9 @@ angular.module('myApp.services', [])
 
         function onYoutubeReady(event) {
             $log.info('YouTube Player is ready');
-            youtube.player.cueVideoById(history[0].id);
-            youtube.videoId = history[0].id;
-            youtube.videoTitle = history[0].title;
+            youtube.player.cueVideoById(upcoming[0].id);
+            youtube.videoId = upcoming[0].id;
+            youtube.videoTitle = upcoming[0].title;
         }
 
         function onYoutubeStateChange(event) {
