@@ -307,16 +307,16 @@ angular.module('myApp.services', [])
         //   return history;
         // };
 
-        // this.deleteVideo = function (list, id) {
-        //   var videos = localStorageService.get(list);
-        //   for (var i = videos.length - 1; i >= 0; i--) {
-        //     if (videos[i].id === id) {
-        //       videos.splice(i, 1);
-        //       break;
-        //     }
-        //   }
-        //   localStorageService.add(list, videos);
-        // };
+        this.deleteVideo = function (list, id) {
+          var videos = localStorageService.get(list);
+          for (var i = videos.length - 1; i >= 0; i--) {
+            if (videos[i].id === id) {
+              videos.splice(i, 1);
+              break;
+            }
+          }
+          localStorageService.add(list, videos);
+        };
 
         this.getYoutube = function () {
             return youtube;
