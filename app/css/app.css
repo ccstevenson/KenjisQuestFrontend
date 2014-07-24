@@ -163,6 +163,14 @@ tr > td {
     border-radius: 0.5em;
 }
 
+.border-left {
+    border-left: 0.5em ridge #c0c0c0;
+}
+
+.border-top {
+    border-top: 0.5em ridge #c0c0c0;
+}
+
 .avatar-size-sm {
     height: 150px;
     width: 150px;
@@ -170,7 +178,19 @@ tr > td {
     background-size: 100% 100%;
 }
 
+
 .health-bar-text {
     color:black;
     white-space:nowrap;
+}
+
+.char-info-icon {
+    opacity: 0.4;
+    color: blue;
+    border: black 3px solid;
+    border-radius: 20px;
+}
+
+.char-info-icon:hover {
+    opacity: 1;
 }

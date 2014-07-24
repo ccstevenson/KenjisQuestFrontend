@@ -1,6 +1,7 @@
 <div class="characterDetails text-center">
 
     <div>
+        <span class="glyphicon glyphicon-info-sign pull-right char-info-icon" ng-click="setCharacterDetail($event,character)"></span>
         <div class="avatar-size-sm"
              ng-class="{'selectedActor': selections.activeActor.id == character.id,
                'selectedTarget': selections.activeTarget.id == character.id,
@@ -15,16 +16,15 @@
              ng-show="character.health <= 0"
              style="background-image: url(img/dead_mario.jpg)">
         </div>
-        <p>Health: {{character.health}} / {{ character.maxHealth }}</p>
+        <!--<p>Health: {{character.health}} / {{ character.maxHealth }}</p>-->
 
         <progressbar style="width: 150px"
                      max="character.maxHealth"
                      value="character.health"
                      type="{{ healthBarType() }}">
-            <span style="color:black; white-space:nowrap;">{{character.health}} / {{character.maxHealth}}</span>
+            <!--<span style="color:black; white-space:nowrap;">{{character.health}} / {{character.maxHealth}}</span>-->
         </progressbar>
-        <p>{{character.name}}</p>
-        <button ng-click="setCharacterDetail($event,character)">Charc-Detail</button>
+        <!--<p>{{character.name}}</p>-->
         <!--<p class="negativeTopMargin20">Class: {{character.class}}</p>-->
     </div>
 </div>
