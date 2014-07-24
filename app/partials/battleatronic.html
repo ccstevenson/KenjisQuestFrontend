@@ -64,10 +64,18 @@
         </div>
 
         <calculator player="game.selections.activeActor"
+<<<<<<< HEAD
         enemy="game.selections.activeTarget"
         callback="dealDamage(damage, character)"
         ng-show="game.selections.activeActor && game.selections.activeTarget">
+=======
+                    enemy="game.selections.activeTarget"
+                    callback="dealDamage(damage, character)"
+                    ng-show="game.selections.activeActor && game.selections.activeTarget && Role.role!='Game Master'">
+>>>>>>> 6bf6a4df661963022159fec4732f4176800b4270
         </calculator>
+
+        <character-card-detail character="characterDetail" ng-show="characterDetail"></character-card-detail>
     </div>
     <!--end instructions-->
 

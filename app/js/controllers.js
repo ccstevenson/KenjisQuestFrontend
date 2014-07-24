@@ -43,15 +43,17 @@ angular.module('myApp.controllers', [])
 
     }])
 
-    .controller('RoleCtrl', ['$scope', function ($scope) {
-        $scope.role = "Player";
+    .controller('RoleCtrl', ['$scope', 'roleService', function ($scope, roleService) {
+        $scope.Role = roleService;
         $scope.roles = {
             Role1: "Game Master",
-            Role2: "Player"
+            Role2: "Player",
+            Role3: "Beast Master"
         };
 
         $scope.selectRole = function (role) {
-            $scope.role = role;
+            roleService.role = role;
+            console.log($scope.Role);
             if (role == "Player"){
                 window.location = '#/battleatronic';
             }
@@ -77,10 +79,10 @@ angular.module('myApp.controllers', [])
         };
     }])
 
-    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'PlayerConstants', 'EnemyConstants',
-        function ($scope, GameService, PlayerConstants, EnemyConstants) {
+    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'PlayerConstants', 'EnemyConstants', 'roleService',
+        function ($scope, GameService, PlayerConstants, EnemyConstants, roleService) {
             GameService.$bind($scope, "game");
-
+            $scope.Role = roleService;
             $scope.selectedPlayer = function (player) {
                 $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
             };
@@ -90,6 +92,18 @@ angular.module('myApp.controllers', [])
             };
 
             $scope.dealDamage = function (damage, character) {
+
+                if (damage > 0) {
+                    $.playSound('sounds/attack');
+                }
+                else if (damage == 0) {
+                    $.playSound ('sounds/miss');
+                }
+                else {
+                    $.playSound ('sounds/heal');
+                }
+
+
                 character.health -= damage;
 
                 if (character.health < 0) { // Negative health disallowed.
@@ -140,7 +154,6 @@ angular.module('myApp.controllers', [])
 
     .controller('VideosController', function ($scope, $http, $log, VideosService) {
 
-        init();
 
         function init() {
           $scope.youtube = VideosService.getYoutube();
@@ -150,12 +163,14 @@ angular.module('myApp.controllers', [])
           $scope.playlist = true;
         }
 
+        init();
+
         $scope.launch = function (id, title) {
           VideosService.launchPlayer(id, title);
-          VideosService.archiveVideo(id, title);
-          VideosService.deleteVideo('upcoming', id);
+          // VideosService.archiveVideo(id, title);
+          // VideosService.deleteVideo('upcoming', id);
           $scope.upcoming = VideosService.getUpcoming();
-          $scope.history = VideosService.getHistory();
+          // $scope.history = VideosService.getHistory();
           $log.info('Launched id:' + id + ' and title:' + title);
         };
 
