@@ -1,49 +1,66 @@
-<div data-ng-app="JukeTubeApp">
-    <div data-ng-controller="VideosController">
-        <header>
-            <form id="search" data-ng-submit="search()">
-                <input id="query" name="q" type="text" placeholder="Search for a YouTube video" data-ng-model="query">
-                <input id="submit" type="image" src="search.png" alt="Search">
-            </form>
-            <nav>
-                <a id="play">{{ youtube.state }}</a>
-                <a id="pause">Pause</a>
-            </nav>
-        </header>
-        <div id="results">
-            <div class="video" data-ng-repeat="video in results" data-ng-click="queue(video.id, video.title)">
-                <img class="video-image" data-ng-src="{{ video.thumbnail }}">
+<<<<<<< HEAD
+<div class="container">
+    <div data-ng-app="JukeTubeApp">
+        <div data-ng-controller="VideosController">
+            <div class="pull-right col-md-3 border-left">
+                <header>
+                    <form id="search" class="col-md-12" data-ng-submit="search()">
+                        <input id="query" name="q" type="text" placeholder="Search for a YouTube video"
+                               data-ng-model="query">
+                        <input id="submit" type="image" src="search.png" alt="Search">
+                    </form>
+                    <!--<nav>-->
+                        <!--<a id="play">{{ youtube.state }}</a>-->
+                        <!--<a id="pause">Pause</a>-->
+                    <!--</nav>-->
+                </header>
 
-                <p class="video-title">{{ video.title }}</p>
+                <div id="results">
 
-                <p class="video-author">{{ video.author }}</p>
+                    <div class="video" data-ng-repeat="video in results" data-ng-click="queue(video.id, video.title)">
+                        <img class="video-image" data-ng-src="{{ video.thumbnail }}">
 
-                <p class="video-description">{{ video.description }}</p>
+                        <p class="video-title btn-default border-main">{{ video.title }}</p>
+
+                        <p class="video-author">{{ video.author }}</p>
+
+                        <p class="video-description">{{ video.description }}</p>
+                    </div>
+
+                </div>
             </div>
-        </div>
-        <div id="player">
-            <div id="placeholder"></div>
-        </div>
-        <div id="playlist">
-            <p id="current">{{ youtube.videoTitle }}</p>
-            <ol id="upcoming" data-ng-show="playlist">
-                <li data-ng-repeat="video in upcoming">
-                    <p class="item-delete" data-ng-click="delete('upcoming', video.id)">delete</p>
 
-                    <p class="item-title" data-ng-click="launch(video.id, video.title)">{{video.title}}</p>
-                </li>
-            </ol>
-            <ol id="history" data-ng-hide="playlist">
-                <li data-ng-repeat="video in history">
-                    <p class="item-delete" data-ng-click="delete('history', video.id)">delete</p>
+            <div id="player">
+                <div id="placeholder"></div>
+            </div>
 
-                    <p class="item-title" data-ng-click="queue(video.id, video.title)">{{video.title}}</p>
-                </li>
-            </ol>
-            <p id="tabs">
-                <a ng-class="{on:playlist}" data-ng-click="tabulate(true)">Upcoming</a>
-                <a ng-class="{on:!playlist}" data-ng-click="tabulate(false)">History</a>
-            </p>
+            <div class="col-md-9" id="playlist">
+                <button class="col-md-12" id="current">{{ youtube.videoTitle }}</button>
+                <ul class="list-unstyled border-top" id="upcoming" data-ng-show="playlist">
+                    <li class="col-md-6" data-ng-repeat="video in upcoming">
+                        <button class="item-delete btn-danger border-main col-md-6" data-ng-click="delete('upcoming', video.id)">remove</button>
+
+                        <button class="item-title col-md-6 btn-default border-main" data-ng-click="launch(video.id, video.title)">{{video.title}}</button>
+                    </li>
+                </ul>
+                <!--<ol id="history" data-ng-hide="playlist">-->
+                    <!--<li data-ng-repeat="video in history">-->
+                        <!--<p class="item-delete" data-ng-click="delete('history', video.id)">delete</p>-->
+
+                        <!--<p class="item-title" data-ng-click="queue(video.id, video.title)">{{video.title}}</p>-->
+                    <!--</li>-->
+                <!--</ol>-->
+                <!--<p id="tabs">-->
+                    <!--<a ng-class="{on:playlist}" data-ng-click="tabulate(true)">Upcoming</a>-->
+                    <!--<a ng-class="{on:!playlist}" data-ng-click="tabulate(false)">History</a>-->
+                <!--</p>-->
+            </div>
+
+            <!--     <footer>
+                  <em>Concept &amp; Design: <a href="http://jgthms.com">J. Thomas</a></em>
+                  Built with <a href="http://angularjs.org/">AngularJS</a>. Source code available on <a href="https://github.com/jgthms/juketube">GitHub</a>.
+                </footer> -->
+
         </div>
     </div>
 </div>
