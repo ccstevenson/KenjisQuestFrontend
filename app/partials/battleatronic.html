@@ -1,7 +1,7 @@
 <div class="container">
 
     <!-- Enemies -->
-    <div class="nav col-md-6 col-xs-6">
+    <div class="nav col-md-6 col-xs-5">
         <div class="col-md-4 col-xs-12" ng-repeat="enemy in game.enemies">
             <character-card style="float:left; position:relative" character="enemy"
                             selections="game.selections"
@@ -13,11 +13,11 @@
     <!---end enemies--->
 
     <!--no-man's-land-->
-    <div class="col-md-2 hidden-xs"></div>
+    <div class="col-md-2 col-xs-2"></div>
     <!--end no-man's-land-->
 
     <!-- characters -->
-    <div class="nav col-md-4 col-xs-6">
+    <div class="nav col-md-4 col-xs-5">
         <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
         <div class="col-md-6 col-xs-12" ng-repeat="player in game.players">
             <character-card style="float:right; position:relative" character="player" selections="game.selections"
