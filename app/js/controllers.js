@@ -17,7 +17,8 @@ angular.module('myApp.controllers', [])
 
     }])
 
-    .controller('GmViewCtrl', ['$scope', 'Restangular', 'scenarioService', function ($scope, Restangular, scenarioService) {
+    .controller('GmViewCtrl', ['$scope', 'Restangular', 'scenarioService', 'encounterService',
+        function ($scope, Restangular, scenarioService, encounterService) {
         $scope.game = {};
         $scope.chapter = {};
         $scope.scenario = {};
@@ -28,6 +29,7 @@ angular.module('myApp.controllers', [])
 
         $scope.selectGame = function (game) {
             $scope.game = game;
+            encounterService.players = game.players;
             $scope.chapter = {};
         };
 
@@ -53,7 +55,6 @@ angular.module('myApp.controllers', [])
 
         $scope.selectRole = function (role) {
             roleService.role = role;
-            console.log($scope.Role);
             if (role == "Player"){
                 window.location = '#/battleatronic';
             }
@@ -79,10 +80,16 @@ angular.module('myApp.controllers', [])
         };
     }])
 
-    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'PlayerConstants', 'EnemyConstants', 'roleService',
-        function ($scope, GameService, PlayerConstants, EnemyConstants, roleService) {
+    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'PlayerConstants', 'EnemyConstants', 'roleService', 'encounterService',
+        function ($scope, GameService, PlayerConstants, EnemyConstants, roleService, encounterService) {
+
             GameService.$bind($scope, "game");
+
             $scope.Role = roleService;
+
+//            $scope.game.players = encounterService.players;
+//            $scope.game.enemies = encounterService.characters;
+
             $scope.selectedPlayer = function (player) {
                 $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
             };
@@ -136,6 +143,11 @@ angular.module('myApp.controllers', [])
 
                 $scope.game.players = angular.copy(PlayerConstants);
                 $scope.game.enemies = angular.copy(EnemyConstants);
+
+//  When we are ready to switch to pulling data from Django, uncomment these and comment the above.
+//                $scope.game.players = encounterService.players;
+//                $scope.game.enemies = encounterService.characters;
+
             };
 
             //        $scope.user = "Guest " + Math.round(Math.random() * 101);
@@ -150,66 +162,64 @@ angular.module('myApp.controllers', [])
 //            $scope.message = "";
 //        };
 
-        }])
+    }])
 
     .controller('VideosController', function ($scope, $http, $log, VideosService) {
 
-
         function init() {
-          $scope.youtube = VideosService.getYoutube();
-          $scope.results = VideosService.getResults();
-          $scope.upcoming = VideosService.getUpcoming();
-          // $scope.history = VideosService.getHistory();
-          $scope.playlist = true;
+            $scope.youtube = VideosService.getYoutube();
+            $scope.results = VideosService.getResults();
+            $scope.upcoming = VideosService.getUpcoming();
+            // $scope.history = VideosService.getHistory();
+            $scope.playlist = true;
         }
 
         init();
 
         $scope.launch = function (id, title) {
-          VideosService.launchPlayer(id, title);
-          // VideosService.archiveVideo(id, title);
-          // VideosService.deleteVideo('upcoming', id);
-          $scope.upcoming = VideosService.getUpcoming();
-          // $scope.history = VideosService.getHistory();
-          $log.info('Launched id:' + id + ' and title:' + title);
+            VideosService.launchPlayer(id, title);
+            // VideosService.archiveVideo(id, title);
+            // VideosService.deleteVideo('upcoming', id);
+            $scope.upcoming = VideosService.getUpcoming();
+            // $scope.history = VideosService.getHistory();
+            $log.info('Launched id:' + id + ' and title:' + title);
         };
 
         $scope.queue = function (id, title) {
-          VideosService.queueVideo(id, title);
-          $scope.upcoming = VideosService.getUpcoming();
-          // VideosService.deleteVideo('history', id);
-          // $scope.history = VideosService.getHistory();
-          $log.info('Queued id:' + id + ' and title:' + title);
+            VideosService.queueVideo(id, title);
+            $scope.upcoming = VideosService.getUpcoming();
+            // VideosService.deleteVideo('history', id);
+            // $scope.history = VideosService.getHistory();
+            $log.info('Queued id:' + id + ' and title:' + title);
         };
 
         $scope.delete = function (list, id) {
-          VideosService.deleteVideo(list, id);
-          $scope.upcoming = VideosService.getUpcoming();
-          // $scope.history = VideosService.getHistory();
+            VideosService.deleteVideo(list, id);
+            $scope.upcoming = VideosService.getUpcoming();
+            // $scope.history = VideosService.getHistory();
         };
 
         $scope.search = function () {
-          $http.get('https://www.googleapis.com/youtube/v3/search', {
-            params: {
-              key: 'AIzaSyAFjhfNevE7qWPwW7J4uEYZ1nbNMgh3lYY', // jgthms
-              type: 'video',
-              maxResults: '8',
-              part: 'id,snippet',
-              fields: 'items/id,items/snippet/title,items/snippet/description,items/snippet/thumbnails/default,items/snippet/channelTitle',
-              q: this.query
-            }
-          })
-          .success( function (data) {
-            VideosService.listResults(data);
-            $log.info(data);
-          })
-          // .error( function () {snippetsnippet
-          //   $log.info('Search error');
-          // });
-        }
+            $http.get('https://www.googleapis.com/youtube/v3/search', {
+                params: {
+                    key: 'AIzaSyAFjhfNevE7qWPwW7J4uEYZ1nbNMgh3lYY', // jgthms
+                    type: 'video',
+                    maxResults: '8',
+                    part: 'id,snippet',
+                    fields: 'items/id,items/snippet/title,items/snippet/description,items/snippet/thumbnails/default,items/snippet/channelTitle',
+                    q: this.query
+                }
+            })
+                .success(function (data) {
+                    VideosService.listResults(data);
+                    $log.info(data);
+                });
+            // .error( function () {snippetsnippet
+            //   $log.info('Search error');
+            // });
+        };
 
         $scope.tabulate = function (state) {
-          $scope.playlist = state;
+            $scope.playlist = state;
         }
-
-});
+    });
