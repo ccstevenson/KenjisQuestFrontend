@@ -163,9 +163,18 @@ tr > td {
     border-radius: 0.5em;
 }
 
+.border-left {
+    border-left: 0.5em ridge #c0c0c0;
+}
+
+.border-top {
+    border-top: 0.5em ridge #c0c0c0;
+}
+
 .avatar-size-sm {
     height: 150px;
     width: 150px;
     background: no-repeat center center;
     background-size: 100% 100%;
 }
+
