@@ -183,3 +183,14 @@ tr > td {
     color:black;
     white-space:nowrap;
 }
+
+.char-info-icon {
+    opacity: 0.4;
+    color: blue;
+    border: black 3px solid;
+    border-radius: 20px;
+}
+
+.char-info-icon:hover {
+    opacity: 1;
+}
