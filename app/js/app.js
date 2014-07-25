@@ -16,7 +16,7 @@ angular.module('myApp', [
     .config(['$routeProvider', 'RestangularProvider', function ($routeProvider, RestangularProvider) {
         $routeProvider.when('/battleatronic', {templateUrl: 'partials/battleatronic.html', controller: 'BattleatronicCtrl'});
         $routeProvider.when('/soundboard', {templateUrl: 'partials/soundboard.html', controller: 'VideosController'});
-        $routeProvider.when('/gm-view', {templateUrl: 'partials/gm-view.html', controller: 'GmViewCtrl'});
+        $routeProvider.when('/load-game', {templateUrl: 'partials/load-game.html', controller: 'GameCtrl'});
         $routeProvider.when('/scenario', {templateUrl: 'partials/scenario.html', controller: 'ScenarioCtrl'});
         $routeProvider.otherwise({redirectTo: '/battleatronic'});
 

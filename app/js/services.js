@@ -139,7 +139,7 @@ angular.module('myApp.services', [])
 
     .factory("scenarioService", function () {
         var scenarioService = {
-            scenario: ''
+            scenario: {}
         };
         return scenarioService;
     })
@@ -147,9 +147,9 @@ angular.module('myApp.services', [])
     .factory("encounterService", function () {
         var encounterService = {
             game: {},
-            characters: '',
-            items: '',
-            players: ''
+            characters: {},
+            items: {},
+            players: {}
         };
         return encounterService;
     })

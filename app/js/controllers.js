@@ -34,7 +34,7 @@ angular.module('myApp.controllers', [])
     }])
 
 
-    .controller('GmViewCtrl', ['$scope', 'Restangular', 'scenarioService', 'encounterService',
+    .controller('GameCtrl', ['$scope', 'Restangular', 'scenarioService', 'encounterService',
         function ($scope, Restangular, scenarioService, encounterService) {
 //        $scope.game = {};
 //        $scope.chapter = {};
