@@ -88,8 +88,8 @@ angular.module('myApp.controllers', [])
         };
     }])
 
-    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'PlayerConstants', 'EnemyConstants', 'roleService', 'encounterService',
-        function ($scope, GameService, PlayerConstants, EnemyConstants, roleService, encounterService) {
+    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'roleService', 'encounterService',
+        function ($scope, GameService, roleService, encounterService) {
 
             $scope.game = encounterService.game;
 
