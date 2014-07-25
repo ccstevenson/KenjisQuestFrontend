@@ -69,6 +69,11 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     init();
                 };
 
+                $scope.heal = function () {
+                    $scope.callback({'damage': parseInt($scope.attackData.attackValue) *-1, 'character': $scope.target});
+                    init();
+                };
+
                 $scope.crit = function () {
                     $scope.attackData.crit = !$scope.attackData.crit;
 
@@ -78,11 +83,6 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     else {
                         $scope.attackData.attackValue /= 2;
                     }
-                };
-
-                $scope.heal = function () {
-                    $scope.callback({'damage': parseInt($scope.attackData.attackValue) *-1, 'character': $scope.target});
-                    init();
                 };
 
                 $scope.keystroke = function (keypressValue) {
