@@ -151,7 +151,7 @@ angular.module('myApp.controllers', [])
 //                $scope.game.players = angular.copy(PlayerConstants);
 //                $scope.game.enemies = angular.copy(EnemyConstants);
 
-//  When we are ready to switch to pulling data from//jango, uncomment these and comment the above.
+//  When we are ready to switch to pulling data from//Django, uncomment these and comment the above.
                 $scope.game.players = encounterService.players;
                 $scope.game.enemies = encounterService.characters;
 
