@@ -17,34 +17,6 @@ angular.module('myApp.controllers', [])
 
     }])
 
-    .controller('GmViewCtrl', ['$scope', 'Restangular', 'scenarioService', 'encounterService',
-        function ($scope, Restangular, scenarioService, encounterService) {
-        $scope.game = {};
-        $scope.chapter = {};
-        $scope.scenario = {};
-
-        Restangular.all('games').getList().then(function (games) {
-            $scope.games = games;
-        });
-
-        $scope.selectGame = function (game) {
-            $scope.game = game;
-            encounterService.players = game.players;
-            $scope.chapter = {};
-        };
-
-        $scope.selectChapter = function (chapter) {
-            $scope.chapter = chapter;
-            $scope.scenario = {};
-        };
-
-        $scope.selectScenario = function (scenario) {
-            scenarioService.scenario = scenario;
-            window.location = '#/scenario';
-        };
-
-    }])
-
     .controller('RoleCtrl', ['$scope', 'roleService', function ($scope, roleService) {
         $scope.Role = roleService;
         $scope.roles = {
@@ -61,11 +33,45 @@ angular.module('myApp.controllers', [])
         };
     }])
 
-    .controller('ScenarioCtrl', ['$scope', 'scenarioService', 'encounterService', function ($scope, scenarioService, encounterService) {
-        $scope.scenario = scenarioService.scenario;
+
+    .controller('GmViewCtrl', ['$scope', 'Restangular', 'scenarioService', 'encounterService',
+        function ($scope, Restangular, scenarioService, encounterService) {
+//        $scope.game = {};
+//        $scope.chapter = {};
+//        $scope.scenario = {};
+
+        Restangular.all('games').getList().then(function (games) {
+            $scope.games = games;
+        });
+
+        $scope.selectGame = function (game) {
+            $scope.game = game;
+            var players = [];
+            for (var player in game.players) {
+                players.push(game.players[player].character);
+            }
+            encounterService.players = players;
+            $scope.chapter = {};
+        };
+
+        $scope.selectChapter = function (chapter) {
+            $scope.chapter = chapter;
+            $scope.scenario = {};
+        };
+
+        $scope.selectScenario = function (scenario) {
+            encounterService.game.scenario = scenario;
+            window.location = '#/scenario';
+        };
+
+    }])
+
+    .controller('ScenarioCtrl', ['$scope', 'scenarioService', 'encounterService', 'GameService', function ($scope, scenarioService, encounterService, GameService) {
+        $scope.scenario = encounterService.game.scenario;
+        GameService.$bind($scope, "scenario");
         $scope.encounters = $scope.scenario.encounters;
-        $scope.items = {};
-        $scope.characters = {};
+        $scope.items = encounterService.items;
+        $scope.characters = encounterService.characters;
 
         $scope.selectEncounter = function (encounter) {
             $scope.encounter = encounter;
@@ -76,6 +82,8 @@ angular.module('myApp.controllers', [])
         $scope.launchEncounter = function (encounter) {
             encounterService.characters = encounter.characters;
             encounterService.items = encounter.items;
+            encounterService.game.players = encounterService.players;
+            encounterService.game.enemies = encounterService.characters;
             window.location = '#/battleatronic';
         };
     }])
@@ -83,12 +91,11 @@ angular.module('myApp.controllers', [])
     .controller('BattleatronicCtrl', ['$scope', 'GameService', 'PlayerConstants', 'EnemyConstants', 'roleService', 'encounterService',
         function ($scope, GameService, PlayerConstants, EnemyConstants, roleService, encounterService) {
 
+            $scope.game = encounterService.game;
+
             GameService.$bind($scope, "game");
 
             $scope.Role = roleService;
-
-//            $scope.game.players = encounterService.players;
-//            $scope.game.enemies = encounterService.characters;
 
             $scope.selectedPlayer = function (player) {
                 $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
@@ -140,13 +147,13 @@ angular.module('myApp.controllers', [])
                     activeActor: null,
                     activeTarget: null
                 };
+//
+//                $scope.game.players = angular.copy(PlayerConstants);
+//                $scope.game.enemies = angular.copy(EnemyConstants);
 
-                $scope.game.players = angular.copy(PlayerConstants);
-                $scope.game.enemies = angular.copy(EnemyConstants);
-
-//  When we are ready to switch to pulling data from Django, uncomment these and comment the above.
-//                $scope.game.players = encounterService.players;
-//                $scope.game.enemies = encounterService.characters;
+//  When we are ready to switch to pulling data from//jango, uncomment these and comment the above.
+                $scope.game.players = encounterService.players;
+                $scope.game.enemies = encounterService.characters;
 
             };
 
