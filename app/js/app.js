@@ -20,7 +20,7 @@ angular.module('myApp', [
         $routeProvider.when('/scenario', {templateUrl: 'partials/scenario.html', controller: 'ScenarioCtrl'});
         $routeProvider.otherwise({redirectTo: '/battleatronic'});
 
-        RestangularProvider.setBaseUrl('http://127.0.0.1:8000');
+        RestangularProvider.setBaseUrl('http://127.0.0.1:8001/');
     }])
 
     .run(function () {
