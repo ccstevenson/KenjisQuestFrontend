@@ -23,7 +23,7 @@ angular.module('myApp.controllers', [])
         $scope.selectRole = function (role) {
             roleService.role = role;
 
-            if (role == "Player"){
+            if (role != "Game Master"){
                 window.location = '#/battleatronic';
             }
         };
