@@ -111,7 +111,9 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 $scope.game.selections.activeTarget = target;
             };
 
-            $scope.dealDamage = function (damage, character) {
+            $scope.calculateDamage = function (damage, character, status) {
+                $scope.game.soundPlay = !$scope.game.soundPlay;
+                // $scope.game.sound = 'sounds/attack.ogg';
 
                 // if (damage > 0) {
                 //     $scope.soundPlay = !$scope.soundPlay;
@@ -121,13 +123,26 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 //     $scope.soundPlay = !$scope.soundPlay;
                 //     $scope.sound = 'sounds/heal.ogg';
                 // }
-                // console.log($scope.soundPlay);
-                character.health -= damage;
 
-                if (character.health < 0) { // Negative health disallowed.
-                    character.health = 0;
+                // console.log($scope.soundPlay);
+
+                if (status == 'attack')  {
+                    $scope.game.sound = 'sounds/attack.ogg';
+                }
+                else if (status == 'heal')  {
+                    $scope.game.sound = 'sounds/heal.ogg';
+                }
+                else if (status == 'miss')  {
+                    $scope.game.sound = 'sounds/miss.ogg';
                 }
 
+                if (character != null)  {
+                    character.health -= damage;
+                    
+                    if (character.health < 0) { // Negative health disallowed.
+                        character.health = 0;
+                    }
+                }
                 // The attack was completed. Deselect the two characters involved in the attack.
                 $scope.game.selections.activeActor = null;
                 $scope.game.selections.activeTarget = null;
@@ -143,6 +158,14 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                     $scope.game.selections.activeTarget = character;
                 }
             }
+
+
+
+            $scope.$watch('game.soundPlay', function() {
+                var audio = new Audio($scope.game.sound);
+                // console.log(audio)
+                audio.play();
+            });
 
 
 

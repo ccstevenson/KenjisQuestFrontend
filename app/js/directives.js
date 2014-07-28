@@ -72,28 +72,28 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     };
                 };
 
+                $scope.game = {}
+                $scope.game.soundPlay = false;
 
                 $scope.attack = function () {
-                    $scope.game.soundPlay = !$scope.game.soundPlay;
-                    $scope.game.sound = 'sounds/attack.ogg';
-                    $scope.callback({'damage': parseInt($scope.attackData.attackValue), 'character': $scope.target});
+                    $scope.status = 'attack';
+                    $scope.callback({'damage': parseInt($scope.attackData.attackValue), 'character': $scope.target, 'status': $scope.status});
                     init();
                 };
 
                 $scope.heal = function () {
-                    $scope.game.soundPlay = !$scope.soundPlay;
-                    $scope.game.sound = 'sounds/heal.ogg';
-                    $scope.callback({'damage': parseInt($scope.attackData.attackValue) *-1, 'character': $scope.target});
+                    $scope.status = 'heal';
+                    $scope.callback({'damage': parseInt($scope.attackData.attackValue) *-1, 'character': $scope.target, 'status': $scope.status});
                     init();
                 };
 
                 $scope.miss = function () {
-                    $scope.actor = null;
-                    $scope.target = null;
-                    $scope.player = null;
-                    $scope.enemy = null;
-                    $scope.game.soundPlay = !$scope.game.soundPlay;
-                    $scope.game.sound = 'sounds/miss.ogg';
+                    $scope.status = 'miss';
+                    // $scope.actor = null;
+                    // $scope.target = null;
+                    // $scope.player = null;
+                    // $scope.enemy = null;
+                    $scope.callback({'damage': 0, 'character': null, 'status': $scope.status});
                 }
 
                 $scope.crit = function () {
@@ -127,12 +127,6 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                 $scope.clear = function () {
                     init();
                 };
-
-                $scope.$watch('game.soundPlay', function() {
-                    var audio = new Audio($scope.game.sound);
-                    // console.log(audio)
-                    audio.play();
-                });
 
 
                 init();
