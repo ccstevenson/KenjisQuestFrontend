@@ -105,12 +105,10 @@ angular.module('myApp.controllers', [])
             $scope.dealDamage = function (damage, character) {
 
                 if (damage > 0) {
-                    var audio = new Audio('sounds/attack.ogg');
-                    audio.play();
+                    $scope.sound = 'sounds/attack.ogg';
                 }
                 if (damage < 0) {
-                    var audio = new Audio('sounds/heal.ogg');
-                    audio.play();
+                    $scope.sound = 'sounds/heal.ogg';
                 }
                 character.health -= damage;
 
@@ -133,6 +131,11 @@ angular.module('myApp.controllers', [])
                     $scope.game.selections.activeTarget = character;
                 }
             };
+
+            $scope.$watch('sound', function(soundPath) {
+                var audio = new Audio(soundPath);
+                audio.play();
+            });
 
 //        $scope.user = "Guest " + Math.round(Math.random() * 101);
 //        $scope.game = GameService;
