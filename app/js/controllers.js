@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', [])
+angular.module('myApp.controllers', ['ngDragDrop'])
     .controller('SoundboardCtrl', ['$scope', function ($scope) {
 
 
@@ -45,7 +45,7 @@ angular.module('myApp.controllers', [])
                 players.push(game.players[player].character);
             }
 
-            encounterService.players = players;
+            encounterService.game.players = players;
             $scope.chapter = {};
         };
 
@@ -69,16 +69,23 @@ angular.module('myApp.controllers', [])
         $scope.items = encounterService.items;
         $scope.characters = encounterService.characters;
 
+        $scope.dropSuccessHandler = function($event,index,array){
+			array.splice(index,1);
+		};
+		$scope.onDrop = function($event,$data,array){
+			array.push($data);
+		};
+
         $scope.selectEncounter = function (encounter) {
             $scope.encounter = encounter;
             $scope.items = encounter.items;
             $scope.characters = encounter.characters;
+            $scope.players = encounterService.game.players;
         };
 
         $scope.launchEncounter = function (encounter) {
             encounterService.items = encounter.items;
             encounterService.characters = encounter.characters;
-            encounterService.game.players = encounterService.players;
             encounterService.game.enemies = encounterService.characters;
             window.location = '#/battleatronic';
         };
