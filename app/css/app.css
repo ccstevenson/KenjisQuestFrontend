@@ -162,6 +162,11 @@ tr > td {
     border-radius: 0.5em;
 }
 
+.sprite-border{
+    border: 0.5em ridge #c0c0c0;
+    border-radius: 0.5em;
+
+}
 .border-left {
     border-left: 0.5em ridge #c0c0c0;
 }
@@ -228,6 +233,7 @@ tr > td {
 }
 .btn3d:active.btn-danger {
     box-shadow: none;
+}
 
 .health-bar-text {
     color:black;
@@ -244,3 +250,9 @@ tr > td {
 .char-info-icon:hover {
     opacity: 1;
 }
+
+.vertical{
+    border-left: black thick solid;
+    height:auto;
+}
+
