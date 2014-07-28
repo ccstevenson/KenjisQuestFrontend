@@ -1,5 +1,13 @@
 /* app css stylesheet */
 
+.hide-element  {
+    display: none;
+}
+
+.show-element  {
+    display: inline;
+}
+
 .menu {
     list-style: none;
     border-bottom: 0.1em solid black;
@@ -228,7 +236,7 @@ tr > td {
 }
 .btn3d:active.btn-danger {
     box-shadow: none;
-
+}
 .health-bar-text {
     color:black;
     white-space:nowrap;
@@ -243,12 +251,4 @@ tr > td {
 
 .char-info-icon:hover {
     opacity: 1;
-}
-
-.hide-element  {
-    display: none;
-}
-
-.show-element  {
-    display: inline;
 }
