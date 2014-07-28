@@ -1,22 +1,30 @@
 <div class="characterDetails text-center">
 
     <div>
+        <span class="glyphicon glyphicon-info-sign pull-right char-info-icon" ng-click="setCharacterDetail($event,character)"></span>
         <div class="avatar-size-sm"
-             ng-style="{'background-image': 'url(' + character.sprite + ')'}"
              ng-class="{'selectedActor': selections.activeActor.id == character.id,
                'selectedTarget': selections.activeTarget.id == character.id,
-               'notSelected': selections.activeActor.id != character.id && selections.activeTarget.id != character.id}">
-            <span class="well center-block deadText" ng-if="character.health <= 0">Dead!</span>
+               'notSelected': selections.activeActor.id != character.id && selections.activeTarget.id != character.id}"
+             ng-show="character.health > 0"
+             ng-style="{'background-image': 'url(' + character.sprite + ')'}">
         </div>
-        <!--<p ng-if="character.health > 0">Health: {{character.health}} / {{ character.maxHealth }}</p>-->
+        <div class="avatar-size-sm"
+             ng-class="{'selectedActor': selections.activeActor.id == character.id,
+               'selectedTarget': selections.activeTarget.id == character.id,
+               'notSelected': selections.activeActor.id != character.id && selections.activeTarget.id != character.id}"
+             ng-show="character.health <= 0"
+             style="background-image: url(img/dead_mario.jpg)">
+        </div>
+        <!--<p>Health: {{character.health}} / {{ character.maxHealth }}</p>-->
 
         <progressbar style="width: 150px"
                      max="character.maxHealth"
                      value="character.health"
                      type="{{ healthBarType() }}">
-            <span style="color:black; white-space:nowrap;">{{character.health}} / {{character.maxHealth}}</span>
+            <!--<span style="color:black; white-space:nowrap;">{{character.health}} / {{character.maxHealth}}</span>-->
         </progressbar>
-        <p>{{character.name}}</p>
+        <!--<p>{{character.name}}</p>-->
         <!--<p class="negativeTopMargin20">Class: {{character.class}}</p>-->
     </div>
 </div>

@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
     <link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
     <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/jquery.playSound.js"></script>
 </head>
 <body class="background">
 
@@ -26,7 +28,8 @@
 
     <li><a href="#/battleatronic">Battleatronic</a></li>
     <li><a href="#/soundboard">Soundboard</a></li>
-    <li ng-show="role == 'Game Master'"><a href="#/gm-view">GM View</a></li>
+    <li ng-show="Role.role == 'Game Master'"><a href="#/load-game">Load Game</a></li>
+    <li ng-show="Role.role == 'Game Master'"><a href="#/scenario">Scenario</a></li>
     <li>
         <span class="dropdown" on-toggle="toggled(open)">
             <a href class="dropdown-toggle">Select Role</a>
@@ -37,7 +40,7 @@
             </ul>
         </span>
     </li>
-    <li>Current Role: {{ role }}</li>
+    <li>Current Role: {{ Role.role }}</li>
 </ul>
 
 <!--[if lt IE 7]>
@@ -51,7 +54,8 @@
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
-<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="js/angular-local-storage.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <!--<script src="bower_components/angular-bootstrap-jbruni/ui-bootstrap.js"></script>-->
 <!--<script src="bower_components/angular-bootstrap-jbruni/ui-bootstrap-tpls.js"></script>-->

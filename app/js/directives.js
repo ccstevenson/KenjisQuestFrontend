@@ -40,6 +40,14 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                         return "danger";
                     }
                 }
+
+                $scope.setCharacterDetail = function($event,character){
+
+                    $event.stopPropagation();
+
+                    $scope.$parent.$parent.characterDetail = character;
+
+                }
             }
         }
     })
@@ -63,6 +71,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                         'action': 'Attacking'
                     };
                 };
+
 
                 $scope.attack = function () {
                     $scope.callback({'damage': parseInt($scope.attackData.attackValue), 'character': $scope.target});
@@ -98,6 +107,9 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                 $scope.cancel = function () {
                     $scope.actor = null;
                     $scope.target = null;
+                    $scope.player = null;
+                    $scope.enemy = null;
+                    $.playSound ('sounds/miss');
                 };
 
                 $scope.clear = function () {
@@ -107,4 +119,26 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                 init();
             }
         }
-    });
+    })
+
+ .directive('characterCardDetail', function () {
+        return {
+            restrict: 'E',
+            scope: {
+                character: '=character'
+            },
+            templateUrl: 'partials/charac-card-detail.html',
+            controller: function ($scope) {
+
+                $scope.cancel= function(){
+                    $scope.character=null
+                    $scope.$parent.$parent.characterDetail=null
+
+
+
+                }
+
+            }
+    }
+})
+

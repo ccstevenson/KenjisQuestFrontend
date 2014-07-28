@@ -5,6 +5,7 @@
 angular.module('myApp.controllers', [])
     .controller('SoundboardCtrl', ['$scope', function ($scope) {
 
+
     }])
 
     .controller('CharacterCreationController', ['$scope', function ($scope) {
@@ -13,13 +14,24 @@ angular.module('myApp.controllers', [])
             $scope.characters.$add({from: $scope.user, content: $scope.character});
             $scope.message = "";
         };
-
     }])
 
-    .controller('GmViewCtrl', ['$scope', 'Restangular', 'scenarioService', function ($scope, Restangular, scenarioService) {
-        $scope.game = {};
-        $scope.chapter = {};
-        $scope.scenario = {};
+    .controller('RoleCtrl', ['$scope', 'roleService', function ($scope, roleService) {
+        $scope.Role = roleService;
+        $scope.roles = roleService.roles;
+
+        $scope.selectRole = function (role) {
+            roleService.role = role;
+
+            if (role != "Game Master"){
+                window.location = '#/battleatronic';
+            }
+        };
+    }])
+
+
+    .controller('GameCtrl', ['$scope', 'Restangular', 'encounterService',
+        function ($scope, Restangular, encounterService) {
 
         Restangular.all('games').getList().then(function (games) {
             $scope.games = games;
@@ -27,6 +39,13 @@ angular.module('myApp.controllers', [])
 
         $scope.selectGame = function (game) {
             $scope.game = game;
+
+            var players = [];
+            for (var player in game.players) {
+                players.push(game.players[player].character);
+            }
+
+            encounterService.players = players;
             $scope.chapter = {};
         };
 
@@ -36,32 +55,19 @@ angular.module('myApp.controllers', [])
         };
 
         $scope.selectScenario = function (scenario) {
-            scenarioService.scenario = scenario;
+            encounterService.game.scenario = scenario;
             window.location = '#/scenario';
         };
-
     }])
 
-    .controller('RoleCtrl', ['$scope', function ($scope) {
-        $scope.role = "Player";
-        $scope.roles = {
-            Role1: "Game Master",
-            Role2: "Player"
-        };
+    .controller('ScenarioCtrl', ['$scope', 'encounterService',
+        function ($scope, encounterService) {
 
-        $scope.selectRole = function (role) {
-            $scope.role = role;
-            if (role == "Player"){
-                window.location = '#/battleatronic';
-            }
-        };
-    }])
+        $scope.scenario = encounterService.game.scenario;
 
-    .controller('ScenarioCtrl', ['$scope', 'scenarioService', 'encounterService', function ($scope, scenarioService, encounterService) {
-        $scope.scenario = scenarioService.scenario;
         $scope.encounters = $scope.scenario.encounters;
-        $scope.items = {};
-        $scope.characters = {};
+        $scope.items = encounterService.items;
+        $scope.characters = encounterService.characters;
 
         $scope.selectEncounter = function (encounter) {
             $scope.encounter = encounter;
@@ -70,14 +76,18 @@ angular.module('myApp.controllers', [])
         };
 
         $scope.launchEncounter = function (encounter) {
-            encounterService.characters = encounter.characters;
             encounterService.items = encounter.items;
+            encounterService.characters = encounter.characters;
+            encounterService.game.players = encounterService.players;
+            encounterService.game.enemies = encounterService.characters;
             window.location = '#/battleatronic';
         };
     }])
 
-    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'PlayerConstants', 'EnemyConstants',
-        function ($scope, GameService, PlayerConstants, EnemyConstants) {
+    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'encounterService',
+        function ($scope, GameService, encounterService) {
+
+            $scope.game = encounterService.game;
             GameService.$bind($scope, "game");
 
             $scope.selectedPlayer = function (player) {
@@ -89,6 +99,18 @@ angular.module('myApp.controllers', [])
             };
 
             $scope.dealDamage = function (damage, character) {
+
+                if (damage > 0) {
+                    $.playSound('sounds/attack');
+                }
+                else if (damage == 0) {
+                    $.playSound ('sounds/miss');
+                }
+                else {
+                    $.playSound ('sounds/heal');
+                }
+
+
                 character.health -= damage;
 
                 if (character.health < 0) { // Negative health disallowed.
@@ -111,28 +133,75 @@ angular.module('myApp.controllers', [])
                 }
             };
 
-            $scope.resetGame = function () {
-                $scope.game = {};
-
-                $scope.game.selections = {
-                    activeActor: null,
-                    activeTarget: null
-                };
-
-                $scope.game.players = angular.copy(PlayerConstants);
-                $scope.game.enemies = angular.copy(EnemyConstants);
-            };
-
-            //        $scope.user = "Guest " + Math.round(Math.random() * 101);
+//        $scope.user = "Guest " + Math.round(Math.random() * 101);
 //        $scope.game = GameService;
-////        $scope.$add({game: null});
+//        $scope.$add({game: null});
 
-            // This code works.
+          // This code works.
 //        $scope.user = "Guest " + Math.round(Math.random() * 101);
 
 //        $scope.addMessage = function () {
 //            $scope.messages.$add({from: $scope.user, content: $scope.message});
 //            $scope.message = "";
 //        };
+    }])
 
-        }]);
+    .controller('VideosController', function ($scope, $http, $log, VideosService) {
+
+        function init() {
+            $scope.youtube = VideosService.getYoutube();
+            $scope.results = VideosService.getResults();
+            $scope.upcoming = VideosService.getUpcoming();
+            // $scope.history = VideosService.getHistory();
+            $scope.playlist = true;
+        }
+
+        init();
+
+        $scope.launch = function (id, title) {
+            VideosService.launchPlayer(id, title);
+            // VideosService.archiveVideo(id, title);
+            // VideosService.deleteVideo('upcoming', id);
+            $scope.upcoming = VideosService.getUpcoming();
+            // $scope.history = VideosService.getHistory();
+            $log.info('Launched id:' + id + ' and title:' + title);
+        };
+
+        $scope.queue = function (id, title) {
+            VideosService.queueVideo(id, title);
+            $scope.upcoming = VideosService.getUpcoming();
+            // VideosService.deleteVideo('history', id);
+            // $scope.history = VideosService.getHistory();
+            $log.info('Queued id:' + id + ' and title:' + title);
+        };
+
+        $scope.delete = function (list, id) {
+            VideosService.deleteVideo(list, id);
+            $scope.upcoming = VideosService.getUpcoming();
+            // $scope.history = VideosService.getHistory();
+        };
+
+        $scope.search = function () {
+            $http.get('https://www.googleapis.com/youtube/v3/search', {
+                params: {
+                    key: 'AIzaSyAFjhfNevE7qWPwW7J4uEYZ1nbNMgh3lYY', // jgthms
+                    type: 'video',
+                    maxResults: '8',
+                    part: 'id,snippet',
+                    fields: 'items/id,items/snippet/title,items/snippet/description,items/snippet/thumbnails/default,items/snippet/channelTitle',
+                    q: this.query
+                }
+            })
+                .success(function (data) {
+                    VideosService.listResults(data);
+                    $log.info(data);
+                });
+            // .error( function () {snippetsnippet
+            //   $log.info('Search error');
+            // });
+        };
+
+        $scope.tabulate = function (state) {
+            $scope.playlist = state;
+        }
+    });
