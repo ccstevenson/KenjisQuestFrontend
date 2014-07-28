@@ -85,6 +85,12 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     }
                 };
 
+                $scope.plus = function () {
+                    $scope.plus({'damage': parseInt($scope.attackData.attackValue) + ($scope.attackData.attackValue),
+                        'character': $scope.target});
+                    init();
+                };
+
                 $scope.keystroke = function (keypressValue) {
                     $scope.attackData.attackValue += keypressValue;
                 };
@@ -96,13 +102,6 @@ angular.module('myApp.directives', ['ui.bootstrap'])
 
                 $scope.clear = function () {
                     init();
-                };
-
-                $scope.buttonText = function() {
-                  if ($scope.attackData.action == 'Attacking') {
-                      return "Attack";
-                  }
-                  else return "Heal";
                 };
 
                 init();

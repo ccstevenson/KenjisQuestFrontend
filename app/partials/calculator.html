@@ -99,20 +99,17 @@
             </tr>
             <tr>
                 <td class="col-md-3">
-                    <button class="wideButton btn-success btn-lg btn3d" ng-click="heal()">Heal
-                    </button>
+                    <button class="wideButton btn-success btn-lg btn3d" ng-click="heal()">Heal</button>
                 </td>
                 <td class="col-md-3">
-                    <button class="wideButton btn-primary btn-lg btn3d" ng-click="cancel()">All</button>
+                    <button class="wideButton btn-primary btn-lg btn3d" ng-click="cancel()">Miss</button>
                 </td>
                 <td class="col-md-3">
-                    <button class="wideButton smallText btn-danger btn-lg btn3d" ng-click="attack()">Attack
-                    </button>
+                    <button class="wideButton smallText btn-danger btn-lg btn3d" ng-click="attack()">Attack</button>
                 </td>
                 <td class="col-md-3">
                     <button class="wideButton btn-warning btn-lg btn3d"
-                            ng-click="crit()" ng-class="{'btn-success': attackData.crit}">Crit
-                    </button>
+                            ng-click="crit()" ng-class="{'btn-success': attackData.crit}">Crit</button>
                 </td>
             </tr>
         </table>
@@ -120,11 +117,11 @@
     <div>
         <table class="table table-condensed">
             <tr>
-                <td class="col-md-6">
+                <td class="col-md-6" id="all-action">
                     <button class="wideButton btn-success btn-lg btn3d" ng-click="heal.all()">Heal All
                     </button>
                 </td>
-                <td class="col-md-6">
+                <td class="col-md-6" id="all-action">
                     <button class="wideButton smallText btn-danger btn-lg btn3d" ng-click="attack.all()">Attack All
                     </button>
                 </td>
@@ -132,16 +129,3 @@
         </table>
     </div>
 </div>
-
-<button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-download-alt"></span>
-    Download
-</button>
-<button type="button" class="btn btn-primary btn-lg btn3d"><span class="glyphicon glyphicon-cloud"></span> Upload
-</button>
-<button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Success</button>
-<button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-question-sign"></span> Help
-</button>
-<button type="button" class="btn btn-warning btn-lg btn3d"><span class="glyphicon glyphicon-warning-sign"></span> Alert
-</button>
-<button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Delete
-</button>
