@@ -127,13 +127,13 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 // console.log($scope.soundPlay);
 
                 if (status == 'attack')  {
-                    $scope.game.sound = 'sounds/attack.ogg';
+                    $scope.game.sound = 'sounds/attack.mp3';
                 }
                 else if (status == 'heal')  {
-                    $scope.game.sound = 'sounds/heal.ogg';
+                    $scope.game.sound = 'sounds/heal.mp3';
                 }
                 else if (status == 'miss')  {
-                    $scope.game.sound = 'sounds/miss.ogg';
+                    $scope.game.sound = 'sounds/miss.mp3';
                 }
 
                 if (character != null)  {
