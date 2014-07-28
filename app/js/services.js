@@ -105,7 +105,7 @@ angular.module('myApp.services', [])
                 youtube.state = 'paused';
             } else if (event.data == YT.PlayerState.ENDED) {
                 youtube.state = 'ended';
-                service.launchPlayer(upcoming[0].id, upcoming[0].title);
+                service.launchPlayer(youtube.videoId, youtube.videoTitle);
                 // service.archiveVideo(upcoming[0].id, upcoming[0].title);
                 // service.deleteVideo('upcoming', upcoming[0].id);
             }
@@ -125,7 +125,7 @@ angular.module('myApp.services', [])
                 playerVars: {
                     rel: 0,
                     showinfo: 0,
-                    loop: 0,
+                    loop: 1,
                     autoplay: 1
                 },
                 events: {
