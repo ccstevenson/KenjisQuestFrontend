@@ -56,8 +56,8 @@ angular.module('myApp.directives', ['ui.bootstrap'])
         return {
             restrict: 'E',
             scope: {
-                player: '=player',
-                enemy: '=enemy',
+                actor: '=actor',
+                target: '=target',
                 callback: '&callback'
             },
             templateUrl: 'partials/calculator.html',
@@ -66,7 +66,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                 var init = function () {
                     $scope.attackData = {
                         'attackValue': 0,
-                        'heal': false,
+                        'heal': 'Healing',
                         'crit': false,
                         'action': 'Attacking'
                     };
@@ -74,11 +74,12 @@ angular.module('myApp.directives', ['ui.bootstrap'])
 
 
                 $scope.attack = function () {
-                    if ($scope.attackData.heal) {
-                        $scope.attackData.attackValue *= -1;
-                    }
+                    $scope.callback({'damage': parseInt($scope.attackData.attackValue), 'character': $scope.target});
+                    init();
+                };
 
-                    $scope.callback({'damage': parseInt($scope.attackData.attackValue), 'character': $scope.enemy});
+                $scope.heal = function () {
+                    $scope.callback({'damage': parseInt($scope.attackData.attackValue) *-1, 'character': $scope.target});
                     init();
                 };
 
@@ -93,15 +94,10 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     }
                 };
 
-                $scope.heal = function () {
-                    $scope.attackData.heal = !$scope.attackData.heal;
-
-                    if ($scope.attackData.heal) {
-                        $scope.attackData.action = 'Healing';
-                    }
-                    else {
-                        $scope.attackData.action = 'Attacking';
-                    }
+                $scope.plus = function () {
+                    $scope.plus({'damage': parseInt($scope.attackData.attackValue) + ($scope.attackData.attackValue),
+                        'character': $scope.target});
+                    init();
                 };
 
                 $scope.keystroke = function (keypressValue) {
@@ -109,6 +105,8 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                 };
 
                 $scope.cancel = function () {
+                    $scope.actor = null;
+                    $scope.target = null;
                     $scope.player = null;
                     $scope.enemy = null;
                     $.playSound ('sounds/miss');
@@ -116,13 +114,6 @@ angular.module('myApp.directives', ['ui.bootstrap'])
 
                 $scope.clear = function () {
                     init();
-                };
-
-                $scope.buttonText = function() {
-                  if ($scope.attackData.action == 'Attacking') {
-                      return "Attack";
-                  }
-                  else return "Heal";
                 };
 
                 init();
