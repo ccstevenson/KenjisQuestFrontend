@@ -74,14 +74,27 @@ angular.module('myApp.directives', ['ui.bootstrap'])
 
 
                 $scope.attack = function () {
+                    $scope.soundPlay = !$scope.soundPlay;
+                    $scope.sound = 'sounds/attack.ogg';
                     $scope.callback({'damage': parseInt($scope.attackData.attackValue), 'character': $scope.target});
                     init();
                 };
 
                 $scope.heal = function () {
+                    $scope.soundPlay = !$scope.soundPlay;
+                    $scope.sound = 'sounds/heal.ogg';
                     $scope.callback({'damage': parseInt($scope.attackData.attackValue) *-1, 'character': $scope.target});
                     init();
                 };
+
+                $scope.miss = function () {
+                    $scope.actor = null;
+                    $scope.target = null;
+                    $scope.player = null;
+                    $scope.enemy = null;
+                    $scope.soundPlay = !$scope.soundPlay;
+                    $scope.sound = 'sounds/miss.ogg';
+                }
 
                 $scope.crit = function () {
                     $scope.attackData.crit = !$scope.attackData.crit;
@@ -109,12 +122,18 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     $scope.target = null;
                     $scope.player = null;
                     $scope.enemy = null;
-                    $.playSound ('sounds/miss');
                 };
 
                 $scope.clear = function () {
                     init();
                 };
+
+                $scope.$watch('soundPlay', function() {
+                    var audio = new Audio($scope.sound);
+                    // console.log(audio)
+                    audio.play();
+                });
+
 
                 init();
             }
