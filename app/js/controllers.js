@@ -5,7 +5,6 @@
 angular.module('myApp.controllers', [])
     .controller('SoundboardCtrl', ['$scope', function ($scope) {
 
-
     }])
 
     .controller('CharacterCreationController', ['$scope', function ($scope) {
@@ -23,7 +22,7 @@ angular.module('myApp.controllers', [])
         $scope.selectRole = function (role) {
             roleService.role = role;
 
-            if (role != "Game Master"){
+            if (role != "Game Master") {
                 window.location = '#/battleatronic';
             }
         };
@@ -33,56 +32,56 @@ angular.module('myApp.controllers', [])
     .controller('GameCtrl', ['$scope', 'Restangular', 'encounterService',
         function ($scope, Restangular, encounterService) {
 
-        Restangular.all('games').getList().then(function (games) {
-            $scope.games = games;
-        });
+            Restangular.all('games').getList().then(function (games) {
+                $scope.games = games;
+            });
 
-        $scope.selectGame = function (game) {
-            $scope.game = game;
+            $scope.selectGame = function (game) {
+                $scope.game = game;
 
-            var players = [];
-            for (var player in game.players) {
-                players.push(game.players[player].character);
-            }
+                var players = [];
+                for (var player in game.players) {
+                    players.push(game.players[player].character);
+                }
 
-            encounterService.players = players;
-            $scope.chapter = {};
-        };
+                encounterService.players = players;
+                $scope.chapter = {};
+            };
 
-        $scope.selectChapter = function (chapter) {
-            $scope.chapter = chapter;
-            $scope.scenario = {};
-        };
+            $scope.selectChapter = function (chapter) {
+                $scope.chapter = chapter;
+                $scope.scenario = {};
+            };
 
-        $scope.selectScenario = function (scenario) {
-            encounterService.game.scenario = scenario;
-            window.location = '#/scenario';
-        };
-    }])
+            $scope.selectScenario = function (scenario) {
+                encounterService.game.scenario = scenario;
+                window.location = '#/scenario';
+            };
+        }])
 
     .controller('ScenarioCtrl', ['$scope', 'encounterService',
         function ($scope, encounterService) {
 
-        $scope.scenario = encounterService.game.scenario;
+            $scope.scenario = encounterService.game.scenario;
 
-        $scope.encounters = $scope.scenario.encounters;
-        $scope.items = encounterService.items;
-        $scope.characters = encounterService.characters;
+            $scope.encounters = $scope.scenario.encounters;
+            $scope.items = encounterService.items;
+            $scope.characters = encounterService.characters;
 
-        $scope.selectEncounter = function (encounter) {
-            $scope.encounter = encounter;
-            $scope.items = encounter.items;
-            $scope.characters = encounter.characters;
-        };
+            $scope.selectEncounter = function (encounter) {
+                $scope.encounter = encounter;
+                $scope.items = encounter.items;
+                $scope.characters = encounter.characters;
+            };
 
-        $scope.launchEncounter = function (encounter) {
-            encounterService.items = encounter.items;
-            encounterService.characters = encounter.characters;
-            encounterService.game.players = encounterService.players;
-            encounterService.game.enemies = encounterService.characters;
-            window.location = '#/battleatronic';
-        };
-    }])
+            $scope.launchEncounter = function (encounter) {
+                encounterService.items = encounter.items;
+                encounterService.characters = encounter.characters;
+                encounterService.game.players = encounterService.players;
+                encounterService.game.enemies = encounterService.characters;
+                window.location = '#/battleatronic';
+            };
+        }])
 
     .controller('BattleatronicCtrl', ['$scope', 'GameService', 'encounterService',
         function ($scope, GameService, encounterService) {
@@ -103,13 +102,9 @@ angular.module('myApp.controllers', [])
                 if (damage > 0) {
                     $.playSound('sounds/attack');
                 }
-                else if (damage == 0) {
-                    $.playSound ('sounds/miss');
-                }
                 else {
-                    $.playSound ('sounds/heal');
+                    $.playSound('sounds/heal');
                 }
-
 
                 character.health -= damage;
 
@@ -137,14 +132,14 @@ angular.module('myApp.controllers', [])
 //        $scope.game = GameService;
 //        $scope.$add({game: null});
 
-          // This code works.
+            // This code works.
 //        $scope.user = "Guest " + Math.round(Math.random() * 101);
 
 //        $scope.addMessage = function () {
 //            $scope.messages.$add({from: $scope.user, content: $scope.message});
 //            $scope.message = "";
 //        };
-    }])
+        }])
 
     .controller('VideosController', function ($scope, $http, $log, VideosService) {
 
@@ -157,6 +152,10 @@ angular.module('myApp.controllers', [])
         }
 
         init();
+
+        $scope.runPlaySound = function (soundPath) {
+            $.playSound(soundPath);
+        };
 
         $scope.launch = function (id, title) {
             VideosService.launchPlayer(id, title);
