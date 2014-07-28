@@ -91,6 +91,7 @@ angular.module('myApp.controllers', [])
     .controller('BattleatronicCtrl', ['$scope', 'GameService', 'encounterService',
         function ($scope, GameService, encounterService) {
 
+            $scope.soundPlay = false
             $scope.game = encounterService.game;
             GameService.$bind($scope, "game");
 
@@ -104,12 +105,15 @@ angular.module('myApp.controllers', [])
 
             $scope.dealDamage = function (damage, character) {
 
-                if (damage > 0) {
-                    $scope.sound = 'sounds/attack.ogg';
-                }
-                if (damage < 0) {
-                    $scope.sound = 'sounds/heal.ogg';
-                }
+                // if (damage > 0) {
+                //     $scope.soundPlay = !$scope.soundPlay;
+                //     $scope.sound = 'sounds/attack.ogg';
+                // }
+                // if (damage < 0) {
+                //     $scope.soundPlay = !$scope.soundPlay;
+                //     $scope.sound = 'sounds/heal.ogg';
+                // }
+                // console.log($scope.soundPlay);
                 character.health -= damage;
 
                 if (character.health < 0) { // Negative health disallowed.
@@ -130,12 +134,9 @@ angular.module('myApp.controllers', [])
                 else {
                     $scope.game.selections.activeTarget = character;
                 }
-            };
+            }
 
-            $scope.$watch('sound', function(soundPath) {
-                var audio = new Audio(soundPath);
-                audio.play();
-            });
+
 
 //        $scope.user = "Guest " + Math.round(Math.random() * 101);
 //        $scope.game = GameService;
