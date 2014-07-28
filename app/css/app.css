@@ -236,7 +236,7 @@ tr > td {
 }
 .btn3d:active.btn-danger {
     box-shadow: none;
-
+}
 .health-bar-text {
     color:black;
     white-space:nowrap;
