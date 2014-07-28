@@ -11,7 +11,12 @@ angular.module('myApp', [
     'firebase',
     'ui.bootstrap',
     'LocalStorageModule',
-    'restangular'
+    'restangular',
+    'ngDragDrop'
+
+
+
+
 ])
     .config(['$routeProvider', 'RestangularProvider', function ($routeProvider, RestangularProvider) {
         $routeProvider.when('/battleatronic', {templateUrl: 'partials/battleatronic.html', controller: 'BattleatronicCtrl'});

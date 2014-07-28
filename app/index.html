@@ -23,34 +23,36 @@
     <script src="js/jquery.playSound.js"></script>
 </head>
 <body class="background">
+<div ng-controller='RouteCtrl'>
 
-<ul class="menu text-center VT323Font" style="background-color: white;" ng-controller="RoleCtrl">
+    <ul class="menu text-center VT323Font" style="background-color: white;" ng-controller="RoleCtrl">
 
-    <li><a href="#/battleatronic">Battleatronic</a></li>
-    <li><a href="#/soundboard">Soundboard</a></li>
-    <li ng-show="Role.role == 'Game Master'"><a href="#/load-game">Load Game</a></li>
-    <li ng-show="Role.role == 'Game Master'"><a href="#/scenario">Scenario</a></li>
-    <li>
-        <span class="dropdown" on-toggle="toggled(open)">
-            <a href class="dropdown-toggle">Select Role</a>
-            <ul class="dropdown-menu">
-                <li ng-repeat="role in roles">
-                    <a ng-click="selectRole(role)" href>{{ role }}</a>
-                </li>
-            </ul>
-        </span>
-    </li>
-    <li>Current Role: {{ Role.role }}</li>
-</ul>
+        <li><a ng-click="setSoundboard(false)" href="#/battleatronic">Battleatronic</a></li>
+        <li><a href="javascript:void(0)" ng-click="setSoundboard(true)">Soundboard</a></li>
+        <li ng-show="Role.role == 'Game Master'"><a href="#/load-game">Load Game</li>
+        <li ng-show="Role.role == 'Game Master'"><a href="#/scenario">Scenario</a></li>
+        <li>
+            <span class="dropdown" on-toggle="toggled(open)">
+                <a href class="dropdown-toggle">Select Role</a>
+                <ul class="dropdown-menu">
+                    <li ng-repeat="role in roles">
+                        <a ng-click="selectRole(role)" href>{{ role }}</a>
+                    </li>
+                </ul>
+            </span>
+        </li>
+        <li>Current Role: {{ Role.role }}</li>
+    </ul>
 
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div class="VT323Font" ng-view></div>
+    <div ng-include="'partials/soundboard.html'" ng-class="{'hide-element': !soundBoardVisible, 'show-element': soundBoardVisible}"></div>
+    <div class="VT323Font" ng-class="{'hide-element': soundBoardVisible, 'show-element': !soundBoardVisible}" ng-view></div>
 
-
+</div>
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
@@ -71,6 +73,7 @@
 <script src="//cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
 <script src="bower_components/lodash/dist/lodash.min.js"></script>
 <script src="bower_components/restangular/dist/restangular.min.js"></script>
+<script src="js/draganddrop.js"></script>
 
 </body>
 </html>
