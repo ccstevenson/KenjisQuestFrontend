@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', [])
+angular.module('myApp.controllers', ['ngDragDrop'])
 
     .controller('RouteCtrl', ['$scope', function ($scope) {
         $scope.setSoundboard = function (boardVisible) {
@@ -49,9 +49,9 @@ angular.module('myApp.controllers', [])
                     players.push(game.players[player].character);
                 }
 
-                encounterService.players = players;
-                $scope.chapter = {};
-            };
+            encounterService.game.players = players;
+            $scope.chapter = {};
+        };
 
             $scope.selectChapter = function (chapter) {
                 $scope.chapter = chapter;
@@ -73,20 +73,28 @@ angular.module('myApp.controllers', [])
             $scope.items = encounterService.items;
             $scope.characters = encounterService.characters;
 
-            $scope.selectEncounter = function (encounter) {
-                $scope.encounter = encounter;
-                $scope.items = encounter.items;
-                $scope.characters = encounter.characters;
-            };
 
-            $scope.launchEncounter = function (encounter) {
-                encounterService.items = encounter.items;
-                encounterService.characters = encounter.characters;
-                encounterService.game.players = encounterService.players;
-                encounterService.game.enemies = encounterService.characters;
-                window.location = '#/battleatronic';
-            };
-        }])
+        $scope.dropSuccessHandler = function($event,index,array){
+			array.splice(index,1);
+		};
+		$scope.onDrop = function($event,$data,array){
+			array.push($data);
+		};
+
+        $scope.selectEncounter = function (encounter) {
+            $scope.encounter = encounter;
+            $scope.items = encounter.items;
+            $scope.characters = encounter.characters;
+            $scope.players = encounterService.game.players;
+        };
+
+        $scope.launchEncounter = function (encounter) {
+            encounterService.items = encounter.items;
+            encounterService.characters = encounter.characters;
+            encounterService.game.enemies = encounterService.characters;
+            window.location = '#/battleatronic';
+        };
+    }])
 
     .controller('BattleatronicCtrl', ['$scope', 'GameService', 'encounterService',
         function ($scope, GameService, encounterService) {

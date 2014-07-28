@@ -1,26 +1,59 @@
 <div ng-click="cancel()" class="modal-background">
 </div>
 
-<div class = "calc-foreground">
+
+<div class="calc-foreground">
+
     <li class="bulletlessList"
         ng-class="{'selectedActor': selections.activeActor.id == character.id}">
         <div class="characterDetails text-center">
-            <div>
-                <p><img src="{{ character.sprite }}"></p>
+
+            <div class="col-xs-5">
+                <img src="{{ character.sprite }}" class="sprite-border">
+
                 <p>{{ character.name }}</p>
-                <p>{{ character.race.name }}</p>
-                <p>{{ character.nationality.name }}</p>
-                <p>{{ character.character_class.name }}</p>
-                <p>{{ character.weapon.name }}</p>
-                <label>Skills:</label>
-                <p ng-repeat="skill in character.skills">
-                    {{ skill.name }}
-                </p>
-                <label>Inventory:</label>
-                <p ng-repeat="item in character.inventory">
-                    {{ item.name }}
-                </p>
+
+
+                <p><label>Race:</label> {{character.race.name}}</p>
+
+                <label>HP:</label>
+
+                <span style="color:black; white-space:nowrap;">{{character.health}} / {{character.maxHealth}}</span>
+
+                <p><label>Nationality:</label> {{ character.nationality.name }}</p>
+
+                <p><label>Class:</label> {{ character.character_class.name }}</p>
+
+
+
             </div>
-        </div>
-    </li>
+
+
+            <div class="col-xs-1"></div>
+            <div class="col-xs-1"></div>
+
+            <div class="col-xs-5">
+
+                <div class="vertical">
+                    <label>Skills:</label>
+
+                    <p ng-repeat="skill in character.skills">
+                        {{ skill.name }}
+                    </p>
+                    <label>Inventory:</label>
+
+                    <p ng-repeat="item in character.inventory">
+                        {{ item.name }}
+                    </p>
+                    <label>Weapons:</label>
+
+                    <p>{{character.weapon.name}}</p>
+
+
+
+                </div>
+            </div>
+         </li>
+    </div>
 </div>
+

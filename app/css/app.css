@@ -1,4 +1,15 @@
-/* app css stylesheet */
+/***********
+Mobile Styles
+***********/
+.body {
+    font-size: 100%;
+    width: 100%;
+}
+
+.img {
+    max-width: 100%;
+    height: auto;
+}
 
 .hide-element  {
     display: none;
@@ -14,8 +25,71 @@
     padding: 0 0 0.5em;
 }
 
-.menu:before {
-    content: "[";
+.avatar-size-sm {
+    height: 5em;
+    width: 5em;
+    background: no-repeat center center;
+    background-size: 100% 100%;
+}
+
+.health-bar {
+    width: 95%;
+}
+
+.character-info {
+    text-wrap: none;
+    width: 95%;
+    margin: -.75em 0 .75em 0;
+}
+
+/***********
+Tablet Styles
+***********/
+@media (min-width: 768px) {
+    .avatar-size-sm {
+        height: 6em;
+        width: 6em;
+        background: no-repeat center center;
+        background-size: 100% 100%;
+    }
+
+    .health-bar {
+        width: 95%;
+    }
+
+    .character-info {
+        text-wrap: none;
+        width: 95%;
+        margin: -.75em 0 .75em 0;
+    }
+}
+
+/**********
+Full-view Styles
+***********/
+@media (min-width: 1024px) {
+    .container {
+        width: 95%;
+        max-width: 1680px;
+        margin: auto;
+    }
+
+    .avatar-size-sm {
+        height: 7.25em;
+        width: 7.25em;
+        background: no-repeat center center;
+        background-size: 100% 100%;
+    }
+
+    .health-bar {
+        width: 95%;
+    }
+
+    .character-info {
+        text-wrap: none;
+        width: 95%;
+        margin: -.75em 0 .75em 0;
+    }
 }
 
 .menu:after {
@@ -38,12 +112,6 @@
 
 tr > td {
     padding-bottom: 5px;
-}
-
-.container {
-    width: 95%;
-    max-width: 1680px;
-    margin: auto;
 }
 
 .selectedActor {
@@ -102,12 +170,12 @@ tr > td {
 .background {
     background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0, url(../img/cave.jpg) no-repeat center center;
     background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.7)), color-stop(100%, rgba(255, 255, 255, 0.7))), url(../img/cave.jpg)no-repeat center center;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.7)), color-stop(100%, rgba(255, 255, 255, 0.7))), url(../img/cave.jpg) no-repeat center center;
     background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat center center;
     background: -o-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat center center;
     background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat center center;
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat center center;
-    background-attachment:fixed;
+    background-attachment: fixed;
     background-size: 100% 100%;
 }
 
@@ -115,9 +183,8 @@ tr > td {
     background-color: white;
     box-shadow: 10px 10px 5px #888888;
     border-radius: 25px;
-    border:2px solid;
+    border: 2px solid;
 }
-
 
 .adjust-left {
     margin-right: 1.5em;
@@ -142,7 +209,7 @@ tr > td {
     width: 100%;
     height: 100%;
     z-index: 5;
-    background-color: rgba(0,0,0,.8);
+    background-color: rgba(0, 0, 0, .8);
 }
 
 .calc-foreground {
@@ -154,8 +221,8 @@ tr > td {
     position: fixed;
     top: 50%;
     left: 50%;
-    margin-left: -200px;
-    margin-top: -225px;
+    margin-left: -267px;
+    margin-top: -254px;
     z-index: 6;
     padding: 20px;
 }
@@ -170,19 +237,17 @@ tr > td {
     border-radius: 0.5em;
 }
 
+.sprite-border{
+    border: 0.5em ridge #c0c0c0;
+    border-radius: 0.5em;
+
+}
 .border-left {
     border-left: 0.5em ridge #c0c0c0;
 }
 
 .border-top {
     border-top: 0.5em ridge #c0c0c0;
-}
-
-.avatar-size-sm {
-    height: 150px;
-    width: 150px;
-    background: no-repeat center center;
-    background-size: 100% 100%;
 }
 
 .btn3d {
@@ -194,61 +259,82 @@ tr > td {
     margin-top: 8px;
     top: 0;
 }
+
 .btn3d:focus {
     outline: medium none;
     -moz-outline-style: none;
 }
+
 .btn3d:active {
     top: 9px;
 }
+
 .btn3d.btn-default {
     box-shadow: 0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #adadad, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
 }
+
 .btn3d.btn-primary {
     box-shadow: 0 0 0 1px #428bca inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #357ebd, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
 }
+
 .btn3d.btn-success {
     box-shadow: 0 0 0 1px #5cb85c inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #4cae4c, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
 }
+
 .btn3d.btn-info {
     box-shadow: 0 0 0 1px #5bc0de inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #46b8da, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
 }
+
 .btn3d.btn-warning {
     box-shadow: 0 0 0 1px #f0ad4e inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #eea236, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
 }
+
 .btn3d.btn-danger {
     box-shadow: 0 0 0 1px #c63702 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #c24032, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
 }
+
 .btn3d:active.btn-default {
     box-shadow: none;
 }
+
 .btn3d:active.btn-primary {
     box-shadow: none;
 }
+
 .btn3d:active.btn-success {
     box-shadow: none;
 }
+
 .btn3d:active.btn-info {
     box-shadow: none;
 }
+
 .btn3d:active.btn-warning {
     box-shadow: none;
 }
+
 .btn3d:active.btn-danger {
     box-shadow: none;
 }
+
 .health-bar-text {
-    color:black;
-    white-space:nowrap;
+    color: black;
+    white-space: nowrap;
 }
 
 .char-info-icon {
-    opacity: 0.4;
+    opacity: 0.6;
     color: blue;
     border: black 3px solid;
     border-radius: 20px;
 }
 
-.char-info-icon:hover {
+.character-info:hover .char-info-icon {
     opacity: 1;
 }
+
+.vertical{
+    border-left: black thick solid;
+    height:auto;
+}
+
