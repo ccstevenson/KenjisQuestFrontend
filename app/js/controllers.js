@@ -159,12 +159,13 @@ angular.module('myApp.controllers', [])
         init();
 
         $scope.runPlaySound = function (soundPath) {
-            $.playSound(soundPath);
+            // $.playSound(soundPath);
+            var audio = new Audio(soundPath);
+            audio.play();
         };
 
         $scope.launch = function (id, title) {
-            VideosService.launchPlayer(id, title);
-            // VideosService.archiveVideo(id, title);
+   audio.play();         // VideosService.archiveVideo(id, title);
             // VideosService.deleteVideo('upcoming', id);
             $scope.upcoming = VideosService.getUpcoming();
             // $scope.history = VideosService.getHistory();
