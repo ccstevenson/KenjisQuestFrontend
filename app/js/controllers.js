@@ -3,8 +3,11 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-    .controller('SoundboardCtrl', ['$scope', function ($scope) {
-
+    .controller('RouteCtrl', ['$scope', function ($scope) {
+        $scope.setSoundboard = function (boardVisible) {
+            $scope.soundBoardVisible = boardVisible;
+            console.log(boardVisible);
+        };
 
     }])
 

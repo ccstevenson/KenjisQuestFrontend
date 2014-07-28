@@ -194,3 +194,11 @@ tr > td {
 .char-info-icon:hover {
     opacity: 1;
 }
+
+.hide-element  {
+    display: none;
+}
+
+.show-element  {
+    display: inline;
+}
