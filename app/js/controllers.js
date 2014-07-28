@@ -165,7 +165,8 @@ angular.module('myApp.controllers', [])
         };
 
         $scope.launch = function (id, title) {
-   audio.play();         // VideosService.archiveVideo(id, title);
+            VideosService.launchPlayer(id, title);
+            // VideosService.archiveVideo(id, title);
             // VideosService.deleteVideo('upcoming', id);
             $scope.upcoming = VideosService.getUpcoming();
             // $scope.history = VideosService.getHistory();
