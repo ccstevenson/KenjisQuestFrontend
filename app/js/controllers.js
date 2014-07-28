@@ -105,12 +105,13 @@ angular.module('myApp.controllers', [])
             $scope.dealDamage = function (damage, character) {
 
                 if (damage > 0) {
-                    $.playSound('sounds/attack');
+                    var audio = new Audio('sounds/attack.ogg');
+                    audio.play();
                 }
-                else {
-                    $.playSound('sounds/heal');
+                if (damage < 0) {
+                    var audio = new Audio('sounds/heal.ogg');
+                    audio.play();
                 }
-
                 character.health -= damage;
 
                 if (character.health < 0) { // Negative health disallowed.
