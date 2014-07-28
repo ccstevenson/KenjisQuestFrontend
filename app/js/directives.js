@@ -122,7 +122,6 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     $scope.target = null;
                     $scope.player = null;
                     $scope.enemy = null;
-                    $scope.sound = 'sounds/heal.ogg';
                 };
 
                 $scope.clear = function () {
