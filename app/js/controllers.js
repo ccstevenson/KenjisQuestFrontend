@@ -37,6 +37,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
     .controller('GameCtrl', ['$scope', 'Restangular', 'encounterService',
         function ($scope, Restangular, encounterService) {
 
+
             Restangular.all('games').getList().then(function (games) {
                 $scope.games = games;
             });
@@ -102,7 +103,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.soundPlay = false;
             $scope.game = encounterService.game;
             GameService.$bind($scope, "game");
-            $scope.asdf = { show: true };
+
 
             $scope.selectedPlayer = function (player) {
                 $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
