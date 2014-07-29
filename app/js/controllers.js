@@ -99,9 +99,10 @@ angular.module('myApp.controllers', ['ngDragDrop'])
     .controller('BattleatronicCtrl', ['$scope', 'GameService', 'encounterService',
         function ($scope, GameService, encounterService) {
 
-            $scope.soundPlay = false
+            $scope.soundPlay = false;
             $scope.game = encounterService.game;
             GameService.$bind($scope, "game");
+            $scope.asdf = { show: true };
 
             $scope.selectedPlayer = function (player) {
                 $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
@@ -167,7 +168,13 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 audio.play();
             });
 
-
+            $scope.beastMasterActivated = function(){
+                for (var i = 0; i < $scope.game.characters; i++){
+                    var character = $scope.game.characters[i];
+                    console.log(character)
+                }
+                return true;
+            }
 
 //        $scope.user = "Guest " + Math.round(Math.random() * 101);
 //        $scope.game = GameService;

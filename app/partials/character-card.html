@@ -22,6 +22,7 @@
         <progressbar class = "health-bar"
                      max="character.maxHealth"
                      value="character.health"
+                     ng-show="showHealth"
                      type="{{ healthBarType() }}">
             <span class="health-bar-text">{{character.health}} / {{character.maxHealth}}</span>
         </progressbar>
