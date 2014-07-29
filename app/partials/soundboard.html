@@ -1,29 +1,65 @@
-<div class="container">
-    <div data-ng-app="JukeTubeApp">
-        <div data-ng-controller="VideosController">
+<div data-ng-app="JukeTubeApp">
+    <div data-ng-controller="VideosController">
+
+          <div class="col-md-2 pull-left sm-margin VT323Font">
+            <h2 class="pull-right">Sound Effects</h2>
+
+            <div class="border-top col-md-12">
+                <button class="btn-warning btn-md col-md-6 sm-margin smallText pull-right"
+                        ng-click="runPlaySound('sounds/attack.ogg')">
+                    Attack
+                </button>
+                <button class="btn-warning btn-md col-md-6 sm-margin smallText pull-right"
+                        ng-click="runPlaySound('sounds/attack.mp3')">
+                    Attack.mp3
+                </button>
+                <button class="btn-warning btn-md col-md-6 sm-margin smallText pull-right"
+                        ng-click="runPlaySound('sounds/attack.wav')">
+                    Attack.wav
+                </button>
+                <button class="btn-warning btn-md col-md-6 sm-margin smallText pull-right"
+                        ng-click="runPlaySound('sounds/heal.ogg')">
+                    Heal
+                </button>
+                <button class="btn-warning btn-md col-md-6 sm-margin smallText pull-right"
+                        ng-click="runPlaySound('sounds/potion.ogg')">
+                    Potion
+                </button>
+                <button class="btn-warning btn-md col-md-6 sm-margin smallText pull-right"
+                        ng-click="runPlaySound('sounds/spell2.ogg')">
+                    Spell
+                </button>
+                <!-- <button class="btn-warning btn-md" ng-click="runPlaySound('sounds/victory')">
+                        Victory
+                     </button> -->
+            </div>
+              </div>
+
+        <div class="container VT323Font">
             <div class="pull-right col-md-3 border-left">
                 <header>
-                    <form id="search" class="col-md-12" data-ng-submit="search()">
-                        <input id="query" name="q" type="text" placeholder="Search for a YouTube video"
+                    <form id="search" class="col-md-12 sm-padding" data-ng-submit="search()">
+                        <input id="query" name="q" type="text" placeholder="Search YouTube"
                                data-ng-model="query">
                         <input id="submit" type="image" src="search.png" alt="Search">
                     </form>
                     <!--<nav>-->
-                        <!--<a id="play">{{ youtube.state }}</a>-->
-                        <!--<a id="pause">Pause</a>-->
+                    <!--<a id="play">{{ youtube.state }}</a>-->
+                    <!--<a id="pause">Pause</a>-->
                     <!--</nav>-->
                 </header>
 
                 <div id="results">
 
-                    <div class="video" data-ng-repeat="video in results" data-ng-click="queue(video.id, video.title)">
-                        <img class="video-image" data-ng-src="{{ video.thumbnail }}">
+                    <div class="video col-xs-12" data-ng-repeat="video in results"
+                         data-ng-click="queue(video.id, video.title)">
+                        <img class="video-image border-main" data-ng-src="{{ video.thumbnail }}">
 
-                        <p class="video-title btn-default border-main">{{ video.title }}</p>
+                        <h3 class="video-title btn-link">{{ video.title }}</h3>
 
-                        <p class="video-author">{{ video.author }}</p>
+                        <h3 class="video-author">{{ video.author }}</h3>
 
-                        <p class="video-description">{{ video.description }}</p>
+                        <h4 class="video-description">{{ video.description }}</h4>
                     </div>
 
                 </div>
@@ -34,40 +70,44 @@
             </div>
 
             <div class="col-md-9" id="playlist">
-                <button class="col-md-12" id="current">{{ youtube.videoTitle }}</button>
-                <ul class="list-unstyled border-top" id="upcoming" data-ng-show="playlist">
-                    <li class="col-md-6" data-ng-repeat="video in upcoming">
-                        <button class="item-delete btn-danger border-main col-md-6" data-ng-click="delete('upcoming', video.id)">remove</button>
+                <h3 class="col-md-12 sm-margin border-bottom" id="current">{{ youtube.videoTitle }}</h3>
+                <ul style="margin-top: 25px; padding-top: 25px" class="list-unstyled" id="upcoming"
+                    data-ng-show="playlist">
+                    <li class="col-md-6 row sm-margin" data-ng-repeat="video in upcoming">
 
-                        <button class="item-title col-md-6 btn-default border-main" data-ng-click="launch(video.id, video.title)">{{video.title}}</button>
+                        <button style="padding: 5px" class="col-md-2 btn-danger btn-md glyphicon glyphicon-trash"
+                                data-ng-click="delete('upcoming', video.id)"></button>
+
+                        <button style="padding: 5px" class="col-md-2 btn-success btn-md glyphicon glyphicon-play"
+                                data-ng-click="launch(video.id, video.title)"></button>
+                        <h4 class="col-md-8 video-img">{{video.title}}</h4>
                     </li>
                 </ul>
                 <!--<ol id="history" data-ng-hide="playlist">-->
-                    <!--<li data-ng-repeat="video in history">-->
-                        <!--<p class="item-delete" data-ng-click="delete('history', video.id)">delete</p>-->
+                <!--<li data-ng-repeat="video in history">-->
+                <!--<p class="item-delete" data-ng-click="delete('history', video.id)">delete</p>-->
 
-                        <!--<p class="item-title" data-ng-click="queue(video.id, video.title)">{{video.title}}</p>-->
-                    <!--</li>-->
+                <!--<p class="item-title" data-ng-click="queue(video.id, video.title)">{{video.title}}</p>-->
+                <!--</li>-->
                 <!--</ol>-->
                 <!--<p id="tabs">-->
-                    <!--<a ng-class="{on:playlist}" data-ng-click="tabulate(true)">Upcoming</a>-->
-                    <!--<a ng-class="{on:!playlist}" data-ng-click="tabulate(false)">History</a>-->
+                <!--<a ng-class="{on:playlist}" data-ng-click="tabulate(true)">Upcoming</a>-->
+                <!--<a ng-class="{on:!playlist}" data-ng-click="tabulate(false)">History</a>-->
                 <!--</p>-->
+
+
+                <!--     <footer>
+                      <em>Concept &amp; Design: <a href="http://jgthms.com">J. Thomas</a></em>
+                      Built with <a href="http://angularjs.org/">AngularJS</a>. Source code available on <a href="https://github.com/jgthms/juketube">GitHub</a>.
+                    </footer> -->
+
             </div>
+        </div>
 
-            <!--     <footer>
-                  <em>Concept &amp; Design: <a href="http://jgthms.com">J. Thomas</a></em>
-                  Built with <a href="http://angularjs.org/">AngularJS</a>. Source code available on <a href="https://github.com/jgthms/juketube">GitHub</a>.
-                </footer> -->
-            <input ng-click="runPlaySound('sounds/attack.ogg')" type="button" value="Attack!" />
-            <input ng-click="runPlaySound('sounds/attack.mp3')" type="button" value="Attack mp3" />
 
-            <input ng-click="runPlaySound('sounds/attack.wav')" type="button" value="Attack wav" />
 
-            <input ng-click="runPlaySound('sounds/heal.ogg')" type="button" value="Heal!" />
-            <input ng-click="runPlaySound('sounds/potion.ogg')" type="button" value="Potion" />
-            <input ng-click="runPlaySound('sounds/spell2.ogg')" type="button" value="Spell!" />
-            <!-- <input ng-click="runPlaySound('sounds/victory')" type="button" value="Victory!" /> -->
         </div>
     </div>
 </div>
+
+

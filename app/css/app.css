@@ -11,6 +11,11 @@ Mobile Styles
     height: auto;
 }
 
+.video-img {
+    max-width: 100%;
+    height: auto;
+}
+
 .hide-element  {
     display: none;
 }
@@ -90,6 +95,10 @@ Full-view Styles
         width: 95%;
         margin: -.75em 0 .75em 0;
     }
+}
+
+.menu:before {
+    content: '[';
 }
 
 .menu:after {
@@ -250,6 +259,10 @@ tr > td {
     border-top: 0.5em ridge #c0c0c0;
 }
 
+.border-bottom {
+    border-bottom: 0.5em ridge #c0c0c0;
+}
+
 .btn3d {
     transition: all .08s linear;
     position: relative;
@@ -338,3 +351,15 @@ tr > td {
     height:auto;
 }
 
+.sm-margin {
+    margin: .25em;
+}
+
+.sm-padding {
+    padding: 5px;
+}
+
+/*#placeholder {*/
+    /*max-width: 100%;*/
+    /*height: auto;*/
+/*}*/

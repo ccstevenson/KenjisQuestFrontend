@@ -1,0 +1,25 @@
+/**********
+Bootstrap Overrides
+**********/
+
+.btn-default {
+    border-radius: 10px;
+    border: 8px ridge #c0c0c0;
+}
+.btn-primary {
+    border-radius: 10px;
+    border: 8px ridge blue;
+}
+.btn-warning {
+    border-radius: 10px;
+    border: 8px ridge gold;
+}
+.btn-success {
+    border-radius: 10px;
+    border: 8px ridge #008000;
+}
+
+.btn-danger {
+    border-radius: 10px;
+    border: 8px ridge red;
+}
