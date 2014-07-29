@@ -23,7 +23,7 @@
                      max="character.maxHealth"
                      value="character.health"
                      type="{{ healthBarType() }}">
-            <!--<span style="color:black; white-space:nowrap;">{{character.health}} / {{character.maxHealth}}</span>-->
+            <span class="health-bar-text">{{character.health}} / {{character.maxHealth}}</span>
         </progressbar>
         <div class="btn-default character-info border-main" ng-click="setCharacterDetail($event,character)">
             <span>{{character.name}}

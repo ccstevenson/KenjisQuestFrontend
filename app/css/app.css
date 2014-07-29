@@ -333,6 +333,7 @@ tr > td {
 .health-bar-text {
     color: black;
     white-space: nowrap;
+    font-size: 1.5em;
 }
 
 .char-info-icon {
