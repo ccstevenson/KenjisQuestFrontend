@@ -12,7 +12,25 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
     }])
 
-    .controller('CharacterCreationController', ['$scope', function ($scope) {
+    .controller('CharGenCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
+        $scope.characterClasses = [
+            { printed_name: 'Wizard', stored_name: 'wizard' },
+            { printed_name: 'Rogue', stored_name: 'rogue' },
+            { printed_name: 'Warrior', stored_name: 'warrior' },
+            { printed_name: 'Ranger', stored_name: 'ranger' }];
+
+        $scope.races = [
+            { printed_name: 'Goblin', stored_name: 'goblin' },
+            { printed_name: 'Human', stored_name: 'human' },
+            { printed_name: 'Elf', stored_name: 'elf' },
+            { printed_name: 'Dwarf', stored_name: 'dwarf' }];
+
+
+        // $scope.nationalities = [
+        //     { printed_name: 'Bake', stored_name: 'bake' },
+        //     { printed_name: 'Microwave', stored_name: 'microwave' },
+        //     { printed_name: 'Fry', stored_name: 'fry' },
+        //     { printed_name: 'Dutch Oven', stored_name: 'dutch_oven' }];
 
         $scope.addCharacter = function () {
             $scope.characters.$add({from: $scope.user, content: $scope.character});
@@ -157,8 +175,22 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 else {
                     $scope.game.selections.activeTarget = character;
                 }
-            }
+            };
 
+
+            $scope.deletePlayers = function () {
+                $scope.game.players = [];
+            };
+
+
+            $scope.addPlayer = function(player) {
+                if (typeof $scope.players != "undefined") {
+                    $scope.players = [player];
+                }
+                else  {
+                    $scope.players.push(player);
+                }
+            };
 
 
             $scope.$watch('game.soundPlay', function() {

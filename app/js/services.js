@@ -62,7 +62,7 @@ angular.module('myApp.services', [])
         if (!upcoming) {
             // $log.info(upcoming);
             localStorageService.add('upcoming', [
-                {id: '', title: '""'}
+                {id: '', title: ''}
                 // {id: 'kRJuY6ZDLPo', title: 'La Roux - In for the Kill (Twelves Remix)'},
                 // {id: '45YSGFctLws', title: 'Shout Out Louds - Illusions'},
                 // {id: 'ktoaj1IpTbw', title: 'CHVRCHES - Gun'},
