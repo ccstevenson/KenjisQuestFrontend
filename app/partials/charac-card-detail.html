@@ -1,8 +1,7 @@
 <div ng-click="cancel()" class="modal-background">
 </div>
 
-
-<div class="calc-foreground">
+<div class="char-card-foreground">
 
     <li class="bulletlessList"
         ng-class="{'selectedActor': selections.activeActor.id == character.id}">
@@ -14,16 +13,15 @@
                 <p>{{ character.name }}</p>
 
 
-                <p><label>Race:</label> {{character.race.name}}</p>
+                <p><label>Race:</label> {{ character.race.name }}</p>
 
                 <label>HP:</label>
 
-                <span style="color:black; white-space:nowrap;">{{character.health}} / {{character.maxHealth}}</span>
+                <span style="color:black; white-space:nowrap;">{{ character.health }} / {{ character.maxHealth }}</span>
 
                 <p><label>Nationality:</label> {{ character.nationality.name }}</p>
 
                 <p><label>Class:</label> {{ character.character_class.name }}</p>
-
 
 
             </div>
@@ -47,13 +45,11 @@
                     </p>
                     <label>Weapons:</label>
 
-                    <p>{{character.weapon.name}}</p>
-
+                    <p>{{ character.weapon.name }}</p>
 
 
                 </div>
             </div>
-         </li>
-    </div>
+        </div>
+    </li>
 </div>
-

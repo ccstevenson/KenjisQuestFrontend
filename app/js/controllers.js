@@ -2,6 +2,7 @@
 
 /* Controllers */
 
+
 angular.module('myApp.controllers', ['ngDragDrop'])
 
     .controller('RouteCtrl', ['$scope', function ($scope) {
@@ -9,9 +10,9 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.soundBoardVisible = boardVisible;
             console.log(boardVisible);
         };
-
     }])
 
+<<<<<<< HEAD
     .controller('CharGenCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
         $scope.characterClasses = [
             { printed_name: 'Wizard', stored_name: 'wizard' },
@@ -32,10 +33,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         //     { printed_name: 'Fry', stored_name: 'fry' },
         //     { printed_name: 'Dutch Oven', stored_name: 'dutch_oven' }];
 
-        $scope.addCharacter = function () {
-            $scope.characters.$add({from: $scope.user, content: $scope.character});
-            $scope.message = "";
-        };
     }])
 
     .controller('RoleCtrl', ['$scope', 'roleService', function ($scope, roleService) {
@@ -50,7 +47,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             }
         };
     }])
-
 
     .controller('GameCtrl', ['$scope', 'Restangular', 'encounterService',
         function ($scope, Restangular, encounterService) {
@@ -67,9 +63,9 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                     players.push(game.players[player].character);
                 }
 
-            encounterService.game.players = players;
-            $scope.chapter = {};
-        };
+                encounterService.game.players = players;
+                $scope.chapter = {};
+            };
 
             $scope.selectChapter = function (chapter) {
                 $scope.chapter = chapter;
@@ -91,35 +87,38 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.items = encounterService.items;
             $scope.characters = encounterService.characters;
 
+            $scope.dropSuccessHandler = function ($event, index, array) {
+                array.splice(index, 1);
+            };
+            $scope.onDrop = function ($event, $data, array) {
+                array.push($data);
+            };
 
-        $scope.dropSuccessHandler = function($event,index,array){
-			array.splice(index,1);
-		};
-		$scope.onDrop = function($event,$data,array){
-			array.push($data);
-		};
+            $scope.selectEncounter = function (encounter) {
+                $scope.encounter = encounter;
+                $scope.items = encounter.items;
+                $scope.characters = encounter.characters;
+                $scope.players = encounterService.game.players;
+            };
 
-        $scope.selectEncounter = function (encounter) {
-            $scope.encounter = encounter;
-            $scope.items = encounter.items;
-            $scope.characters = encounter.characters;
-            $scope.players = encounterService.game.players;
-        };
+            $scope.launchEncounter = function (encounter) {
+                encounterService.items = encounter.items;
+                encounterService.characters = encounter.characters;
+                encounterService.game.enemies = encounterService.characters;
+                window.location = '#/battleatronic';
+            };
+        }])
 
-        $scope.launchEncounter = function (encounter) {
-            encounterService.items = encounter.items;
-            encounterService.characters = encounter.characters;
-            encounterService.game.enemies = encounterService.characters;
-            window.location = '#/battleatronic';
-        };
-    }])
+    .controller('BattleatronicCtrl', ['$scope', 'encounterService', 'fireBase', 'roleService',
+        function ($scope, encounterService, fireBase, roleService) {
 
-    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'encounterService',
-        function ($scope, GameService, encounterService) {
+            if (roleService.role != 'Player') {
+                $scope.game = encounterService.game;
+            }
 
-            $scope.soundPlay = false
-            $scope.game = encounterService.game;
-            GameService.$bind($scope, "game");
+            fireBase.$bind($scope, "game");
+
+            $scope.soundPlay = false;
 
             $scope.selectedPlayer = function (player) {
                 $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
@@ -130,7 +129,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
 
             $scope.calculateDamage = function (damage, character, status) {
-                $scope.game.soundPlay = !$scope.game.soundPlay;
+                $scope.soundPlay = !$scope.soundPlay;
                 // $scope.game.sound = 'sounds/attack.ogg';
 
                 // if (damage > 0) {
@@ -144,39 +143,45 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
                 // console.log($scope.soundPlay);
 
-                if (status == 'attack' && character.health > 0)  {
+                if (status == 'attack' && character.health > 0) {
                     $scope.game.sound = 'sounds/attack.mp3';
                 }
-                else if (status == 'heal')  {
+
+                else if (status == 'heal') {
                     $scope.game.sound = 'sounds/heal.mp3';
                 }
-                else if (status == 'miss')  {
+                else if (status == 'miss') {
                     $scope.game.sound = 'sounds/miss.mp3';
                 }
 
-                if (character != null)  {
+                if (character != null) {
                     character.health -= damage;
-                    
+
                     if (character.health < 0) { // Negative health disallowed.
                         character.health = 0;
                     }
+                    else if (character.health > character.maxHealth) {
+                        character.health = character.maxHealth;
+                    }
                 }
+
+                encounterService.game.players = $scope.game.players;
+
                 // The attack was completed. Deselect the two characters involved in the attack.
                 $scope.game.selections.activeActor = null;
                 $scope.game.selections.activeTarget = null;
             };
 
-            $scope.makeSelection = function (character) {
+            $scope.makeSelection = function (player) {
                 if (!$scope.game.selections || !$scope.game.selections.activeActor) {
                     $scope.game.selections = {
-                        activeActor: character
+                        activeActor: player
                     };
                 }
                 else {
-                    $scope.game.selections.activeTarget = character;
+                    $scope.game.selections.activeTarget = player;
                 }
             };
-
 
             $scope.deletePlayers = function () {
                 $scope.game.players = [];
@@ -193,12 +198,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
 
 
-            $scope.$watch('game.soundPlay', function() {
+            $scope.$watch('game.soundPlay', function () {
                 var audio = new Audio($scope.game.sound);
                 // console.log(audio)
                 audio.play();
             });
-
 
 
 //        $scope.user = "Guest " + Math.round(Math.random() * 101);
@@ -212,7 +216,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 //            $scope.messages.$add({from: $scope.user, content: $scope.message});
 //            $scope.message = "";
 //        };
-        }])
+    }])
 
     .controller('VideosController', function ($scope, $http, $log, VideosService) {
 
