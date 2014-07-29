@@ -46,6 +46,7 @@ Mobile Styles
     width: 95%;
     margin: -.75em 0 .75em 0;
 }
+
 .calc-foreground {
     background-color: #e2e2e2;
     box-shadow: 10px 10px 5px #888888;
@@ -84,6 +85,7 @@ Tablet Styles
         width: 95%;
         margin: -.75em 0 .75em 0;
     }
+
 .calc-foreground {
     background-color: #e2e2e2;
     box-shadow: 10px 10px 5px #888888;
@@ -128,20 +130,21 @@ Full-view Styles
         width: 95%;
         margin: -.75em 0 .75em 0;
     }
-.calc-foreground {
-    background-color: #e2e2e2;
-    box-shadow: 10px 10px 5px #888888;
-    border-radius: 25px;
-    border: 2px solid;
-    background-size: contain;
-    position: relative;
-    margin: 4em auto 0 auto;
-    z-index: 6;
-    padding: 20px;
-    min-width: 20em;
-    max-width: 24em;
-    height: auto;
-}
+
+    .calc-foreground {
+        background-color: #e2e2e2;
+        box-shadow: 10px 10px 5px #888888;
+        border-radius: 25px;
+        border: 2px solid;
+        background-size: contain;
+        position: relative;
+        margin: 4em auto 0 auto;
+        z-index: 6;
+        padding: 20px;
+        min-width: 20em;
+        max-width: 24em;
+        height: auto;
+    }
 }
 /****** End Full-view ******/
 
@@ -216,6 +219,34 @@ Calculator
     box-shadow: none;
 }
 /***** End Calculator *****/
+
+
+/**********
+Character Card Detail
+***********/
+
+.char-card-foreground {
+    background-color: #e2e2e2;
+    box-shadow: 10px 10px 5px #888888;
+    border-radius: 25px;
+    border: 2px solid;
+    background-size: contain;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -267px;
+    margin-top: -254px;
+    z-index: 6;
+    padding: 20px;
+}
+
+.sprite-border {
+    border: 0.5em ridge #c0c0c0;
+    border-radius: 0.5em;
+}
+
+/***** End Calculator *****/
+
 
 .menu:before {
     content: '[';
@@ -351,12 +382,6 @@ tr > td {
 .border-main {
     border: 0.5em ridge #c0c0c0;
     border-radius: 0.5em;
-}
-
-.sprite-border {
-    border: 0.5em ridge #c0c0c0;
-    border-radius: 0.5em;
-
 }
 
 .border-left {
