@@ -245,7 +245,7 @@ Character Card Detail
     border-radius: 0.5em;
 }
 
-/***** End Calculator *****/
+/***** End Character Card Detail *****/
 
 
 .menu:before {
@@ -427,6 +427,7 @@ tr > td {
 .sm-padding {
     padding: 5px;
 }
+
 
 /*#placeholder {*/
 /*max-width: 100%;*/
