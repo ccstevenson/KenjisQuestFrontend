@@ -53,11 +53,11 @@ Mobile Styles
     border: 2px solid;
     background-size: contain;
     position: relative;
-    margin: 5em auto 0 auto;
     z-index: 6;
+    margin: auto;
     padding: 20px;
-    min-width: 20em;
-    max-width: 24em;
+    min-width: 13em;
+    max-width: 20em;
     height: auto;
 }
 
@@ -84,19 +84,20 @@ Tablet Styles
         width: 95%;
         margin: -.75em 0 .75em 0;
     }
-    /*.calc-foreground {*/
-    /*background-color: #e2e2e2;*/
-    /*box-shadow: 10px 10px 5px #888888;*/
-    /*border-radius: 25px;*/
-    /*border: 2px solid;*/
-    /*background-size: contain;*/
-    /*position: fixed;*/
-    /*top: 15%;*/
-    /*left: 30%;*/
-    /*margin: auto;*/
-    /*z-index: 6;*/
-    /*padding: 20px;*/
-/*}*/
+.calc-foreground {
+    background-color: #e2e2e2;
+    box-shadow: 10px 10px 5px #888888;
+    border-radius: 25px;
+    border: 2px solid;
+    background-size: contain;
+    position: relative;
+    margin: 4em auto 0 auto;
+    z-index: 6;
+    padding: 20px;
+    min-width: 20em;
+    max-width: 24em;
+    height: auto;
+}
 }
 
 /***** End Tablet *****/
@@ -127,19 +128,20 @@ Full-view Styles
         width: 95%;
         margin: -.75em 0 .75em 0;
     }
-        /*.calc-foreground {*/
-    /*background-color: #e2e2e2;*/
-    /*box-shadow: 10px 10px 5px #888888;*/
-    /*border-radius: 25px;*/
-    /*border: 2px solid;*/
-    /*background-size: contain;*/
-    /*position: fixed;*/
-    /*top: 20%;*/
-    /*left: 45%;*/
-    /*margin: auto;*/
-    /*z-index: 6;*/
-    /*padding: 20px;*/
-/*}*/
+.calc-foreground {
+    background-color: #e2e2e2;
+    box-shadow: 10px 10px 5px #888888;
+    border-radius: 25px;
+    border: 2px solid;
+    background-size: contain;
+    position: relative;
+    margin: 4em auto 0 auto;
+    z-index: 6;
+    padding: 20px;
+    min-width: 20em;
+    max-width: 24em;
+    height: auto;
+}
 }
 /****** End Full-view ******/
 
