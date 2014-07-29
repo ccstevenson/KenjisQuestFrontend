@@ -12,7 +12,9 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         };
     }])
 
-    .controller('CharGenCtrl', ['$scope', 'Restangular', 'encounterService', function ($scope, Restangular, encounterService) {
+    .controller('CharGenCtrl', ['$scope', 'Restangular', 'fireBase', function ($scope, Restangular, fireBase) {
+        fireBase.$bind($scope, "game");
+
         $scope.characterClasses = [
             { printed_name: 'Wizard', stored_name: 'wizard' },
             { printed_name: 'Rogue', stored_name: 'rogue' },
@@ -33,13 +35,13 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.player.health = $scope.player.maxHealth;
             $scope.player.sprite = "img/char1_small.png";
 
-            if (!(encounterService.game.players instanceof Array)) {
+            if (!($scope.game.players instanceof Array)) {
                 $scope.player.id = 1
-                encounterService.game.players = [$scope.player];
+                $scope.game.players = [$scope.player];
             }
             else  {
-                $scope.player.id = encounterService.game.players.length + 1;
-                encounterService.game.players.push($scope.player)
+                $scope.player.id = $scope.game.players.length + 1;
+                $scope.game.players.push($scope.player)
             }
         };
 
