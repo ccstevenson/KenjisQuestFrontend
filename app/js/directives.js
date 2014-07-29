@@ -122,6 +122,8 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     $scope.target = null;
                     $scope.player = null;
                     $scope.enemy = null;
+                    $.playSound ('sounds/miss');
+                    init();
                 };
 
                 $scope.clear = function () {

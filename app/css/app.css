@@ -16,11 +16,11 @@ Mobile Styles
     height: auto;
 }
 
-.hide-element  {
+.hide-element {
     display: none;
 }
 
-.show-element  {
+.show-element {
     display: inline;
 }
 
@@ -246,11 +246,12 @@ tr > td {
     border-radius: 0.5em;
 }
 
-.sprite-border{
+.sprite-border {
     border: 0.5em ridge #c0c0c0;
     border-radius: 0.5em;
 
 }
+
 .border-left {
     border-left: 0.5em ridge #c0c0c0;
 }
@@ -347,9 +348,9 @@ tr > td {
     opacity: 1;
 }
 
-.vertical{
+.vertical {
     border-left: black thick solid;
-    height:auto;
+    height: auto;
 }
 
 .sm-margin {
@@ -361,6 +362,6 @@ tr > td {
 }
 
 /*#placeholder {*/
-    /*max-width: 100%;*/
-    /*height: auto;*/
+/*max-width: 100%;*/
+/*height: auto;*/
 /*}*/
