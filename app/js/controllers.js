@@ -2,6 +2,7 @@
 
 /* Controllers */
 
+
 angular.module('myApp.controllers', ['ngDragDrop'])
 
     .controller('RouteCtrl', ['$scope', function ($scope) {
@@ -9,11 +10,9 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.soundBoardVisible = boardVisible;
             console.log(boardVisible);
         };
-
     }])
 
     .controller('CharacterCreationController', ['$scope', function ($scope) {
-
         $scope.addCharacter = function () {
             $scope.characters.$add({from: $scope.user, content: $scope.character});
             $scope.message = "";
@@ -32,7 +31,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             }
         };
     }])
-
 
     .controller('GameCtrl', ['$scope', 'Restangular', 'encounterService',
         function ($scope, Restangular, encounterService) {
@@ -73,7 +71,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.items = encounterService.items;
             $scope.characters = encounterService.characters;
 
-
             $scope.dropSuccessHandler = function ($event, index, array) {
                 array.splice(index, 1);
             };
@@ -96,12 +93,16 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
         }])
 
-    .controller('BattleatronicCtrl', ['$scope', 'GameService', 'encounterService',
-        function ($scope, GameService, encounterService) {
+    .controller('BattleatronicCtrl', ['$scope', 'encounterService', 'fireBase', 'roleService',
+        function ($scope, encounterService, fireBase, roleService) {
 
-            $scope.soundPlay = false
-            $scope.game = encounterService.game;
-            GameService.$bind($scope, "game");
+            if (roleService.role != 'Player') {
+                $scope.game = encounterService.game;
+            }
+
+            fireBase.$bind($scope, "game");
+
+            $scope.soundPlay = false;
 
             $scope.selectedPlayer = function (player) {
                 $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
@@ -112,7 +113,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
 
             $scope.calculateDamage = function (damage, character, status) {
-                $scope.game.soundPlay = !$scope.game.soundPlay;
+                $scope.soundPlay = !$scope.soundPlay;
                 // $scope.game.sound = 'sounds/attack.ogg';
 
                 // if (damage > 0) {
@@ -129,6 +130,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 if (status == 'attack' && character.health > 0) {
                     $scope.game.sound = 'sounds/attack.mp3';
                 }
+
                 else if (status == 'heal') {
                     $scope.game.sound = 'sounds/heal.mp3';
                 }
@@ -146,21 +148,24 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                         character.health = character.maxHealth;
                     }
                 }
+
+                encounterService.game.players = $scope.game.players;
+
                 // The attack was completed. Deselect the two characters involved in the attack.
                 $scope.game.selections.activeActor = null;
                 $scope.game.selections.activeTarget = null;
             };
 
-            $scope.makeSelection = function (character) {
+            $scope.makeSelection = function (player) {
                 if (!$scope.game.selections || !$scope.game.selections.activeActor) {
                     $scope.game.selections = {
-                        activeActor: character
+                        activeActor: player
                     };
                 }
                 else {
-                    $scope.game.selections.activeTarget = character;
+                    $scope.game.selections.activeTarget = player;
                 }
-            }
+            };
 
 
             $scope.$watch('game.soundPlay', function () {
@@ -181,7 +186,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 //            $scope.messages.$add({from: $scope.user, content: $scope.message});
 //            $scope.message = "";
 //        };
-        }])
+    }])
 
     .controller('VideosController', function ($scope, $http, $log, VideosService) {
 
