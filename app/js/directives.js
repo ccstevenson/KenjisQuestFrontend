@@ -82,7 +82,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     init();
                 };
 
-                $scope.attack.all = function () {
+                $scope.attackAll = function () {
                     $scope.status = 'attackAll';
                     $scope.callback({'damage': parseInt($scope.attackData.attackValue), 'character': $scope.game.enemies, 'status': $scope.status});
                     init();
