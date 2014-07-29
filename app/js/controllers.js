@@ -138,9 +138,12 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
                 if (character != null)  {
                     character.health -= damage;
-                    
+
                     if (character.health < 0) { // Negative health disallowed.
                         character.health = 0;
+                    }
+                    else if (character.health > character.maxHealth) {
+                        character.health = character.maxHealth;
                     }
                 }
                 // The attack was completed. Deselect the two characters involved in the attack.

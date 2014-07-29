@@ -58,8 +58,9 @@ angular.module('myApp.directives', ['ui.bootstrap'])
             scope: {
                 actor: '=actor',
                 target: '=target',
-                callback: '&callback'
+                callback: '&callback',
             },
+
             templateUrl: 'partials/calculator.html',
             controller: function ($scope) {
 
@@ -81,6 +82,12 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     init();
                 };
 
+                $scope.attack.all = function () {
+                    $scope.status = 'attackAll';
+                    $scope.callback({'damage': parseInt($scope.attackData.attackValue), 'character': $scope.game.enemies, 'status': $scope.status});
+                    init();
+                };
+
                 $scope.heal = function () {
                     $scope.status = 'heal';
                     $scope.callback({'damage': parseInt($scope.attackData.attackValue) *-1, 'character': $scope.target, 'status': $scope.status});
@@ -94,6 +101,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     // $scope.player = null;
                     // $scope.enemy = null;
                     $scope.callback({'damage': 0, 'character': null, 'status': $scope.status});
+                    init()
                 }
 
                 $scope.crit = function () {
@@ -105,12 +113,6 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     else {
                         $scope.attackData.attackValue /= 2;
                     }
-                };
-
-                $scope.plus = function () {
-                    $scope.plus({'damage': parseInt($scope.attackData.attackValue) + ($scope.attackData.attackValue),
-                        'character': $scope.target});
-                    init();
                 };
 
                 $scope.keystroke = function (keypressValue) {
@@ -130,7 +132,6 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     init();
                 };
 
-
                 init();
             }
         }
@@ -148,12 +149,8 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                 $scope.cancel= function(){
                     $scope.character=null
                     $scope.$parent.$parent.characterDetail=null
-
-
-
                 }
-
             }
-    }
+        }
 })
 
