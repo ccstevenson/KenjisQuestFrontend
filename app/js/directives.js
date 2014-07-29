@@ -16,7 +16,8 @@ angular.module('myApp.directives', ['ui.bootstrap'])
             restrict: 'E',
             scope: {
                 character: '=character',
-                selections: '=selections'
+                selections: '=selections',
+                showHealth: '=showHealth'
             },
             templateUrl: 'partials/character-card.html',
             controller: function ($scope) {

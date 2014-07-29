@@ -3,11 +3,13 @@
     <!-- Enemies -->
     <div class="nav col-md-6 col-xs-5">
         <div class="col-md-4 col-xs-12" ng-repeat="enemy in game.enemies">
-            <character-card style="float:left; position:relative" character="enemy"
+            <character-card style="float:left; position:relative"
+                            character="enemy"
                             selections="game.selections"
                             ng-click="makeSelection(enemy)">
 
             </character-card>
+
         </div>
     </div>
     <!---end enemies--->
@@ -20,7 +22,9 @@
     <div class="nav col-md-4 col-xs-5">
         <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
         <div class="col-md-6 col-xs-12" ng-repeat="player in game.players">
-            <character-card style="float:right; position:relative" character="player" selections="game.selections"
+            <character-card style="float:right; position:relative"
+                            character="player"
+                            selections="game.selections"
                             ng-click="makeSelection(player)"></character-card>
         </div>
 
@@ -69,7 +73,7 @@
 
         enemy="game.selections.activeTarget"
         callback="calculateDamage(damage, character, status)"
-        ng-show="game.selections.activeActor && game.selections.activeTarget">
+        ng-show="game.selections.activeActor && game.selections.activeTarget"
                     enemy="game.selections.activeTarget"
                     callback="dealDamage(damage, character)"
                     ng-show="game.selections.activeActor && game.selections.activeTarget && Role.role!='Game Master'">
@@ -78,5 +82,6 @@
         <character-card-detail character="characterDetail" ng-show="characterDetail"></character-card-detail>
     </div>
     <!--end instructions-->
+
 
 </div>

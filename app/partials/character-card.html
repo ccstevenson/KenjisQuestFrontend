@@ -1,6 +1,6 @@
 <div class="characterDetails text-center">
 
-    <div>
+    <div ng-controller="RoleCtrl">
 
         <div class="avatar-size-sm"
              ng-class="{'selectedActor': selections.activeActor.id == character.id,
@@ -19,17 +19,20 @@
              style="background-image: url(img/gravestone.png)">
         </div>
 
-        <progressbar class = "health-bar"
+        <progressbar ng-show="Role.role == 'Game Master'"
+                     class="health-bar"
                      max="character.maxHealth"
                      value="character.health"
                      type="{{ healthBarType() }}">
-            <span class="health-bar-text">{{character.health}} / {{character.maxHealth}}</span>
+            <span class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>
         </progressbar>
         <div class="btn-default character-info border-main" ng-click="setCharacterDetail($event,character)">
-            <span>{{character.name}}
+            <span>{{ character.name }}
                 <!--<span class="glyphicon glyphicon-info-sign pull-right char-info-icon"></span>-->
             </span>
         </div>
+
         <!--<p class="negativeTopMargin20">Class: {{character.class}}</p>-->
     </div>
+
 </div>

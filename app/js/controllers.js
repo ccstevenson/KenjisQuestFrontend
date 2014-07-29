@@ -35,6 +35,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
     .controller('GameCtrl', ['$scope', 'Restangular', 'encounterService',
         function ($scope, Restangular, encounterService) {
 
+
             Restangular.all('games').getList().then(function (games) {
                 $scope.games = games;
             });
@@ -103,6 +104,8 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             fireBase.$bind($scope, "game");
 
             $scope.soundPlay = false;
+
+
 
             $scope.selectedPlayer = function (player) {
                 $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
@@ -173,6 +176,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 // console.log(audio)
                 audio.play();
             });
+
 
 
 //        $scope.user = "Guest " + Math.round(Math.random() * 101);
