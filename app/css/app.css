@@ -46,6 +46,23 @@ Mobile Styles
     width: 95%;
     margin: -.75em 0 .75em 0;
 }
+.calc-foreground {
+    background-color: #e2e2e2;
+    box-shadow: 10px 10px 5px #888888;
+    border-radius: 25px;
+    border: 2px solid;
+    background-size: contain;
+    position: relative;
+    margin: 5em auto 0 auto;
+    z-index: 6;
+    padding: 20px;
+    min-width: 20em;
+    max-width: 24em;
+    height: auto;
+}
+
+
+/****** End Mobile *****/
 
 /***********
 Tablet Styles
@@ -67,7 +84,22 @@ Tablet Styles
         width: 95%;
         margin: -.75em 0 .75em 0;
     }
+    /*.calc-foreground {*/
+    /*background-color: #e2e2e2;*/
+    /*box-shadow: 10px 10px 5px #888888;*/
+    /*border-radius: 25px;*/
+    /*border: 2px solid;*/
+    /*background-size: contain;*/
+    /*position: fixed;*/
+    /*top: 15%;*/
+    /*left: 30%;*/
+    /*margin: auto;*/
+    /*z-index: 6;*/
+    /*padding: 20px;*/
+/*}*/
 }
+
+/***** End Tablet *****/
 
 /**********
 Full-view Styles
@@ -95,7 +127,93 @@ Full-view Styles
         width: 95%;
         margin: -.75em 0 .75em 0;
     }
+        /*.calc-foreground {*/
+    /*background-color: #e2e2e2;*/
+    /*box-shadow: 10px 10px 5px #888888;*/
+    /*border-radius: 25px;*/
+    /*border: 2px solid;*/
+    /*background-size: contain;*/
+    /*position: fixed;*/
+    /*top: 20%;*/
+    /*left: 45%;*/
+    /*margin: auto;*/
+    /*z-index: 6;*/
+    /*padding: 20px;*/
+/*}*/
 }
+/****** End Full-view ******/
+
+/**********
+Calculator
+***********/
+
+.btn3d {
+    transition: all .08s linear;
+    position: relative;
+    outline: medium none;
+    -moz-outline-style: none;
+    border: 0px;
+    margin-top: 8px;
+    top: 0;
+}
+
+.btn3d:focus {
+    outline: medium none;
+    -moz-outline-style: none;
+}
+
+.btn3d:active {
+    top: 9px;
+}
+
+.btn3d.btn-default {
+    box-shadow: 0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #adadad, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn3d.btn-primary {
+    box-shadow: 0 0 0 1px #428bca inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #357ebd, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn3d.btn-success {
+    box-shadow: 0 0 0 1px #5cb85c inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #4cae4c, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn3d.btn-info {
+    box-shadow: 0 0 0 1px #5bc0de inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #46b8da, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn3d.btn-warning {
+    box-shadow: 0 0 0 1px #f0ad4e inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #eea236, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn3d.btn-danger {
+    box-shadow: 0 0 0 1px #c63702 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #c24032, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+
+.btn3d:active.btn-default {
+    box-shadow: none;
+}
+
+.btn3d:active.btn-primary {
+    box-shadow: none;
+}
+
+.btn3d:active.btn-success {
+    box-shadow: none;
+}
+
+.btn3d:active.btn-info {
+    box-shadow: none;
+}
+
+.btn3d:active.btn-warning {
+    box-shadow: none;
+}
+
+.btn3d:active.btn-danger {
+    box-shadow: none;
+}
+/***** End Calculator *****/
 
 .menu:before {
     content: '[';
@@ -221,20 +339,7 @@ tr > td {
     background-color: rgba(0, 0, 0, .8);
 }
 
-.calc-foreground {
-    background-color: #e2e2e2;
-    box-shadow: 10px 10px 5px #888888;
-    border-radius: 25px;
-    border: 2px solid;
-    background-size: contain;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-left: -267px;
-    margin-top: -254px;
-    z-index: 6;
-    padding: 20px;
-}
+
 
 .info-panel {
     background-color: #0000FF;
@@ -264,72 +369,7 @@ tr > td {
     border-bottom: 0.5em ridge #c0c0c0;
 }
 
-.btn3d {
-    transition: all .08s linear;
-    position: relative;
-    outline: medium none;
-    -moz-outline-style: none;
-    border: 0px;
-    margin-top: 8px;
-    top: 0;
-}
 
-.btn3d:focus {
-    outline: medium none;
-    -moz-outline-style: none;
-}
-
-.btn3d:active {
-    top: 9px;
-}
-
-.btn3d.btn-default {
-    box-shadow: 0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #adadad, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
-}
-
-.btn3d.btn-primary {
-    box-shadow: 0 0 0 1px #428bca inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #357ebd, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
-}
-
-.btn3d.btn-success {
-    box-shadow: 0 0 0 1px #5cb85c inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #4cae4c, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
-}
-
-.btn3d.btn-info {
-    box-shadow: 0 0 0 1px #5bc0de inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #46b8da, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
-}
-
-.btn3d.btn-warning {
-    box-shadow: 0 0 0 1px #f0ad4e inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #eea236, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
-}
-
-.btn3d.btn-danger {
-    box-shadow: 0 0 0 1px #c63702 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #c24032, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
-}
-
-.btn3d:active.btn-default {
-    box-shadow: none;
-}
-
-.btn3d:active.btn-primary {
-    box-shadow: none;
-}
-
-.btn3d:active.btn-success {
-    box-shadow: none;
-}
-
-.btn3d:active.btn-info {
-    box-shadow: none;
-}
-
-.btn3d:active.btn-warning {
-    box-shadow: none;
-}
-
-.btn3d:active.btn-danger {
-    box-shadow: none;
-}
 
 .health-bar-text {
     color: black;
