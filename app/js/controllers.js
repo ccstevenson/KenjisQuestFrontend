@@ -12,7 +12,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         };
     }])
 
-<<<<<<< HEAD
     .controller('CharGenCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
         $scope.characterClasses = [
             { printed_name: 'Wizard', stored_name: 'wizard' },
