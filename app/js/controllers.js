@@ -126,7 +126,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
                 // console.log($scope.soundPlay);
 
-                if (status == 'attack')  {
+                if (status == 'attack' && character.health > 0)  {
                     $scope.game.sound = 'sounds/attack.mp3';
                 }
                 else if (status == 'heal')  {
