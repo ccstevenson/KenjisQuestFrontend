@@ -88,23 +88,6 @@ Tablet Styles
         width: 95%;
         margin: -.75em 0 .75em 0;
     }
-
-/*.calc-foreground {*/
-    /*background-color: #e2e2e2;*/
-    /*box-shadow: 10px 10px 5px #888888;*/
-    /*border-radius: 25px;*/
-    /*border: 2px solid;*/
-    /*background-size: contain;*/
-    /*position: fixed;*/
-    /*top: 50%;*/
-    /*left: 50%;*/
-    /*margin-left: -267px;*/
-    /*margin-top: -254px;*/
-    /*z-index: 6;*/
-    /*padding: 20px;*/
-    /*width: 20em;*/
-    /*overflow: hidden;*/
-/*}*/
 }
 
 /***** End Tablet *****/
@@ -135,21 +118,6 @@ Full-view Styles
         width: 95%;
         margin: -.75em 0 .75em 0;
     }
-
-    /*.calc-foreground {*/
-        /*background-color: #e2e2e2;*/
-        /*box-shadow: 10px 10px 5px #888888;*/
-        /*border-radius: 25px;*/
-        /*border: 2px solid;*/
-        /*background-size: contain;*/
-        /*position: fixed;*/
-        /*top: 50%;*/
-        /*left: 50%;*/
-        /*margin-left: -213px;*/
-        /*margin-top: -254px;*/
-        /*z-index: 6;*/
-        /*padding: 20px;*/
-    /*}*/
 }
 /****** End Full-view ******/
 
@@ -236,13 +204,18 @@ Character Card Detail
     border-radius: 25px;
     border: 2px solid;
     background-size: contain;
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     margin-left: -267px;
     margin-top: -254px;
     z-index: 6;
     padding: 20px;
+    width: auto;
+}
+
+.overflow {
+    overflow-y: scroll;
 }
 
 .sprite-border {
@@ -401,6 +374,9 @@ tr > td {
     border-bottom: 0.5em ridge #c0c0c0;
 }
 
+.border-right {
+    border-right: 0.5em ridge #c0c0c0;
+}
 
 
 .health-bar-text {
