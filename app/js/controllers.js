@@ -334,4 +334,5 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         $scope.tabulate = function (state) {
             $scope.playlist = state;
         }
+
     });
