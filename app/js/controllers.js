@@ -69,7 +69,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
             $scope.scenario = encounterService.game.scenario;
 
-            $scope.encounters = $scope.scenario.encounters;
+            $scope.encounters = $scope.scenario && $scope.scenario.encounters;
             $scope.items = encounterService.items;
             $scope.characters = encounterService.characters;
 

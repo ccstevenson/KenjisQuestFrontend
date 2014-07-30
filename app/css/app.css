@@ -241,11 +241,22 @@ Character Card Detail
 }
 
 .sprite-border {
-    border: 0.5em ridge #c0c0c0;
+    border: 1px ridge #c0c09e;
     border-radius: 0.5em;
+    box-shadow: 0px 0px 12px #1825f7;
+   -moz-box-shadow: 0px 0px 12px #1825f7;
+   -webkit-box-shadow: 0px 0px 12px #1825f7;
 }
 
-/***** End Calculator *****/
+.vertical {
+    border-left: black thick solid;
+    height:415px;
+}
+
+
+
+
+/***** End Character Detail *****/
 
 
 .menu:before {
@@ -359,7 +370,12 @@ tr > td {
 }
 
 #launchBtn {
-    margin-top: 10px;
+    margin-top: 2px;
+    border-radius: 0.5em;
+    box-shadow: 0px 0px 12px #1825f7;
+   -moz-box-shadow: 0px 0px 12px #1825f7;
+   -webkit-box-shadow: 0px 0px 12px #1825f7;
+
 }
 
 .modal-background {
@@ -415,10 +431,7 @@ tr > td {
     opacity: 1;
 }
 
-.vertical {
-    border-left: black thick solid;
-    height: auto;
-}
+
 
 .sm-margin {
     margin: .25em;
@@ -427,6 +440,11 @@ tr > td {
 .sm-padding {
     padding: 5px;
 }
+
+
+
+
+
 
 /*#placeholder {*/
 /*max-width: 100%;*/
