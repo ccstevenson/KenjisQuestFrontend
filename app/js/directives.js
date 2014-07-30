@@ -40,7 +40,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     else {
                         return "danger";
                     }
-                }
+                };
 
                 $scope.setCharacterDetail = function($event,character){
 
@@ -59,7 +59,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
             scope: {
                 actor: '=actor',
                 target: '=target',
-                callback: '&callback',
+                callback: '&callback'
             },
 
             templateUrl: 'partials/calculator.html',
@@ -74,8 +74,8 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     };
                 };
 
-                $scope.game = {}
-                $scope.game.soundPlay = false;
+//                $scope.game = {};
+//                $scope.game.soundPlay = false;
 
                 $scope.attack = function () {
                     $scope.status = 'attack';
@@ -83,9 +83,9 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     init();
                 };
 
-                $scope.attack.all = function () {
+                $scope.attackAll = function () {
                     $scope.status = 'attackAll';
-                    $scope.callback({'damage': parseInt($scope.attackData.attackValue), 'character': $scope.game.enemies, 'status': $scope.status});
+                    $scope.callback({'damage': parseInt($scope.attackData.attackValue), 'character': $scope.target, 'status': $scope.status});
                     init();
                 };
 
@@ -103,7 +103,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     // $scope.enemy = null;
                     $scope.callback({'damage': 0, 'character': null, 'status': $scope.status});
                     init()
-                }
+                };
 
                 $scope.crit = function () {
                     $scope.attackData.crit = !$scope.attackData.crit;
@@ -125,7 +125,6 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     $scope.target = null;
                     $scope.player = null;
                     $scope.enemy = null;
-                    $.playSound ('sounds/miss');
                     init();
                 };
 
@@ -148,10 +147,10 @@ angular.module('myApp.directives', ['ui.bootstrap'])
             controller: function ($scope) {
 
                 $scope.cancel= function(){
-                    $scope.character=null
-                    $scope.$parent.$parent.characterDetail=null
+                    $scope.character = null;
+                    $scope.$parent.$parent.characterDetail = null
                 }
             }
         }
-})
+});
 

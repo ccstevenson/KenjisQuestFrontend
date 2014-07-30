@@ -219,10 +219,16 @@ Character Card Detail
 }
 
 .sprite-border {
-    border: 0.5em ridge #c0c0c0;
+    border: 1px ridge #c0c09e;
     border-radius: 0.5em;
+    box-shadow: 0px 0px 12px #1825f7;
+   -moz-box-shadow: 0px 0px 12px #1825f7;
+   -webkit-box-shadow: 0px 0px 12px #1825f7;
 }
-
+.vertical {
+    border-left: black thick solid;
+    height:415px;
+}
 .enemy-red {
     border-radius: 100px;
     box-shadow:
@@ -318,7 +324,6 @@ Character Card Detail
         0 20px 20px -12px orange,
         0 30px 30px -10px black;
 }
-
 /***** End Character Card Detail *****/
 
 
@@ -454,7 +459,12 @@ tr > td {
 }
 
 #launchBtn {
-    margin-top: 10px;
+    margin-top: 2px;
+    border-radius: 0.5em;
+    box-shadow: 0px 0px 12px #1825f7;
+   -moz-box-shadow: 0px 0px 12px #1825f7;
+   -webkit-box-shadow: 0px 0px 12px #1825f7;
+
 }
 
 .modal-background {
@@ -513,10 +523,7 @@ tr > td {
     opacity: 1;
 }
 
-.vertical {
-    border-left: black thick solid;
-    height: auto;
-}
+
 
 .sm-margin {
     margin: .25em;

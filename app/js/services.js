@@ -35,7 +35,7 @@ angular.module('myApp.services', [])
 
     .factory("roleService", function () {
         var roleService = {
-            role: 'Player',
+            role: '',
             roles: {
                 Role1: "Game Master",
                 Role2: "Player",
@@ -154,7 +154,7 @@ angular.module('myApp.services', [])
             youtube.videoId = id;
             youtube.videoTitle = title;
             return youtube;
-        }
+        };
 
         this.listResults = function (data) {
             results.length = 0;
@@ -168,7 +168,7 @@ angular.module('myApp.services', [])
                 });
             }
             return results;
-        }
+        };
 
         this.queueVideo = function (id, title) {
             var saved = localStorageService.get('upcoming');
