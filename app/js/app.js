@@ -23,6 +23,7 @@ angular.module('myApp', [
         $routeProvider.when('/soundboard', {templateUrl: 'partials/soundboard.html', controller: 'VideosController'});
         $routeProvider.when('/load-game', {templateUrl: 'partials/load-game.html', controller: 'GameCtrl'});
         $routeProvider.when('/scenario', {templateUrl: 'partials/scenario.html', controller: 'ScenarioCtrl'});
+        $routeProvider.when('/create-character', {templateUrl: 'partials/character-creation.html', controller: 'CharGenCtrl'});
         $routeProvider.otherwise({redirectTo: '/battleatronic'});
 
         RestangularProvider.setBaseUrl('http://127.0.0.1:8001/');

@@ -12,11 +12,46 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         };
     }])
 
-    .controller('CharacterCreationController', ['$scope', function ($scope) {
-        $scope.addCharacter = function () {
-            $scope.characters.$add({from: $scope.user, content: $scope.character});
-            $scope.message = "";
+    .controller('CharGenCtrl', ['$scope', 'Restangular', 'fireBase', function ($scope, Restangular, fireBase) {
+        fireBase.$bind($scope, "game");
+
+        $scope.characterClasses = [
+            { printed_name: 'Wizard', stored_name: 'wizard' },
+            { printed_name: 'Rogue', stored_name: 'rogue' },
+            { printed_name: 'Warrior', stored_name: 'warrior' },
+            { printed_name: 'Ranger', stored_name: 'ranger' }];
+
+        // $scope.races = [
+        //     { printed_name: 'Goblin', stored_name: 'goblin' },
+        //     { printed_name: 'Human', stored_name: 'human' },
+        //     { printed_name: 'Elf', stored_name: 'elf' },
+        //     { printed_name: 'Dwarf', stored_name: 'dwarf' }];
+
+        $scope.player = {}
+
+
+        $scope.addPlayer = function() {
+            console.log($scope);
+            $scope.player.health = $scope.player.maxHealth;
+            $scope.player.sprite = "img/char1_small.png";
+
+            if (!($scope.game.players instanceof Array)) {
+                $scope.player.id = 1
+                $scope.game.players = [$scope.player];
+            }
+            else  {
+                $scope.player.id = $scope.game.players.length + 1;
+                $scope.game.players.push($scope.player)
+            }
         };
+
+
+        // $scope.nationalities = [
+        //     { printed_name: 'Bake', stored_name: 'bake' },
+        //     { printed_name: 'Microwave', stored_name: 'microwave' },
+        //     { printed_name: 'Fry', stored_name: 'fry' },
+        //     { printed_name: 'Dutch Oven', stored_name: 'dutch_oven' }];
+
     }])
 
     .controller('RoleCtrl', ['$scope', 'roleService', function ($scope, roleService) {
@@ -96,14 +131,15 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
     .controller('BattleatronicCtrl', ['$scope', 'encounterService', 'fireBase', 'roleService',
         function ($scope, encounterService, fireBase, roleService) {
-
-            if (roleService.role == 'Game Master') {
+            $scope.game = {};
+            
+            if (roleService.role != 'Player') {
                 $scope.game = encounterService.game;
             }
 
             fireBase.$bind($scope, "game");
 
-            $scope.soundPlay = false;
+            $scope.game.soundPlay = false;
 
 
 
@@ -115,8 +151,10 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 $scope.game.selections.activeTarget = target;
             };
 
-            $scope.calculateDamage = function (damage, character, status, attackAll) {
-                $scope.soundPlay = !$scope.soundPlay;
+
+            $scope.calculateDamage = function (damage, character, status) {
+                $scope.game.soundPlay = !$scope.game.soundPlay;
+
                 // $scope.game.sound = 'sounds/attack.ogg';
 
                 // if (damage > 0) {
@@ -188,6 +226,13 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                     $scope.game.selections.activeTarget = player;
                 }
             };
+
+            $scope.deletePlayers = function () {
+                $scope.game.players = [];
+            };
+
+
+            
 
 
             $scope.$watch('game.soundPlay', function () {
