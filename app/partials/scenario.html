@@ -19,7 +19,7 @@
             <ul class="sprite-border">
                 <li ui-draggable="true" drag="item"
                     on-drop-success="dropSuccessHandler($event,$index,items)"
-                    ng-repeat="item in items">{{ item.name }}
+                    ng-repeat="item in items" class="list-unstyled">{{ item.name }}
                 </li>
             </ul>
         </div>
@@ -32,7 +32,7 @@
             <div ng-repeat="character in characters" class="sprite-border" ui-on-drop="onDrop($event,$data,character.inventory)">
                 <p class="text-center">{{ character.name }}</p>
                 <img class="center-block" src="{{ character.sprite }}">
-                <ul>
+                <ul class="list-unstyled">
                     <li ui-draggable="true" drag="item"
                         on-drop-success="dropSuccessHandler($event,$index,character.inventory)"
                         ng-repeat="item in character.inventory" track by
@@ -50,7 +50,7 @@
                 <p class="text-center">{{ player.name }}</p>
                 <img class="center-block" src="{{ player.sprite }}">
 
-                <ul>
+                <ul class="list-unstyled">
                     <li ui-draggable="true" drag="item"
                         on-drop-success="dropSuccessHandler($event,$index,player.inventory)"
                         ng-repeat="item in player.inventory" track by
