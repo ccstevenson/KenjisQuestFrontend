@@ -27,7 +27,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         //     { printed_name: 'Elf', stored_name: 'elf' },
         //     { printed_name: 'Dwarf', stored_name: 'dwarf' }];
 
-        $scope.player = {}
+        $scope.player = {};
 
 
         $scope.addPlayer = function() {
@@ -140,8 +140,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             fireBase.$bind($scope, "game");
 
             $scope.game.soundPlay = false;
-
-
 
             $scope.selectedPlayer = function (player) {
                 $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
