@@ -1,20 +1,19 @@
 <div class="characterDetails text-center">
 
-    <div ng-controller="RoleCtrl">
+    <div ng-controller="RoleCtrl"
+         ng-class="{'selectedActor': selections.activeActor.id == character.id,
+               'selectedTarget': selections.activeTarget.id == character.id,
+               'notSelected': selections.activeActor.id != character.id && selections.activeTarget.id != character.id}">
 
         <div class="avatar-size-sm"
-             ng-class="{'selectedActor': selections.activeActor.id == character.id,
-               'selectedTarget': selections.activeTarget.id == character.id,
-               'notSelected': selections.activeActor.id != character.id && selections.activeTarget.id != character.id}"
+
              ng-show="character.health > 0"
              ng-style="{'background-image': 'url(' + character.sprite + ')'}">
             <!--<p>Health: {{character.health}} / {{ character.maxHealth }}</p>-->
         </div>
 
         <div class="avatar-size-sm"
-             ng-class="{'selectedActor': selections.activeActor.id == character.id,
-               'selectedTarget': selections.activeTarget.id == character.id,
-               'notSelected': selections.activeActor.id != character.id && selections.activeTarget.id != character.id}"
+
              ng-show="character.health <= 0"
              style="background-image: url(img/gravestone.png)">
         </div>
@@ -26,6 +25,7 @@
                      type="{{ healthBarType() }}">
             <span class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>
         </progressbar>
+
         <div class="btn-default character-info border-main" ng-click="setCharacterDetail($event,character)">
             <span>{{ character.name }}
                 <!--<span class="glyphicon glyphicon-info-sign pull-right char-info-icon"></span>-->

@@ -12,11 +12,63 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         };
     }])
 
-    .controller('CharacterCreationController', ['$scope', function ($scope) {
-        $scope.addCharacter = function () {
-            $scope.characters.$add({from: $scope.user, content: $scope.character});
-            $scope.message = "";
+    .controller('CharGenCtrl', ['$scope', 'Restangular', 'fireBase', 'encounterService', function ($scope, Restangular, fireBase, encounterService) {
+        $scope.game = encounterService.game;
+        fireBase.$bind($scope, "game");
+
+        $scope.characterClasses = [
+            { printed_name: 'Wizard', stored_name: 'wizard' },
+            { printed_name: 'Rogue', stored_name: 'rogue' },
+            { printed_name: 'Warrior', stored_name: 'warrior' },
+            { printed_name: 'Ranger', stored_name: 'ranger' }];
+
+        // $scope.races = [
+        //     { printed_name: 'Goblin', stored_name: 'goblin' },
+        //     { printed_name: 'Human', stored_name: 'human' },
+        //     { printed_name: 'Elf', stored_name: 'elf' },
+        //     { printed_name: 'Dwarf', stored_name: 'dwarf' }];
+
+        $scope.player = {};
+        $scope.maxHealth = 0;
+
+        $scope.addPlayer = function() {
+
+            $scope.player.health = parseInt($scope.maxHealth);
+            $scope.player.maxHealth = $scope.player.health;
+            $scope.player.sprite = "img/char1_small.png";
+            if ($scope.game.players instanceof Array)  {
+                $scope.player.id = $scope.game.players.length + 1;
+                $scope.game.players.push($scope.player);    
+            }
+            else  {
+                $scope.player.id = 1;
+                $scope.game.players = [$scope.player];
+            }
+            
+            $scope.player = {};
+
+            window.location = '#/battleatronic';
         };
+
+
+//            if (!($scope.game.players instanceof Array)) {
+//                $scope.player.id = 1;
+//                $scope.game.players = [$scope.player];
+//            }
+//            else  {
+//                $scope.player.id = $scope.game.players.length + 1;
+//                $scope.game.players.push($scope.player)
+//            }
+//            window.location = '#/battleatronic';
+//        };
+
+
+        // $scope.nationalities = [
+        //     { printed_name: 'Bake', stored_name: 'bake' },
+        //     { printed_name: 'Microwave', stored_name: 'microwave' },
+        //     { printed_name: 'Fry', stored_name: 'fry' },
+        //     { printed_name: 'Dutch Oven', stored_name: 'dutch_oven' }];
+
     }])
 
     .controller('RoleCtrl', ['$scope', 'roleService', function ($scope, roleService) {
@@ -68,7 +120,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
             $scope.scenario = encounterService.game.scenario;
 
-            $scope.encounters = $scope.scenario.encounters;
+            $scope.encounters = $scope.scenario && $scope.scenario.encounters;
             $scope.items = encounterService.items;
             $scope.characters = encounterService.characters;
 
@@ -96,16 +148,15 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
     .controller('BattleatronicCtrl', ['$scope', 'encounterService', 'fireBase', 'roleService',
         function ($scope, encounterService, fireBase, roleService) {
-
+            $scope.game = {};
+            
             if (roleService.role != 'Player') {
                 $scope.game = encounterService.game;
             }
 
             fireBase.$bind($scope, "game");
 
-            $scope.soundPlay = false;
-
-
+            $scope.game.soundPlay = false;
 
             $scope.selectedPlayer = function (player) {
                 $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
@@ -115,8 +166,10 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 $scope.game.selections.activeTarget = target;
             };
 
+
             $scope.calculateDamage = function (damage, character, status) {
-                $scope.soundPlay = !$scope.soundPlay;
+                $scope.game.soundPlay = !$scope.game.soundPlay;
+
                 // $scope.game.sound = 'sounds/attack.ogg';
 
                 // if (damage > 0) {
@@ -134,6 +187,10 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                     $scope.game.sound = 'sounds/attack.mp3';
                 }
 
+                else if (status == 'attackAll' && character.health > 0) {
+                    $scope.game.sound = 'sounds/attack.mp3';
+                }
+
                 else if (status == 'heal') {
                     $scope.game.sound = 'sounds/heal.mp3';
                 }
@@ -141,15 +198,34 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                     $scope.game.sound = 'sounds/miss.mp3';
                 }
 
-                if (character != null) {
-                    character.health -= damage;
+                var targets = $scope.game.enemies;
 
-                    if (character.health < 0) { // Negative health disallowed.
-                        character.health = 0;
+                var dealDamage = function (target) {
+                    if (target != null) {
+                        target.health -= damage;
+
+                        if (target.health < 0) { // Negative health disallowed.
+                            target.health = 0;
+                        }
+                        else if (target.health > target.maxHealth) {
+                            target.health = target.maxHealth;
+                        }
                     }
-                    else if (character.health > character.maxHealth) {
-                        character.health = character.maxHealth;
+                };
+
+
+                if (status == 'attackAll') {
+                    for (var player in $scope.game.players){
+                        var playa = parseInt(player);
+                        if ($scope.game.players[playa].id == character.id) {
+                            targets = $scope.game.players;
+                        }
                     }
+                    for (var target in targets) {
+                        dealDamage(targets[target]);
+                    }
+                } else {
+                    dealDamage(character);
                 }
 
                 encounterService.game.players = $scope.game.players;
@@ -170,14 +246,16 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 }
             };
 
+            $scope.deletePlayers = function () {
+                $scope.game.players = [];
+                // encounterService.game.players = $scope.game.players;
+            };
 
             $scope.$watch('game.soundPlay', function () {
                 var audio = new Audio($scope.game.sound);
                 // console.log(audio)
                 audio.play();
             });
-
-
 
 //        $scope.user = "Guest " + Math.round(Math.random() * 101);
 //        $scope.game = GameService;
@@ -256,4 +334,5 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         $scope.tabulate = function (state) {
             $scope.playlist = state;
         }
+
     });
