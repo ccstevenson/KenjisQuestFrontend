@@ -33,7 +33,7 @@ angular.module('myApp.services', [])
 
     .factory("roleService", function () {
         var roleService = {
-            role: 'Player',
+            role: '',
             roles: {
                 Role1: "Game Master",
                 Role2: "Player",
