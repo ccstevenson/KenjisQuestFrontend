@@ -31,8 +31,8 @@
 
         <li><a ng-click="setSoundboard(false)" href="#/battleatronic">Battleatronic</a></li>
         <li><a href="javascript:void(0)" ng-click="setSoundboard(true)">Soundboard</a></li>
-        <li ng-show="Role.role == 'Game Master'"><a href="#/load-game">Load Game</li>
-        <li ng-show="Role.role == 'Game Master'"><a href="#/scenario">Scenario</a></li>
+        <li ng-show="Role.role == 'Game Master'"><a ng-click="setSoundboard(false)" href="#/load-game">Load Game</li>
+        <li ng-show="Role.role == 'Game Master'"><a ng-click="setSoundboard(false)" href="#/scenario">Scenario</a></li>
         <li>
             <span class="dropdown" on-toggle="toggled(open)">
                 <a href class="dropdown-toggle">Select Role</a>

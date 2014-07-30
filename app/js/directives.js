@@ -16,7 +16,8 @@ angular.module('myApp.directives', ['ui.bootstrap'])
             restrict: 'E',
             scope: {
                 character: '=character',
-                selections: '=selections'
+                selections: '=selections',
+                showHealth: '=showHealth'
             },
             templateUrl: 'partials/character-card.html',
             controller: function ($scope) {
@@ -39,7 +40,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     else {
                         return "danger";
                     }
-                }
+                };
 
                 $scope.setCharacterDetail = function($event,character){
 
@@ -60,6 +61,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                 target: '=target',
                 callback: '&callback'
             },
+
             templateUrl: 'partials/calculator.html',
             controller: function ($scope) {
 
@@ -72,11 +74,17 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     };
                 };
 
-                $scope.game = {}
+                $scope.game = {};
                 $scope.game.soundPlay = false;
 
                 $scope.attack = function () {
                     $scope.status = 'attack';
+                    $scope.callback({'damage': parseInt($scope.attackData.attackValue), 'character': $scope.target, 'status': $scope.status});
+                    init();
+                };
+
+                $scope.attackAll = function () {
+                    $scope.status = 'attackAll';
                     $scope.callback({'damage': parseInt($scope.attackData.attackValue), 'character': $scope.target, 'status': $scope.status});
                     init();
                 };
@@ -94,7 +102,8 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     // $scope.player = null;
                     // $scope.enemy = null;
                     $scope.callback({'damage': 0, 'character': null, 'status': $scope.status});
-                }
+                    init()
+                };
 
                 $scope.crit = function () {
                     $scope.attackData.crit = !$scope.attackData.crit;
@@ -105,12 +114,6 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     else {
                         $scope.attackData.attackValue /= 2;
                     }
-                };
-
-                $scope.plus = function () {
-                    $scope.plus({'damage': parseInt($scope.attackData.attackValue) + ($scope.attackData.attackValue),
-                        'character': $scope.target});
-                    init();
                 };
 
                 $scope.keystroke = function (keypressValue) {
@@ -130,7 +133,6 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     init();
                 };
 
-
                 init();
             }
         }
@@ -148,12 +150,8 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                 $scope.cancel= function(){
                     $scope.character=null
                     $scope.$parent.$parent.characterDetail=null
-
-
-
                 }
-
             }
-    }
-})
+        }
+});
 
