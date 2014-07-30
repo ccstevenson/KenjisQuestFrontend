@@ -97,7 +97,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
     .controller('BattleatronicCtrl', ['$scope', 'encounterService', 'fireBase', 'roleService',
         function ($scope, encounterService, fireBase, roleService) {
 
-            if (roleService.role != 'Player') {
+            if (roleService.role == 'Game Master') {
                 $scope.game = encounterService.game;
             }
 
@@ -115,7 +115,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 $scope.game.selections.activeTarget = target;
             };
 
-            $scope.calculateDamage = function (damage, character, status) {
+            $scope.calculateDamage = function (damage, character, status, attackAll) {
                 $scope.soundPlay = !$scope.soundPlay;
                 // $scope.game.sound = 'sounds/attack.ogg';
 
@@ -141,15 +141,34 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                     $scope.game.sound = 'sounds/miss.mp3';
                 }
 
-                if (character != null) {
-                    character.health -= damage;
+                var targets = $scope.game.enemies;
 
-                    if (character.health < 0) { // Negative health disallowed.
-                        character.health = 0;
+                var dealDamage = function (target) {
+                    if (target != null) {
+                        target.health -= damage;
+
+                        if (target.health < 0) { // Negative health disallowed.
+                            target.health = 0;
+                        }
+                        else if (target.health > target.maxHealth) {
+                            target.health = target.maxHealth;
+                        }
                     }
-                    else if (character.health > character.maxHealth) {
-                        character.health = character.maxHealth;
+                };
+
+
+                if (status == 'attackAll') {
+                    for (var player in $scope.game.players){
+                        var playa = parseInt(player);
+                        if ($scope.game.players[playa].id == character.id) {
+                            targets = $scope.game.players;
+                        }
                     }
+                    for (var target in targets) {
+                        dealDamage(targets[target]);
+                    }
+                } else {
+                    dealDamage(character);
                 }
 
                 encounterService.game.players = $scope.game.players;
