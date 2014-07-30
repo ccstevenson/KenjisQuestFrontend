@@ -1,9 +1,12 @@
-        <calculator actor="game.selections.activeActor"
-                    target="game.selections.activeTarget"
-                    callback="calculateDamage(damage, character, status)"
-                    ng-show="game.selections.activeActor && game.selections.activeTarget && Role.role!='Game Master'">
-        </calculator>
+<!-- Calculator -->
+<calculator actor="game.selections.activeActor"
+            target="game.selections.activeTarget"
+            callback="calculateDamage(damage, character, status)"
+            ng-show="game.selections.activeActor && game.selections.activeTarget && Role.role!='Game Master'">
+</calculator>
+<!--End Calculator-->
 
+<!-- View Container -->
 <div class="container">
 
     <!-- Enemies -->
@@ -12,10 +15,15 @@
             <character-card style="float:left; position:relative"
                             character="enemy"
                             selections="game.selections"
-                            ng-click="makeSelection(enemy)">
+                            ng-click="makeSelection(enemy)"
+                            ng-class="{'enemy-red': character.color == 'red',
+                                      'enemy-blue': character.color == 'blue',
+                                      'enemy-yellow': character.color == 'yellow',
+                                      'enemy-purple': character.color == 'purple',
+                                      'enemy-orange': character.color == 'orange',
+                                      'enemy-green': character.color == 'green'}">
 
             </character-card>
-
         </div>
     </div>
     <!---end enemies--->
@@ -31,7 +39,14 @@
             <character-card style="float:right; position:relative"
                             character="player"
                             selections="game.selections"
-                            ng-click="makeSelection(player)"></character-card>
+                            ng-click="makeSelection(player)"
+                            ng-class="{'char-red': character.color == 'red',
+                                      'char-blue':  character.color == 'blue',
+                                      'char-yellow':  character.color == 'yellow',
+                                      'char-purple':  character.color == 'purple',
+                                      'char-orange':  character.color == 'orange',
+                                      'char-green':  character.color == 'green'}">
+            </character-card>
         </div>
 
 
@@ -40,18 +55,11 @@
 
     <!-- debug/reset -->
     <!--<div class="col-xs-12">-->
-        <!--<button class="pull-right border-main" ng-click="resetGame()">Reset Game-->
-            <!--(Debug)-->
-        <!--</button>-->
+    <!--<button class="pull-right border-main" ng-click="resetGame()">Reset Game-->
+    <!--(Debug)-->
+    <!--</button>-->
     <!--</div>-->
     <!-- end reset -->
-
-    <!-- info column -->
-    <!--<div class="col-md-2 info-panel info-border">-->
-
-
-    <!--</div>-->
-    <!-- end info column -->
 
 
     <!--<form ng-submit="addMessage();">-->
@@ -61,7 +69,7 @@
 
     <!--<input type="text" ng-model="game.text"/>-->
     <!--<h1>You said: {{text}}</h1>-->
-
+    <button class="button pull-right' ng-click="deletePlayers()">Delete Players</button>
     <!--battle instructions-->
     <div class="footer col-xs-12" style="margin: auto; clear: both">
         <div class="text-center VT323FontLarge foreground" ng-show="!game.selections.activeActor">
@@ -73,36 +81,17 @@
             Select a target to attack or heal.
         </div>
     </div>
-
-        <!--<calculator actor="game.selections.activeActor"-->
-        <!--target="game.selections.activeTarget"-->
-        <!--<calculator player="game.selections.activeActor"-->
-
-        <!--enemy="game.selections.activeTarget"-->
-        <!--callback="calculateDamage(damage, character, status)"-->
-        <!--ng-show="game.selections.activeActor && game.selections.activeTarget"-->
-                    <!--enemy="game.selections.activeTarget"-->
-                    <!--callback="dealDamage(damage, character)"-->
-                    <!--ng-show="game.selections.activeActor && game.selections.activeTarget && Role.role!='Game Master'">-->
-        <!--</calculator>-->
+    <!-- End Battle Instructions -->
 
 
-        <calculator actor="game.selections.activeActor"
-        target="game.selections.activeTarget"
-        <calculator player="game.selections.activeActor"
 
-        enemy="game.selections.activeTarget"
-        callback="calculateDamage(damage, character, status)"
-        ng-show="game.selections.activeActor && game.selections.activeTarget">
-                    enemy="game.selections.activeTarget"
-                    callback="dealDamage(damage, character)"
-                    ng-show="game.selections.activeActor && game.selections.activeTarget && Role.role!='Game Master'">
-        </calculator>
+    <!-- Character Details -->
+    <character-card-detail character="characterDetail" ng-show="characterDetail"></character-card-detail>
+    <!-- End Character Details -->
 
-
-        <character-card-detail character="characterDetail" ng-show="characterDetail"></character-card-detail>
-    <!--end instructions-->
 
 
 </div>
-<div class="button" ng-click="deletePlayers()">Delete Players</div>
+<!-- End Container-->
+
+

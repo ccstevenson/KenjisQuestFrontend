@@ -223,6 +223,102 @@ Character Card Detail
     border-radius: 0.5em;
 }
 
+.enemy-red {
+    border-radius: 50%;
+    box-shadow:
+        0 10px 10px -5px black,
+        0 20px 20px -10px red,
+        0 30px 30px -15px silver;
+}
+
+.enemy-blue {
+    border-radius: 50%;
+    box-shadow:
+        0 10px 10px -5px black,
+        0 20px 20px -10px blue,
+        0 30px 30px -15px silver;
+}
+
+.enemy-yellow {
+    border-radius: 50%;
+    box-shadow:
+        0 10px 10px -5px black,
+        0 20px 20px -10px yellow,
+        0 30px 30px -15px silver;
+}
+
+.enemy-green {
+    border-radius: 50%;
+    box-shadow:
+        0 10px 10px -5px black,
+        0 20px 20px -10px green,
+        0 30px 30px -15px silver;
+}
+
+.enemy-orange {
+    border-radius: 50%;
+    box-shadow:
+        0 10px 10px -5px black,
+        0 20px 20px -10px orange,
+        0 30px 30px -15px silver;
+}
+
+.enemy-purple {
+    border-radius: 50%;
+    box-shadow:
+        0 10px 10px -5px black,
+        0 20px 20px -10px purple,
+        0 30px 30px -15px silver;
+}
+
+.char-red {
+    border-radius: 50%;
+    box-shadow:
+        0 10px 10px -5px silver,
+        0 20px 20px -10px red,
+        0 30px 30px -15px black;
+}
+
+.char-blue {
+    border-radius: 50%;
+    box-shadow:
+        0 10px 10px -5px silver,
+        0 20px 20px -10px blue,
+        0 30px 30px -15px black;
+}
+
+.char-yellow {
+    border-radius: 50%;
+    box-shadow:
+        0 10px 10px -5px silver,
+        0 20px 20px -10px yellow,
+        0 30px 30px -15px black;
+}
+
+.char-purple {
+    border-radius: 50%;
+    box-shadow:
+        0 10px 10px -5px silver,
+        0 20px 20px -10px purple,
+        0 30px 30px -15px black;
+}
+
+.char-green {
+    border-radius: 50%;
+    box-shadow:
+        0 10px 10px -5px silver,
+        0 20px 20px -10px green,
+        0 30px 30px -15px black;
+}
+
+.char-orange {
+    border-radius: 50%;
+    box-shadow:
+        0 10px 10px -5px silver,
+        0 20px 20px -10px orange,
+        0 30px 30px -15px black;
+}
+
 /***** End Character Card Detail *****/
 
 
