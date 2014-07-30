@@ -12,7 +12,8 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         };
     }])
 
-    .controller('CharGenCtrl', ['$scope', 'Restangular', 'fireBase', function ($scope, Restangular, fireBase) {
+    .controller('CharGenCtrl', ['$scope', 'Restangular', 'fireBase', 'encounterService', function ($scope, Restangular, fireBase, encounterService) {
+        $scope.game = encounterService.game;
         fireBase.$bind($scope, "game");
 
         $scope.characterClasses = [
@@ -28,22 +29,31 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         //     { printed_name: 'Dwarf', stored_name: 'dwarf' }];
 
         $scope.player = {};
-
+        $scope.maxHealth = 0;
 
         $scope.addPlayer = function() {
-            console.log($scope);
-            $scope.player.health = $scope.player.maxHealth;
-            $scope.player.sprite = "img/char1_small.png";
 
-            if (!($scope.game.players instanceof Array)) {
-                $scope.player.id = 1
-                $scope.game.players = [$scope.player];
-            }
-            else  {
-                $scope.player.id = $scope.game.players.length + 1;
-                $scope.game.players.push($scope.player)
-            }
+            $scope.player.health = parseInt($scope.maxHealth);
+            $scope.player.maxHealth = $scope.player.health;
+            $scope.player.sprite = "img/char1_small.png";
+            $scope.player.id = $scope.game.players.length + 1;
+            $scope.game.players.push($scope.player);
+            $scope.player = {};
+
+            window.location = '#/battleatronic';
         };
+
+
+//            if (!($scope.game.players instanceof Array)) {
+//                $scope.player.id = 1;
+//                $scope.game.players = [$scope.player];
+//            }
+//            else  {
+//                $scope.player.id = $scope.game.players.length + 1;
+//                $scope.game.players.push($scope.player)
+//            }
+//            window.location = '#/battleatronic';
+//        };
 
 
         // $scope.nationalities = [
