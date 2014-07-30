@@ -59,8 +59,8 @@ Mobile Styles
     margin-left: -213px;
     margin-top: -254px;
     z-index: 6;
-    padding: 20px;
-    width: 20em;
+    padding: 10px;
+    max-width: 25em;
     overflow: hidden;
 }
 
@@ -190,6 +190,12 @@ Calculator
 
 .btn3d:active.btn-danger {
     box-shadow: none;
+}
+
+.btn3d {
+    width: 100%;
+    box-sizing: border-box;
+    vertical-align: middle;
 }
 /***** End Calculator *****/
 
@@ -532,3 +538,4 @@ tr > td {
 .sm-padding {
     padding: 5px;
 }
+
