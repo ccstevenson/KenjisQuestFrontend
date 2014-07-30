@@ -232,97 +232,97 @@ Character Card Detail
 .enemy-red {
     border-radius: 100px;
     box-shadow:
-        0 10px 10px -5px black,
-        0 20px 20px -10px red,
-        0 30px 30px -15px silver;
+        0 10px 10px -16px black,
+        0 20px 20px -15px red,
+        0 30px 30px -14px silver;
 }
 
 .enemy-blue {
     border-radius: 100px;
     box-shadow:
-        0 10px 10px -5px black,
-        0 20px 20px -10px blue,
-        0 30px 30px -15px silver;
+        0 10px 10px -16px black,
+        0 20px 20px -15px blue,
+        0 30px 30px -14px silver;
 }
 
 .enemy-yellow {
     border-radius: 100px;
     box-shadow:
-        0 10px 10px -5px black,
-        0 20px 20px -10px yellow,
-        0 30px 30px -15px silver;
+        0 10px 10px -16px black,
+        0 20px 20px -15px yellow,
+        0 30px 30px -14px silver;
 }
 
 .enemy-green {
     border-radius: 100px;
     box-shadow:
-        0 10px 10px -5px black,
-        0 20px 20px -10px green,
-        0 30px 30px -15px silver;
+        0 10px 10px -16px black,
+        0 20px 20px -15px green,
+        0 30px 30px -14px silver;
 }
 
 .enemy-orange {
     border-radius: 100px;
     box-shadow:
-        0 10px 10px -5px black,
-        0 20px 20px -10px orange,
-        0 30px 30px -15px silver;
+        0 10px 10px -16px black,
+        0 20px 20px -15px orange,
+        0 30px 30px -14px silver;
 }
 
 .enemy-purple {
     border-radius: 100px;
     box-shadow:
-        0 10px 10px -5px black,
-        0 20px 20px -10px purple,
-        0 30px 30px -15px silver;
+        0 10px 10px -16px black,
+        0 20px 20px -15px purple,
+        0 30px 30px -14px silver;
 }
 
 .char-red {
     border-radius: 100px;
     box-shadow:
-        0 10px 10px -5px silver,
-        0 20px 20px -10px red,
-        0 30px 30px -15px black;
+        0 10px 10px -16px silver,
+        0 20px 20px -15px red,
+        0 30px 30px -14px black;
 }
 
 .char-blue {
     border-radius: 100px;
     box-shadow:
-        0 10px 10px -5px silver,
-        0 20px 20px -10px blue,
-        0 30px 30px -15px black;
+        0 10px 10px -30px silver,
+        0 20px 20px -2px blue,
+        0 30px 30px -20px black;
 }
 
 .char-yellow {
     border-radius: 100px;
     box-shadow:
-        0 10px 10px -5px silver,
-        0 20px 20px -10px yellow,
-        0 30px 30px -15px black;
+        0 10px 10px -16px silver,
+        0 20px 20px -15px yellow,
+        0 30px 30px -14px black;
 }
 
 .char-purple {
     border-radius: 100px;
     box-shadow:
-        0 10px 10px -5px silver,
-        0 20px 20px -10px purple,
-        0 30px 30px -15px black;
+        0 10px 10px -16px silver,
+        0 20px 20px -15px purple,
+        0 30px 30px -14px black;
 }
 
 .char-green {
     border-radius: 100px;
     box-shadow:
-        0 10px 10px -5px silver,
-        0 20px 20px -10px green,
-        0 30px 30px -15px black;
+        0 10px 10px -16px silver,
+        0 20px 20px -15px green,
+        0 30px 30px -14px black;
 }
 
 .char-orange {
     border-radius: 100px;
     box-shadow:
-        0 10px 10px -5px silver,
-        0 20px 20px -10px orange,
-        0 30px 30px -15px black;
+        0 10px 10px -14px silver,
+        0 20px 20px -12px orange,
+        0 30px 30px -10px black;
 }
 /***** End Character Card Detail *****/
 
@@ -359,28 +359,28 @@ tr > td {
 /*}*/
 
 @-webkit-keyframes redPulse {
-  from {-webkit-box-shadow: 0 20px 20px 0 silver; }
-  to { -webkit-box-shadow: 0 20px 20px 0 red; }
+  from {-webkit-box-shadow: 0 30px 30px -17px silver; }
+  to { -webkit-box-shadow: 0 30px 30px -17px red; }
 }
 
 .selectedTarget {
   -webkit-animation-name: redPulse;
   -webkit-animation-duration: 1s;
   -webkit-animation-iteration-count: 100;
-  -webkit-box-shadow: 0 20px 20px 0 red;
+  -webkit-box-shadow: 0 30px 30px -17px red;
     border-radius: 100px;
 }
 
 @-webkit-keyframes greenPulse {
-  from {-webkit-box-shadow: 0 35px 20px -10px silver; }
-  to { -webkit-box-shadow: 0 35px 20px -10px green; }
+  from {-webkit-box-shadow: 0 30px 30px -17px silver; }
+  to { -webkit-box-shadow: 0 30px 30px -17px green; }
 }
 
 .selectedActor {
   -webkit-animation-name: greenPulse;
   -webkit-animation-duration: 1s;
   -webkit-animation-iteration-count: 100;
-  -webkit-box-shadow: 0 35px 20px -10px green;
+  -webkit-box-shadow: 0 30px 30px -17px green;
     border-radius: 100px;
 }
 
