@@ -36,8 +36,15 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.player.health = parseInt($scope.maxHealth);
             $scope.player.maxHealth = $scope.player.health;
             $scope.player.sprite = "img/char1_small.png";
-            $scope.player.id = $scope.game.players.length + 1;
-            $scope.game.players.push($scope.player);
+            if ($scope.game.players instanceof Array)  {
+                $scope.player.id = $scope.game.players.length + 1;
+                $scope.game.players.push($scope.player);    
+            }
+            else  {
+                $scope.player.id = 1;
+                $scope.game.players = [$scope.player];
+            }
+            
             $scope.player = {};
 
             window.location = '#/battleatronic';
@@ -241,6 +248,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
             $scope.deletePlayers = function () {
                 $scope.game.players = [];
+                // encounterService.game.players = $scope.game.players;
             };
 
             $scope.$watch('game.soundPlay', function () {
