@@ -170,6 +170,10 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                     $scope.game.sound = 'sounds/attack.mp3';
                 }
 
+                else if (status == 'attackAll' && character.health > 0) {
+                    $scope.game.sound = 'sounds/attack.mp3';
+                }
+
                 else if (status == 'heal') {
                     $scope.game.sound = 'sounds/heal.mp3';
                 }
@@ -229,17 +233,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 $scope.game.players = [];
             };
 
-
-            
-
-
             $scope.$watch('game.soundPlay', function () {
                 var audio = new Audio($scope.game.sound);
                 // console.log(audio)
                 audio.play();
             });
-
-
 
 //        $scope.user = "Guest " + Math.round(Math.random() * 101);
 //        $scope.game = GameService;

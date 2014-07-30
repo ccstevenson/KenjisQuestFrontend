@@ -74,8 +74,8 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     };
                 };
 
-                $scope.game = {};
-                $scope.game.soundPlay = false;
+//                $scope.game = {};
+//                $scope.game.soundPlay = false;
 
                 $scope.attack = function () {
                     $scope.status = 'attack';
@@ -125,7 +125,6 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     $scope.target = null;
                     $scope.player = null;
                     $scope.enemy = null;
-                    $.playSound ('sounds/miss');
                     init();
                 };
 
@@ -148,8 +147,8 @@ angular.module('myApp.directives', ['ui.bootstrap'])
             controller: function ($scope) {
 
                 $scope.cancel= function(){
-                    $scope.character=null
-                    $scope.$parent.$parent.characterDetail=null
+                    $scope.character = null;
+                    $scope.$parent.$parent.characterDetail = null
                 }
             }
         }
