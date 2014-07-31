@@ -6,14 +6,11 @@
         <li class="bulletlessList"
             ng-class="{'selectedActor': selections.activeActor.id == character.id}">
             <div class="characterDetails">
-
                 <div class="col-sm-1 col-xs-2" style="height: 100%"></div>
-
                 <div class="col-sm-4 col-xs-8">
                     <img src="{{ character.sprite }}" class="sprite-border">
 
                     <p>{{ character.name }}</p>
-
 
                     <p><label>Race:</label> {{ character.race.name }}</p>
 
@@ -26,63 +23,53 @@
                     <p><label>Class:</label> {{ character.character_class.name }}</p>
 
                     <div class="hidden-lg hidden-md hidden-sm">
+                        <div>
+                            <label>Skills:</label>
 
-<<<<<<< HEAD
-                    <div>
-                        <label>Skills:</label>
-=======
-            </div>
+                        </div>
 
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-5">
+                            <p ng-repeat="skill in character.skills track by $index">
+                                {{ skill.name }}
+                            </p>
+                            <label>Inventory:</label>
 
+                            <p ng-repeat="item in character.inventory track by $index">
+                                {{ item.name }}
+                            </p>
+                            <label>Weapons:</label>
 
-             <div class="col-xs-1"></div>
-             <div class="col-xs-1"></div>
-
->>>>>>> sprite-logo
-
-                        <p ng-repeat="skill in character.skills">
-                            {{ skill.name }}
-                        </p>
-                        <label>Inventory:</label>
-
-<<<<<<< HEAD
-                        <p ng-repeat="item in character.inventory">
-                            {{ item.name }}
-                        </p>
-                        <label>Weapons:</label>
-=======
-             <div class="col-xs-5">
->>>>>>> sprite-logo
-
-                        <p>{{ character.weapon.name }}</p>
+                            <p>{{ character.weapon.name }}</p>
+                        </div>
                     </div>
                 </div>
 
-                </div>
+                <div class="col-xs-5">
+                    <div class="vertical">
+                        <div class="col-sm-4 hidden-xs">
 
-    <div class="col-xs-5">
-            <div class="vertical">
-                <div class="col-sm-4 hidden-xs">
+                            <div>
+                                <label>Skills:</label>
 
-                    <div>
-                        <label>Skills:</label>
+                                <p ng-repeat="skill in character.skills track by $index">
+                                    {{ skill.name }}
+                                </p>
+                                <label>Inventory:</label>
 
-                        <p ng-repeat="skill in character.skills">
-                            {{ skill.name }}
-                        </p>
-                        <label>Inventory:</label>
+                                <p ng-repeat="item in character.inventory track by $index">
+                                    {{ item.name }}
+                                </p>
+                                <label>Weapons:</label>
 
-                        <p ng-repeat="item in character.inventory">
-                            {{ item.name }}
-                        </p>
-                        <label>Weapons:</label>
-
-                        <p>{{ character.weapon.name }}</p>
+                                <p>{{ character.weapon.name }}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 col-xs-2"></div>
                     </div>
                 </div>
-                <div class="col-sm-1 col-xs-2"></div>
-
             </div>
+        </li>
     </div>
-
 </div>

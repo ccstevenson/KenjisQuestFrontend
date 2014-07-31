@@ -4,7 +4,7 @@
         <label>Encounters</label>
         <tabset vertical="true" type="pills">
             <tab ng-click="selectEncounter(encounter)" heading="{{ encounter.name }}"
-                 ng-repeat="encounter in encounters">
+                 ng-repeat="encounter in encounters track by $index">
                 <button id="launchBtn" class="btn-primary btn-lg" ng-click="launchEncounter(encounter)">Launch
                     Encounter
                 </button>
@@ -19,7 +19,7 @@
             <ul class="sprite-border">
                 <li ui-draggable="true" drag="item"
                     on-drop-success="dropSuccessHandler($event,$index,items)"
-                    ng-repeat="item in items" class="list-unstyled">{{ item.name }}
+                    ng-repeat="item in items track by $index" class="list-unstyled">{{ item.name }}
                 </li>
             </ul>
         </div>
@@ -29,14 +29,13 @@
     <div class="col-md-3">
         <label>Characters</label>
 
-            <div ng-repeat="character in characters" class="sprite-border" ui-on-drop="onDrop($event,$data,character.inventory)">
+            <div ng-repeat="character in characters track by $index" class="sprite-border" ui-on-drop="onDrop($event,$data,character.inventory)">
                 <p class="text-center">{{ character.name }}</p>
                 <img class="center-block" src="{{ character.sprite }}">
                 <ul class="list-unstyled">
                     <li ui-draggable="true" drag="item"
                         on-drop-success="dropSuccessHandler($event,$index,character.inventory)"
-                        ng-repeat="item in character.inventory" track by
-                    $index>{{ item.name }}
+                        ng-repeat="item in character.inventory track by $index">{{ item.name }}
                     </li>
                 </ul>
             </div>
@@ -46,15 +45,14 @@
         <label>Players</label>
 
 
-            <div ng-repeat="player in players" class="sprite-border" ui-on-drop="onDrop($event,$data,player.inventory)">
+            <div ng-repeat="player in players track by $index" class="sprite-border" ui-on-drop="onDrop($event,$data,player.inventory)">
                 <p class="text-center">{{ player.name }}</p>
                 <img class="center-block" src="{{ player.sprite }}">
 
                 <ul class="list-unstyled">
                     <li ui-draggable="true" drag="item"
                         on-drop-success="dropSuccessHandler($event,$index,player.inventory)"
-                        ng-repeat="item in player.inventory" track by
-                    $index">
+                        ng-repeat="item in player.inventory track by $index">
                     {{ item.name }}></li>
                 </ul>
             </div>
