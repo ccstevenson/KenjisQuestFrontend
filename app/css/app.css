@@ -525,19 +525,6 @@ opacity: 1;
 }
 
 /*Character Color*/
-.progress {
-    height: 2.25em;
-    margin-bottom: 20px;
-    margin-top: -20px;
-    overflow: hidden;
-    background-color: #959595;
-    border-radius: 15px;
-    -webkit-box-shadow:
-        0 10px 10px -10px silver,
-        0 20px 20px -8px blue,
-        0 30px 30px -6px black;
-    border: 8px ridge silver;
-}
 
 @-webkit-keyframes greenPulse {
     from {
