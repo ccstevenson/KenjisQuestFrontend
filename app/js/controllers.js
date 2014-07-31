@@ -38,7 +38,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         // $scope.maxHealth = 0;
 
         $scope.addImage = function(charClass) {
-            if (charClass == 'wizard')  {
+            if (charClass == 'mage')  {
                 return "img/char5_small.png";
             }
             else if (charClass == 'rogue')  {
@@ -90,7 +90,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             }
             else {
                 $scope.player.id = 1;
-                $scope.game.players[0] = $scope.player;
+                $scope.game.players = [$scope.player];
                 fireBase.$set({players: $scope.game.players}).then(function(){
                     window.location = '#/battleatronic';
                 });
