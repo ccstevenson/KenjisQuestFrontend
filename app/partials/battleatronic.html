@@ -11,7 +11,7 @@
 
     <!-- Enemies -->
     <div class="nav col-md-6 col-xs-5">
-        <div class="col-md-4 col-xs-12" ng-repeat="enemy in game.enemies">
+        <div class="col-md-4 col-xs-12" ng-repeat="enemy in game.enemies track by $index">
             <character-card style="float:left; position:relative"
                             character="enemy"
                             selections="game.selections"
@@ -34,7 +34,7 @@
     <!-- characters -->
     <div class="nav col-md-4 col-xs-5">
         <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
-        <div class="col-md-6 col-xs-12" ng-repeat="player in game.players">
+        <div class="col-md-6 col-xs-12" ng-repeat="player in game.players track by $index">
             <character-card style="float:right; position:relative"
                             ng-class="{'char-red': player.color == 'red',
                                       'char-blue':  player.color == 'blue',

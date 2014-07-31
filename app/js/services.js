@@ -15,7 +15,7 @@ angular.module('myApp.services', [])
         // We could add this id to the end of the game's URL so that games are easy to share: just paste the URL.
 
 
-        var ref = new Firebase("https://scorching-fire-3218.firebaseio.com/kenjiDev");
+        var ref = new Firebase("https://scorching-fire-3218.firebaseio.com/NateDev");
 
         return $firebase(ref);
     }])
@@ -35,7 +35,7 @@ angular.module('myApp.services', [])
 
     .factory("roleService", function () {
         var roleService = {
-            role: '',
+            role: 'Player',
             roles: {
                 Role1: "Game Master",
                 Role2: "Player",

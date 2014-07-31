@@ -12,9 +12,12 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         };
     }])
 
-    .controller('CharGenCtrl', ['$scope', 'Restangular', 'fireBase', 'encounterService', function ($scope, Restangular, fireBase, encounterService) {
-        $scope.game = encounterService.game;
-        fireBase.$bind($scope, "game");
+    .controller('CharGenCtrl', ['$scope', 'Restangular', 'fireBase', 'encounterService',
+        function ($scope, Restangular, fireBase, encounterService) {
+
+        $scope.game = {};
+
+        fireBase.$asObject().$bindTo($scope, "game");
 
         $scope.characterClasses = [
             { printed_name: 'Wizard', stored_name: 'wizard' },
@@ -28,25 +31,22 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         //     { printed_name: 'Elf', stored_name: 'elf' },
         //     { printed_name: 'Dwarf', stored_name: 'dwarf' }];
 
-        $scope.player = {};
+        var player = {};
         $scope.maxHealth = 0;
 
         $scope.addPlayer = function() {
 
-            $scope.player.health = parseInt($scope.maxHealth);
-            $scope.player.maxHealth = $scope.player.health;
-            $scope.player.sprite = "img/char1_small.png";
+            player.health = parseInt($scope.maxHealth);
+            player.maxHealth = $scope.player.health;
+            player.sprite = "img/char1_small.png";
             if ($scope.game.players instanceof Array)  {
-                $scope.player.id = $scope.game.players.length + 1;
-                $scope.game.players.push($scope.player);    
+                player.id = $scope.game.players.length + 1;
+                $scope.game.players.push(player);
             }
             else  {
-                $scope.player.id = 1;
-                $scope.game.players = [$scope.player];
+                player.id = 1;
+                $scope.game.players[0] = player;
             }
-            
-            $scope.player = {};
-
             window.location = '#/battleatronic';
         };
 
@@ -87,7 +87,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
     .controller('GameCtrl', ['$scope', 'Restangular', 'encounterService',
         function ($scope, Restangular, encounterService) {
 
-
             Restangular.all('games').getList().then(function (games) {
                 $scope.games = games;
             });
@@ -115,14 +114,19 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
         }])
 
-    .controller('ScenarioCtrl', ['$scope', 'encounterService',
-        function ($scope, encounterService) {
+    .controller('ScenarioCtrl', ['$scope', 'encounterService', 'fireBase',
+        function ($scope, encounterService, fireBase) {
 
-            $scope.scenario = encounterService.game.scenario;
-            
-            $scope.encounters = $scope.scenario && $scope.scenario.encounters;
-            $scope.items = encounterService.items;
-            $scope.characters = encounterService.characters;
+            $scope.game = {};
+            fireBase.$asObject().$bindTo($scope, "game").then(function(){
+                if ($scope.game.scenario) {
+                    encounterService.game = $scope.game;
+                }
+                $scope.scenario = encounterService.game.scenario;
+                $scope.encounters = $scope.scenario.encounters;
+                $scope.items = encounterService.items;
+                $scope.characters = encounterService.characters;
+            });
 
             $scope.dropSuccessHandler = function ($event, index, array) {
                 array.splice(index, 1);
@@ -148,13 +152,13 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
     .controller('BattleatronicCtrl', ['$scope', 'encounterService', 'fireBase', 'roleService',
         function ($scope, encounterService, fireBase, roleService) {
-            $scope.game = encounterService.game;
-            
-            if (roleService.role != 'Player') {
-                $scope.game = encounterService.game;
-            }
 
-            fireBase.$bind($scope, "game");
+            $scope.game = {};
+            fireBase.$asObject().$bindTo($scope, "game").then(function(){
+                if (roleService.role != 'Player') {
+                    $scope.game = encounterService.game;
+                }
+            });
 
             $scope.game.soundPlay = false;
 
@@ -165,7 +169,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.selectedEnemy = function (target) {
                 $scope.game.selections.activeTarget = target;
             };
-
 
             $scope.calculateDamage = function (damage, character, status) {
                 $scope.game.soundPlay = !$scope.game.soundPlay;
@@ -186,11 +189,9 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 if (status == 'attack' && character.health > 0) {
                     $scope.game.sound = 'sounds/attack.mp3';
                 }
-
                 else if (status == 'attackAll' && character.health > 0) {
                     $scope.game.sound = 'sounds/attack.mp3';
                 }
-
                 else if (status == 'heal') {
                     $scope.game.sound = 'sounds/heal.mp3';
                 }
@@ -199,10 +200,28 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 }
 
                 var targets = $scope.game.enemies;
+                var targetType = $scope.game.enemies;
 
                 var dealDamage = function (target) {
+
+                    for (var player in $scope.game.players){
+                        var playa = parseInt(player);
+                        if ($scope.game.players[playa].id == target.id) {
+                            targetType = $scope.game.players;
+                            break;
+                        }
+                    }
+
+                    for (var enemy in targetType){
+                        var playa = parseInt(enemy);
+                        if (targetType[playa].id == target.id) {
+                            target = targetType[playa];
+                            break;
+                        }
+                    }
+
                     if (target != null) {
-                        target.health -= damage;
+                       target.health -= damage;
 
                         if (target.health < 0) { // Negative health disallowed.
                             target.health = 0;
@@ -213,12 +232,12 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                     }
                 };
 
-
                 if (status == 'attackAll') {
                     for (var player in $scope.game.players){
                         var playa = parseInt(player);
                         if ($scope.game.players[playa].id == character.id) {
                             targets = $scope.game.players;
+                            break;
                         }
                     }
                     for (var target in targets) {
