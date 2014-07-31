@@ -512,7 +512,7 @@ border: black 3px solid;
 border-radius: 20px;
 }
 
-.character-info:hover .char-info-icon {
+.character-info-icon:hover{
 opacity: 1;
 }
 
