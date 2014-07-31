@@ -17,11 +17,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         fireBase.$bind($scope, "game");
 
         $scope.characterClasses = [
-            { printed_name: 'Wizard', stored_name: 'wizard' },
-            { printed_name: 'Rogue', stored_name: 'rogue' },
-            { printed_name: 'Warrior', stored_name: 'warrior' },
+            { printed_name: 'Mage', stored_name: 'mage' },
+            { printed_name: 'Summoner', stored_name: 'summoner' },
+            // { printed_name: 'Warrior', stored_name: 'warrior' },
             { printed_name: 'Cleric', stored_name: 'cleric' },
-            { printed_name: 'Ranger', stored_name: 'ranger' }];
+            { printed_name: 'Rogue', stored_name: 'rogue' }];
 
         $scope.races = [
             { printed_name: 'Goblin', stored_name: 'goblin' },
@@ -40,14 +40,15 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             else if (charClass == 'rogue')  {
                 return "img/char4_small.png";
             }
-            else if (charClass == 'cleric')  {
+            else if (charClass == 'summoner')  {
                 return "img/char2_small.png";
             }
-            else if (charClass == 'ranger')  {
-                return "img/char3_small.png";
+            else if (charClass == 'cleric')  {
+                return "img/char1_small.png";
             }
             else  {
-                return "img/char1_small.png"
+                // this shouldn't be seen
+                return "img/error.png"
             }
             return 
 
