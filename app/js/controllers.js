@@ -220,7 +220,9 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
             $scope.game.soundPlay = false;
 
-            $scope.beastCardShow = false;
+            $scope.isEnemy = true;
+
+
 
             if (roleService.role == 'Game Master' || roleService.role == 'Beast Master') {
 

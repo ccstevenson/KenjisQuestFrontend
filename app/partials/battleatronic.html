@@ -15,6 +15,7 @@
             <character-card style="float:left; position:relative"
                             character="enemy"
                             selections="game.selections"
+                            players="game.players"
                             ng-click="makeSelection(enemy)"
                             ng-class="{'enemy-red': enemy.color == 'red',
                                       'enemy-blue': enemy.color == 'blue',
@@ -44,6 +45,7 @@
                                       'char-green':  player.color == 'green'}"
                             character="player"
                             selections="game.selections"
+                            players="game.players"
                             ng-click="makeSelection(player)">
             </character-card>
 
