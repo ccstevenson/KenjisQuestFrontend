@@ -10,28 +10,32 @@
              ng-show="character.health > 0"
              ng-style="{'background-image': 'url(' + character.sprite + ')'}">
             <!--<p>Health: {{character.health}} / {{ character.maxHealth }}</p>-->
+            <span class="glyphicon glyphicon-info-sign pull-right char-info-icon"></span>
         </div>
 
         <div class="avatar-size-sm"
-
              ng-show="character.health <= 0"
              style="background-image: url(img/gravestone.png)">
+
         </div>
 
-        <progressbar ng-show="Role.role == 'Game Master'"
-                     class="health-bar"
-                     max="character.maxHealth"
-                     value="character.health"
-                     type="{{ healthBarType() }}">
-            <span class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>
-        </progressbar>
-
-        <div class="btn-default character-info border-main" ng-click="setCharacterDetail($event,character)">
+        <div class="character-info">
             <span>{{ character.name }}
-                <!--<span class="glyphicon glyphicon-info-sign pull-right char-info-icon"></span>-->
+
             </span>
         </div>
+        <div>
+            <progressbar ng-show="Role.role == 'Game Master'"
+                         ng-click="setCharacterDetail($event,character)"
+                         class="health-bar"
+                         max="character.maxHealth"
+                         value="character.health"
+                         type="{{ healthBarType() }}">
+                <span class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>
+            </progressbar>
 
+            <!--<span style="width: inherit; background: #008000" class="border-main health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>-->
+        </div>
         <!--<p class="negativeTopMargin20">Class: {{character.class}}</p>-->
     </div>
 
