@@ -31,8 +31,9 @@ Mobile Styles
 }
 
 .avatar-size-sm {
-    height: 5em;
+    height: auto;
     width: 5em;
+    position: relative;
     background: no-repeat center center;
     background-size: 100% 100%;
     z-index: 15;
@@ -59,7 +60,7 @@ Mobile Styles
     left: 50%;
     margin-left: -213px;
     margin-top: -254px;
-    z-index: 6;
+    z-index: 100;
     padding: 10px;
     max-width: 25em;
     overflow: hidden;
@@ -502,8 +503,7 @@ tr > td {
 .health-bar-text {
     color: #000000;
     white-space: nowrap;
-    font-size: 2em;
-    padding-top: .25em;
+    font-size: 3em;
 }
 
 .char-info-icon {
@@ -567,7 +567,8 @@ opacity: 1;
     width: 150px;
     border-radius: 100%;
     background-color: blue;
-    z-index:1 !important;
+    z-index:1;
+    position: relative;
     margin-top: -50px;
     opacity: .5;
      -webkit-animation: pulsate 2s infinite alternate;
