@@ -12,8 +12,8 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         };
     }])
 
-    .controller('CharGenCtrl', ['$scope', 'Restangular', 'fireBase', 'encounterService',
-        function ($scope, Restangular, fireBase, encounterService) {
+    .controller('CharGenCtrl', ['$scope', 'Restangular', 'fireBase',
+        function ($scope, Restangular, fireBase) {
 
         $scope.game = {};
 
@@ -22,7 +22,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         $scope.characterClasses = [
             { printed_name: 'Mage', stored_name: 'mage' },
             { printed_name: 'Summoner', stored_name: 'summoner' },
-            // { printed_name: 'Warrior', stored_name: 'warrior' },
+            { printed_name: 'Warrior', stored_name: 'warrior' },
             { printed_name: 'Cleric', stored_name: 'cleric' },
             { printed_name: 'Rogue', stored_name: 'rogue' }];
 
@@ -57,8 +57,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 // this shouldn't be seen
                 return "img/error.png"
             }
-            return 
-
         };
 
 
@@ -73,7 +71,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             else if (charRace == "dwarf")  {
                 healthModifier += 0.35;
             }
-
             return healthModifier;
         };
 
@@ -82,19 +79,22 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.player.health = parseInt($scope.maxHealth);
             $scope.player.health = $scope.healthMod($scope.player.charClass, $scope.player.race) * $scope.player.health;
             $scope.player.maxHealth = $scope.player.health;
-
             $scope.player.sprite = $scope.addImage($scope.player.charClass);
 
-             if ($scope.game.players instanceof Array)  {
+            if ($scope.game.players instanceof Array)  {
                 $scope.player.id = $scope.game.players.length + 1;
-                $scope.game.players.push($scope.player);    
-
+                $scope.game.players.push($scope.player);
+                fireBase.$set({players: $scope.game.players}).then(function(){
+                    window.location = '#/battleatronic';
+                });
             }
-            else  {
+            else {
                 $scope.player.id = 1;
-                $scope.game.players[0] = player;
+                $scope.game.players[0] = $scope.player;
+                fireBase.$set({players: $scope.game.players}).then(function(){
+                    window.location = '#/battleatronic';
+                });
             }
-            window.location = '#/battleatronic';
         };
 
 
