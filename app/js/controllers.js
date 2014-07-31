@@ -101,7 +101,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
             else {
                 $scope.player.id = idGen(10);
-                $scope.game.players[0] = $scope.player;
+                $scope.game.players = [$scope.player];
                 fireBase.$set({players: $scope.game.players}).then(function(){
                     window.location = '#/battleatronic';
                 });
