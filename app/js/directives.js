@@ -11,13 +11,13 @@ angular.module('myApp.directives', ['ui.bootstrap'])
         };
     }])
 
-    .directive('characterCard', function () {
+    .directive('characterCard', function (roleService) {
         return {
             restrict: 'E',
             scope: {
                 character: '=character',
                 selections: '=selections',
-                showHealth: '=showHealth'
+                players: '=players'
             },
             templateUrl: 'partials/character-card.html',
             controller: function ($scope) {
@@ -42,12 +42,29 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     }
                 };
 
+
                 $scope.setCharacterDetail = function($event,character){
-
                     $event.stopPropagation();
-
                     $scope.$parent.$parent.characterDetail = character;
+                };
 
+                $scope.showInfoIcon = function() {
+                    if (roleService.role == 'Beast Master' || roleService.role == 'Game Master' || isPlayer()) {
+                        return true;
+                    }
+                    return false;
+                };
+
+                var isPlayer = function() {
+                    for (var i = 0; i < $scope.players.length; i++) {
+                        var player = $scope.players[i];
+
+                        if (player.id == $scope.character.id) {
+                            return true
+                        }
+                    }
+
+                    return false;
                 }
             }
         }

@@ -13,7 +13,7 @@
 
             <span class="glyphicon glyphicon-info-sign pull-right char-info-icon"
                   ng-click="setCharacterDetail($event,character)"
-                  ng-show="Role.role == 'Game Master' || Role.role == 'Beast Master'">
+                  ng-show="showInfoIcon()">
                   </span>
         </div>
 
@@ -31,7 +31,6 @@
         <!--ng-show="Role.role == 'Game Master'"-->
         <div>
             <progressbar
-
                     class="health-bar"
                     max="character.maxHealth"
                     value="character.health"
