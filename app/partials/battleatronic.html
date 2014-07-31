@@ -15,18 +15,13 @@
             <character-card style="float:left; position:relative"
                             character="enemy"
                             selections="game.selections"
-<<<<<<< HEAD
-                            ng-click="makeSelection(enemy)">
-=======
                             ng-click="makeSelection(enemy)"
-                            ng-class="{'enemy-red': character.color == red,
-                                      'enemy-blue': character.color == blue,
-                                      'enemy-yellow': character.color == yellow,
-                                      'enemy-purple': character.color == purple,
-                                      'enemy-orange': character.color == orange,
-                                      'enemy-green': character.color == green}">
-
->>>>>>> a02d716fd3ee4eb5c4a5b0b702d4aadac3d7e77e
+                            ng-class="{'enemy-red': enemy.color == 'red',
+                                      'enemy-blue': enemy.color == 'blue',
+                                      'enemy-yellow': enemy.color == 'yellow',
+                                      'enemy-purple': enemy.color == 'purple',
+                                      'enemy-orange': enemy.color == 'orange',
+                                      'enemy-green': enemy.color == 'green'}">
             </character-card>
         </div>
     </div>
@@ -41,12 +36,12 @@
         <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
         <div class="col-md-6 col-xs-12" ng-repeat="player in game.players">
             <character-card style="float:right; position:relative"
-                            ng-class="{'char-red': character.color == red,
-                                      'char-blue':  character.color == blue,
-                                      'char-yellow':  character.color == yellow,
-                                      'char-purple':  character.color == purple,
-                                      'char-orange':  character.color == orange,
-                                      'char-green':  character.color == green}"
+                            ng-class="{'char-red': player.color == 'red',
+                                      'char-blue':  player.color == 'blue',
+                                      'char-yellow':  player.color == 'yellow',
+                                      'char-purple':  player.color == 'purple',
+                                      'char-orange':  player.color == 'orange',
+                                      'char-green':  player.color == 'green'}"
                             character="player"
                             selections="game.selections"
                             ng-click="makeSelection(player)">
@@ -74,7 +69,7 @@
 
     <!--<input type="text" ng-model="game.text"/>-->
     <!--<h1>You said: {{text}}</h1>-->
-    <button style="margin: 25px" class="btn-warning pull-right" ng-click="deletePlayers()">Delete Players</button>
+    <!-- <button style="margin: 25px" class="btn-warning pull-right" ng-click="deletePlayers()">Delete Players</button> -->
     <!--battle instructions-->
     <div class="footer col-xs-12" style="margin: auto; clear: both">
         <div class="text-center VT323FontLarge foreground" ng-show="!game.selections.activeActor">
@@ -100,5 +95,5 @@
 <!-- End Container-->
 
 
-<a href='javascript:void(0)' ng-click="deletePlayers()">Delete Players</a>
-<a href='#/create-character'>Add Player</a>
+<!--<a href='javascript:void(0)' ng-click="deletePlayers()">Delete Players</a>-->
+<!--<a href='#/create-character'>Add Player</a>-->

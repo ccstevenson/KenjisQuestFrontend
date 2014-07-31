@@ -1,6 +1,6 @@
 <div class="characterDetails text-center">
 
-    <div ng-controller="RoleCtrl"
+    <div
          ng-class="{'selectedActor': selections.activeActor.id == character.id,
                'selectedTarget': selections.activeTarget.id == character.id,
                'notSelected': selections.activeActor.id != character.id && selections.activeTarget.id != character.id}">
@@ -18,7 +18,7 @@
              style="background-image: url(img/gravestone.png)">
         </div>
 
-        <progressbar ng-show="Role.role == 'Game Master'"
+        <progressbars
                      class="health-bar"
                      max="character.maxHealth"
                      value="character.health"

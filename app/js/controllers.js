@@ -119,7 +119,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         function ($scope, encounterService) {
 
             $scope.scenario = encounterService.game.scenario;
-
+            
             $scope.encounters = $scope.scenario && $scope.scenario.encounters;
             $scope.items = encounterService.items;
             $scope.characters = encounterService.characters;
@@ -148,7 +148,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
     .controller('BattleatronicCtrl', ['$scope', 'encounterService', 'fireBase', 'roleService',
         function ($scope, encounterService, fireBase, roleService) {
-            $scope.game = {};
+            $scope.game = encounterService.game;
             
             if (roleService.role != 'Player') {
                 $scope.game = encounterService.game;
@@ -247,7 +247,8 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
 
             $scope.deletePlayers = function () {
-                $scope.game.players = [];
+                encounterService.game.players = [];
+                $scope.game.players = encounterService.game.players;
                 // encounterService.game.players = $scope.game.players;
             };
 
