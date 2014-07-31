@@ -10,7 +10,8 @@
              ng-show="character.health > 0"
              ng-style="{'background-image': 'url(' + character.sprite + ')'}">
             <!--<p>Health: {{character.health}} / {{ character.maxHealth }}</p>-->
-            <span class="glyphicon glyphicon-info-sign pull-right char-info-icon"></span>
+            <span class="glyphicon glyphicon-info-sign pull-right char-info-icon"
+                  ng-click="setCharacterDetail($event,character)"></span>
         </div>
 
         <div class="avatar-size-sm"
@@ -26,8 +27,8 @@
         </div>
         <!--ng-show="Role.role == 'Game Master'"-->
         <div>
-            <progressbarg
-                         ng-click="setCharacterDetail($event,character)"
+            <progressbar
+
                          class="health-bar"
                          max="character.maxHealth"
                          value="character.health"
