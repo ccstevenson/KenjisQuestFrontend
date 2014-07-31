@@ -17,25 +17,48 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         fireBase.$bind($scope, "game");
 
         $scope.characterClasses = [
-            { printed_name: 'Wizard', stored_name: 'wizard' },
-            { printed_name: 'Rogue', stored_name: 'rogue' },
-            { printed_name: 'Warrior', stored_name: 'warrior' },
-            { printed_name: 'Ranger', stored_name: 'ranger' }];
+            { printed_name: 'Mage', stored_name: 'mage' },
+            { printed_name: 'Summoner', stored_name: 'summoner' },
+            // { printed_name: 'Warrior', stored_name: 'warrior' },
+            { printed_name: 'Cleric', stored_name: 'cleric' },
+            { printed_name: 'Rogue', stored_name: 'rogue' }];
 
         $scope.races = [
             { printed_name: 'Goblin', stored_name: 'goblin' },
             { printed_name: 'Human', stored_name: 'human' },
             { printed_name: 'Elf', stored_name: 'elf' },
+            { printed_name: 'Halfling', stored_name: 'halfling' },
             { printed_name: 'Dwarf', stored_name: 'dwarf' }];
 
         $scope.player = {};
         $scope.maxHealth = 0;
 
+        $scope.addImage = function(charClass) {
+            if (charClass == 'wizard')  {
+                return "img/char5_small.png";
+            }
+            else if (charClass == 'rogue')  {
+                return "img/char4_small.png";
+            }
+            else if (charClass == 'summoner')  {
+                return "img/char2_small.png";
+            }
+            else if (charClass == 'cleric')  {
+                return "img/char1_small.png";
+            }
+            else  {
+                // this shouldn't be seen
+                return "img/error.png"
+            }
+            return 
+
+        };
+
         $scope.addPlayer = function() {
 
             $scope.player.health = parseInt($scope.maxHealth);
             $scope.player.maxHealth = $scope.player.health;
-            $scope.player.sprite = "img/char1_small.png";
+            $scope.player.sprite = $scope.addImage($scope.player.charClass);
             if ($scope.game.players instanceof Array)  {
                 $scope.player.id = $scope.game.players.length + 1;
                 $scope.game.players.push($scope.player);    
