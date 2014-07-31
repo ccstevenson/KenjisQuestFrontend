@@ -248,7 +248,66 @@ Character Card Detail
    -webkit-box-shadow: 0px 0px 12px #1825f7;
 }
 
+.vertical {
+    border-left: black thick solid;
+    height: 415px;
+}
 
+/*.enemy-red {*/
+/*border-radius: 100px;*/
+/*box-shadow:*/
+/*0 10px 10px -16px black,*/
+/*0 20px 20px -15px red,*/
+/*0 30px 30px -14px silver;*/
+/*}*/
+
+/*.enemy-blue {*/
+/*border-radius: 100px;*/
+/*box-shadow:*/
+/*0 10px 10px -16px black,*/
+/*0 20px 20px -15px blue,*/
+/*0 30px 30px -14px silver;*/
+/*}*/
+
+/*.enemy-yellow {*/
+/*border-radius: 100px;*/
+/*box-shadow:*/
+/*0 10px 10px -16px black,*/
+/*0 20px 20px -15px yellow,*/
+/*0 30px 30px -14px silver;*/
+/*}*/
+
+/*.enemy-green {*/
+/*border-radius: 100px;*/
+/*box-shadow:*/
+/*0 10px 10px -16px black,*/
+/*0 20px 20px -15px green,*/
+/*0 30px 30px -14px silver;*/
+/*}*/
+
+/*.enemy-orange {*/
+/*border-radius: 100px;*/
+/*box-shadow:*/
+/*0 10px 10px -16px black,*/
+/*0 20px 20px -15px orange,*/
+/*0 30px 30px -14px silver;*/
+/*}*/
+
+/*.enemy-purple {*/
+/*border-radius: 100px;*/
+/*box-shadow:*/
+/*0 10px 10px -16px black,*/
+/*0 20px 20px -15px purple,*/
+/*0 30px 30px -14px silver;*/
+/*}*/
+
+/*.char-red {*/
+/*border-radius: 100px;*/
+/*box-shadow:*/
+/*0 10px 10px -16px silver,*/
+/*0 20px 20px -15px red,*/
+/*0 30px 30px -14px black;*/
+/*}*/
 
 
 
@@ -437,6 +496,22 @@ tr > td {
 
 .sm-padding {
     padding: 5px;
+}
+
+
+/*Character Color*/
+.progress {
+    height: 2.25em;
+    margin-bottom: 20px;
+    margin-top: -20px;
+    overflow: hidden;
+    background-color: #959595;
+    border-radius: 15px;
+    -webkit-box-shadow:
+        0 10px 10px -10px silver,
+        0 20px 20px -8px blue,
+        0 30px 30px -6px black;
+    border: 8px ridge silver;
 }
 
 
