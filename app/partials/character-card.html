@@ -16,17 +16,7 @@
         <div class="avatar-size-sm"
              ng-show="character.health <= 0"
              style="background-image: url(img/gravestone.png)">
-
-<!--<<<<<<< HEAD-->
-        <!--<progressbars-->
-                     <!--class="health-bar"-->
-                     <!--max="character.maxHealth"-->
-                     <!--value="character.health"-->
-                     <!--type="{{ healthBarType() }}">-->
-            <!--<span class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>-->
-        <!--</progressbar>-->
-<!--=======-->
-        <!--</div>-->
+        </div>
 
 
         <div class="character-info">
@@ -34,8 +24,9 @@
 
             </span>
         </div>
+        <!--ng-show="Role.role == 'Game Master'"-->
         <div>
-            <progressbar ng-show="Role.role == 'Game Master'"
+            <progressbar
                          ng-click="setCharacterDetail($event,character)"
                          class="health-bar"
                          max="character.maxHealth"
