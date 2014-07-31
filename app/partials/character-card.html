@@ -1,6 +1,6 @@
 <div class="characterDetails text-center">
 
-    <div
+    <div ng-controller="RoleCtrl"
          ng-class="{'selectedActor': selections.activeActor.id == character.id,
                'selectedTarget': selections.activeTarget.id == character.id,
                'notSelected': selections.activeActor.id != character.id && selections.activeTarget.id != character.id}">
@@ -10,7 +10,11 @@
              ng-show="character.health > 0"
              ng-style="{'background-image': 'url(' + character.sprite + ')'}">
             <!--<p>Health: {{character.health}} / {{ character.maxHealth }}</p>-->
-            <span class="glyphicon glyphicon-info-sign pull-right char-info-icon"></span>
+
+            <span class="glyphicon glyphicon-info-sign pull-right char-info-icon"
+                  ng-click="setCharacterDetail($event,character)"
+                  ng-show="Role.role == 'Game Master' || Role.role == 'Beast Master'">
+                  </span>
         </div>
 
         <div class="avatar-size-sm"
@@ -26,12 +30,12 @@
         </div>
         <!--ng-show="Role.role == 'Game Master'"-->
         <div>
-            <progressbarg
-                         ng-click="setCharacterDetail($event,character)"
-                         class="health-bar"
-                         max="character.maxHealth"
-                         value="character.health"
-                         type="{{ healthBarType() }}">
+            <progressbar
+
+                    class="health-bar"
+                    max="character.maxHealth"
+                    value="character.health"
+                    type="{{ healthBarType() }}">
                 <span class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>
             </progressbar>
 

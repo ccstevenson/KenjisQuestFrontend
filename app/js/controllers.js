@@ -181,6 +181,12 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
             $scope.game.soundPlay = false;
 
+            $scope.beastCardShow = false;
+
+            if (roleService.role == 'Game Master' || roleService.role == 'Beast Master') {
+                $scope.game.enemies
+            }
+
             $scope.selectedPlayer = function (player) {
                 $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
             };
