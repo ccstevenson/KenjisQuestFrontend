@@ -77,7 +77,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         $scope.addPlayer = function() {
 
             $scope.player.health = parseInt($scope.maxHealth);
-            $scope.player.health = $scope.healthMod($scope.player.charClass, $scope.player.race) * $scope.player.health;
+            $scope.player.health = parseInt($scope.healthMod($scope.player.charClass, $scope.player.race) * $scope.player.health);
             $scope.player.maxHealth = $scope.player.health;
             $scope.player.sprite = $scope.addImage($scope.player.charClass);
 
