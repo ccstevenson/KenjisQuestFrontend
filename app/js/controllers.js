@@ -31,7 +31,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             { printed_name: 'Dwarf', stored_name: 'dwarf' }];
 
         $scope.player = {};
-        $scope.maxHealth = 0;
+        // $scope.maxHealth = 0;
 
         $scope.addImage = function(charClass) {
             if (charClass == 'wizard')  {
@@ -44,6 +44,9 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 return "img/char2_small.png";
             }
             else if (charClass == 'cleric')  {
+                return "img/char3_small.png";
+            }
+            else if (charClass == 'warrior')  {
                 return "img/char1_small.png";
             }
             else  {
@@ -54,12 +57,31 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
         };
 
+
+        $scope.healthMod = function(charClass, charRace)  {
+            healthModifier = 1.0
+            if (charClass == "warrior")  {
+                healthModifier += 0.15;
+            }
+            if (charRace == "halfling")  {
+                healthModifier -= 0.1;
+            }
+            else (charRace == "dwarf")  {
+                healthModifier += 0.35;
+            }
+
+            return healthModifier;
+        }
+
         $scope.addPlayer = function() {
 
             $scope.player.health = parseInt($scope.maxHealth);
+            $scope.player.health = $scope.healthMod($scope.player.charClass, $scope.player.race) * $scope.player.health;
             $scope.player.maxHealth = $scope.player.health;
+
             $scope.player.sprite = $scope.addImage($scope.player.charClass);
-            if ($scope.game.players instanceof Array)  {
+
+             if ($scope.game.players instanceof Array)  {
                 $scope.player.id = $scope.game.players.length + 1;
                 $scope.game.players.push($scope.player);    
             }
