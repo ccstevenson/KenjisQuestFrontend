@@ -22,11 +22,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             { printed_name: 'Warrior', stored_name: 'warrior' },
             { printed_name: 'Ranger', stored_name: 'ranger' }];
 
-        // $scope.races = [
-        //     { printed_name: 'Goblin', stored_name: 'goblin' },
-        //     { printed_name: 'Human', stored_name: 'human' },
-        //     { printed_name: 'Elf', stored_name: 'elf' },
-        //     { printed_name: 'Dwarf', stored_name: 'dwarf' }];
+        $scope.races = [
+            { printed_name: 'Goblin', stored_name: 'goblin' },
+            { printed_name: 'Human', stored_name: 'human' },
+            { printed_name: 'Elf', stored_name: 'elf' },
+            { printed_name: 'Dwarf', stored_name: 'dwarf' }];
 
         $scope.player = {};
         $scope.maxHealth = 0;
