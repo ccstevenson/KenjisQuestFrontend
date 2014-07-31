@@ -1,6 +1,6 @@
 <div class="characterDetails text-center">
 
-    <div
+    <div ng-controller="RoleCtrl"
          ng-class="{'selectedActor': selections.activeActor.id == character.id,
                'selectedTarget': selections.activeTarget.id == character.id,
                'notSelected': selections.activeActor.id != character.id && selections.activeTarget.id != character.id}">
@@ -10,7 +10,7 @@
              ng-show="character.health > 0"
              ng-style="{'background-image': 'url(' + character.sprite + ')'}">
             <!--<p>Health: {{character.health}} / {{ character.maxHealth }}</p>-->
-            <span class="glyphicon glyphicon-info-sign pull-right char-info-icon"></span>
+            <span ng-show="Role.role == 'Game Master' || Role.role == 'Beast Master'" class="glyphicon glyphicon-info-sign pull-right char-info-icon"></span>
         </div>
 
         <div class="avatar-size-sm"
