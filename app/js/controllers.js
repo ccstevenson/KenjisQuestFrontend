@@ -66,7 +66,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             if (charRace == "halfling")  {
                 healthModifier -= 0.1;
             }
-            else (charRace == "dwarf")  {
+            else if (charRace == "dwarf")  {
                 healthModifier += 0.35;
             }
 
