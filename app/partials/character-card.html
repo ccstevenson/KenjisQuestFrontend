@@ -24,8 +24,8 @@
         <div class="char-base"
              ng-style="{'background-color': character.color}"></div>
             <div class="character-info">
-                <span>{{ character.name }}
-
+                <span>
+                    <h2>{{ character.name }}</h2>
                 </span>
             </div>
         <!--ng-show="Role.role == 'Game Master'"-->
@@ -35,9 +35,8 @@
                     max="character.maxHealth"
                     value="character.health"
                     type="{{ healthBarType() }}">
-                <span class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>
             </progressbar>
-
+             <span class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>
         <!--<span style="width: inherit; background: #008000" class="border-main health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>-->
         <!--<p class="negativeTopMargin20">Class: {{character.class}}</p>-->
 
