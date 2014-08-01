@@ -5,13 +5,13 @@
                 <input class="form-control create-character-input" type="text" ng-model="player.name">
 
                 <label>Race:</label>
-                <select ng-model="character.race"
+                <select ng-model="charRace"
                         ng-options="race.stored_name as race.printed_name for race in races"
                         class="form-control create-character-input">
                 </select>
 
            		<label>Class:</label>
-                <select ng-model="player.charClass"
+                <select ng-model="charClass"
                         ng-options="characterClass.stored_name as characterClass.printed_name for characterClass in characterClasses"
                         class="form-control create-character-input">
             	</select>
@@ -21,6 +21,12 @@
 
                 <label>Silver:</label>
                 <input class="form-control create-character-input" type="text" ng-model="silver">
+
+                <label>Weapon:</label>
+                <select ng-model="weapon"
+                        ng-options="weapon.stored_name as weapon.printed_name for weapon in weapons"
+                        class="form-control create-character-input">
+                </select>
 
                 <label>Gamepiece Color:</label>
                 <input class="form-control create-character-input" type="text" ng-model="color">

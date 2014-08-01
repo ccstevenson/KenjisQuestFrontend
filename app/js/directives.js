@@ -22,10 +22,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
             templateUrl: 'partials/character-card.html',
             controller: function ($scope) {
                 $scope.isSelected = function() {
-                    if ($scope.character == selections.activeActor || $scope.character == selections.activeTarget) {
-                        return true;
-                    }
-                    return false;
+                    return $scope.character == (selections.activeActor || selections.activeTarget);
                 };
 
                 $scope.healthBarType = function() { // Determines which color health bar to display
@@ -42,29 +39,27 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     }
                 };
 
-
                 $scope.setCharacterDetail = function($event,character){
                     $event.stopPropagation();
                     $scope.$parent.$parent.characterDetail = character;
                 };
 
                 $scope.showInfoIcon = function() {
-                    if (roleService.role == 'Beast Master' || roleService.role == 'Game Master' || isPlayer()) {
-                        return true;
-                    }
-                    return false;
+                    return ((roleService.role == ('Beast Master' || 'Game Master')) || isPlayer());
                 };
 
                 var isPlayer = function() {
-                    for (var i = 0; i < $scope.players.length; i++) {
-                        var player = $scope.players[i];
+                    if ($scope.players != null) {
+                        for (var i = 0; i < $scope.players.length; i++) {
+                            var player = $scope.players[i];
 
-                        if (player.id == $scope.character.id) {
-                            return true
+                            if (player.id == $scope.character.id) {
+                                return true
+                            }
                         }
+                        return false
                     }
-
-                    return false;
+                    return false
                 }
             }
         }
@@ -90,9 +85,6 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                         'action': 'Attacking'
                     };
                 };
-
-//                $scope.game = {};
-//                $scope.game.soundPlay = false;
 
                 $scope.attack = function () {
                     $scope.status = 'attack';
@@ -154,7 +146,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
         }
     })
 
- .directive('characterCardDetail', function () {
+    .directive('characterCardDetail', function () {
         return {
             restrict: 'E',
             scope: {
@@ -169,5 +161,5 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                 }
             }
         }
-});
+    });
 
