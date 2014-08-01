@@ -548,3 +548,19 @@ opacity: 1;
             0 30px 30px -6px black;
     border-radius: 15px;
 }
+
+.ng-enter,
+.ng-leave {
+    -webkit-transition: all linear 0.25s;
+    transition: all linear 0.25s;
+}
+
+.ng-enter.ng-enter-active,
+.ng-leave {
+    opacity: 1;
+}
+
+.ng-leave.ng-leave-active,
+.ng-enter {
+    opacity: 0;
+}

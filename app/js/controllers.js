@@ -5,7 +5,9 @@
 
 angular.module('myApp.controllers', ['ngDragDrop'])
 
-    .controller('RouteCtrl', ['$scope', function ($scope) {
+    .controller('RouteCtrl', ['$scope',
+        function ($scope) {
+
         $scope.setSoundboard = function (boardVisible) {
             $scope.soundBoardVisible = boardVisible;
             console.log(boardVisible);
@@ -129,7 +131,9 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
     }])
 
-    .controller('RoleCtrl', ['$scope', 'roleService', function ($scope, roleService) {
+    .controller('RoleCtrl', ['$scope', 'roleService',
+        function ($scope, roleService) {
+
         $scope.Role = roleService;
         $scope.roles = roleService.roles;
 
@@ -142,22 +146,29 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         };
     }])
 
-    .controller('GameCtrl', ['$scope', 'Restangular', 'encounterService',
-        function ($scope, Restangular, encounterService) {
+    .controller('GameCtrl', ['$scope', 'Restangular', 'fireBase',
+        function ($scope, Restangular, fireBase) {
 
+            $scope.game = {};
             Restangular.all('games').getList().then(function (games) {
                 $scope.games = games;
+                fireBase.$asObject().$bindTo($scope, "game").then(function(){
+                    if ($scope.game.currentGame != null) {
+                        $scope.newGame = $scope.games[$scope.game.currentGame];
+                    }
+                });
             });
 
-            $scope.selectGame = function (game) {
-                $scope.game = game;
+            var players = [];
 
-                var players = [];
+            $scope.selectGame = function (game) {
+                $scope.newGame = game;
                 for (var player in game.players) {
                     players.push(game.players[player].character);
                 }
-
-                encounterService.game.players = players;
+                game = $scope.games.indexOf(game);
+                fireBase.$set("players", players);
+                fireBase.$set("currentGame", game);
                 $scope.chapter = {};
             };
 
@@ -167,28 +178,31 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
 
             $scope.selectScenario = function (scenario) {
-                encounterService.game.scenario = scenario;
+                fireBase.$set("scenario", scenario).then(function(){
                 window.location = '#/scenario';
+                });
             };
         }])
 
-    .controller('ScenarioCtrl', ['$scope', 'encounterService', 'fireBase',
-        function ($scope, encounterService, fireBase) {
+    .controller('ScenarioCtrl', ['$scope', 'fireBase',
+        function ($scope, fireBase) {
 
             $scope.game = {};
             fireBase.$asObject().$bindTo($scope, "game").then(function(){
-                if ($scope.game.scenario) {
-                    encounterService.game = $scope.game;
-                }
-                $scope.scenario = encounterService.game.scenario;
+                $scope.players = $scope.game.players;
+                $scope.scenario = $scope.game.scenario;
                 $scope.encounters = $scope.scenario.encounters;
-                $scope.items = encounterService.items;
-                $scope.characters = encounterService.characters;
+                if ($scope.game.currentEncounter != null) {
+                    $scope.encounter = $scope.scenario.encounters[$scope.game.currentEncounter];
+                    $scope.items = $scope.encounter.items;
+                    $scope.characters = $scope.encounter.characters;
+                }
             });
 
             $scope.dropSuccessHandler = function ($event, index, array) {
                 array.splice(index, 1);
             };
+
             $scope.onDrop = function ($event, $data, array) {
                 array.push($data);
             };
@@ -197,34 +211,26 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 $scope.encounter = encounter;
                 $scope.items = encounter.items;
                 $scope.characters = encounter.characters;
-                $scope.players = encounterService.game.players;
             };
 
             $scope.launchEncounter = function (encounter) {
-                encounterService.items = encounter.items;
-                encounterService.characters = encounter.characters;
-                encounterService.game.enemies = encounterService.characters;
-                window.location = '#/battleatronic';
+                fireBase.$set("currentEncounter", $scope.scenario.encounters.indexOf(encounter));
+                fireBase.$set("enemies", encounter.characters).then(function(){
+                    window.location = '#/battleatronic';
+                });
             };
         }])
 
-    .controller('BattleatronicCtrl', ['$scope', 'encounterService', 'fireBase', 'roleService',
-        function ($scope, encounterService, fireBase, roleService) {
+    .controller('BattleatronicCtrl', ['$scope', 'fireBase', 'roleService',
+        function ($scope, fireBase, roleService) {
 
             $scope.game = {};
             fireBase.$asObject().$bindTo($scope, "game").then(function(){
-                if (roleService.role != 'Player') {
-                    $scope.game = encounterService.game;
-                }
+                $scope.game.soundPlay = false;
+                $scope.beastCardShow = false;
             });
 
-            $scope.game.soundPlay = false;
-
-            $scope.beastCardShow = false;
-
-            if (roleService.role == 'Game Master' || roleService.role == 'Beast Master') {
-
-            }
+            if (roleService.role == 'Game Master' || roleService.role == 'Beast Master') {}
 
             $scope.selectedPlayer = function (player) {
                 $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
@@ -232,6 +238,17 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
             $scope.selectedEnemy = function (target) {
                 $scope.game.selections.activeTarget = target;
+            };
+
+            $scope.makeSelection = function (player) {
+                if (!$scope.game.selections || !$scope.game.selections.activeActor) {
+                    $scope.game.selections = {
+                        activeActor: player
+                    };
+                }
+                else {
+                    $scope.game.selections.activeTarget = player;
+                }
             };
 
             $scope.calculateDamage = function (damage, character, status) {
@@ -311,28 +328,13 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                     dealDamage(character);
                 }
 
-                encounterService.game.players = $scope.game.players;
-
                 // The attack was completed. Deselect the two characters involved in the attack.
                 $scope.game.selections.activeActor = null;
                 $scope.game.selections.activeTarget = null;
             };
 
-            $scope.makeSelection = function (player) {
-                if (!$scope.game.selections || !$scope.game.selections.activeActor) {
-                    $scope.game.selections = {
-                        activeActor: player
-                    };
-                }
-                else {
-                    $scope.game.selections.activeTarget = player;
-                }
-            };
-
             $scope.deletePlayers = function () {
-                encounterService.game.players = [];
-                $scope.game.players = encounterService.game.players;
-                // encounterService.game.players = $scope.game.players;
+                $scope.game.players = {};
             };
 
             $scope.$watch('game.soundPlay', function () {
@@ -354,7 +356,8 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 //        };
     }])
 
-    .controller('VideosController', function ($scope, $http, $log, VideosService) {
+    .controller('VideosController',
+    function ($scope, $http, $log, VideosService) {
 
         function init() {
             $scope.youtube = VideosService.getYoutube();
