@@ -5,16 +5,15 @@
                'selectedTarget': selections.activeTarget.id == character.id,
                'notSelected': selections.activeActor.id != character.id && selections.activeTarget.id != character.id}">
 
-        <div class="avatar-size-sm"
+        <span class="glyphicon glyphicon-info-sign pull-right char-info-icon"
+              ng-click="setCharacterDetail($event,character)"
+              ng-show="showInfoIcon()"></span>
 
-             ng-show="character.health > 0"
-             ng-style="{'background-image': 'url(' + character.sprite + ')'}">
+        <img src="{{ character.sprite }}"
+             class="avatar-size-sm"
+             ng-show="character.health > 0"/>
+             <!--ng-style="{background-image: 'url(' + character.sprite + ')'}">-->
             <!--<p>Health: {{character.health}} / {{ character.maxHealth }}</p>-->
-
-            <span class="glyphicon glyphicon-info-sign pull-right char-info-icon"
-                  ng-click="setCharacterDetail($event,character)"
-                  ng-show="showInfoIcon()">
-                  </span>
         </div>
 
         <div class="avatar-size-sm"
@@ -22,14 +21,15 @@
              style="background-image: url(img/gravestone.png)">
         </div>
 
+        <div class="char-base"
+             ng-style="{'background-color': character.color}"></div>
+            <div class="character-info">
+                <span>{{ character.name }}
 
-        <div class="character-info">
-            <span>{{ character.name }}
-
-            </span>
-        </div>
+                </span>
+            </div>
         <!--ng-show="Role.role == 'Game Master'"-->
-        <div>
+
             <progressbar
                     class="health-bar"
                     max="character.maxHealth"
@@ -38,9 +38,9 @@
                 <span class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>
             </progressbar>
 
-            <!--<span style="width: inherit; background: #008000" class="border-main health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>-->
-        </div>
+        <!--<span style="width: inherit; background: #008000" class="border-main health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>-->
         <!--<p class="negativeTopMargin20">Class: {{character.class}}</p>-->
+
     </div>
 
 </div>

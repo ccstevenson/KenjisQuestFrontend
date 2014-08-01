@@ -31,9 +31,9 @@ Bootstrap Overrides
     overflow: hidden;
     background-color: #959595;
     border-radius: 15px;
-    -webkit-box-shadow:
-        0 10px 10px -10px silver,
-        0 20px 20px -8px blue,
-        0 30px 30px -6px black;
+    /*-webkit-box-shadow:*/
+        /*0 10px 10px -10px silver,*/
+        /*0 20px 20px -8px blue,*/
+        /*0 30px 30px -6px black;*/
     border: 8px ridge silver;
 }
