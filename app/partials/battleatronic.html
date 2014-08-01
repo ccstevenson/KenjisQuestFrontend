@@ -14,15 +14,11 @@
         <div class="col-md-4 col-xs-12" ng-repeat="enemy in game.enemies track by $index">
             <character-card style="float:left; position:relative"
                             character="enemy"
+                            type="ENEMYCONST"
                             selections="game.selections"
                             players="game.players"
-                            ng-click="makeSelection(enemy)"
-                            ng-class="{'enemy-red': enemy.color == 'red',
-                                      'enemy-blue': enemy.color == 'blue',
-                                      'enemy-yellow': enemy.color == 'yellow',
-                                      'enemy-purple': enemy.color == 'purple',
-                                      'enemy-orange': enemy.color == 'orange',
-                                      'enemy-green': enemy.color == 'green'}">
+                            ng-click="makeSelection(enemy)">
+
             </character-card>
         </div>
     </div>
@@ -37,13 +33,8 @@
         <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
         <div class="col-md-6 col-xs-12" ng-repeat="player in game.players track by $index">
             <character-card style="float:right; position:relative"
-                            ng-class="{'char-red': player.color == 'red',
-                                      'char-blue':  player.color == 'blue',
-                                      'char-yellow':  player.color == 'yellow',
-                                      'char-purple':  player.color == 'purple',
-                                      'char-orange':  player.color == 'orange',
-                                      'char-green':  player.color == 'green'}"
                             character="player"
+                            type="PLAYERCONST"
                             selections="game.selections"
                             players="game.players"
                             ng-click="makeSelection(player)">

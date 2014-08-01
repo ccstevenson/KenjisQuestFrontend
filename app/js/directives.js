@@ -17,7 +17,8 @@ angular.module('myApp.directives', ['ui.bootstrap'])
             scope: {
                 character: '=character',
                 selections: '=selections',
-                players: '=players'
+                players: '=players',
+                type: '=type'
             },
             templateUrl: 'partials/character-card.html',
             controller: function ($scope) {
