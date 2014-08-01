@@ -136,6 +136,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                     $scope.game.sound = 'sounds/miss.mp3';
                 }
 
+                character.beforeHealth = character.health;
                 if (character != null)  {
                     character.health -= damage;
                     

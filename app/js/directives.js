@@ -35,11 +35,19 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     }
                     else if (health < .7 && health > .3) {
                         return "warning";
+
                     }
                     else {
                         return "danger";
                     }
                 }
+
+                $scope.$watch('$scope.character.health', function() {
+                    if ($scope.character.health < $scope.character.beforeHealth)  {
+
+                    }
+                });
+
 
                 $scope.setCharacterDetail = function($event,character){
 
