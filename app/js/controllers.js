@@ -51,10 +51,10 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 return "img/char2_small.png";
             }
             else if (charClass == 'cleric')  {
-                return "img/char3_small.png";
+                return "img/char1_small.png";
             }
             else if (charClass == 'warrior')  {
-                return "img/char1_small.png";
+                return "img/char3_small.png";
             }
             else  {
                 // this shouldn't be seen
