@@ -11,7 +11,7 @@ angular.module('myApp.services', [])
     .factory("fireBase", ["$firebase",
         function ($firebase) {
 
-        var ref = new Firebase("https://scorching-fire-3218.firebaseio.com/mikeDev");
+        var ref = new Firebase("https://scorching-fire-3218.firebaseio.com/Dev");
         return $firebase(ref);
     }])
 

@@ -112,6 +112,12 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                     init();
                 };
 
+                $scope.healAll = function () {
+                    $scope.status = 'healAll';
+                    $scope.callback({'damage': parseInt($scope.attackData.attackValue) *-1, 'character': $scope.target, 'status': $scope.status});
+                    init();
+                };
+
                 $scope.miss = function () {
                     $scope.status = 'miss';
                     $scope.actor = null;

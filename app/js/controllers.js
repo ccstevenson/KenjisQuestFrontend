@@ -326,7 +326,20 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                     for (var target in targets) {
                         dealDamage(targets[target]);
                     }
-                } else {
+                }
+                else if (status == 'healAll') {
+                    for (var player in $scope.game.players){
+                        var playa = parseInt(player);
+                        if ($scope.game.players[playa].id == character.id) {
+                            targets = $scope.game.players;
+                            break;
+                        }
+                    }
+                    for (var target in targets) {
+                        dealDamage(targets[target]);
+                    }
+                }
+                else {
                     dealDamage(character);
                 }
 
