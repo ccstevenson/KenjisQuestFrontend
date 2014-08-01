@@ -25,9 +25,9 @@ Bootstrap Overrides
 }
 
 .progress {
-    height: 2.25em;
-    margin-bottom: 20px;
-    margin-top: -20px;
+    height: 1.5em;
+    margin-bottom: 15px;
+    margin-top: -15px;
     overflow: hidden;
     background-color: #959595;
     border-radius: 15px;
