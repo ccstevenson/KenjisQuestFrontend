@@ -43,8 +43,9 @@
             max="character.maxHealth"
             value="character.health"
             type="{{ healthBarType() }}">
+        <h1 class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</h1>
     </progressbar>
-    <span class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>
+
 
     <!--<span style="width: inherit; background: #008000" class="border-main health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>-->
     <!--<p class="negativeTopMargin20">Class: {{character.class}}</p>-->
