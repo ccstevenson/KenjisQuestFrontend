@@ -12,35 +12,41 @@
         <img src="{{ character.sprite }}"
              class="avatar-size-sm"
              ng-show="character.health > 0"/>
-             <!--ng-style="{background-image: 'url(' + character.sprite + ')'}">-->
-            <!--<p>Health: {{character.health}} / {{ character.maxHealth }}</p>-->
-        </div>
-
-        <div class="avatar-size-sm"
-             ng-show="character.health <= 0"
-             style="background-image: url(img/gravestone.png)">
-        </div>
-
-        <div class="char-base"
-             ng-style="{'background-color': character.color}"></div>
-            <div class="character-info">
-                <span>{{ character.name }}
-
-                </span>
-            </div>
-        <!--ng-show="Role.role == 'Game Master'"-->
-
-            <progressbar
-                    class="health-bar"
-                    max="character.maxHealth"
-                    value="character.health"
-                    type="{{ healthBarType() }}">
-                <span class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>
-            </progressbar>
-
-        <!--<span style="width: inherit; background: #008000" class="border-main health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>-->
-        <!--<p class="negativeTopMargin20">Class: {{character.class}}</p>-->
-
+        <!--ng-style="{background-image: 'url(' + character.sprite + ')'}">-->
+        <!--<p>Health: {{character.health}} / {{ character.maxHealth }}</p>-->
     </div>
+
+    <div class="avatar-size-sm"
+         ng-show="character.health <= 0"
+         style="background-image: url(img/gravestone.png)">
+    </div>
+
+    <div ng-show=" type == 'enemy' "
+         class="char-base enemy-base"
+         ng-style="{ 'background-color' : character.color }">
+    </div>
+
+    <div ng-show=" type == 'player' "
+         class="char-base playa-base"
+         ng-style="{ 'background-color' : character.color }">
+    </div>
+
+    <div class="character-info">
+                <span>
+                    <h2>{{ character.name }}</h2>
+                </span>
+    </div>
+    <!--ng-show="Role.role == 'Game Master'"-->
+
+    <progressbar
+            class="health-bar"
+            max="character.maxHealth"
+            value="character.health"
+            type="{{ healthBarType() }}">
+    </progressbar>
+    <span class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>
+
+    <!--<span style="width: inherit; background: #008000" class="border-main health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>-->
+    <!--<p class="negativeTopMargin20">Class: {{character.class}}</p>-->
 
 </div>

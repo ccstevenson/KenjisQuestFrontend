@@ -225,6 +225,10 @@ angular.module('myApp.controllers', ['ngDragDrop'])
     .controller('BattleatronicCtrl', ['$scope', 'fireBase', 'roleService',
         function ($scope, fireBase, roleService) {
 
+            $scope.ENEMYCONST = 'enemy';
+
+            $scope.PLAYERCONST ='player';
+
             $scope.game = {};
             fireBase.$asObject().$bindTo($scope, "game").then(function(){
                 $scope.game.soundPlay = false;
