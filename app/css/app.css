@@ -564,3 +564,7 @@ opacity: 1;
 .ng-enter {
     opacity: 0;
 }
+
+.create-character-input {
+    margin-bottom: 10px;
+}

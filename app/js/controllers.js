@@ -83,6 +83,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.player.health = parseInt($scope.maxHealth);
             $scope.player.health = parseInt($scope.healthMod($scope.player.charClass, $scope.player.race) * $scope.player.health);
             $scope.player.maxHealth = $scope.player.health;
+            $scope.player.siver = $scope.silver;
             $scope.player.sprite = $scope.addImage($scope.player.charClass);
 
             function idGen(len) {
