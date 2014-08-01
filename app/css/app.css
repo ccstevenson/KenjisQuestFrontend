@@ -298,6 +298,7 @@ tr > td {
 
 .characterDetails {
     padding: 0.25em;
+    text-wrap: none;
 }
 
 .bulletlessList {
@@ -405,11 +406,14 @@ tr > td {
 }
 
 .health-bar-text {
-    margin: -1.8em 1.5em -2em -1.5em;
-    position: absolute;
+    margin: 3px 0 0 0;
+    position: relative;
     color: #000000;
+    min-width: 150px;
+    height: inherit;
     white-space: nowrap;
     font-size: 2em;
+    overflow: hidden;
 }
 
 .char-info-icon {
