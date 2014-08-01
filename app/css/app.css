@@ -560,7 +560,8 @@ opacity: 1;
     border-radius: 15px;
 }
 
-<<<<<<< HEAD
+/**** End Character Color ****/
+
 .ng-enter,
 .ng-leave {
     -webkit-transition: all linear 0.25s;
@@ -576,6 +577,7 @@ opacity: 1;
 .ng-enter {
     opacity: 0;
 }
-=======
-/**** End Character Color ****/
->>>>>>> characterColor
+
+.create-character-input {
+    margin-bottom: 10px;
+}

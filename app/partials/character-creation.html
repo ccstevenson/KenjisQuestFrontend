@@ -1,27 +1,31 @@
-<div class="starter-template">
-    <section class="container">
-                <label>Character Name</label>
-                <input class="form-control" type="text" ng-model="player.name">
+<div class="starter-template container">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+                <label>Character Name:</label>
+                <input class="form-control create-character-input" type="text" ng-model="player.name">
 
-                <label>Race</label>
+                <label>Race:</label>
                 <select ng-model="character.race"
                         ng-options="race.stored_name as race.printed_name for race in races"
-                        class="form-control">
+                        class="form-control create-character-input">
                 </select>
 
-
-           		<label>Class</label>
+           		<label>Class:</label>
                 <select ng-model="player.charClass"
                         ng-options="characterClass.stored_name as characterClass.printed_name for characterClass in characterClasses"
-                        class="form-control">
+                        class="form-control create-character-input">
             	</select>
 
+                <label>Base Hit Points:</label>
+                <input class="form-control create-character-input" type="text" ng-model="maxHealth">
 
-                <label>Base Hit Points</label>
-                <input class="form-control" type="text" ng-model="maxHealth">
+                <label>Silver:</label>
+                <input class="form-control create-character-input" type="text" ng-model="silver">
 
+                <label>Gamepiece Color:</label>
+                <input class="form-control create-character-input" type="text" ng-model="color">
 
-                <button class="btn btn-sm btn-success fa fa-check-circle" ng-click="addPlayer()"> Save</button>
-    </section>
-
+                <button class="btn btn-sm btn-success fa fa-check-circle" ng-click="addPlayer()"> Save Player</button>
+    </div>
+    <div class="col-lg-4"></div>
 </div>
