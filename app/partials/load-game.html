@@ -6,7 +6,7 @@
     </div>
     <div class="col-lg-4">
         <tabset vertical="true" type="pills">
-            <tab ng-click="selectChapter(chapter)" heading="{{ chapter.name }}" ng-repeat="chapter in game.chapters track by $index"></tab>
+            <tab ng-click="selectChapter(chapter)" heading="{{ chapter.name }}" ng-repeat="chapter in newGame.chapters track by $index"></tab>
         </tabset>
     </div>
     <div class="col-lg-4">
