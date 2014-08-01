@@ -114,10 +114,10 @@ angular.module('myApp.directives', ['ui.bootstrap'])
 
                 $scope.miss = function () {
                     $scope.status = 'miss';
-                    // $scope.actor = null;
-                    // $scope.target = null;
-                    // $scope.player = null;
-                    // $scope.enemy = null;
+                    $scope.actor = null;
+                    $scope.target = null;
+                    $scope.player = null;
+                    $scope.enemy = null;
                     $scope.callback({'damage': 0, 'character': null, 'status': $scope.status});
                     init()
                 };
