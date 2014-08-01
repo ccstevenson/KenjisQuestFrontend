@@ -22,7 +22,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         fireBase.$asObject().$bindTo($scope, "game");
 
         $scope.characterClasses = [
-            { printed_name: 'Wizard', stored_name: 'wizard' },
+            // { printed_name: 'Wizard', stored_name: 'wizard' },
             { printed_name: 'Mage', stored_name: 'mage' },
             { printed_name: 'Summoner', stored_name: 'summoner' },
             { printed_name: 'Warrior', stored_name: 'warrior' },
