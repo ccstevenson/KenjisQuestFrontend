@@ -12,35 +12,33 @@
 
                     <p>{{ character.name }}</p>
 
-                    <p><label>Race:</label> {{ character.race.name }}</p>
+                    <p><label>Race:</label> {{ character.race }}</p>
 
                     <label>HP:</label>
 
                     <span style="color:black; white-space:nowrap;">{{ character.health }} / {{ character.maxHealth }}</span>
 
 
-                    <p><label>Class:</label> {{ character.character_class.name }}</p>
+                    <p><label>Class:</label> {{ character.class }}</p>
 
                     <div class="hidden-lg hidden-md hidden-sm">
                         <div>
                             <label>Skills:</label>
-
                         </div>
-
                         <div class="col-xs-1"></div>
                         <div class="col-xs-1"></div>
                         <div class="col-xs-5">
                             <p ng-repeat="skill in character.skills track by $index">
                                 {{ skill.name }}
                             </p>
-                            <label>Inventory:</label>
 
+                            <label>Inventory:</label>
                             <p ng-repeat="item in character.inventory track by $index">
                                 {{ item.name }}
                             </p>
-                            <label>Weapons:</label>
 
-                            <p>{{ character.weapon.name }}</p>
+                            <label>Weapon:</label>
+                            <p>{{ character.weapon }}</p>
                         </div>
                     </div>
                 </div>
@@ -60,9 +58,9 @@
                                 <p ng-repeat="item in character.inventory track by $index">
                                     {{ item.name }}
                                 </p>
-                                <label>Weapons:</label>
+                                <label>Weapon:</label>
 
-                                <p>{{ character.weapon.name }}</p>
+                                <p>{{ character.weapon }}</p>
                             </div>
                         </div>
                         <div class="col-sm-1 col-xs-2"></div>
