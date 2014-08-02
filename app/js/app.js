@@ -13,10 +13,6 @@ angular.module('myApp', [
     'LocalStorageModule',
     'restangular',
     'ngDragDrop'
-
-
-
-
 ])
     .config(['$routeProvider', 'RestangularProvider', function ($routeProvider, RestangularProvider) {
         $routeProvider.when('/battleatronic', {templateUrl: 'partials/battleatronic.html', controller: 'BattleatronicCtrl'});

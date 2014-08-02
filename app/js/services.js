@@ -15,6 +15,47 @@ angular.module('myApp.services', [])
         return $firebase(ref);
     }])
 
+    .factory("characterService", function () {
+        var characterService = {
+            characterClasses: [
+                {name: 'Mage'},
+                {name: 'Summoner'},
+                {name: 'Warrior'},
+                {name: 'Cleric'},
+                {name: 'Rogue'}
+            ],
+
+            races: [
+                {name: 'Goblin'},
+                {name: 'Human'},
+                {name: 'Elf'},
+                {name: 'Halfling'},
+                {name: 'Dwarf'}
+            ],
+
+            weapons:  [
+                {name: 'Short Sword'},
+                {name: 'Dagger'},
+                {name: 'Staff'},
+                {name: 'Mace'},
+                {name: 'Bow'}
+            ],
+
+            inventory: [
+                {name: "Shirt"},
+                {name: "Pants"},
+                {name: "Boots"}
+            ],
+
+            skills: [
+                {name: "Speech"},
+                {name: "Hearing"},
+                {name: "Sight"}
+            ]
+        };
+        return characterService;
+    })
+
     .factory("roleService", function () {
         var roleService = {
             role: 'Player',

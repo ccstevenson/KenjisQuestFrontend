@@ -14,63 +14,40 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         };
     }])
 
-    .controller('CharGenCtrl', ['$scope', 'Restangular', 'fireBase',
-        function ($scope, Restangular, fireBase) {
+    .controller('CharGenCtrl', ['$scope', 'Restangular', 'fireBase', 'characterService',
+        function ($scope, Restangular, fireBase, characterService) {
 
         $scope.game = {};
 
         fireBase.$asObject().$bindTo($scope, "game");
 
-        $scope.characterClasses = [
-            // { printed_name: 'Wizard', stored_name: 'wizard' },
-            { printed_name: 'Mage', stored_name: 'mage' },
-            { printed_name: 'Summoner', stored_name: 'summoner' },
-            { printed_name: 'Warrior', stored_name: 'warrior' },
-            { printed_name: 'Cleric', stored_name: 'cleric' },
-            { printed_name: 'Rogue', stored_name: 'rogue' }];
-
-        $scope.races = [
-            { printed_name: 'Goblin', stored_name: 'goblin' },
-            { printed_name: 'Human', stored_name: 'human' },
-            { printed_name: 'Elf', stored_name: 'elf' },
-            { printed_name: 'Halfling', stored_name: 'halfling' },
-            { printed_name: 'Dwarf', stored_name: 'dwarf' }];
-
+        $scope.characterClasses = characterService.characterClasses;
+        $scope.races = characterService.races;
+        $scope.weapons = characterService.weapons;
 
         $scope.addImage = function(charClass) {
-            if (charClass == 'mage')  {
+            if (charClass.name == 'Mage')  {
                 return "img/char5_small.png";
-            }
-            else if (charClass == 'mage')  {
-                return "img/char5_small.png";
-            }
-            else if (charClass == 'rogue')  {
+            } else if (charClass.name == 'Rogue')  {
                 return "img/char4_small.png";
-            }
-            else if (charClass == 'summoner')  {
+            } else if (charClass.name == 'Summoner')  {
                 return "img/char2_small.png";
-            }
-            else if (charClass == 'cleric')  {
-                return "img/char1_small.png";
-            }
-            else if (charClass == 'warrior')  {
+            } else if (charClass.name == 'Cleric')  {
                 return "img/char3_small.png";
-            }
-            else  {
-                // this shouldn't be seen
+            } else if (charClass.name == 'Warrior')  {
+                return "img/char1_small.png";
+            } else  { //error handling
                 return "img/error.png"
             }
         };
 
         $scope.healthMod = function(charClass, charRace)  {
             var healthModifier = 1.0;
-            if (charClass == "warrior")  {
+            if (charClass.name == "Warrior")  {
                 healthModifier += 0.15;
-            }
-            if (charRace == "halfling")  {
+            } else if (charRace.name == "Halfling")  {
                 healthModifier -= 0.1;
-            }
-            else if (charRace == "dwarf")  {
+            } else if (charRace.name == "Dwarf")  {
                 healthModifier += 0.35;
             }
             return healthModifier;
@@ -80,11 +57,17 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
         $scope.addPlayer = function() {
 
+            $scope.player.sprite = $scope.addImage($scope.charClass);
             $scope.player.health = parseInt($scope.maxHealth);
-            $scope.player.health = parseInt($scope.healthMod($scope.player.charClass, $scope.player.race) * $scope.player.health);
+            $scope.player.health = parseInt($scope.healthMod($scope.charClass, $scope.charRace) * $scope.player.health);
             $scope.player.maxHealth = $scope.player.health;
-            $scope.player.siver = $scope.silver;
-            $scope.player.sprite = $scope.addImage($scope.player.charClass);
+            $scope.player.class = $scope.charClass.name;
+            $scope.player.race = $scope.charRace.name;
+            $scope.player.silver = 30;
+            $scope.player.color = $scope.color;
+            $scope.player.weapon = $scope.weapon.name;
+            $scope.player.inventory = characterService.inventory;
+            $scope.player.skills = characterService.skills;
 
             function idGen(len) {
                 var text = "";
@@ -98,38 +81,16 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 $scope.player.id = idGen(10);
                 $scope.game.players.push($scope.player);
                 fireBase.$set({players: $scope.game.players}).then(function(){
-                    window.location = '#/battleatronic';
+                    setTimeout("window.location = '#/battleatronic';",250);
                 });
-            }
-
-            else {
+            } else {
                 $scope.player.id = idGen(10);
-                $scope.game.players = [$scope.player];
+                $scope.game.players = {0: $scope.player};
                 fireBase.$set({players: $scope.game.players}).then(function(){
-                    window.location = '#/battleatronic';
+                   setTimeout("window.location = '#/battleatronic';",250);
                 });
             }
         };
-
-
-//            if (!($scope.game.players instanceof Array)) {
-//                $scope.player.id = 1;
-//                $scope.game.players = [$scope.player];
-//            }
-//            else  {
-//                $scope.player.id = $scope.game.players.length + 1;
-//                $scope.game.players.push($scope.player)
-//            }
-//            window.location = '#/battleatronic';
-//        };
-
-
-        // $scope.nationalities = [
-        //     { printed_name: 'Bake', stored_name: 'bake' },
-        //     { printed_name: 'Microwave', stored_name: 'microwave' },
-        //     { printed_name: 'Fry', stored_name: 'fry' },
-        //     { printed_name: 'Dutch Oven', stored_name: 'dutch_oven' }];
-
     }])
 
     .controller('RoleCtrl', ['$scope', 'roleService',
@@ -160,15 +121,9 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 });
             });
 
-            var players = [];
-
             $scope.selectGame = function (game) {
                 $scope.newGame = game;
-                for (var player in game.players) {
-                    players.push(game.players[player].character);
-                }
                 game = $scope.games.indexOf(game);
-                fireBase.$set("players", players);
                 fireBase.$set("currentGame", game);
                 $scope.chapter = {};
             };
@@ -180,7 +135,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
             $scope.selectScenario = function (scenario) {
                 fireBase.$set("scenario", scenario).then(function(){
-                window.location = '#/scenario';
+                setTimeout("window.location = '#/scenario';",250);
                 });
             };
         }])
@@ -215,18 +170,17 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
 
             $scope.launchEncounter = function (encounter) {
-                fireBase.$set("currentEncounter", $scope.scenario.encounters.indexOf(encounter));
-                fireBase.$set("enemies", encounter.characters).then(function(){
-                    window.location = '#/battleatronic';
+                fireBase.$set("enemies", encounter.characters);
+                fireBase.$set("currentEncounter", $scope.scenario.encounters.indexOf(encounter)).then(function(){
+                    setTimeout("window.location = '#/battleatronic';",250);
                 });
             };
         }])
 
-    .controller('BattleatronicCtrl', ['$scope', 'fireBase', 'roleService',
-        function ($scope, fireBase, roleService) {
+    .controller('BattleatronicCtrl', ['$scope', 'fireBase',
+        function ($scope, fireBase) {
 
             $scope.ENEMYCONST = 'enemy';
-
             $scope.PLAYERCONST ='player';
 
             $scope.game = {};
@@ -234,9 +188,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 $scope.game.soundPlay = false;
                 $scope.beastCardShow = false;
             });
-
-
-            if (roleService.role == 'Game Master' || roleService.role == 'Beast Master') {}
 
             $scope.selectedPlayer = function (player) {
                 $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
@@ -282,6 +233,9 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 else if (status == 'heal') {
                     $scope.game.sound = 'sounds/heal.mp3';
                 }
+                else if (status == 'healAll' && character.health > 0) {
+                    $scope.game.sound = 'sounds/heal.mp3';
+                }
                 else if (status == 'miss') {
                     $scope.game.sound = 'sounds/miss.mp3';
                 }
@@ -317,6 +271,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                             target.health = target.maxHealth;
                         }
                     }
+
+                    // set to false in the calculator
+                    // directive, in a watch
+                    target.rumble = true;
+
                 };
 
                 if (status == 'attackAll') {
@@ -352,14 +311,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 $scope.game.selections.activeTarget = null;
             };
 
-            $scope.deletePlayers = function () {
-                $scope.game.players = {};
-            };
-
             $scope.$watch('game.soundPlay', function () {
                 var audio = new Audio($scope.game.sound);
                 // console.log(audio)
                 audio.play();
+                $scope.game.sound = {};
             });
 
 //        $scope.user = "Guest " + Math.round(Math.random() * 101);
@@ -440,5 +396,4 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         $scope.tabulate = function (state) {
             $scope.playlist = state;
         }
-
     });

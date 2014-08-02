@@ -11,7 +11,9 @@
 
         <img src="{{ character.sprite }}"
              class="avatar-size-sm"
-             ng-show="character.health > 0"/>
+             ng-show="character.health > 0"
+             ng-class="{'shake': character.rumble}"/>
+
         <!--ng-style="{background-image: 'url(' + character.sprite + ')'}">-->
         <!--<p>Health: {{character.health}} / {{ character.maxHealth }}</p>-->
     </div>
@@ -43,8 +45,9 @@
             max="character.maxHealth"
             value="character.health"
             type="{{ healthBarType() }}">
+        <h1 class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</h1>
     </progressbar>
-    <span class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>
+
 
     <!--<span style="width: inherit; background: #008000" class="border-main health-bar-text">{{ character.health }} / {{ character.maxHealth }}</span>-->
     <!--<p class="negativeTopMargin20">Class: {{character.class}}</p>-->

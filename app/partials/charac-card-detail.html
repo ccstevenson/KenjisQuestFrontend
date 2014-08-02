@@ -1,3 +1,26 @@
+<div ng-click="cancel()" class="modal-background"></div>
+
+<div class="char-card-foreground col-lg-4 col-md-6 col-sm-8 col-xs-10">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <img src="{{ character.sprite }}" class="sprite-border hidden-xs">
+        <p><label><b>{{ character.name }}</b></label></p>
+        <p><label>HP:</label> {{ character.health }} / {{ character.maxHealth }}</p>
+        <p><label>Race:</label> {{ character.race }}</p>
+        <p><label>Class:</label> {{ character.class }}</p>
+        <p><label>Silver:</label> {{ character.silver }}</p>
+        <p><label>Weapon:</label> {{ character.weapon }}</p>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <label>Skills:</label>
+        <p ng-repeat="skill in character.skills track by $index"> {{ skill.name }}</p>
+
+        <label>Inventory:</label>
+        <p ng-repeat="item in character.inventory track by $index"> {{ item.name }}</p>
+    </div>
+</div>
+
+<!-- Old Version -->
+<!--
 <div ng-click="cancel()" class="modal-background">
 </div>
 
@@ -12,35 +35,33 @@
 
                     <p>{{ character.name }}</p>
 
-                    <p><label>Race:</label> {{ character.race.name }}</p>
+                    <p><label>Race:</label> {{ character.race }}</p>
 
                     <label>HP:</label>
 
                     <span style="color:black; white-space:nowrap;">{{ character.health }} / {{ character.maxHealth }}</span>
 
 
-                    <p><label>Class:</label> {{ character.character_class.name }}</p>
+                    <p><label>Class:</label> {{ character.class }}</p>
 
                     <div class="hidden-lg hidden-md hidden-sm">
                         <div>
                             <label>Skills:</label>
-
                         </div>
-
                         <div class="col-xs-1"></div>
                         <div class="col-xs-1"></div>
                         <div class="col-xs-5">
                             <p ng-repeat="skill in character.skills track by $index">
                                 {{ skill.name }}
                             </p>
-                            <label>Inventory:</label>
 
+                            <label>Inventory:</label>
                             <p ng-repeat="item in character.inventory track by $index">
                                 {{ item.name }}
                             </p>
-                            <label>Weapons:</label>
 
-                            <p>{{ character.weapon.name }}</p>
+                            <label>Weapon:</label>
+                            <p>{{ character.weapon }}</p>
                         </div>
                     </div>
                 </div>
@@ -60,9 +81,9 @@
                                 <p ng-repeat="item in character.inventory track by $index">
                                     {{ item.name }}
                                 </p>
-                                <label>Weapons:</label>
+                                <label>Weapon:</label>
 
-                                <p>{{ character.weapon.name }}</p>
+                                <p>{{ character.weapon }}</p>
                             </div>
                         </div>
                         <div class="col-sm-1 col-xs-2"></div>
@@ -72,3 +93,4 @@
         </li>
     </div>
 </div>
+-->
