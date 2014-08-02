@@ -11,7 +11,9 @@
 
         <img src="{{ character.sprite }}"
              class="avatar-size-sm"
-             ng-show="character.health > 0"/>
+             ng-show="character.health > 0"
+             ng-class="{'shake': character.rumble}"/>
+
         <!--ng-style="{background-image: 'url(' + character.sprite + ')'}">-->
         <!--<p>Health: {{character.health}} / {{ character.maxHealth }}</p>-->
     </div>

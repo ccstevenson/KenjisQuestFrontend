@@ -222,8 +222,8 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
         }])
 
-    .controller('BattleatronicCtrl', ['$scope', 'fireBase', 'roleService',
-        function ($scope, fireBase, roleService) {
+    .controller('BattleatronicCtrl', ['$scope', 'fireBase', 'roleService', '$timeout',
+        function ($scope, fireBase, roleService, $timeout) {
 
             $scope.ENEMYCONST = 'enemy';
 
@@ -317,6 +317,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                             target.health = target.maxHealth;
                         }
                     }
+
+                    // set to false in the calculator
+                    // directive, in a watch
+                    target.rumble = true;
+
                 };
 
                 if (status == 'attackAll') {

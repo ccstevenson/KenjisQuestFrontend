@@ -83,6 +83,12 @@ angular.module('myApp.directives', ['ui.bootstrap'])
             templateUrl: 'partials/calculator.html',
             controller: function ($scope) {
 
+                $scope.$watch('target.id', function(newVal) {
+                       if (newVal) {
+                           $scope.target.rumble = false;
+                       }
+                });
+
                 var init = function () {
                     $scope.attackData = {
                         'attackValue': 0,

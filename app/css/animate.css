@@ -285,8 +285,8 @@ Copyright (c) 2014 Daniel Eden
 }
 
 .shake {
-  -webkit-animation-name: shake;
-  animation-name: shake;
+  -webkit-animation: shake .7s;
+  animation: shake .7s;
 }
 
 @-webkit-keyframes swing {
