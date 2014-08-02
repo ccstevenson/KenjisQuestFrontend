@@ -215,35 +215,41 @@ Calculator
 /**********
 Character Card Detail
 ***********/
-.old-char-card-foreground {
-    background-color: #e2e2e2;
-    box-shadow: 10px 10px 5px #888888;
-    border-radius: 25px;
-    border: 2px solid;
-    background-size: contain;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -267px;
-    margin-top: -254px;
-    z-index: 100;
-    padding: 20px;
-    width: auto;
-}
+
+/****Old version of charac-card-detail****/
+/*.char-card-foreground {*/
+    /*background-color: #e2e2e2;*/
+    /*box-shadow: 10px 10px 5px #888888;*/
+    /*border-radius: 25px;*/
+    /*border: 2px solid;*/
+    /*background-size: contain;*/
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*margin-left: -267px;*/
+    /*margin-top: -254px;*/
+    /*z-index: 100;*/
+    /*padding: 20px;*/
+    /*width: auto;*/
+/*}*/
+
 .char-card-foreground {
     background-color: #e2e2e2;
     box-shadow: 10px 10px 5px #888888;
     border-radius: 25px;
     border: 2px solid;
     background-size: contain;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -267px;
-    margin-top: -254px;
     z-index: 100;
     padding: 20px;
-    width: auto;
+    display: inline-block;
+    position: fixed;
+    top: 20%;
+    bottom: 20%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    min-height: 449px;
+    min-width: 305px;
 }
 
 .overflow {
@@ -258,8 +264,6 @@ Character Card Detail
     -webkit-box-shadow: 0px 0px 12px #1825f7;
 }
 
-
-
 /*.enemy-red {*/
 /*border-radius: 100px;*/
 /*box-shadow:*/
@@ -267,7 +271,6 @@ Character Card Detail
 /*0 20px 20px -15px red,*/
 /*0 30px 30px -14px silver;*/
 /*}*/
-
 
 /*.char-orange {*/
 /*border-radius: 100px;*/
