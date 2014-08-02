@@ -576,3 +576,9 @@ opacity: 1;
 .create-character-input {
     margin-bottom: 10px;
 }
+
+/***Character Card***/
+.character-card {
+    float:left;
+    position:relative;
+}

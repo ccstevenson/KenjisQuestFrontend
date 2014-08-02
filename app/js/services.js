@@ -18,27 +18,39 @@ angular.module('myApp.services', [])
     .factory("characterService", function () {
         var characterService = {
             characterClasses: [
-                {printed_name: 'Mage', stored_name: 'mage'},
-                {printed_name: 'Summoner', stored_name: 'summoner' },
-                {printed_name: 'Warrior', stored_name: 'warrior' },
-                {printed_name: 'Cleric', stored_name: 'cleric' },
-                {printed_name: 'Rogue', stored_name: 'rogue' }
+                {name: 'Mage'},
+                {name: 'Summoner'},
+                {name: 'Warrior'},
+                {name: 'Cleric'},
+                {name: 'Rogue'}
             ],
 
             races: [
-                { printed_name: 'Goblin', stored_name: 'goblin' },
-                { printed_name: 'Human', stored_name: 'human' },
-                { printed_name: 'Elf', stored_name: 'elf' },
-                { printed_name: 'Halfling', stored_name: 'halfling' },
-                { printed_name: 'Dwarf', stored_name: 'dwarf' }
+                {name: 'Goblin'},
+                {name: 'Human'},
+                {name: 'Elf'},
+                {name: 'Halfling'},
+                {name: 'Dwarf'}
             ],
 
             weapons:  [
-                { printed_name: 'Short Sword', stored_name: 'short sword' },
-                { printed_name: 'Dagger', stored_name: 'dagger' },
-                { printed_name: 'Staff', stored_name: 'staff' },
-                { printed_name: 'Mace', stored_name: 'mace' },
-                { printed_name: 'Bow', stored_name: 'bow' }
+                {name: 'Short Sword'},
+                {name: 'Dagger'},
+                {name: 'Staff'},
+                {name: 'Mace'},
+                {name: 'Bow'}
+            ],
+
+            inventory: [
+                {name: "Shirt"},
+                {name: "Pants"},
+                {name: "Boots"}
+            ],
+
+            skills: [
+                {name: "Speech"},
+                {name: "Hearing"},
+                {name: "Sight"}
             ]
         };
         return characterService;

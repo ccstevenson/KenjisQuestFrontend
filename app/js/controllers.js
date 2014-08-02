@@ -26,16 +26,15 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         $scope.weapons = characterService.weapons;
 
         $scope.addImage = function(charClass) {
-            if (charClass == 'mage')  {
+            if (charClass.name == 'Mage')  {
                 return "img/char5_small.png";
-            } else if (charClass == 'rogue')  {
+            } else if (charClass.name == 'Rogue')  {
                 return "img/char4_small.png";
-            } else if (charClass == 'summoner')  {
+            } else if (charClass.name == 'Summoner')  {
                 return "img/char2_small.png";
-
-            } else if (charClass == 'cleric')  {
+            } else if (charClass.name == 'Cleric')  {
                 return "img/char3_small.png";
-            } else if (charClass == 'warrior')  {
+            } else if (charClass.name == 'Warrior')  {
                 return "img/char1_small.png";
             } else  { //error handling
                 return "img/error.png"
@@ -44,11 +43,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
         $scope.healthMod = function(charClass, charRace)  {
             var healthModifier = 1.0;
-            if (charClass == "warrior")  {
+            if (charClass.name == "Warrior")  {
                 healthModifier += 0.15;
-            } else if (charRace == "halfling")  {
+            } else if (charRace.name == "Halfling")  {
                 healthModifier -= 0.1;
-            } else if (charRace == "dwarf")  {
+            } else if (charRace.name == "Dwarf")  {
                 healthModifier += 0.35;
             }
             return healthModifier;
@@ -62,19 +61,13 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.player.health = parseInt($scope.maxHealth);
             $scope.player.health = parseInt($scope.healthMod($scope.charClass, $scope.charRace) * $scope.player.health);
             $scope.player.maxHealth = $scope.player.health;
-            $scope.player.class = $scope.charClass;
-            $scope.player.race = $scope.charRace;
-            $scope.player.silver = $scope.silver;
+            $scope.player.class = $scope.charClass.name;
+            $scope.player.race = $scope.charRace.name;
+            $scope.player.silver = 30;
             $scope.player.color = $scope.color;
-            $scope.player.weapon = $scope.weapon;
-            $scope.player.inventory = {0: {name: "Shirt"},
-                                       1: {name: "Pants"},
-                                       2: {name: "Boots"}
-                                      };
-            $scope.player.skills = {0: {name: "Speach"},
-                                    1: {name: "Sight"},
-                                    2: {name: "hearing"}
-                                   };
+            $scope.player.weapon = $scope.weapon.name;
+            $scope.player.inventory = characterService.inventory;
+            $scope.player.skills = characterService.skills;
 
             function idGen(len) {
                 var text = "";
@@ -184,8 +177,8 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
         }])
 
-    .controller('BattleatronicCtrl', ['$scope', 'fireBase', 'roleService', '$timeout',
-        function ($scope, fireBase, roleService, $timeout) {
+    .controller('BattleatronicCtrl', ['$scope', 'fireBase',
+        function ($scope, fireBase) {
 
             $scope.ENEMYCONST = 'enemy';
             $scope.PLAYERCONST ='player';
@@ -238,6 +231,9 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                     $scope.game.sound = 'sounds/attack.mp3';
                 }
                 else if (status == 'heal') {
+                    $scope.game.sound = 'sounds/heal.mp3';
+                }
+                else if (status == 'healAll' && character.health > 0) {
                     $scope.game.sound = 'sounds/heal.mp3';
                 }
                 else if (status == 'miss') {
@@ -315,14 +311,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 $scope.game.selections.activeTarget = null;
             };
 
-            $scope.deletePlayers = function () {
-                $scope.game.players = {};
-            };
-
             $scope.$watch('game.soundPlay', function () {
                 var audio = new Audio($scope.game.sound);
                 // console.log(audio)
                 audio.play();
+                $scope.game.sound = {};
             });
 
 //        $scope.user = "Guest " + Math.round(Math.random() * 101);
