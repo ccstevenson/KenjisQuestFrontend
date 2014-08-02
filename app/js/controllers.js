@@ -58,17 +58,23 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
         $scope.addPlayer = function() {
 
+            $scope.player.sprite = $scope.addImage($scope.charClass);
             $scope.player.health = parseInt($scope.maxHealth);
             $scope.player.health = parseInt($scope.healthMod($scope.charClass, $scope.charRace) * $scope.player.health);
             $scope.player.maxHealth = $scope.player.health;
             $scope.player.class = $scope.charClass;
             $scope.player.race = $scope.charRace;
-            $scope.player.siver = $scope.silver;
+            $scope.player.silver = $scope.silver;
             $scope.player.color = $scope.color;
             $scope.player.weapon = $scope.weapon;
-            $scope.player.inventory = "Empty";
-            $scope.player.skills = "Empty";
-            $scope.player.sprite = $scope.addImage($scope.charClass);
+            $scope.player.inventory = {0: {name: "Shirt"},
+                                       1: {name: "Pants"},
+                                       2: {name: "Boots"}
+                                      };
+            $scope.player.skills = {0: {name: "Speach"},
+                                    1: {name: "Sight"},
+                                    2: {name: "hearing"}
+                                   };
 
             function idGen(len) {
                 var text = "";

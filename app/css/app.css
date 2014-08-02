@@ -215,7 +215,21 @@ Calculator
 /**********
 Character Card Detail
 ***********/
-
+.old-char-card-foreground {
+    background-color: #e2e2e2;
+    box-shadow: 10px 10px 5px #888888;
+    border-radius: 25px;
+    border: 2px solid;
+    background-size: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -267px;
+    margin-top: -254px;
+    z-index: 100;
+    padding: 20px;
+    width: auto;
+}
 .char-card-foreground {
     background-color: #e2e2e2;
     box-shadow: 10px 10px 5px #888888;
@@ -538,9 +552,6 @@ opacity: 1;
     -webkit-animation-duration: .25s;
     -webkit-animation-iteration-count: infinite;
 }
-
-
-
 
 /** Angular Animate **/
 .ng-enter,
