@@ -46,7 +46,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                 };
 
                 $scope.showInfoIcon = function() {
-                    return ((roleService.role == ('Beast Master' || 'Game Master')) || isPlayer());
+                    return (roleService.role == 'Beast Master' || roleService.role == 'Game Master' || isPlayer());
                 };
 
                 var isPlayer = function() {
