@@ -1,183 +1,183 @@
 <div ng-click="cancel()" class="modal-background"></div>
 
 <div class="calc-foreground">
-        <!--<div class="col-lg-4 col-md-3 col-sm-2 hidden-xs"></div>-->
+    <!--<div class="col-lg-4 col-md-3 col-sm-2 hidden-xs"></div>-->
 
-            <p class="text-center">Targeting {{ target.name }} with {{ actor.name }}</p>
+    <p class="text-center">Targeting {{ target.name }} with {{ actor.name }}</p>
 
-            <div>
-                <tr>
-                    <td class="col-xs-3">
-                        <input class="wideButton text-center VT323FontLarge" ng-model="attackData.attackValue"
-                               type="text"
-                               disabled="disabled" style="background-color: turquoise; margin-bottom: 10px"/>
-                    </td>
-                </tr>
-            </div>
+    <div>
+        <tr>
+            <td class="col-xs-3">
+                <input class="wideButton text-center VT323FontLarge" ng-model="attackData.attackValue"
+                       type="text"
+                       disabled="disabled" style="background-color: turquoise; margin-bottom: 10px"/>
+            </td>
+        </tr>
+    </div>
 
-            <!----------- Mobile View ------------->
-            <div class="table table-condensed">
-                <table>
-                    <tr>
-                        <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
-                            <button class="btn-default btn-lg btn3d"
-                                    ng-click="attackData.attackValue = attackData.attackValue * 10 + 7;">7
-                            </button>
-                        </td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
-                            <button class=" wide button btn-default btn-lg btn3d"
-                                    ng-click="attackData.attackValue = attackData.attackValue * 10 + 8;">8
-                            </button>
-                        </td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
-                            <button class=" btn-default btn-lg btn3d"
-                                    ng-click="attackData.attackValue = attackData.attackValue * 10 + 9;">9
-                            </button>
-                        </td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                            <button class=" btn-default btn-lg btn3d glyphicon glyphicon-remove" ng-click="cancel()">
-                                <span class="hidden-xs">cancel</span>
-                            </button>
-                        </td>
-                        <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
-                    </tr>
+    <!----------- Mobile View ------------->
+    <div class="table table-condensed">
+        <table>
+            <tr>
+                <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class="btn-default btn-lg btn3d"
+                            ng-click="attackData.attackValue = attackData.attackValue * 10 + 7;">7
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" wide button btn-default btn-lg btn3d"
+                            ng-click="attackData.attackValue = attackData.attackValue * 10 + 8;">8
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-default btn-lg btn3d"
+                            ng-click="attackData.attackValue = attackData.attackValue * 10 + 9;">9
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-default btn-lg btn3d "
+                            ng-click="cancel()">
+                        <span class="glyphicon glyphicon-remove hidden-lg hidden-md"<span/>
+                        <span class="hidden-xs hidden-sm">Cancel</span>
+                    </button>
+                </td>
+                <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
+            </tr>
 
-                    <tr>
-                        <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                            <button class=" btn-default btn-lg btn3d"
-                                    ng-click="attackData.attackValue = attackData.attackValue * 10 + 4;">4
-                            </button>
-                        </td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                            <button class=" btn-default btn-lg btn3d"
-                                    ng-click="attackData.attackValue = attackData.attackValue * 10 + 5;">5
-                            </button>
-                        </td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
-                            <button class=" btn-default btn-lg btn3d"
-                                    ng-click="attackData.attackValue = attackData.attackValue * 10 + 6;">6
-                            </button>
-                        </td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                            <button class=" btn-warning btn-lg btn3d"
-                                    ng-click="attackData.attackValue = attackData.attackValue * 1.25;">25%
-                            </button>
-                        </td>
-                        <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
-                    </tr>
+            <tr>
+                <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-default btn-lg btn3d"
+                            ng-click="attackData.attackValue = attackData.attackValue * 10 + 4;">4
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-default btn-lg btn3d"
+                            ng-click="attackData.attackValue = attackData.attackValue * 10 + 5;">5
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-default btn-lg btn3d"
+                            ng-click="attackData.attackValue = attackData.attackValue * 10 + 6;">6
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-warning btn-lg btn3d"
+                            ng-click="attackData.attackValue = attackData.attackValue * 1.25;">+25%
+                    </button>
+                </td>
+                <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
+            </tr>
 
-                    <tr>
-                        <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
-                        <td class="col-xs-2">
-                            <button class=" btn-default btn-lg btn3d"
-                                    ng-click="attackData.attackValue = attackData.attackValue * 10 + 1;">1
-                            </button>
-                        </td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
-                            <button class=" btn-default btn-lg btn3d"
-                                    ng-click="attackData.attackValue = attackData.attackValue * 10 + 2;">2
-                            </button>
-                        </td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
-                            <button class=" btn-default btn-lg btn3d"
-                                    ng-click="attackData.attackValue = attackData.attackValue * 10 + 3;">3
-                            </button>
-                        </td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                            <button class=" btn-warning btn-lg btn3d"
-                                    ng-click="attackData.attackValue = attackData.attackValue * 1.4;">40%
-                            </button>
-                        </td>
-                        <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
-                    </tr>
+            <tr>
+                <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-default btn-lg btn3d"
+                            ng-click="attackData.attackValue = attackData.attackValue * 10 + 1;">1
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-default btn-lg btn3d"
+                            ng-click="attackData.attackValue = attackData.attackValue * 10 + 2;">2
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-default btn-lg btn3d"
+                            ng-click="attackData.attackValue = attackData.attackValue * 10 + 3;">3
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-warning btn-lg btn3d"
+                            ng-click="attackData.attackValue = attackData.attackValue * 1.4;">+40%
+                    </button>
+                </td>
+                <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
+            </tr>
 
-                    <tr>
-                        <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
-                            <button class="btn-info btn-lg btn3d glyphicon glyphicon-ban-circle"
-                                    ng-click="clear()"></button>
-                        </td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
-                            <button class=" btn-default btn-lg btn3d"
-                                    ng-click="attackData.attackValue = attackData.attackValue * 10 + 0;">0
-                            </button>
-                        </td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
-                            <button class=" btn-info btn-lg btn3d glyphicon glyphicon-plus" ng-click="plus()">
+            <tr>
+                <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-info btn-lg btn3d glyphicon glyphicon-ban-circle"
+                            ng-click="clear()">
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-default btn-lg btn3d"
+                            ng-click="attackData.attackValue = attackData.attackValue * 10 + 0;">0
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-info btn-lg btn3d glyphicon glyphicon-plus"
+                            ng-click="plus()">
 
-                            </button>
-                        </td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-4">
-                            <button class=" btn-warning btn-lg btn3d"
-                                    ng-click="attackData.attackValue = attackData.attackValue * 1.5;">50%
-                            </button>
-                        </td>
-                        <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
-                    </tr>
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-warning btn-lg btn3d"
+                            ng-click="attackData.attackValue = attackData.attackValue * 1.5;">50%
+                    </button>
+                </td>
+                <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
+            </tr>
 
-                    <tr>
-                        <td class="hidden-lg hidden-md hidden-sm col-xs-2"></td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
-                            <button class=" btn-success btn-lg btn3d glyphicon glyphicon-heart-empty"
-                                    ng-click="heal()">
-                                        <span class="hidden-xs">
-                                            heal
-                                        </span>
-                            </button>
-                        </td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
-                            <button class=" btn-primary btn-lg btn3d glyphicon glyphicon-asterisk" ng-click="miss()">
-                                <span class="hidden-xs">
-                                    miss
-                                </span>
-                            </button>
-                        </td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
-                            <button class=" smallText btn-danger btn-lg btn3d glyphicon glyphicon-fire"
-                                    ng-click="attack()">
-                                <span class="hidden-xs">
-                                    attack
-                                </span>
-                            </button>
-                        </td>
-                        <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
-                            <button class=" btn-warning btn-lg btn3d"
-                                    ng-click="crit()" ng-class="{'btn-success': attackData.crit}">
-                                        <span class="glyphicon glyphicon-star-empty">
-                                        </span>
-                                        <span class="hidden-xs">
-                                            crit
-                                        </span>
-                            </button>
-                        </td>
-                        <td class="hidden-lg hidden-md hidden-sm col-xs-2"></td>
-                    </tr>
+            <tr>
+                <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-success btn-lg btn3d "
+                            ng-click="heal()">
+                        <span class="glyphicon glyphicon-heart-empty hidden-lg hidden-md"<span/>
+                        <span class="hidden-xs hidden-sm">Heal</span>
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-primary btn-lg btn3d "
+                            ng-click="miss()">
+                        <span class="glyphicon glyphicon-asterisk hidden-lg hidden-md"<span/>
+                        <span class="hidden-xs hidden-sm">Miss</span>
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-danger btn-lg btn3d "
+                            ng-click="attack()">
+                        <span class="glyphicon glyphicon-fire hidden-lg hidden-md"<span/>
+                        <span class="hidden-xs hidden-sm">Attack</span>
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-warning btn-lg btn3d "
+                            ng-click="crit()">
+                        <span class="glyphicon glyphicon-star-empty hidden-lg hidden-md"<span/>
+                        <span class="hidden-xs hidden-sm">Crit</span>
+                    </button>
+                </td>
+                <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
+            </tr>
+        </table>
+    </div>
 
-                </table>
-            </div>
-
-            <div>
-                <table class="table table-condensed">
-                    <tr>
-                        <td class="col-xs-3"></td>
-                        <td class="col-xs-3">
-                            <button class=" btn-success btn-lg btn3d" ng-click="healAll()">
-                                <span class="glyphicon glyphicon-heart-empty"></span>
-                                <span class="glyphicon glyphicon-heart-empty"></span>
-                                <span class="hidden-xs">heal all</span>
-                            </button>
-                        </td>
-                        <td class="col-xs-3">
-                            <button class=" smallText btn-danger btn-lg btn3d" ng-click="attackAll()">
-                                <span class="glyphicon glyphicon-fire"></span>
-                                <span class="glyphicon glyphicon-fire"></span>
-                                <span class="hidden-xs">attack all</span>
-                            </button>
-                        </td>
-                        <td class="col-xs-3"></td>
-                    </tr>
-                </table>
-            </div>
+    <div>
+        <table class="table table-condensed">
+            <tr>
+                <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-success btn-lg btn3d "
+                            ng-click="healAll()">
+                        <span class="glyphicon glyphicon-heart-empty hidden-lg hidden-md"<span/>
+                        <span class="glyphicon glyphicon-heart-empty hidden-lg hidden-md"<span/>
+                        <span class="hidden-xs hidden-sm">Heall All</span>
+                    </button>
+                </td>
+                <td class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+                    <button class=" btn-danger btn-lg btn3d "
+                            ng-click="attackAll()">
+                        <span class="glyphicon glyphicon-fire hidden-lg hidden-md"<span/>
+                        <span class="glyphicon glyphicon-fire hidden-lg hidden-md"<span/>
+                        <span class="hidden-xs hidden-sm">Attack All</span>
+                    </button>
+                </td>
+                <td class="hidden-lg hidden-md hidden-sm col-xs-1"></td>
+            </tr>
+        </table>
+    </div>
 </div>
