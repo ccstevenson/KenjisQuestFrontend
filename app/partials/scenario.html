@@ -52,6 +52,7 @@
                         on-drop-success="dropSuccessHandler($event,$index,player.inventory)"
                         ng-repeat="item in player.inventory track by $index">{{ item.name }}
                     </li>
+                    <label>Silver: {{ player.silver }} <a ng-click="addSilver(player)"><b>+</b></a> <a ng-click="subtractSilver(player)"><b>-</b></a></label>
                 </ul>
                 <button ng-click="deleteCharacter(player)" class="btn btn-danger btn-sm">Delete Character</button>
             </div>

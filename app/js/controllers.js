@@ -178,6 +178,25 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 setTimeout("window.location = '#/battleatronic';",250);
             };
 
+            var changeSilver = function(character) {
+                for (var player in $scope.game.players) {
+                    var playerIndex = parseInt(player);
+                    if (character.id == $scope.game.players[playerIndex].id) {
+                        $scope.game.players[playerIndex].silver = character.silver;
+                    }
+                }
+            };
+
+            $scope.addSilver = function(character) {
+                character.silver ++;
+                changeSilver(character);
+            };
+
+             $scope.subtractSilver = function(character) {
+                character.silver --;
+                changeSilver(character);
+            };
+
             $scope.dropSuccessHandler = function ($event, index, array) {
                 array.splice(index, 1);
             };
