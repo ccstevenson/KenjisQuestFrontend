@@ -48,7 +48,9 @@
             max="character.maxHealth"
             value="character.health"
             type="{{ healthBarType() }}">
-        <h1 class="health-bar-text hidden-sm hidden-xs">{{ character.health }} / {{ character.maxHealth }}</h1>
+        <h1 ng-show="showInfoIcon()" class="health-bar-text hidden-sm hidden-xs">
+            {{ character.health }} / {{ character.maxHealth }}
+        </h1>
     </progressbar>
 
 
