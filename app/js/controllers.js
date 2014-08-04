@@ -45,9 +45,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             var healthModifier = 1.0;
             if (charClass.name == "Warrior")  {
                 healthModifier += 0.15;
-            } else if (charRace.name == "Halfling")  {
+            }
+            if (charRace.name == "Halfling")  {
                 healthModifier -= 0.1;
-            } else if (charRace.name == "Dwarf")  {
+            }
+            else if (charRace.name == "Dwarf")  {
                 healthModifier += 0.35;
             }
             return healthModifier;
