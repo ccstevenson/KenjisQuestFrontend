@@ -5,7 +5,7 @@
                'selectedTarget': selections.activeTarget.id == character.id,
                'notSelected': selections.activeActor.id != character.id && selections.activeTarget.id != character.id}">
 
-        <span class="glyphicon glyphicon-info-sign pull-right char-info-icon"
+        <span class="glyphicon glyphicon-info-sign pull-right char-info-icon hidden-sm hidden-xs"
               ng-click="setCharacterDetail($event,character)"
               ng-show="showInfoIcon()"></span>
 
@@ -16,6 +16,11 @@
 
         <!--ng-style="{background-image: 'url(' + character.sprite + ')'}">-->
         <!--<p>Health: {{character.health}} / {{ character.maxHealth }}</p>-->
+    </div>
+
+    <div class="avatar-size-sm"
+         ng-show="type == 'player' && character.health <= 0"
+         style="background-image: url(img/gravestone.png)">
     </div>
 
     <div class="avatar-size-sm"
@@ -33,7 +38,7 @@
          ng-style="{ 'background-color' : character.color }">
     </div>
 
-    <div class="character-info">
+    <div class="character-info hidden-sm hidden-xs">
                 <span>
                     <h2>{{ character.name }}</h2>
                 </span>
@@ -45,7 +50,7 @@
             max="character.maxHealth"
             value="character.health"
             type="{{ healthBarType() }}">
-        <h1 class="health-bar-text">{{ character.health }} / {{ character.maxHealth }}</h1>
+        <h1 class="health-bar-text hidden-sm hidden-xs">{{ character.health }} / {{ character.maxHealth }}</h1>
     </progressbar>
 
 

@@ -6,14 +6,17 @@ Bootstrap Overrides
     border-radius: 10px;
     border: 8px ridge #c0c0c0;
 }
+
 .btn-primary {
     border-radius: 10px;
     border: 8px ridge blue;
 }
+
 .btn-warning {
     border-radius: 10px;
     border: 8px ridge gold;
 }
+
 .btn-success {
     border-radius: 10px;
     border: 8px ridge #008000;
@@ -26,14 +29,14 @@ Bootstrap Overrides
 
 .progress {
     height: 1.5em;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     margin-top: -15px;
     overflow: hidden;
     background-color: #959595;
     border-radius: 15px;
     /*-webkit-box-shadow:*/
-        /*0 10px 10px -10px silver,*/
-        /*0 20px 20px -8px blue,*/
-        /*0 30px 30px -6px black;*/
+    /*0 10px 10px -10px silver,*/
+    /*0 20px 20px -8px blue,*/
+    /*0 30px 30px -6px black;*/
     border: 8px ridge silver;
 }
