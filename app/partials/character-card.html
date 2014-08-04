@@ -18,15 +18,13 @@
         <!--<p>Health: {{character.health}} / {{ character.maxHealth }}</p>-->
     </div>
 
-    <div class="avatar-size-sm"
+    <img class="avatar-size-sm"
          ng-show="type == 'player' && character.health <= 0"
-         style="background-image: url(img/gravestone.png)">
-    </div>
+         src="img/gravestone.png"/>
 
-    <div class="avatar-size-sm"
+    <img class="avatar-size-sm"
          ng-show="character.health <= 0"
-         style="background-image: url(img/gravestone.png)">
-    </div>
+         src="img/gravestone.png"/>
 
     <div ng-show=" type == 'enemy' "
          class="char-base enemy-base"
