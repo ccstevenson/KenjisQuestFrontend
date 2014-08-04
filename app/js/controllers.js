@@ -155,6 +155,29 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 }
             });
 
+            $scope.deleteCharacter = function(character){
+                for (var i = 0; i < $scope.game.players.length; i++) {
+                    if ($scope.game.players[i].id == character.id) {
+                        $scope.game.players[i] = null;
+                        delete $scope.game.players[i];
+                        fireBase.$remove("players");
+                        break;
+                    }
+                }
+
+                if ($scope.game.players.length > 0) {
+                    var players = [];
+                    for (var player in $scope.game.players) {
+                         var playerIndex = parseInt(player);
+                         players.push($scope.game.players[playerIndex]);
+                    }
+                    $scope.game.players = players;
+                    fireBase.$set("players", players);
+                }
+
+                setTimeout("window.location = '#/battleatronic';",250);
+            };
+
             $scope.dropSuccessHandler = function ($event, index, array) {
                 array.splice(index, 1);
             };
@@ -184,7 +207,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.PLAYERCONST ='player';
 
             $scope.game = {};
-            fireBase.$asObject().$bindTo($scope, "game").then(function(){
+            fireBase.$asObject().$bindTo($scope, "game").then(function() {
                 $scope.game.soundPlay = false;
                 $scope.beastCardShow = false;
             });
@@ -246,17 +269,17 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 var dealDamage = function (target) {
 
                     for (var player in $scope.game.players){
-                        var playa = parseInt(player);
-                        if ($scope.game.players[playa].id == target.id) {
+                        var playerIndex = parseInt(player);
+                        if ($scope.game.players[playerIndex].id == target.id) {
                             targetType = $scope.game.players;
                             break;
                         }
                     }
 
                     for (var enemy in targetType){
-                        var playa = parseInt(enemy);
-                        if (targetType[playa].id == target.id) {
-                            target = targetType[playa];
+                        var playerIndex = parseInt(enemy);
+                        if (targetType[playerIndex].id == target.id) {
+                            target = targetType[playerIndex];
                             break;
                         }
                     }
@@ -278,10 +301,10 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
                 };
 
-                if (status == 'attackAll') {
+                if (status == 'attackAll' || status == 'healAll') {
                     for (var player in $scope.game.players){
-                        var playa = parseInt(player);
-                        if ($scope.game.players[playa].id == character.id) {
+                        var playerIndex = parseInt(player);
+                        if ($scope.game.players[playerIndex].id == character.id) {
                             targets = $scope.game.players;
                             break;
                         }
@@ -289,20 +312,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                     for (var target in targets) {
                         dealDamage(targets[target]);
                     }
-                }
-                else if (status == 'healAll') {
-                    for (var player in $scope.game.players){
-                        var playa = parseInt(player);
-                        if ($scope.game.players[playa].id == character.id) {
-                            targets = $scope.game.players;
-                            break;
-                        }
-                    }
-                    for (var target in targets) {
-                        dealDamage(targets[target]);
-                    }
-                }
-                else {
+                } else {
                     dealDamage(character);
                 }
 
