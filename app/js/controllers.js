@@ -161,12 +161,14 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 {name: "Dual Wield"}
             ];
 
-            $scope.addSkill = function(skill) {
-              $scope.skills.push(skill)
+            $scope.addSkill = function(skl) {
+              $scope.skills.push(skl);
+              $scope.skill = '';
             };
 
-            $scope.addItem = function(item) {
-              $scope.items.push(item)
+            $scope.addItem = function(itm) {
+              $scope.items.push(itm);
+              $scope.item = '';
             };
 
             $scope.deleteCharacter = function(character){
