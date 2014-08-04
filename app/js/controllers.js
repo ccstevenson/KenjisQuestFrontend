@@ -158,9 +158,8 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.deleteCharacter = function(character){
                 for (var i = 0; i < $scope.game.players.length; i++) {
                     if ($scope.game.players[i].id == character.id) {
-                        $scope.game.players[i] = null; // Three stage deletion process: object, reference, firebase
-                        delete $scope.game.players[i];
-                        fireBase.$remove("players");
+                        $scope.game.players[i] = null; // Two stage deletion process: object then reference.
+                        delete $scope.game.players[i]; // FireBase updates based on $scope
                         break;
                     }
                 }
@@ -172,10 +171,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                          players.push($scope.game.players[playerIndex]);
                     }
                     $scope.game.players = players; // reset scope and firebase to rebuild index
-                    fireBase.$set("players", players);
                 }
-
-                setTimeout("window.location = '#/battleatronic';",250);
             };
 
             var changeSilver = function(character) {

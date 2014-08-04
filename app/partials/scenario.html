@@ -43,7 +43,7 @@
 
     <div class="col-md-3">
         <label>Players</label>
-            <div ng-repeat="player in players track by $index" class="sprite-border" ui-on-drop="onDrop($event,$data,player.inventory)">
+            <div ng-hide="player.id == null" ng-repeat="player in players track by $index" class="sprite-border" ui-on-drop="onDrop($event,$data,player.inventory)">
                 <p class="text-center">{{ player.name }}</p>
                 <img class="center-block" src="{{ player.sprite }}">
                 <ul class="list-unstyled">
