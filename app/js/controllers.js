@@ -61,11 +61,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.player.health = parseInt($scope.maxHealth);
             $scope.player.health = parseInt($scope.healthMod($scope.charClass, $scope.charRace) * $scope.player.health);
             $scope.player.maxHealth = $scope.player.health;
-            $scope.player.class = $scope.charClass.name;
-            $scope.player.race = $scope.charRace.name;
+            $scope.player.class = $scope.charClass;
+            $scope.player.race = $scope.charRace;
             $scope.player.silver = 30;
             $scope.player.color = $scope.color;
-            $scope.player.weapon = $scope.weapon.name;
+            $scope.player.weapon = $scope.weapon;
             $scope.player.inventory = characterService.inventory;
             $scope.player.skills = characterService.skills;
 
@@ -158,7 +158,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.deleteCharacter = function(character){
                 for (var i = 0; i < $scope.game.players.length; i++) {
                     if ($scope.game.players[i].id == character.id) {
-                        $scope.game.players[i] = null;
+                        $scope.game.players[i] = null; // Three stage deletion process: object, reference, firebase
                         delete $scope.game.players[i];
                         fireBase.$remove("players");
                         break;
@@ -171,7 +171,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                          var playerIndex = parseInt(player);
                          players.push($scope.game.players[playerIndex]);
                     }
-                    $scope.game.players = players;
+                    $scope.game.players = players; // reset scope and firebase to rebuild index
                     fireBase.$set("players", players);
                 }
 
@@ -267,7 +267,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 var targetType = $scope.game.enemies;
 
                 var dealDamage = function (target) {
-
+                    // set target type; enemy or player
                     for (var player in $scope.game.players){
                         var playerIndex = parseInt(player);
                         if ($scope.game.players[playerIndex].id == target.id) {
@@ -275,7 +275,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                             break;
                         }
                     }
-
+                    // deal damage to target(s)
                     for (var enemy in targetType){
                         var playerIndex = parseInt(enemy);
                         if (targetType[playerIndex].id == target.id) {

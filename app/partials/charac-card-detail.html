@@ -5,10 +5,10 @@
         <img src="{{ character.sprite }}" class="sprite-border hidden-xs">
         <p><label><b>{{ character.name }}</b></label></p>
         <p><label>HP:</label> {{ character.health }} / {{ character.maxHealth }}</p>
-        <p><label>Race:</label> {{ character.race }}</p>
-        <p><label>Class:</label> {{ character.class }}</p>
+        <p><label>Race:</label> {{ character.race.name }}</p>
+        <p><label>Class:</label> {{ character.class.name }}</p>
         <p><label>Silver:</label> {{ character.silver }}</p>
-        <p><label>Weapon:</label> {{ character.weapon }}</p>
+        <p><label>Weapon:</label> {{ character.weapon.name }}</p>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <label>Skills:</label>
