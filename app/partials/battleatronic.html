@@ -69,8 +69,10 @@
     <!--battle instructions-->
     <div class="footer col-xs-12 hidden-sm hidden-xs" style="margin: auto; clear: both">
         <div class="text-center VT323FontLarge foreground" ng-show="!game.selections.activeActor">
+            <div class="animated bounceInLeft">
             Select a character to attack with.
         </div>
+    </div>
 
         <div class="text-center VT323FontLarge foreground"
              ng-show="game.selections.activeActor && !game.selections.activeTarget">
@@ -82,6 +84,7 @@
             <span class="btn-sm btn-primary" href='#/create-character'>Add Player</span>
         </div>
     </div>
+
     <!-- End Battle Instructions -->
 
 

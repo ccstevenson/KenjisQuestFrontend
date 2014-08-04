@@ -677,6 +677,7 @@ Copyright (c) 2014 Daniel Eden
 .bounceInDown {
   -webkit-animation-name: bounceInDown;
   animation-name: bounceInDown;
+
 }
 
 @-webkit-keyframes bounceInLeft {
@@ -711,6 +712,11 @@ Copyright (c) 2014 Daniel Eden
     -webkit-transform: none;
     transform: none;
   }
+
+}
+div {
+    -webkit-animation-delay: 1s; /* Safari and Chrome */
+    animation-delay: 1s;
 }
 
 @keyframes bounceInLeft {
@@ -755,7 +761,10 @@ Copyright (c) 2014 Daniel Eden
 .bounceInLeft {
   -webkit-animation-name: bounceInLeft;
   animation-name: bounceInLeft;
+
 }
+
+
 
 @-webkit-keyframes bounceInRight {
   0%, 60%, 75%, 90%, 100% {
