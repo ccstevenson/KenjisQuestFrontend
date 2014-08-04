@@ -881,3 +881,8 @@ tr > td {
 .scenarioInput {
     width: 75%;
 }
+
+.search-results {
+    max-height: 40em;
+    overflow-y: scroll;
+}
