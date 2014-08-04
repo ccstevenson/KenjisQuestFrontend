@@ -877,3 +877,7 @@ tr > td {
     position: relative;
 = = = = = = = > > > > > > > mobile
 }
+
+.scenarioInput {
+    width: 75%;
+}

@@ -155,6 +155,20 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 }
             });
 
+            $scope.skills = [
+                {name: "Beast Magic"},
+                {name: "Foretelling"},
+                {name: "Dual Wield"}
+            ];
+
+            $scope.addSkill = function(skill) {
+              $scope.skills.push(skill)
+            };
+
+            $scope.addItem = function(item) {
+              $scope.items.push(item)
+            };
+
             $scope.deleteCharacter = function(character){
                 for (var i = 0; i < $scope.game.players.length; i++) {
                     if ($scope.game.players[i].id == character.id) {
@@ -220,6 +234,8 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
             $scope.ENEMYCONST = 'enemy';
             $scope.PLAYERCONST ='player';
+
+
 
             $scope.game = {};
             fireBase.$asObject().$bindTo($scope, "game").then(function() {

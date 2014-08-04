@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-    <div class="col-md-3">
+    <div class="col-md-2">
         <label>Encounters</label>
         <tabset vertical="true" type="pills">
             <tab ng-repeat="ncntr in encounters track by $index"
@@ -13,9 +13,9 @@
         </tabset>
     </div>
 
-    <div class="col-md-3" ui-on-drop="onDrop($event,$data,items)">
+    <div class="col-md-3">
         <label>Items</label>
-        <div ng-show="items.length">
+        <div ng-show="items.length" ui-on-drop="onDrop($event,$data,items)">
             <ul class="sprite-border">
                 <li ui-draggable="true" drag="item"
                     on-drop-success="dropSuccessHandler($event,$index,items)"
@@ -23,8 +23,32 @@
                 </li>
             </ul>
         </div>
+         <div class="col-lg-12" id="addItem">
+            <input class="form-control form-inline col-lg-6 scenarioInput"
+                   type="text"
+                   ng-model="item.name"
+                   placeholder="Add Item"><button ng-click="addItem(item)"
+                                                   class=" btn btn-info col-lg-3">Add</button>
+        </div>
+        <br>
+        <br>
+        <label>Skills:</label>
+        <div ng-show="skills.length" ui-on-drop="onDrop($event,$data,skills)">
+            <ul class="sprite-border">
+                <li ui-draggable="true" drag="skill"
+                    on-drop-success="dropSuccessHandler($event,$index,skills)"
+                    ng-repeat="skill in skills track by $index" class="list-unstyled">{{ skill.name }}
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-12" id="addSkill">
+            <input class="form-control form-inline col-lg-6 scenarioInput"
+                   type="text"
+                   ng-model="skill.name"
+                   placeholder="Add Skill"><button ng-click="addSkill(skill)"
+                                                   class=" btn btn-info col-lg-3">Add</button>
+        </div>
     </div>
-
 
     <div class="col-md-3">
         <label>Characters</label>
@@ -41,21 +65,33 @@
             </div>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-4">
         <label>Players</label>
-            <div ng-hide="player.id == null" ng-repeat="player in players track by $index" class="sprite-border" ui-on-drop="onDrop($event,$data,player.inventory)">
-                <p class="text-center">{{ player.name }}</p>
-                <img class="center-block" src="{{ player.sprite }}">
-                <ul class="list-unstyled">
+        <div ng-hide="player.id == null" ng-repeat="player in players track by $index" class="col-lg-12 sprite-border">
+            <p class="text-center">{{ player.name }}</p>
+            <img class="center-block" src="{{ player.sprite }}">
+            <div class="col-lg-6">
+                <label>Silver:{{ player.silver }} <a ng-click="addSilver(player)"><b>+</b></a> <a ng-click="subtractSilver(player)"><b>-</b></a></label>
+                <ul class="list-unstyled" ui-on-drop="onDrop($event,$data,player.inventory)">
                     <label>Inventory:</label>
                     <li ui-draggable="true" drag="item"
                         on-drop-success="dropSuccessHandler($event,$index,player.inventory)"
                         ng-repeat="item in player.inventory track by $index">{{ item.name }}
                     </li>
-                    <label>Silver: {{ player.silver }} <a ng-click="addSilver(player)"><b>+</b></a> <a ng-click="subtractSilver(player)"><b>-</b></a></label>
                 </ul>
-                <button ng-click="deleteCharacter(player)" class="btn btn-danger btn-sm">Delete Character</button>
             </div>
+            <div class="col-lg-6">
+                <label>Skills:</label>
+                <ul class="list-unstyled" ui-on-drop="onDrop($event,$data,player.skills)">
+                    <li ui-draggable="true" drag="skill"
+                        on-drop-success="dropSuccessHandler($event,$index,player.skills)"
+                        ng-repeat="skill in player.skills track by $index">{{ skill.name }}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-12">
+                <button ng-click="deleteCharacter(player)" class="center-block btn btn-danger btn-sm">Delete Character</button>
+            </div>
+        </div>
     </div>
-
 </div>
