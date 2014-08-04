@@ -6,10 +6,10 @@ Mobile Styles
     width: 100%;
 }
 
-.img {
-    max-width: 100%;
-    height: auto;
-}
+/*.img {*/
+/*max-width: 5px;*/
+/*height: 5px;*/
+/*}*/
 
 .video-img {
     max-width: 100%;
@@ -30,44 +30,165 @@ Mobile Styles
     padding: 0 0 0.5em;
 }
 
-.avatar-size-sm {
-    height: auto;
-    width: 5em;
-    z-index: 5;
+
+
+    .avatar-size-sm {
+        max-height: 75px;
+        max-width: 75px;
+        z-index: 5;
+        position: relative;
+        background: no-repeat center center;
+        background-size: 100% 100%;
+    }
+
+    /*.health-bar {*/
+    /*width: 95%;*/
+    /*}*/
+    /*.progress {*/
+        /*height: 1em;*/
+        /*margin: -15px 0 -5px 0;*/
+        /*overflow: hidden;*/
+        /*background-color: #959595;*/
+        /*border-radius: 15px;*/
+        /*-webkit-box-shadow:*/
+        /*0 10px 10px -10px silver,*/
+        /*0 20px 20px -8px blue,*/
+        /*0 30px 30px -6px black;*/
+        /*border: 4px ridge silver;*/
+    /*}*/
+
+    .character-info {
+        text-wrap: none;
+        position: relative;
+        z-index: 5;
+        width: 95%;
+        font-size: 2px;
+        margin: -.75em 0 .75em 0;
+    }
+
+    .calc-foreground {
+        background-color: #e2e2e2;
+        box-shadow: 10px 10px 5px #888888;
+        border-radius: 25px;
+        border: 2px solid;
+        background-size: contain;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-left: -213px;
+        margin-top: -254px;
+        z-index: 100;
+        padding: 10px;
+        max-width: 25em;
+        overflow: hidden;
+    }
+
+    .char-base {
+        height: 25px;
+        width: auto;
+        border-radius: 100%;
+        z-index: 1;
+        position: relative;
+        margin: -25px 0 15px 0px;
+        opacity: 1;
+        -webkit-animation: pulsate 2s infinite alternate;
+        -moz-animation: pulsate 2s infinite alternate;
+        -animation: pulsate 2s infinite alternate;
+    }
+
+    /**** Resting State ****/
+    @-webkit-keyframes pulsate {
+        from {
+            opacity: .1;
+        }
+        to {
+            opacity: .5;
+        }
+    }
+
+    @-moz-keyframes pulsate {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: .5;
+        }
+    }
+
+    @keyframes pulsate {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: .5;
+        }
+    }
+
+    .enemy-base {
+        box-shadow: 0 1px 3px 0 darkred,
+        0 2px 4px 0 red,
+        0 3px 5px 0 silver;
+    }
+
+    .playa-base {
+        box-shadow: 0 1px 3px 0 darkgreen,
+        0 2px 4px 0 green,
+        0 3px 5px 0 silver;
+    }
+
+    /**** Selected State ****/
+    @-webkit-keyframes selectedCharacter {
+        from {
+            opacity: .5;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .selectedActor ~ .playa-base {
+        border: 4px ridge darkgreen;
+        border-radius: 100%;
+        -webkit-animation-name: selectedCharacter;
+        -webkit-animation-duration: .25s;
+        -webkit-animation-iteration-count: infinite;
+    }
+
+    .selectedActor ~ .enemy-base {
+        border: 4px ridge darkred;
+        border-radius: 100%;
+        -webkit-animation-name: selectedCharacter;
+        -webkit-animation-duration: .25s;
+        -webkit-animation-iteration-count: infinite;
+    }
+
+    .selectedTarget ~ .playa-base {
+        border: 4px ridge darkgreen;
+        border-radius: 100%;
+        -webkit-animation-name: selectedCharacter;
+        -webkit-animation-duration: .25s;
+        -webkit-animation-iteration-count: infinite;
+    }
+
+    /**** End Character Color ****/
+    .selectedTarget ~ .enemy-base {
+        border: 4px ridge darkred;
+        border-radius: 100%;
+        -webkit-animation-name: selectedCharacter;
+        -webkit-animation-duration: .25s;
+        -webkit-animation-iteration-count: infinite;
+    }
+
+    .health-bar-text {
+    /*margin: 3px 0 0 0;*/
     position: relative;
-    background: no-repeat center center;
-    background-size: 100% 100%;
-}
-
-/*.health-bar {*/
-/*width: 95%;*/
-/*}*/
-
-.character-info {
-    text-wrap: none;
-    position: relative;
-    z-index: 5;
-    width: 95%;
-    margin: -.75em 0 .75em 0;
-}
-
-.calc-foreground {
-    background-color: #e2e2e2;
-    box-shadow: 10px 10px 5px #888888;
-    border-radius: 25px;
-    border: 2px solid;
-    background-size: contain;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-left: -213px;
-    margin-top: -254px;
-    z-index: 100;
-    padding: 10px;
-    max-width: 25em;
+    color: #000000;
+    /*min-width: 150px;*/
+    /*height: inherit;*/
+    white-space: nowrap;
+    /*font-size: 2em;*/
     overflow: hidden;
 }
-
 /****** End Mobile *****/
 
 /***********
@@ -87,6 +208,20 @@ Tablet Styles
         width: 95%;
     }
 
+        /*.progress {*/
+        /*height: 1.5em;*/
+        /*margin-bottom: 15px;*/
+        /*margin-top: -15px;*/
+        /*overflow: hidden;*/
+        /*background-color: #959595;*/
+        /*border-radius: 15px;*/
+        /*-webkit-box-shadow:*/
+        /*0 10px 10px -10px silver,*/
+        /*0 20px 20px -8px blue,*/
+        /*0 30px 30px -6px black;*/
+        /*border: 8px ridge silver;*/
+    /*}*/
+
     .character-info {
         text-wrap: none;
         position: relative;
@@ -94,6 +229,17 @@ Tablet Styles
         width: 95%;
         margin: -.75em 0 .75em 0;
     }
+
+    .health-bar-text {
+    margin: 3px 0 0 0;
+    position: relative;
+    color: #000000;
+    min-width: 150px;
+    height: inherit;
+    white-space: nowrap;
+    font-size: 2em;
+    overflow: hidden;
+}
 }
 
 /***** End Tablet *****/
@@ -109,8 +255,8 @@ Full-view Styles
     }
 
     .avatar-size-sm {
-        height: 7.25em;
-        width: 7.25em;
+        min-height: 150px;
+        min-width: 150px;
         position: relative;
         z-index: 5;
         background: no-repeat center center;
@@ -129,6 +275,135 @@ Full-view Styles
         width: 95%;
         margin: -.75em 0 .75em 0;
     }
+
+    .char-base {
+        height: 100px;
+        width: 150px;
+        border-radius: 100%;
+        z-index: 1;
+        position: relative;
+        margin: -75px 0 0 10px;
+        opacity: 1;
+        -webkit-animation: pulsate 2s infinite alternate;
+        -moz-animation: pulsate 2s infinite alternate;
+        -animation: pulsate 2s infinite alternate;
+    }
+
+    /*.progress {*/
+        /*height: 1.5em;*/
+        /*margin-bottom: 15px;*/
+        /*margin-top: -15px;*/
+        /*overflow: hidden;*/
+        /*background-color: #959595;*/
+        /*border-radius: 15px;*/
+        /*-webkit-box-shadow:*/
+        /*0 10px 10px -10px silver,*/
+        /*0 20px 20px -8px blue,*/
+        /*0 30px 30px -6px black;*/
+        /*border: 8px ridge silver;*/
+    /*}*/
+
+    /**** Resting State ****/
+    @-webkit-keyframes pulsate {
+        from {
+            opacity: .1;
+        }
+        to {
+            opacity: .3;
+        }
+    }
+
+    @-moz-keyframes pulsate {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes pulsate {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+
+
+    .enemy-base {
+        box-shadow: 0 10px 30px 0 darkred,
+        0 20px 40px 0 red,
+        0 30px 50px 0 silver;
+    }
+
+    .playa-base {
+        box-shadow: 0 10px 30px 0 darkgreen,
+        0 20px 40px 0 green,
+        0 30px 50px 0 silver;
+    }
+
+    /**** Selected State ****/
+    @-webkit-keyframes selectedCharacter {
+        from {
+            opacity: .5;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+
+    .selectedActor ~ .playa-base {
+        border: 8px ridge darkgreen;
+        border-radius: 100%;
+        -webkit-animation-name: selectedCharacter;
+        -webkit-animation-duration: .25s;
+        -webkit-animation-iteration-count: infinite;
+    }
+
+    .selectedActor ~ .enemy-base {
+        border: 8px ridge darkred;
+        border-radius: 100%;
+        -webkit-animation-name: selectedCharacter;
+        -webkit-animation-duration: .25s;
+        -webkit-animation-iteration-count: infinite;
+    }
+
+    .selectedTarget ~ .playa-base {
+        border: 8px ridge darkgreen;
+        border-radius: 100%;
+        -webkit-animation-name: selectedCharacter;
+        -webkit-animation-duration: .25s;
+        -webkit-animation-iteration-count: infinite;
+    }
+
+    /**** End Character Color ****/
+    .selectedTarget ~ .enemy-base {
+        border: 8px ridge darkred;
+        border-radius: 100%;
+        -webkit-animation-name: selectedCharacter;
+        -webkit-animation-duration: .25s;
+        -webkit-animation-iteration-count: infinite;
+    }
+
+    .characterDetails {
+    /*margin: -50px 0 25px 0;*/
+    text-wrap: none;
+}
+
+    .health-bar-text {
+    margin: 3px 0 0 0;
+    position: relative;
+    color: #000000;
+    min-width: 150px;
+    height: inherit;
+    white-space: nowrap;
+    font-size: 2em;
+    overflow: hidden;
+}
 }
 
 /****** End Full-view ******/
@@ -209,8 +484,8 @@ Calculator
     box-sizing: border-box;
     vertical-align: middle;
 }
-/***** End Calculator *****/
 
+/***** End Calculator *****/
 
 /**********
 Character Card Detail
@@ -313,10 +588,7 @@ tr > td {
     height: 100%;
 }
 
-.characterDetails {
-    padding: 0.25em;
-    text-wrap: none;
-}
+
 
 .bulletlessList {
     list-style-type: none;
@@ -422,26 +694,17 @@ tr > td {
     border-right: 0.5em ridge #c0c0c0;
 }
 
-.health-bar-text {
-    margin: 3px 0 0 0;
-    position: relative;
-    color: #000000;
-    min-width: 150px;
-    height: inherit;
-    white-space: nowrap;
-    font-size: 2em;
-    overflow: hidden;
-}
+
 
 .char-info-icon {
-opacity: 0.6;
-color: blue;
-border: black 3px solid;
-border-radius: 20px;
+    opacity: 0.6;
+    color: blue;
+    border: black 3px solid;
+    border-radius: 20px;
 }
 
-.character-info-icon:hover{
-opacity: 1;
+.character-info-icon:hover {
+    opacity: 1;
 }
 
 .sm-margin {
@@ -486,18 +749,18 @@ opacity: 1;
   }
 }
 
-.char-base {
-    height:100px;
-    width: 150px;
-    border-radius: 100%;
-    z-index:1;
-    position: relative;
-    margin: -75px 0 0 10px;
-    opacity: 1;
-     -webkit-animation: pulsate 2s infinite alternate;
-     -moz-animation: pulsate 2s infinite alternate;
-     -animation: pulsate 2s infinite alternate;
-}
+/*.char-base {*/
+    /*height:100px;*/
+    /*width: 150px;*/
+    /*border-radius: 100%;*/
+    /*z-index:1;*/
+    /*position: relative;*/
+    /*margin: -75px 0 0 10px;*/
+    /*opacity: 1;*/
+     /*-webkit-animation: pulsate 2s infinite alternate;*/
+     /*-moz-animation: pulsate 2s infinite alternate;*/
+     /*-animation: pulsate 2s infinite alternate;*/
+/*}*/
 
 .enemy-base {
     box-shadow:
@@ -581,4 +844,6 @@ opacity: 1;
 .character-card {
     float:left;
     position:relative;
+=======
+>>>>>>> mobile
 }
