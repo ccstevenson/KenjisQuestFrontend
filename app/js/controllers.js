@@ -223,7 +223,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
             $scope.game = {};
             fireBase.$asObject().$bindTo($scope, "game").then(function() {
-                $scope.game.soundPlay = false;
+                $scope.game.soundPlay = 0;
                 $scope.beastCardShow = false;
             });
 
@@ -247,7 +247,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
 
             $scope.calculateDamage = function (damage, character, status) {
-                $scope.game.soundPlay = !$scope.game.soundPlay;
+                $scope.game.soundPlay++;
 
                 // $scope.game.sound = 'sounds/attack.ogg';
 
@@ -337,9 +337,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
 
             $scope.$watch('game.soundPlay', function () {
-                var audio = new Audio($scope.game.sound);
-                // console.log(audio)
-                audio.play();
+                if ($scope.game.soundPlay != 0)  {
+                    var audio = new Audio($scope.game.sound);
+                    // console.log(audio)
+                    audio.play();
+                }
             });
 
 //        $scope.user = "Guest " + Math.round(Math.random() * 101);
