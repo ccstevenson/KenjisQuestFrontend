@@ -61,7 +61,7 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                         return false
                     }
                     return false
-                }
+                };
             }
         }
     })
@@ -171,7 +171,8 @@ angular.module('myApp.directives', ['ui.bootstrap'])
                 $scope.cancel= function(){
                     $scope.character = null;
                     $scope.$parent.$parent.characterDetail = null
-                }
+                };
+
             }
         }
     });

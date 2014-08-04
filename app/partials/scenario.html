@@ -53,6 +53,7 @@
                         ng-repeat="item in player.inventory track by $index">{{ item.name }}
                     </li>
                 </ul>
+                <button ng-click="deleteCharacter(player)" class="btn btn-danger btn-sm">Delete Character</button>
             </div>
     </div>
 
