@@ -875,5 +875,9 @@ tr > td {
 .character-card {
     float: left;
     position: relative;
-= = = = = = = > > > > > > > mobile
+}
+
+.search-results {
+    max-height: 40em;
+    overflow-y: scroll
 }
