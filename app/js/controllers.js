@@ -340,7 +340,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 var audio = new Audio($scope.game.sound);
                 // console.log(audio)
                 audio.play();
-                $scope.game.sound = {};
+                // $scope.game.sound = {};
             });
 
 //        $scope.user = "Guest " + Math.round(Math.random() * 101);
