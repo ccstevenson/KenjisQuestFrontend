@@ -142,12 +142,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
         }])
 
-    .controller('ScenarioCtrl', ['$scope', 'fireBase',
-        function ($scope, fireBase) {
+    .controller('ScenarioCtrl', ['$scope', 'fireBase', 'characterService',
+        function ($scope, fireBase, characterService) {
 
             $scope.game = {};
             fireBase.$asObject().$bindTo($scope, "game").then(function(){
-                $scope.players = $scope.game.players;
                 $scope.scenario = $scope.game.scenario;
                 $scope.encounters = $scope.scenario.encounters;
                 if ($scope.game.currentEncounter != null) {
@@ -156,6 +155,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                     $scope.characters = $scope.encounter.characters;
                 }
             });
+            $scope.weapons = characterService.weapons;
 
             $scope.skills = [
                 {name: "Beast Magic"},
@@ -192,25 +192,16 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 }
             };
 
-            var changeSilver = function(character) {
-                for (var player in $scope.game.players) {
-                    var playerIndex = parseInt(player);
-                    if (character.id == $scope.game.players[playerIndex].id) {
-                        $scope.game.players[playerIndex].silver = character.silver;
-                    }
-                }
-            };
-
+            // Modify Silver
             $scope.addSilver = function(character) {
                 character.silver ++;
-                changeSilver(character);
             };
 
              $scope.subtractSilver = function(character) {
                 character.silver --;
-                changeSilver(character);
             };
 
+            // Drag and Drop Items and Skills
             $scope.dropSuccessHandler = function ($event, index, array) {
                 array.splice(index, 1);
             };
