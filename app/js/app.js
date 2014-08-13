@@ -22,7 +22,7 @@ angular.module('myApp', [
         $routeProvider.when('/create-character', {templateUrl: 'partials/character-creation.html', controller: 'CharGenCtrl'});
         $routeProvider.otherwise({redirectTo: '/battleatronic'});
 
-        RestangularProvider.setBaseUrl('http://127.0.0.1:8001/');
+        RestangularProvider.setBaseUrl('/api/');
     }])
 
     .run(function () {
