@@ -10,7 +10,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
         $scope.setSoundboard = function (boardVisible) {
             $scope.soundBoardVisible = boardVisible;
-            console.log(boardVisible);
+            //console.log(boardVisible);
         };
     }])
 
@@ -83,13 +83,13 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 $scope.player.id = idGen(10);
                 $scope.game.players.push($scope.player);
                 fireBase.$set({players: $scope.game.players}).then(function(){
-                    setTimeout("window.location = '#/battleatronic';",250);
+                    setTimeout("window.location = '#/battleotronic';",250);
                 });
             } else {
                 $scope.player.id = idGen(10);
                 $scope.game.players = {0: $scope.player};
                 fireBase.$set({players: $scope.game.players}).then(function(){
-                   setTimeout("window.location = '#/battleatronic';",250);
+                   setTimeout("window.location = '#/battleotronic';",250);
                 });
             }
         };
@@ -101,17 +101,29 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         $scope.Role = roleService;
         $scope.roles = roleService.roles;
 
-        $scope.selectRole = function (role) {
-            roleService.role = role;
+        $scope.code = '';
+        $scope.secretCode = 'Game Master';
 
-            if (role != "Game Master") {
-                window.location = '#/battleatronic';
+        $scope.selectRole = function (role) {
+            if ($scope.code == $scope.secretCode){
+                roleService.role = role;
+                if (role != "Game Master") {
+                    window.location = '#/battleotronic';
+                }
+            } else {
+                $scope.code = prompt('Please Enter Passkey:');
+                if ($scope.code != null) {
+                    $scope.selectRole(role);
+                }
             }
         };
     }])
 
-    .controller('GameCtrl', ['$scope', 'Restangular', 'fireBase',
-        function ($scope, Restangular, fireBase) {
+    .controller('GameCtrl', ['$scope', 'Restangular', 'fireBase', 'roleService',
+        function ($scope, Restangular, fireBase, roleService) {
+            if (roleService.role != 'Game Master') {
+                window.location = '#/battleotronic';
+            }
 
             $scope.game = {};
             Restangular.all('games').getList().then(function (games) {
@@ -142,8 +154,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
         }])
 
-    .controller('ScenarioCtrl', ['$scope', 'fireBase', 'characterService',
-        function ($scope, fireBase, characterService) {
+    .controller('ScenarioCtrl', ['$scope', 'fireBase', 'characterService', 'roleService',
+        function ($scope, fireBase, characterService, roleService) {
+            if (roleService.role != 'Game Master') {
+                window.location = '#/battleotronic';
+            }
 
             $scope.game = {};
             fireBase.$asObject().$bindTo($scope, "game").then(function(){
@@ -158,7 +173,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.weapons = characterService.weapons;
 
             $scope.skills = [
-                {name: "Beast Magic"},
+                {name: "Beast Master"},
                 {name: "Foretelling"},
                 {name: "Dual Wield"}
             ];
@@ -219,23 +234,44 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             $scope.launchEncounter = function (encounter) {
                 fireBase.$set("enemies", encounter.characters);
                 fireBase.$set("currentEncounter", $scope.scenario.encounters.indexOf(encounter)).then(function(){
-                    setTimeout("window.location = '#/battleatronic';",250);
+                    setTimeout("window.location = '#/battleotronic';",250);
                 });
             };
         }])
 
-    .controller('BattleatronicCtrl', ['$scope', 'fireBase',
-        function ($scope, fireBase) {
+    .controller('BattleotronicCtrl', ['$scope', 'fireBase', 'roleService',
+        function ($scope, fireBase, roleService) {
 
             $scope.ENEMYCONST = 'enemy';
             $scope.PLAYERCONST ='player';
 
+            roleService.BMPresent = false;
 
+            var checkRole = function() {
+                if (roleService.BMPresent == false) {
+                    for (var i = 0; i < $scope.game.players.length; i++) {
+                        if (roleService.BMPresent == false) {
+                            for (var j = 0; j < $scope.game.players[i].skills.length; j++) {
+                                if ($scope.game.players[i].skills[j].name == 'Beast Master') {
+                                    roleService.BMPresent = true;
+                                    break;
+                                } else {
+                                    roleService.BMPresent = false;
+                                }
+                            }
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            };
 
             $scope.game = {};
             fireBase.$asObject().$bindTo($scope, "game").then(function() {
                 $scope.game.soundPlay = 0;
                 $scope.beastCardShow = false;
+                checkRole();
+
             });
 
             $scope.selectedPlayer = function (player) {
@@ -255,6 +291,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 else {
                     $scope.game.selections.activeTarget = player;
                 }
+            };
+
+            $scope.deselectChars = function () {
+                $scope.game.selections.activeTarget = '';
+                $scope.game.selections.activeActor = '';
             };
 
             $scope.calculateDamage = function (damage, character, status) {
@@ -369,7 +410,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
     }])
 
     .controller('VideosController',
-    function ($scope, $http, $log, VideosService) {
+    function ($scope, $http, $log, VideosService, roleService) {
+
+        if (roleService.role != 'Game Master') {
+                window.location = '#/battleotronic';
+            }
 
         function init() {
             $scope.youtube = VideosService.getYoutube();

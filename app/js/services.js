@@ -10,7 +10,7 @@ angular.module('myApp.services', [])
 
     .factory("fireBase", ["$firebase",
         function ($firebase) {
-            var ref = new Firebase("https://scorching-fire-3218.firebaseio.com/Dev");
+            var ref = new Firebase("https://scorching-fire-3218.firebaseio.com/NateDev");
             return $firebase(ref);
     }])
 
@@ -60,9 +60,9 @@ angular.module('myApp.services', [])
             role: 'Player',
             roles: {
                 Role1: "Game Master",
-                Role2: "Player",
-                Role3: "Beast Master"
-            }
+                Role2: "Player"
+            },
+            BMPresent: false
         };
         return roleService;
     })

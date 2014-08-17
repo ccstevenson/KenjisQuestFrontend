@@ -734,6 +734,7 @@ tr > td {
     color: blue;
     border: black 3px solid;
     border-radius: 20px;
+    z-index: 2;
 }
 
 .character-info-icon:hover {
@@ -884,4 +885,11 @@ tr > td {
 .search-results {
     max-height: 40em;
     overflow-y: scroll;
+}
+
+#deselect {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
 }

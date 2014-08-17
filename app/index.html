@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <!--[if lt IE 7]>
 <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>
@@ -30,9 +30,9 @@
 
     <ul class="menu text-center VT323Font hidden-sm hidden-xs" style="background-color: white;" ng-controller="RoleCtrl">
 
-        <li><a ng-click="setSoundboard(false)" href="#/battleatronic">Battleatronic</a></li>
-        <li><a href="javascript:void(0)" ng-click="setSoundboard(true)">Soundboard</a></li>
-        <li ng-show="Role.role != 'Game Master'"><a ng-click="setSoundboard(false)" href="#/create-character">Add Character</a></li>
+        <li><a ng-click="setSoundboard(false)" href="#/battleotronic">Battle-O-Tronic</a></li>
+        <li ng-show="Role.role == 'Game Master'"><a href="javascript:void(0)" ng-click="setSoundboard(true)">Soundboard</a></li>
+        <li><a ng-click="setSoundboard(false)" href="#/create-character">Add Character</a></li>
         <li ng-show="Role.role == 'Game Master'"><a ng-click="setSoundboard(false)" href="#/load-game">Load Game</a></li>
         <li ng-show="Role.role == 'Game Master'"><a ng-click="setSoundboard(false)" href="#/scenario">Scenario</a></li>
         <li>
