@@ -23,7 +23,7 @@
          src="img/gravestone.png"/>
 
     <img class="avatar-size-sm"
-         ng-show="character.health <= 0"
+         ng-show="type == 'enemy' && character.health <= 0"
          src="img/gravestone.png"/>
 
     <div ng-show=" type == 'enemy' "
