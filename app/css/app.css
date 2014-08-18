@@ -528,23 +528,6 @@ Calculator
 Character Card Detail
 ***********/
 
-/****Old version of charac-card-detail****/
-/*.char-card-foreground {*/
-/*background-color: #e2e2e2;*/
-/*box-shadow: 10px 10px 5px #888888;*/
-/*border-radius: 25px;*/
-/*border: 2px solid;*/
-/*background-size: contain;*/
-/*position: absolute;*/
-/*top: 50%;*/
-/*left: 50%;*/
-/*margin-left: -267px;*/
-/*margin-top: -254px;*/
-/*z-index: 100;*/
-/*padding: 20px;*/
-/*width: auto;*/
-/*}*/
-
 .char-card-foreground {
     background-color: #e2e2e2;
     box-shadow: 10px 10px 5px #888888;
@@ -900,7 +883,7 @@ tr > td {
 }
 
 #deselect {
-    height: 100%;
+    height: 92%;
     width: 100%;
     position: absolute;
     z-index: 1;
