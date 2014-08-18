@@ -75,15 +75,16 @@ Mobile Styles
     border-radius: 25px;
     border: 2px solid;
     background-size: contain;
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
-    margin-left: -300px;
-    margin-top: -200px;
     z-index: 100;
     padding: 10px;
-    /*max-width: 25em;*/
     overflow: hidden;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
 }
 
 .char-base {
@@ -253,12 +254,15 @@ Tablet Styles
         position: fixed;
         top: 50%;
         left: 50%;
-        margin-left: -213px;
-        margin-top: -254px;
+        /*margin-left: -213px;*/
+        /*margin-top: -254px;*/
+        max-width: 25em;
         z-index: 100;
         padding: 10px;
-        max-width: 25em;
         overflow: hidden;
+        -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
     }
     }
 
@@ -433,12 +437,16 @@ Full-view Styles
         position: fixed;
         top: 50%;
         left: 50%;
-        margin-left: -213px;
-        margin-top: -254px;
+        /*margin-left: -213px;*/
+        /*margin-top: -254px;*/
         z-index: 100;
         padding: 10px;
         max-width: 25em;
         overflow: hidden;
+        -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+
     }
     }
 
@@ -469,27 +477,33 @@ Calculator
 }
 
 .btn3d.btn-default {
-    box-shadow: 0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #adadad, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #adadad, 0 8px 0 1px
+                rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
 }
 
 .btn3d.btn-primary {
-    box-shadow: 0 0 0 1px #428bca inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #357ebd, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px #428bca inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #357ebd, 0 8px 0 1px
+                rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
 }
 
 .btn3d.btn-success {
-    box-shadow: 0 0 0 1px #5cb85c inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #4cae4c, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px #5cb85c inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #4cae4c, 0 8px 0 1px
+                rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
 }
 
 .btn3d.btn-info {
-    box-shadow: 0 0 0 1px #5bc0de inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #46b8da, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px #5bc0de inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #46b8da, 0 8px 0 1px
+                rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
 }
 
 .btn3d.btn-warning {
-    box-shadow: 0 0 0 1px #f0ad4e inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #eea236, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px #f0ad4e inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #eea236, 0 8px 0 1px
+                rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
 }
 
 .btn3d.btn-danger {
-    box-shadow: 0 0 0 1px #c63702 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #c24032, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px #c63702 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #c24032, 0 8px 0 1px
+                rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
 }
 
 .btn3d:active.btn-default {
@@ -527,23 +541,6 @@ Calculator
 /**********
 Character Card Detail
 ***********/
-
-/****Old version of charac-card-detail****/
-/*.char-card-foreground {*/
-/*background-color: #e2e2e2;*/
-/*box-shadow: 10px 10px 5px #888888;*/
-/*border-radius: 25px;*/
-/*border: 2px solid;*/
-/*background-size: contain;*/
-/*position: absolute;*/
-/*top: 50%;*/
-/*left: 50%;*/
-/*margin-left: -267px;*/
-/*margin-top: -254px;*/
-/*z-index: 100;*/
-/*padding: 20px;*/
-/*width: auto;*/
-/*}*/
 
 .char-card-foreground {
     background-color: #e2e2e2;
@@ -892,7 +889,7 @@ tr > td {
 }
 
 #deselect {
-    height: 100%;
+    height: 92%;
     width: 100%;
     position: absolute;
     z-index: 1;

@@ -1,15 +1,13 @@
-<!-- Calculator -->
-<calculator actor="game.selections.activeActor"
-            target="game.selections.activeTarget"
-            callback="calculateDamage(damage, character, status)"
-            ng-show="game.selections.activeActor && game.selections.activeTarget && Roles.role == 'Game Master'">
-</calculator>
-<!--End Calculator-->
-
 <!-- View Container -->
 <div ng-show="Roles.role == 'Game Master'" id="deselect" ng-click="deselectChars()"></div>
 <div class="container">
-
+    <!-- Calculator -->
+    <calculator actor="game.selections.activeActor"
+                target="game.selections.activeTarget"
+                callback="calculateDamage(damage, character, status)"
+                ng-show="game.selections.activeActor && game.selections.activeTarget && Roles.role == 'Game Master'">
+    </calculator>
+    <!--End Calculator-->
     <!-- Enemies -->
 
     <div class="nav col-xs-6">
@@ -20,7 +18,6 @@
                             selections="game.selections"
                             players="game.players"
                             ng-click="makeSelection(enemy)">
-
             </character-card>
         </div>
     </div>
@@ -66,14 +63,6 @@
     <!--</div>-->
     <!-- end reset -->
 
-
-    <!--<form ng-submit="addMessage();">-->
-    <!--<input type="text" ng-model="message"/>-->
-    <!--<input type="submit" value="Send Message"/>-->
-    <!--</form>-->
-
-    <!--<input type="text" ng-model="game.text"/>-->
-    <!--<h1>You said: {{text}}</h1>-->
     <!-- <button style="margin: 25px" class="btn-warning pull-right" ng-click="deletePlayers()">Delete Players</button> -->
 
     <!--battle instructions-->
