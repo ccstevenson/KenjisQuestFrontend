@@ -10,7 +10,7 @@ angular.module('myApp.services', [])
 
     .factory("fireBase", ["$firebase",
         function ($firebase) {
-            var ref = new Firebase("https://scorching-fire-3218.firebaseio.com/Dev");
+            var ref = new Firebase("https://scorching-fire-3218.firebaseio.com/NateDev");
             return $firebase(ref);
     }])
 
@@ -112,7 +112,7 @@ angular.module('myApp.services', [])
         // // }
 
         $window.onYouTubeIframeAPIReady = function () {
-            $log.info('Youtube API is ready');
+            // $log.info('Youtube API is ready');
             youtube.ready = true;
             service.bindPlayer('placeholder');
             service.loadPlayer();
@@ -120,7 +120,7 @@ angular.module('myApp.services', [])
         };
 
         function onYoutubeReady(event) {
-            $log.info('YouTube Player is ready');
+            // $log.info('YouTube Player is ready');
             youtube.player.cueVideoById(upcoming[0].id);
             youtube.videoId = upcoming[0].id;
             youtube.videoTitle = upcoming[0].title;
@@ -141,12 +141,12 @@ angular.module('myApp.services', [])
         }
 
         this.bindPlayer = function (elementId) {
-            $log.info('Binding to ' + elementId);
+            // $log.info('Binding to ' + elementId);
             youtube.playerId = elementId;
         };
 
         this.createPlayer = function () {
-            $log.info('Creating a new Youtube player for DOM id ' + youtube.playerId + ' and video ' + youtube.videoId);
+            // $log.info('Creating a new Youtube player for DOM id ' + youtube.playerId + ' and video ' + youtube.videoId);
             return new YT.Player(youtube.playerId, {
                 height: youtube.playerHeight,
                 width: youtube.playerWidth,
