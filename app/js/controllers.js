@@ -10,7 +10,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
         $scope.setSoundboard = function (boardVisible) {
             $scope.soundBoardVisible = boardVisible;
-            //console.log(boardVisible);
         };
     }])
 
@@ -40,6 +39,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                 return "img/error.png"
             }
         };
+        $scope.setSprite = function() {
+            $scope.sprite = $scope.addImage($scope.charClass);
+
+        };
+        //$scope.sprite = $scope.addImage($scope.charClass);
 
         $scope.healthMod = function(charClass, charRace)  {
             var healthModifier = 1.0;
