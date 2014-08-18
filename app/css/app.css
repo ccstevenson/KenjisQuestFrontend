@@ -906,6 +906,7 @@ tr > td {
     border: 8px ridge silver;
     background: url("../img/user_avatar_empty.png") center center no-repeat;
     text-align: center;
+    opacity: .7;
     /*position: relative;*/
     /*top: 50%;*/
     /*left: 50%;*/

@@ -31,7 +31,7 @@
     <div class="nav col-xs-4">
         <!--<button popover-template="partials/popover.html" popover-placement="right">fghj</button>-->
 
-        <div class="col-xs-6 animated fadeIn" ng-repeat="player in game.players track by $index">
+        <div class="col-xs-6" ng-repeat="player in game.players track by $index">
             <character-card class="character-card"
                             character="player"
                             type="PLAYERCONST"
@@ -42,7 +42,7 @@
         </div>
 
         <a ng-click="setSoundboard(false)" href="#/create-character">
-            <div class="col-xs-6 avatar-size-sm add-character-card md-margin animated fadeIn">
+            <div class="col-xs-6 avatar-size-sm add-character-card md-margin">
                 <div class="add-character-text">
                     <span class="glyphicon glyphicon-plus-sign" style="margin-left: 15px"></span>
                     <br/>
