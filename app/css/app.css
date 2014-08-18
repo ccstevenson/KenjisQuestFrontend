@@ -742,7 +742,11 @@ tr > td {
 }
 
 .sm-margin {
-    margin: .25em;
+    margin: 5px;
+}
+
+.md-margin {
+    margin: 15px;
 }
 
 .sm-padding {
@@ -898,6 +902,21 @@ tr > td {
     font-size: 5em;
 }
 
-.home-screen {
-    background
+.add-character-card {
+    overflow: hidden;
+    background-color: #959595;
+    border-radius: 15px;
+    border: 8px ridge silver;
+    background: url("../img/user_avatar_empty.png") center center no-repeat;
+    text-align: center;
+    /*position: relative;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*margin: auto;*/
+}
+
+.add-character-text {
+    position: relative;
+    top: 25%;
+    /*margin: auto;*/
 }
