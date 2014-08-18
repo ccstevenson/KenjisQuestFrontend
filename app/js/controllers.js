@@ -109,16 +109,18 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         $scope.secretCode = 'Game Master';
 
         $scope.selectRole = function (role) {
-            if ($scope.code == $scope.secretCode){
-                roleService.role = role;
-                if (role != "Game Master") {
-                    window.location = '#/battleotronic';
+            if (role == 'Game Master'){
+                 if ($scope.code == $scope.secretCode){
+                    roleService.role = role;
+                } else {
+                    $scope.code = prompt('Please Enter Passkey:');
+                    if ($scope.code != null) {
+                        $scope.selectRole(role);
+                    }
                 }
             } else {
-                $scope.code = prompt('Please Enter Passkey:');
-                if ($scope.code != null) {
-                    $scope.selectRole(role);
-                }
+                roleService.role = role;
+                window.location = '#/battleotronic';
             }
         };
     }])
