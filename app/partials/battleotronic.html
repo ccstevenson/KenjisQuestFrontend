@@ -42,8 +42,17 @@
                             players="game.players"
                             ng-click="makeSelection(player)">
             </character-card>
-
         </div>
+
+        <a ng-click="setSoundboard(false)" href="#/create-character">
+            <div class="avatar-size-sm add-character-card md-margin">
+                <div class="add-character-text">
+                    <span class="glyphicon glyphicon-plus-sign" style="margin-left: 15px"></span>
+                    <br/>
+                    <strong class="hidden-xs hidden-sm">Add Character</strong>
+                </div>
+            </div>
+        </a>
 
 
     </div>
@@ -71,9 +80,9 @@
     <div class="footer col-xs-12 hidden-sm hidden-xs" style="margin: auto; clear: both">
         <div class="text-center VT323FontLarge foreground" ng-show="!game.selections.activeActor">
             <div class="animated bounceInLeft">
-            Select a character to attack with.
+                Select a character to attack with.
+            </div>
         </div>
-    </div>
 
         <div class="text-center VT323FontLarge foreground"
              ng-show="game.selections.activeActor && !game.selections.activeTarget">
@@ -85,10 +94,9 @@
     <!-- End Battle Instructions -->
 
 
-
-        <!-- Character Details -->
-        <character-card-detail character="characterDetail" ng-show="characterDetail"></character-card-detail>
-        <!-- End Character Details -->
+    <!-- Character Details -->
+    <character-card-detail character="characterDetail" ng-show="characterDetail"></character-card-detail>
+    <!-- End Character Details -->
 
 
 </div>

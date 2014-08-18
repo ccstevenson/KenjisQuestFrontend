@@ -32,7 +32,7 @@
 
         <li><a ng-click="setSoundboard(false)" href="#/battleotronic">Battle-O-Tronic</a></li>
         <li ng-show="Role.role == 'Game Master'"><a href="javascript:void(0)" ng-click="setSoundboard(true)">Soundboard</a></li>
-        <li><a ng-click="setSoundboard(false)" href="#/create-character">Add Character</a></li>
+        <!--<li><a ng-click="setSoundboard(false)" href="#/create-character">Add Character</a></li>-->
         <li ng-show="Role.role == 'Game Master'"><a ng-click="setSoundboard(false)" href="#/load-game">Load Game</a></li>
         <li ng-show="Role.role == 'Game Master'"><a ng-click="setSoundboard(false)" href="#/scenario">Scenario</a></li>
         <li>
@@ -55,14 +55,16 @@
 
     <div ng-include="'partials/soundboard.html'"
          ng-class="{'hide-element': !soundBoardVisible, 'show-element': soundBoardVisible}"></div>
-    <div class="VT323Font" ng-class="{'hide-element': soundBoardVisible, 'show-element': !soundBoardVisible}"
+    <div class="VT323Font flip-out" ng-class="{'hide-element': soundBoardVisible, 'show-element': !soundBoardVisible}"
          ng-view></div>
 
 </div>
+
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
 <script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
 <script src="js/angular-local-storage.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <!--<script src="bower_components/angular-bootstrap-jbruni/ui-bootstrap.js"></script>-->
