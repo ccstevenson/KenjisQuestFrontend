@@ -10,7 +10,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
         $scope.setSoundboard = function (boardVisible) {
             $scope.soundBoardVisible = boardVisible;
-            //console.log(boardVisible);
         };
     }])
 

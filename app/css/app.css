@@ -659,13 +659,13 @@ tr > td {
 }
 
 .background {
-    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0, url(../img/cave.jpg) no-repeat center center;
-    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat 0 0;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.7)), color-stop(100%, rgba(255, 255, 255, 0.7))), url(../img/cave.jpg) no-repeat center center;
-    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat center center;
-    background: -o-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat center center;
-    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat center center;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.jpg) no-repeat center center;
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%), url(../img/cave.png) no-repeat 0 0, url(../img/cave.png) no-repeat center center;
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.png) no-repeat 0 0;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.7)), color-stop(100%, rgba(255, 255, 255, 0.7))), url(../img/cave.png) no-repeat center center;
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.png) no-repeat center center;
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.png) no-repeat center center;
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.png) no-repeat center center;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(../img/cave.png) no-repeat center center;
     background-attachment: fixed;
     background-size: 100% 100%;
 }
@@ -892,4 +892,12 @@ tr > td {
     width: 100%;
     position: absolute;
     z-index: 1;
+}
+
+.home-logo {
+    font-size: 5em;
+}
+
+.home-screen {
+    background
 }
