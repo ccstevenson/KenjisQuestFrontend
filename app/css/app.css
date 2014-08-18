@@ -566,6 +566,8 @@ Character Card Detail
 }
 
 .sprite-border {
+    height: 150px;
+    width: 150px;
     border: 1px ridge #c0c09e;
     border-radius: 0.5em;
     box-shadow: 0px 0px 12px #1825f7;
