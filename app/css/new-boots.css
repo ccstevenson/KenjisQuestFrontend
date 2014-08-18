@@ -27,6 +27,11 @@ Bootstrap Overrides
     border: 8px ridge red;
 }
 
+
+.btn-info {
+    border-radius: 10px;
+    border: 8px ridge #269abc;
+}
 .progress {
     height: 1.5em;
     margin-bottom: 5px;

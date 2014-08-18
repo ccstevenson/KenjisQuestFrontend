@@ -1,7 +1,7 @@
-<div class="container-fluid">
+<div class="container-fluid" xmlns="http://www.w3.org/1999/html">
 
     <div class="col-md-2">
-        <label>Encounters</label>
+        <label>Encounters:</label>
         <tabset vertical="true" type="pills">
             <tab ng-repeat="ncntr in encounters track by $index"
                  ng-click="selectEncounter(ncntr)" heading="{{ ncntr.name }}"
@@ -14,82 +14,112 @@
     </div>
 
     <div class="col-md-3">
-        <label>Items</label>
-        <div ng-show="items.length" ui-on-drop="onDrop($event,$data,items)">
-            <ul class="sprite-border">
-                <li ui-draggable="true" drag="item"
+        <label>Items:</label>
+
+        <div ng-show="items.length" ui-on-drop="onDrop($event,$data,items)" class="sm-margin">
+            <button ui-draggable="true" drag="item"
                     on-drop-success="dropSuccessHandler($event,$index,items)"
-                    ng-repeat="item in items track by $index" class="list-unstyled">{{ item.name }}
-                </li>
-            </ul>
+                    ng-repeat="item in items track by $index" class="sm-margin">{{ item.name }}
+            </button>
         </div>
-         <div class="col-lg-12" id="addItem">
+
+        <div class="col-lg-12" id="addItem">
             <input class="form-control form-inline col-lg-6 scenarioInput"
                    type="text"
                    ng-model="item.name"
-                   placeholder="Add Item"><button ng-click="addItem(item)" class="btn btn-info col-lg-3">Add</button>
+                   placeholder="Add Item">
+            <button ng-click="addItem(item)" class="btn-sm btn-info col-lg-3">Add</button>
         </div>
         <br>
         <br>
         <label>Skills:</label>
-        <div ng-show="skills.length" ui-on-drop="onDrop($event,$data,skills)">
-            <ul class="sprite-border">
-                <li ui-draggable="true" drag="skill"
+
+        <div ng-show="skills.length" ui-on-drop="onDrop($event,$data,skills)" class="sm-margin">
+            <button ui-draggable="true" drag="skill"
                     on-drop-success="dropSuccessHandler($event,$index,skills)"
-                    ng-repeat="skill in skills track by $index" class="list-unstyled">{{ skill.name }}
-                </li>
-            </ul>
+                    ng-repeat="skill in skills track by $index" class="sm-margin">{{ skill.name }}
+            </button>
         </div>
         <div class="col-lg-12" id="addSkill">
             <input class="form-control form-inline col-lg-6 scenarioInput"
                    type="text"
                    ng-model="skill.name"
-                   placeholder="Add Skill"><button ng-click="addSkill(skill)" class=" btn btn-info col-lg-3">Add</button>
+                   placeholder="Add Skill">
+            <button ng-click="addSkill(skill)" class="btn-sm btn-info col-lg-3">Add</button>
         </div>
     </div>
 
     <div class="col-md-3">
-        <label>Characters</label>
-            <div ng-repeat="character in characters track by $index" class="sprite-border" ui-on-drop="onDrop($event,$data,character.inventory)">
-                <p class="text-center">{{ character.name }}</p>
-                <img class="center-block" src="{{ character.sprite }}">
-                <ul class="list-unstyled">
-                    <label>Inventory:</label>
-                    <li ui-draggable="true" drag="item"
-                        on-drop-success="dropSuccessHandler($event,$index,character.inventory)"
-                        ng-repeat="item in character.inventory track by $index">{{ item.name }}
-                    </li>
-                </ul>
-            </div>
+        <label>Enemies:</label>
+
+        <div ng-repeat="character in characters track by $index"
+             class="border-main sm-margin sm-padding"
+             ui-on-drop="onDrop($event,$data,character.inventory)">
+            <img class="center-block" src="{{ character.sprite }}">
+
+            <h3 class="text-center">{{ character.name }}</h3>
+            <ul class="list-unstyled">
+                <label>Inventory:</label>
+                <li>
+                    <button ui-draggable="true" drag="item"
+                            on-drop-success="dropSuccessHandler($event,$index,character.inventory)"
+                            ng-repeat="item in character.inventory track by $index">{{ item.name }}
+                    </button>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="col-md-4">
-        <label>Players</label>
-        <div ng-hide="player.id == null" ng-repeat="player in game.players track by $index" class="col-lg-12 sprite-border">
-            <p class="text-center"><label>{{ player.name }}</label></p>
+        <label>Players:</label>
+
+        <div ng-hide="player.id == null" ng-repeat="player in game.players track by $index"
+             class="col-lg-12 border-main sm-padding sm-margin">
+
             <img class="center-block" src="{{ player.sprite }}">
+
+            <h3 class="text-center"><label>{{ player.name }}</label></h3>
+
+
             <div class="col-lg-6">
-                <label>Silver: {{ player.silver }} <a ng-click="addSilver(player)"><b>+</b></a> <a ng-click="subtractSilver(player)"><b>-</b></a></label>
-                <ul class="list-unstyled" ui-on-drop="onDrop($event,$data,player.inventory)">
+                <div ui-on-drop="onDrop($event,$data,player.inventory)">
                     <label>Inventory:</label>
-                    <li ui-draggable="true" drag="item"
-                        on-drop-success="dropSuccessHandler($event,$index,player.inventory)"
-                        ng-repeat="item in player.inventory track by $index">{{ item.name }}
-                    </li>
-                </ul>
+                    <ul class="list-unstyled">
+                        <li>
+                        <button ui-draggable="true" drag="item" class="sm-margin"
+                                on-drop-success="dropSuccessHandler($event,$index,player.inventory)"
+                                ng-repeat="item in player.inventory track by $index">{{ item.name }}
+                        </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
+
             <div class="col-lg-6">
                 <label>Skills:</label>
+
                 <ul class="list-unstyled" ui-on-drop="onDrop($event,$data,player.skills)">
-                    <li ui-draggable="true" drag="skill"
-                        on-drop-success="dropSuccessHandler($event,$index,player.skills)"
-                        ng-repeat="skill in player.skills track by $index">{{ skill.name }}
+                    <li>
+                        <button ui-draggable="true" drag="skill" class="sm-margin"
+                                on-drop-success="dropSuccessHandler($event,$index,player.skills)"
+                                ng-repeat="skill in player.skills track by $index">{{ skill.name }}
+                        </button>
                     </li>
                 </ul>
+                </div>
+
+            <div class="sm-margin">Silver:
+                <strong>{{ player.silver }} </strong>
+                <a ng-click="addSilver(player)"><b>+</b></a>
+                <a ng-click="subtractSilver(player)"><b>-</b></a>
             </div>
+
             <div class="col-lg-12">
-                <button ng-click="deleteCharacter(player)" class="center-block btn btn-danger btn-sm">Delete Character</button>
+                <button ng-click="deleteCharacter(player)"
+                        class="center-block btn btn-danger btn-sm pull-right">Delete Character
+                </button>
             </div>
+
         </div>
     </div>
 </div>

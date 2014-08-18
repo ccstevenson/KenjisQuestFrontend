@@ -10,7 +10,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
         $scope.setSoundboard = function (boardVisible) {
             $scope.soundBoardVisible = boardVisible;
-            //console.log(boardVisible);
         };
     }])
 
@@ -249,9 +248,11 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
             $scope.ENEMYCONST = 'enemy';
             $scope.PLAYERCONST ='player';
+            $scope.Roles = roleService;
 
             roleService.BMPresent = false;
 
+            // Checks to see if there is a player with the "Beast Master" skill in the party
             var checkRole = function() {
                 if (roleService.BMPresent == false) {
                     for (var i = 0; i < $scope.game.players.length; i++) {
@@ -280,7 +281,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             });
 
             $scope.selectedPlayer = function (player) {
-                $scope.game.selections.activeActor = player; // Perhaps have the computer automatically set active based on actions taken.
+                $scope.game.selections.activeActor = player;
             };
 
             $scope.selectedEnemy = function (target) {
@@ -288,13 +289,15 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
 
             $scope.makeSelection = function (player) {
-                if (!$scope.game.selections || !$scope.game.selections.activeActor) {
+                if (roleService.role == 'Game Master') {
+                    if (!$scope.game.selections || !$scope.game.selections.activeActor) {
                     $scope.game.selections = {
                         activeActor: player
                     };
-                }
-                else {
-                    $scope.game.selections.activeTarget = player;
+                    }
+                    else {
+                        $scope.game.selections.activeTarget = player;
+                    }
                 }
             };
 
@@ -305,19 +308,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
             $scope.calculateDamage = function (damage, character, status) {
                 $scope.game.soundPlay++;
-
-                // $scope.game.sound = 'sounds/attack.ogg';
-
-                // if (damage > 0) {
-                //     $scope.soundPlay = !$scope.soundPlay;
-                //     $scope.sound = 'sounds/attack.ogg';
-                // }
-                // if (damage < 0) {
-                //     $scope.soundPlay = !$scope.soundPlay;
-                //     $scope.sound = 'sounds/heal.ogg';
-                // }
-
-                // console.log($scope.soundPlay);
 
                 if (status == 'attack' && character.health > 0) {
                     $scope.game.sound = 'sounds/attack.mp3';
@@ -400,18 +390,6 @@ angular.module('myApp.controllers', ['ngDragDrop'])
                     audio.play();
                 }
             });
-
-//        $scope.user = "Guest " + Math.round(Math.random() * 101);
-//        $scope.game = GameService;
-//        $scope.$add({game: null});
-
-            // This code works.
-//        $scope.user = "Guest " + Math.round(Math.random() * 101);
-
-//        $scope.addMessage = function () {
-//            $scope.messages.$add({from: $scope.user, content: $scope.message});
-//            $scope.message = "";
-//        };
     }])
 
     .controller('VideosController',
