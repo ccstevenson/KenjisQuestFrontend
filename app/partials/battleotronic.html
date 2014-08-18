@@ -2,12 +2,12 @@
 <calculator actor="game.selections.activeActor"
             target="game.selections.activeTarget"
             callback="calculateDamage(damage, character, status)"
-            ng-show="game.selections.activeActor && game.selections.activeTarget && Role.role!='Game Master'">
+            ng-show="game.selections.activeActor && game.selections.activeTarget && Roles.role == 'Game Master'">
 </calculator>
 <!--End Calculator-->
 
 <!-- View Container -->
-<div id="deselect" ng-click="deselectChars()"></div>
+<div ng-show="Roles.role == 'Game Master'" id="deselect" ng-click="deselectChars()"></div>
 <div class="container">
 
     <!-- Enemies -->

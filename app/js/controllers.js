@@ -244,6 +244,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
 
             $scope.ENEMYCONST = 'enemy';
             $scope.PLAYERCONST ='player';
+            $scope.Roles = roleService;
 
             roleService.BMPresent = false;
 
@@ -283,13 +284,15 @@ angular.module('myApp.controllers', ['ngDragDrop'])
             };
 
             $scope.makeSelection = function (player) {
-                if (!$scope.game.selections || !$scope.game.selections.activeActor) {
+                if (roleService.role == 'Game Master') {
+                    if (!$scope.game.selections || !$scope.game.selections.activeActor) {
                     $scope.game.selections = {
                         activeActor: player
                     };
-                }
-                else {
-                    $scope.game.selections.activeTarget = player;
+                    }
+                    else {
+                        $scope.game.selections.activeTarget = player;
+                    }
                 }
             };
 
