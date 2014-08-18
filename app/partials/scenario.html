@@ -55,7 +55,7 @@
         <div ng-repeat="character in characters track by $index"
              class="border-main sm-margin sm-padding"
              ui-on-drop="onDrop($event,$data,character.inventory)">
-            <img class="center-block" src="{{ character.sprite }}">
+            <img class="center-block scenario-sprite" src="{{ character.sprite }}">
 
             <h3 class="text-center">{{ character.name }}</h3>
             <ul class="list-unstyled">
@@ -76,7 +76,7 @@
         <div ng-hide="player.id == null" ng-repeat="player in game.players track by $index"
              class="col-lg-12 border-main sm-padding sm-margin">
 
-            <img class="center-block" src="{{ player.sprite }}">
+            <img class="center-block scenario-sprite" src="{{ player.sprite }}">
 
             <h3 class="text-center"><label>{{ player.name }}</label></h3>
 
