@@ -31,7 +31,7 @@
 
     <ul class="menu text-center VT323Font hidden-sm hidden-xs" style="background-color: white;" ng-controller="RoleCtrl">
 
-        <li ng-if="Role.role == 'Game Master'""><a href="#/home">Home</a></li>
+        <li ng-if="Role.role == 'Game Master'"><a href="#/home">Home</a></li>
         <li><a ng-click="setSoundboard(false)" href="#/battleotronic">Battle-O-Tronic</a></li>
         <li ng-show="Role.role == 'Game Master'"><a href="javascript:void(0)" ng-click="setSoundboard(true)">Soundboard</a></li>
         <!--<li><a ng-click="setSoundboard(false)" href="#/create-character">Add Character</a></li>-->

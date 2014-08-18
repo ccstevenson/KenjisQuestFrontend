@@ -105,7 +105,7 @@ angular.module('myApp.controllers', ['ngDragDrop'])
         $scope.Role = roleService;
         $scope.roles = roleService.roles;
 
-        $scope.code = '';
+        $scope.code = 'Game Master';
         $scope.secretCode = 'Game Master';
 
         $scope.selectRole = function (role) {
@@ -397,9 +397,9 @@ angular.module('myApp.controllers', ['ngDragDrop'])
     .controller('VideosController',
     function ($scope, $http, $log, VideosService, roleService) {
 
-        if (roleService.role != 'Game Master') {
-                window.location = '#/battleotronic';
-            }
+//        if (roleService.role != 'Game Master') {
+//                window.location = '#/battleotronic';
+//        }
 
         function init() {
             $scope.youtube = VideosService.getYoutube();

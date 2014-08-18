@@ -15,7 +15,8 @@ angular.module('myApp', [
     'ngDragDrop'
 ])
     .config(['$routeProvider', 'RestangularProvider', function ($routeProvider, RestangularProvider) {
-        $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'GameCtrl'});
+        $routeProvider.when('/', {templateUrl: 'partials/home.html', controller: ''});
+        $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: ''});
         $routeProvider.when('/battleotronic', {templateUrl: 'partials/battleotronic.html', controller: 'BattleotronicCtrl'});
         $routeProvider.when('/soundboard', {templateUrl: 'partials/soundboard.html', controller: 'VideosController'});
         $routeProvider.when('/load-game', {templateUrl: 'partials/load-game.html', controller: 'GameCtrl'});
