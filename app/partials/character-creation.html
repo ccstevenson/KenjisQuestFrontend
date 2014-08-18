@@ -1,34 +1,36 @@
 <div class="starter-template container">
-    <div class="col-lg-4"></div>
+    <div class="col-lg-4"><img class="center-block" src="{{ sprite }}"></div>
     <div class="col-lg-4">
-                <label>Character Name:</label>
-                <input class="form-control create-character-input" type="text" ng-model="player.name">
+        <label>Character Name:</label>
+        <input class="form-control create-character-input" type="text" ng-model="player.name">
 
-                <label>Race:</label>
-                <select ng-model="charRace"
-                        ng-options="race.name for race in races"
-                        class="form-control create-character-input">
-                </select>
+        <label>Race:</label>
+        <select ng-model="charRace"
+                ng-options="race.name for race in races"
+                class="form-control create-character-input">
+        </select>
 
-           		<label>Class:</label>
-                <select ng-model="charClass"
-                        ng-options="characterClass.name for characterClass in characterClasses"
-                        class="form-control create-character-input">
-            	</select>
+        <label>Class:</label>
+        <select ng-model="charClass"
+                ng-options="characterClass.name for characterClass in characterClasses"
+                class="form-control create-character-input"
+                ng-change="setSprite()">
 
-                <label>Base Hit Points:</label>
-                <input class="form-control create-character-input" type="text" ng-model="maxHealth">
+        </select>
 
-                <label>Weapon:</label>
-                <select ng-model="weapon"
-                        ng-options="weapon.name for weapon in weapons"
-                        class="form-control create-character-input">
-                </select>
+        <label>Base Hit Points:</label>
+        <input class="form-control create-character-input" type="text" ng-model="maxHealth">
 
-                <label>Gamepiece Color:</label>
-                <input class="form-control create-character-input" type="text" ng-model="color">
+        <label>Weapon:</label>
+        <select ng-model="weapon"
+                ng-options="weapon.name for weapon in weapons"
+                class="form-control create-character-input">
+        </select>
 
-                <button class="btn btn-sm btn-success fa fa-check-circle" ng-click="addPlayer()"> Create Player</button>
+        <label>Gamepiece Color:</label>
+        <input class="form-control create-character-input" type="text" ng-model="color">
+
+        <button class="btn btn-sm btn-success fa fa-check-circle" ng-click="addPlayer()"> Create Player</button>
     </div>
     <div class="col-lg-4"></div>
 </div>
