@@ -45,7 +45,7 @@
                    type="text"
                    ng-model="skill.name"
                    placeholder="Add Skill">
-            <button ng-click="addSkill(skill)" class=" btn-sm btn-info col-lg-3">Add</button>
+            <button ng-click="addSkill(skill)" class="btn-sm btn-info col-lg-3">Add</button>
         </div>
     </div>
 
@@ -57,7 +57,7 @@
              ui-on-drop="onDrop($event,$data,character.inventory)">
             <img class="center-block" src="{{ character.sprite }}">
 
-            <p class="text-center">{{ character.name }}</p>
+            <h3 class="text-center">{{ character.name }}</h3>
             <ul class="list-unstyled">
                 <label>Inventory:</label>
                 <li>
@@ -78,7 +78,7 @@
 
             <img class="center-block" src="{{ player.sprite }}">
 
-            <p class="text-center"><label>{{ player.name }}</label></p>
+            <h3 class="text-center"><label>{{ player.name }}</label></h3>
 
 
             <div class="col-lg-6">
